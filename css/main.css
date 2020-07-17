@@ -1,0 +1,47 @@
+#body {
+    margin: 0;
+    font-family: "NanumSquare" !important;
+}
+
+#content {
+    width: 1200px;
+    min-height: 750px;
+    margin: 0px auto;
+}
+#contentLeft {
+    width: 300px;
+    min-height: 750px;
+    float: left;
+    border-right: 1px solid #bbb;
+}
+#contentRight {
+    width: 900px;
+    min-height: 750px;
+    float: right;
+}
+#footer {
+    height: 150px;
+    background-color: #bbb;
+}
+section.container {
+    padding: 65px 0px 15px 0px;
+}
+
+@media (max-width: 768px) {
+    .navbar-form .form-group {
+        width: 90%;
+        float: left;
+    }
+    .navbar-form .form-group + button {
+        margin-left: 5px;
+        float: left;
+    }
+    #search::after {
+        display: block;
+        content: "";
+        clear: both;
+    }
+    .navbar-collapse.collapse.in {
+        max-height: none;
+    }
+}
