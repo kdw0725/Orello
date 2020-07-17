@@ -1,0 +1,105 @@
+<link rel="stylesheet" href="../css/signIn.css" />
+<div id="header"></div>
+<section id="content" class="container">
+    <div class="imgContainer">
+        <img src="../images/Logo-big.png" alt="Logo" id="logoBig" />
+    </div>
+    <div id="contentLeft">
+        <strong>이메일</strong>
+        <strong>비밀번호</strong>
+        <strong>비밀번호 확인</strong>
+        <strong>프로필 사진</strong>
+        <strong>소속</strong>
+        <strong>전화번호</strong>
+    </div>
+    <div id="contentRight">
+        <div id="inputArea">
+            <form action="#" method="POST">
+                <input type="email" placeholder="이메일" class="form-control" />
+                <input
+                    type="password"
+                    placeholder="비밀번호"
+                    class="form-control"
+                    id="pw"
+                />
+                <input
+                    type="password"
+                    placeholder="비밀번호 확인"
+                    class="form-control"
+                    id="pwCheck"
+                />
+                <div id="fileBox">
+                    <label for="ex_file" class="btn btn-default"
+                        >파일 선택</label
+                    >
+                    <input
+                        class="form-control"
+                        disabled="disabled"
+                        placeholder="선택된 파일 없음"
+                    />
+                    <input
+                        style="width: 100%;"
+                        type="file"
+                        class="upload-hidden"
+                        id="ex_file"
+                        accept="image/*"
+                        name="profile"
+                    />
+                </div>
+                <input
+                    type="text"
+                    class="form-control"
+                    placeholder="소속(회사)"
+                />
+                <input type="tel" class="form-control" placeholder="전화번호" />
+
+                <input type="checkbox" id="agree" />
+                <label for="agree"
+                    ><a href="#">이용약관</a>을 확인하였고 이에
+                    동의합니다.</label
+                >
+                <div id="submitArea">
+                    <input
+                        type="button"
+                        value="회원가입"
+                        class="btn btn-info"
+                        id="submit"
+                    />
+                    <input type="button" value="취소" class="btn btn-default" />
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<div id="footer"></div>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#header").load("../include/header.html");
+        $("#footer").load("../include/footer.html");
+    });
+    $(document).ready(function () {
+        var fileTarget = $("#filebox .upload-hidden");
+
+        fileTarget.on("change", function () {
+            // 값이 변경되면
+            if (window.FileReader) {
+                // modern brows1er
+                var filename = $(this)[0].files[0].name;
+            } else {
+                var filename = $(this).val().split("/").pop().split("\\").pop(); // 파일명만 추출
+            }
+            // $(this).siblings("#filebox .form-control").val(filename);
+            $("#filebox .form-control").val(filename);
+        });
+    });
+    $("#submit").click(function () {
+        if ($("#pw").val() != $("#pwCheck").val()) {
+            alert("비밀번호를 확인해주세요!!");
+        }
+        if ($("input:checkbox[id='agree']").is(":checked") == false) {
+            alert("약관을 확인해주시기 바랍니다.");
+        }
+    });
+</script>
