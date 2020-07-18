@@ -46,9 +46,30 @@
         #tbl td:nth-child(2) {
             text-align: left;
         }
+
+        #search {
+            text-align: center;
+            margin-left: 310px;
+            height: 30px;
+            width: 230px;
+        }
+        #seaech input {
+            display: block;
+            float: left;
+        }
+        #search button {
+            display: block;
+            float: right;
+            height: 25px;
+            /* margin-top: 20px; */
+        }
+       
         #paging {
             margin-top: 0px;
             text-align: center;
+        }
+        #paging nav {
+            height: 80px;
         }
         .pagination {
             height: 60px;
@@ -56,7 +77,11 @@
         }
         .pagination > li > a {
             border: none;
+            color: #444;
         }
+        .pagination > .active > a {
+            background-color: #ccc;
+        } 
     </style>
     <div id="contentLeft"></div>
     <div id="contentRight">
@@ -212,6 +237,17 @@
                     <td>20</td>
                 </tr>
             </table>
+            <hr style="border: 0.2px solid #bbb;">
+            <div id="search">
+                
+                <input type="text">
+                <button><i class="glyphicon glyphicon-search"></i></button>
+
+
+            </div>
+
+
+            <!-- pagination -->
             <div id="paging">
                 <nav>
                     <ul class="pagination">
@@ -233,8 +269,11 @@
                     </ul>
                 </nav>
             </div>
+
+           
+
         </div>
-    </div>
+    </div> <!-- right content -->
 </section>
 <div id="footer"></div>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
