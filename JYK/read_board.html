@@ -20,6 +20,7 @@
             /* border: 1px solid black; */
             /* height: 80px; */
             font-size: 35px;
+            font-weight: bold;
             color: #333;
             /* padding-top: 12px; */
             /* margin-top: ; */
@@ -29,30 +30,34 @@
             cursor: pointer;
         }
 
-        #profile > div {
-            float: left;
-            /* border: 1px solid black; */
-            width: 100px;
-            height: 20px;
-            margin-top: 18px;
-            font-size: 16px;
-            color: #333;
-            font-weight: bold;
-        }
+    
         #profile img {
             display: block;
             float: left;
-            border: 1px solid #ccc;
+            border: 1.5px solid rgb(255, 217, 114);
             border-radius: 50%;
-            width: 50px;
+            width: 40px;
             margin-right: 5px;
+            margin-top: 15px;
         }
-        #profile div:nth-child(3) {
+        #writer #profile div {
+            /* border: 1px solid black; */
+            float: left;
+            width: 100px;
+            height: 20px;
+            margin-top: 28px;
+            margin-left: 0px;  
+            font-size: 14px;
+            color: #666;
+            font-weight: bold;
+        }
+        #write_date {
+            /* border: 1px solid black; */
             float: left;
             width: 100px;
             position: relative;
-            top: 23px;
-            left: -95px;
+            top: 40px;
+            left: 500px;
             font-size: 10px;
             color: #aaa;
         }
@@ -63,7 +68,7 @@
         }
 
         #btn_set {
-            border-bottom: 1px solid black;
+            border-bottom: 1px solid #ccc;
             width: 750px;
             height: 70px;
             text-align: center;
@@ -76,6 +81,7 @@
             font-size: 25px;
             font-weight: bold;
             height: 30px;
+            color: #444;
             /* border: 1px solid black; */
             /* margin-bottom: 10px; */
             margin-top: 0px;
@@ -95,9 +101,9 @@
         .comment img {
             display: block;
             float: left;
-            border: 1px solid black;
+            border: 1.5px solid rgb(255, 166, 166);
             border-radius: 50%;
-            width: 50px;
+            width: 40px;
             margin-right: 5px;
         }
         #comment_list .comment div:nth-child(2) {
@@ -106,6 +112,8 @@
             float: left;
             width: 120px;
             height: 20px;
+            color: #444;
+            font-size: 14px;
         }
         #comment_list .comment div:nth-child(3) {
             float: left;
@@ -115,10 +123,13 @@
             position: relative;
             top: 20px;
             left: -120px;
+            color: #888;
+            font-size: 13px;
         }
 
         #write_comment {
-            border: 1px solid black;
+            border: 1px solid #aaa;
+            border-radius: 2px;
             width: 750px;
             margin-top: 20px;
             padding: 10px;
@@ -147,6 +158,7 @@
             padding-top: 10px;
             display: none;
             z-index: 1;
+            color:#333;
         }
         #hidden span {
             /* border: 1px solid black; */
@@ -158,7 +170,7 @@
             /* border-bottom: 1px solid #ccc; */
         }
         #hidden span:hover {
-            background-color: #ddd;
+            background-color: rgb(154, 255, 59);
             cursor: pointer;
         }
     </style>
@@ -174,10 +186,10 @@
                 <div id="title">Title</div>
                 <div id="writer">
                     <div id="profile">
-                        <img src="man_03.png" alt="" />
+                        <img src="cookie_images/001.png" alt="" />
                         <div>HongGildong</div>
-                        <div>2020.07.20 14:32</div>
                     </div>
+                    <div id="write_date">2020.07.20 14:32</div>
                 </div>
             </div>
 
@@ -214,12 +226,12 @@
             <div id="comment_title">comment</div>
             <div id="comment_list">
                 <div class="comment">
-                    <img src="man_03.png" alt="" />
+                    <img src="cookie_images/002.png" alt="" />
                     <div>HongGildong</div>
                     <div class="comment_txt">Lorem ipsum dolor sit amet.</div>
                 </div>
                 <div class="comment">
-                    <img src="man_03.png" alt="" />
+                    <img src="cookie_images/003.png" alt="" />
                     <div>Hahaha</div>
                     <div class="comment_txt">Lorem ipsum dolor sit amet.</div>
                 </div>
@@ -254,20 +266,18 @@
     });
 
     $("#write_comment input").click(function () {
-        // $("#comment_list").append(
-        //     "<div class='comment'> <img src='man_03.png'  /><div>Hahaha</div><div class='comment_txt'>Lorem ipsum dolor sit amet.</div></div>"
-        // );
+        // alert($("#write_comment div").text());
+
+
         $("#comment_list").append(
-            $("#comment")
-                .append($("<img>").attr("src", "man_03.png"))
-                .append($("<div>").prop("test"))
-                .append($("<div>").prop("test test"))
-        );
-        // $("#comment_list").css(
-        //     "height",
-        //     $("#comment_list").css("height") + 20 + "px"
-        // );
-        alert($("#comment_list").css("height") + 20 + "px");
+            $("<div>").addClass("comment")
+                .append($("<img>").attr("src", "cookie_images/001.png"))
+                .append($("<div>").append(document.createTextNode($("#write_comment div").text())))
+                .append($("<div>").append(document.createTextNode($("#write_comment textarea").val()))
+        ));
+      
+      $("#write_comment textarea").val("");
+        // alert($("#comment_list").css("height") + 20 + "px");
     });
 </script>
 <script>
