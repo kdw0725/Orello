@@ -1,0 +1,252 @@
+<style>
+    #icon {
+        width: 250px;
+        height: 30px;
+        margin: 40px auto;
+    }
+    .btns {
+ 
+            width: 760px;
+            margin: 0px auto;
+        }
+
+    #tblList {
+        width: 760px;
+        margin: 15px auto;
+        border-top: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+    }
+    #tblList th:nth-child(1) {
+        width: 60px;
+    }
+
+    #tblList th:nth-child(2) {
+        width: 480px;
+    }
+
+    #tblList th:nth-child(3) {
+        width: 90px;
+    }
+
+    #tblList th:nth-child(4) {
+        width: 100px;
+    }
+
+    #tblList th:nth-child(5) {
+        width: 70px;
+    }
+
+    #tblList th,
+    #tblList td {
+        text-align: center;
+    }
+
+    #tblList td:nth-child(2) {
+        text-align: left;
+    }
+    .write {
+        margin-left: 20px;
+    }
+    #pagination {
+        text-align: center;
+    }
+    #searchbar {
+        width: 250px;
+        /* display: inline-block; */
+        float: right;
+    }
+    .btn-group {
+        display: inline-block;
+    }
+    #searchLine {
+        width: 460px;
+        margin: 0px auto;
+    }
+    #notice_title {
+        width: 250px;
+        margin: 30px auto;
+    }
+    #img1 {
+        width: 80px;
+        height: 80px;
+    }
+    #notice_title > span {
+        font-weight: bold;
+        font-size: 25px;
+        text-align: center;
+    }
+
+    .inner_title {
+        padding-left: 20px;
+    }
+    .inner_name:hover, .comment_number:hover, .inner_title:hover {
+        cursor: pointer;
+        text-decoration: underline;
+    }
+    .inner_title, .inner_name {
+        color: black;
+    }
+    #tblList td, #tblList th {
+        border-left: 0px;
+        border-right: 0px;
+    }
+    #tblList {
+        border-left: 0px;
+        border-right: 0px;
+    }
+    #label1 {
+        margin-bottom: 2px;
+    }
+    .comment_number {
+        color: red;
+        font-weight: bold;
+    }
+
+
+</style>
+<div id="header"></div>
+<section id="content" class="container">
+    <div id="contentLeft"></div>
+    <div id="contentRight">
+        <div id="notice_title">
+            <img src="../images/Logo.png" id="img1"><span>공 지 사 항</span>
+        </div>
+
+        <div class="btns">
+            <button class="btn btn-primary">
+                <span class="glyphicon glyphicon-ok"></span>
+                Write
+            </button>
+        </div>
+        <main>
+
+            <table id="tblList" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>번호</th>
+                        <th>제목</th>
+                        <th>이름</th>
+                        <th>날짜</th>
+                        <th>조회수</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="td_article">
+                            <div class="inner_number">1</div>
+                        </td>
+                        <td class="td_list">
+                            <a href="noticeRead.html" class="inner_title">질문이 있습니다.</a>
+                            <span class="comment_number">[1]</span>
+                            <span class="label label-danger" id="label1">N</span>
+                        </td>
+                        <td class="td_name">
+                            <a href="userListSub.html" class="inner_name">홍길동</a>
+                        </td>
+                        <td class="td_date">2020-07-15</td>
+                        <td class="td_view">15</td>
+                    </tr>
+                    <tr>
+                        <td class="td_article">
+                            <div class="inner_number">1</div>
+                        </td>
+                        <td class="td_list">
+                            <a href="noticeRead.html" class="inner_title">질문이 있습니다.</a>
+                        </td>
+                        <td class="td_name">
+                            <a href="userListSub.html" class="inner_name">홍길동</a>
+                        </td>
+                        <td class="td_date">2020-07-15</td>
+                        <td class="td_view">15</td>
+                    </tr>
+                </tbody>
+            </table>
+            <nav id="pagination">
+                <ul class="pagination pagination-lg">
+                    <li>
+                        <a href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">6</a></li>
+                    <li><a href="#">7</a></li>
+                    <li><a href="#">8</a></li>
+                    <li><a href="#">9</a></li>
+                    <li><a href="#">10</a></li>
+                    <li>
+                        <a href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div id="searchLine">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                        aria-expanded="false">
+                        전체기간 <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">1일</a></li>
+                        <li><a href="#">1주</a></li>
+                        <li><a href="#">1개월</a></li>
+                        <li><a href="#">1년</a></li>
+
+                    </ul>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                        aria-expanded="false">
+                        제목+내용 <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">제목</a></li>
+                        <li><a href="#">제목+내용</a></li>
+                        <li><a href="#">내용</a></li>
+                        <li><a href="#">작성자</a></li>
+                    </ul>
+                </div>
+                <div id="searchbar">
+                    <div class="search">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="검색어를 입력하세요."><span
+                                    class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+
+</section>
+<div id="footer"></div>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#header").load("../include/header.html");
+        $("#footer").load("../include/footer.html");
+    });
+
+    // var sel = document.getElementsByClassName("tr_select");
+    // var title = document.getElementsByClassName("td_title");
+
+    $(".inner_title").click(function() {
+        location.href="noticeRead.html";
+    });
+    $(".btns").click(function() {
+        location.href="noticeWrite.html";
+    });
+    $(".comment_number").click(function() {
+        location.href="noticeRead.html#first_screen";
+    });
+
+</script>
