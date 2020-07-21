@@ -1,0 +1,272 @@
+<style>
+    #titleContainer {
+        margin-left: 60px;
+        margin-top: 60px;
+        /* border: 1px solid black; */
+        width: 200px;
+    }
+
+    #contentRight > #titleContainer > i {
+        font-size: 2.7em;
+        float: left;
+        padding-right: 20px;
+    }
+
+    #title {
+        font-size: 2.5em;
+    }
+
+    #userImg {
+        width: 200px;
+        height: 200px;
+        /* border: 1px solid black; */
+        background: url(../images/woman_04.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+        margin-left: 150px;
+        margin-top: 40px;
+        float: left;
+    }
+
+    #userInfo {
+        width: 400px;
+        height: 200px;
+        /* border: 1px solid black; */
+        float: left;
+        margin-left: 100px;
+        margin-top: 40px;
+        font-size: 20px;
+    }
+
+    #userInfo span {
+        display: block;
+        clear: both;
+        padding-top: 25px;
+        float: left;
+    }
+
+    .joingProject {
+        clear: both;
+        width: 400px;
+        height: 150px;
+        border: 3px solid #666;
+        margin-left: 60px;
+        margin-top: 100px;
+        float: left;
+    }
+
+    .joingProject > span {
+        display: block;
+        font-size: 16px;
+        font-weight: bold;
+        margin-left: 10px;
+        margin-top: 10px;
+    }
+
+    .joingProjectList {
+        width: 120px;
+        height: 80px;
+        /* border: 2px solid #666; */
+        float: left;
+        border-radius: 10px;
+        margin-top: 15px;
+        margin-left: 8px;
+        text-align: center;
+        padding-top: 30px;
+        cursor: pointer;
+        font-weight: bold;
+        color: #666;
+    }
+
+    #joingProject1 {
+        background-color: #aaa;
+        background-size: cover;
+        color: white;
+        opacity: 0.5;
+        position: relative;
+    }
+
+    .darkness {
+        z-index: 0;
+        width: 120px;
+        height: 80px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: #000;
+        border-radius: 10px;
+        opacity: 0;
+        transition: all 0.1s linear;
+    }
+
+    .btn-plus {
+        position: absolute;
+        top: 30px;
+        left: 60px;
+        font-size: 20px;
+        opacity: 0;
+        transform: scale(2);
+        transition: all 0.3s linear;
+    }
+
+    #joingProject2 {
+        background-color: #aaa;
+        background-size: cover;
+        color: white;
+        opacity: 0.5;
+        position: relative;
+    }
+
+    #joingProject3 {
+        background-color: #aaa;
+        background-size: cover;
+        color: white;
+        opacity: 0.5;
+        position: relative;
+    }
+
+    .joingProjectList:hover .darkness {
+        opacity: 0.5;
+    }
+
+    .joingProjectList:hover .btn-plus {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    .finishProject {
+        width: 400px;
+        height: 150px;
+        border: 3px solid #666;
+        /* margin-left: 30px; */
+        margin-top: 100px;
+        float: right;
+    }
+
+    .finishProject > span {
+        display: block;
+        font-size: 16px;
+        font-weight: bold;
+        margin-left: 10px;
+        margin-top: 10px;
+    }
+
+    .finishProjectList {
+        width: 120px;
+        height: 80px;
+        /* border: 2px solid #666; */
+        float: left;
+        margin-top: 15px;
+        margin-left: 8px;
+        border-radius: 10px;
+        text-align: center;
+        padding-top: 30px;
+        cursor: pointer;
+        font-weight: bold;
+        color: #666;
+    }
+
+    .finishProjectList:hover {
+        background-color: #eee;
+    }
+
+    #finishProject1 {
+        background-image: url(../images/img05.jpg);
+        background-size: cover;
+        color: white;
+        opacity: 0.5;
+    }
+
+    #finishProject2 {
+        background-image: url(../images/img06.jpg);
+        background-size: cover;
+        color: white;
+        opacity: 0.5;
+    }
+
+    #finishProject3 {
+        background-image: url(../images/img01.jpg);
+        background-size: cover;
+        color: white;
+        opacity: 0.5;
+    }
+
+    .buttonbox {
+        float: right;
+        margin-top: 40px;
+    }
+</style>
+<div id="header"></div>
+<section id="content" class="container">
+    <div id="contentLeft"></div>
+    <div id="contentRight">
+        <div id="titleContainer">
+            <i class="glyphicon glyphicon-user"></i>
+            <div id="title">User</div>
+        </div>
+
+        <div id="userImg">
+            <!-- <img src="../images/woman_04.png" /> -->
+        </div>
+        <div id="userInfo">
+            <span><strong>Name</strong> : 김동욱</span>
+            <span><strong>Email</strong> : loremipsum@gmail.com</span>
+            <span><strong>Point</strong> : 5,700p</span>
+        </div>
+
+        <div class="joingProject">
+            <span>Joining Project</span>
+            <div id="joingProject1" class="joingProjectlist">
+                <div class="darkness"></div>
+                <div class="btn-plus"><span draggable="false">+</span></div>
+            </div>
+
+            <div id="joingProject2" class="joingProjectlist">
+                <div class="darkness"></div>
+                <div class="btn-plus"><span draggable="false">+</span></div>
+            </div>
+            <div id="joingProject3" class="joingProjectlist">
+                <div class="darkness"></div>
+                <div class="btn-plus"><span draggable="false">+</span></div>
+            </div>
+        </div>
+
+        <div class="finishProject">
+            <span>Finished Project</span>
+            <div id="finishProject1" class="finishProjectlist">
+                Project4
+                <i class="glyphicon glyphicon-menu-right"></i>
+            </div>
+            <div id="finishProject2" class="finishProjectlist">
+                Project5
+                <i class="glyphicon glyphicon-menu-right"></i>
+            </div>
+            <div id="finishProject3" class="finishProjectlist">
+                Project6
+                <i class="glyphicon glyphicon-menu-right"></i>
+            </div>
+        </div>
+
+        <div class="buttonbox">
+            <input
+                type="button"
+                value="목록"
+                class="btn btn-primary"
+                onclick="location.href='userList.html'"
+            />
+        </div>
+    </div>
+</section>
+<div id="footer"></div>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#header").load("../include/header.html");
+        $("#footer").load("../include/footer.html");
+    });
+
+    var btn = document.getElementsByTagName("input");
+
+    btn.onclick = function () {};
+</script>
