@@ -1,0 +1,433 @@
+<style>
+    
+    #contentRight * {
+        /* border: 1px solid black; */
+    }
+    #contentRight {
+        min-width: 900px;
+    }
+    #contentRight #title {
+        min-width: 870px;
+        height: 50px;
+        margin-top: 30px;
+        margin-left: 30px;
+        color: #444;
+        font-variant: small-caps;
+    }
+    #contentRight #title h1 {
+        /* display: inline-block; */
+        float: left;
+        margin: 0;
+    }
+    #contentRight #title i {
+        font-size: 2em;
+        float: right;
+        margin-left: 10px;
+    }
+
+    .steps {
+        width: 300px;
+        margin-top: 30px;
+        margin-left: 30px;
+        float: left;
+    }
+    .steps h4{
+        margin: 10px;
+        cursor: pointer;
+    }
+    .steps ul{
+        list-style: none;
+        min-height: 100px;
+        margin: 0;
+        padding: 0px;
+    }
+
+    .steps input[type=checkbox] {
+        display: none;
+    }
+    .steps label {
+        margin-bottom: 0;
+    }
+    .steps .ui-sortable-placeholder{
+        border: 1px dotted #ddd;
+        color: #888;
+        padding: 30px 20px;
+        position: relative;
+    }
+    .steps .ui-sortable-placeholder:after{
+        content: "Place me here.";
+        position: absolute;
+        top: 30%;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        color: #555;
+        text-align: center;
+    }
+    .steps input[type='checkbox'] + div{
+        background: white;
+        min-height: 69px;
+        width: 100%;
+        border: 1px solid #ddd;
+        color: #333;
+        text-transform: capitalize;
+        font-weight: 900;
+        font-size: 11px;
+        letter-spacing: 1px;
+        transition: all 0.7s ease;
+        position: relative;
+        top: 0;
+        left: 0;
+        padding: 5px 5px 10px 70px;
+        margin-bottom: 5px;
+        box-shadow: 2px 2px 2px #bbb;
+    }
+    .steps div span{
+        display: block;
+        font-size: 12px;
+        text-transform: capitalize;
+        font-weight: normal;
+        color: #666;
+        margin-left: 10px;
+        /* margin-bottom: 10px; */
+        cursor: pointer;
+        transition: all 0.7s ease;
+
+
+    } 
+    .steps input[type='checkbox'] + div:before {
+        content:"";
+        width: 30px;
+        height: 30px;
+        border: 1px solid #ddd;
+        border-radius: 100%;
+        display: block;
+        position: absolute;
+        left: 20px;
+        top: 35%;
+        z-index: 999;
+        transition: border 0.7s ease;
+    }
+    .steps input[type='checkbox'] + div:after{
+        content: "";
+        width: 60px;
+        background: white;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    .steps input[type='checkbox']:checked + div{
+        background: white;
+        color: #1ABC9C;
+    }
+    .steps input[type='checkbox']:checked + div span {
+        color: #1ABC9C;
+    }
+    .steps input[type='checkbox']:checked + div:before{
+        background: url("../images/tick.png") no-repeat center center;
+        background-size: contain;
+        /* transition: all 0.7s ease; */
+
+    }
+
+    .steps li:nth-child(1) div{ border-right: 8px solid #f87c85;}
+    .steps li:nth-child(2) div{ border-right: 8px solid #feb47f; }
+    .steps li:nth-child(3) div{ border-right: 8px solid #3498db; }
+    .steps li:nth-child(4) div{ border-right: 8px solid #b985ea; }
+    .steps li:nth-child(5) div{ border-right: 8px solid #43d6b0; }
+    .steps li:nth-child(6) div{ border-right: 8px solid #f87c85;}
+    .steps li:nth-child(7) div{ border-right: 8px solid #feb47f; }
+    .steps li:nth-child(8) div{ border-right: 8px solid #3498db; }
+    .steps li:nth-child(9) div{ border-right: 8px solid #b985ea; }
+    .steps li:nth-child(10) div{ border-right: 8px solid #43d6b0; }
+
+    #addCheckList {
+        text-align: center;
+        font-size: 2em;
+        margin-top: 20px;
+    }
+    #addCheckList i:hover {
+        color: #555;
+        text-shadow: 2px 2px 2px #ddd;
+    }
+    .modal *{
+        /* border: 1px solid gray; */
+        outline: none !important;
+    }
+    .modal .modal-content {
+        border: 0px;
+        border-radius: 0%;
+        box-shadow: 0px 0px 0px #ddd;
+        padding: 20px;
+        background-color: white;
+    }
+    .modal .modal-content .modal-body {
+        
+    }
+    .checkListContent > textarea {
+        width: 520px;
+        min-height: 200px;
+        border: 1px solid #ddd;
+        /* margin: 20px auto; */
+        padding: 20px;
+        display: block;
+        resize: none;
+    }
+    #datePicker > div {
+        border: 1px solid #ddd;
+    }
+    #datePicker div.tui-datepicker {
+        border: 1px solid #ddd;
+    }
+
+    .memberCheck {
+        display: none;
+    }
+    .memberBox {
+        width: 170px;
+        height: 50px;
+        border: 1px solid #ddd;
+        float: left;
+        vertical-align: auto;
+        box-shadow: 2px 2px 2px #ddd;
+        cursor: pointer;
+        padding: 5px;
+        background-color: transparent;
+
+    }
+    .memberBox > span {
+        line-height: 42px;
+        vertical-align: middle;
+        font-size: 12px;
+        font-weight: 400;
+        counter-reset: #333;
+    }
+    .memberPic {
+        width: 40px;
+        height: 40px;
+        border: 2px solid white;
+        background-color: #ddd;
+        background-image: url('../images/0.png');
+        background-size: contain;
+        border-radius: 50%;
+        margin-right: 5px;
+        vertical-align: middle;
+        float: left;
+    }
+    .memberBox:hover {
+        background-color: #eee;
+    }
+    .memberCheck:checked + label > .memberBox {
+        /* border: 3px solid tomato; */
+        box-shadow: -2px -2px -2px #ddd;
+        background-color: #333;
+        color: white;
+    }
+    
+
+</style>
+<div id="header" style="z-index: 100;"></div>
+<section id="content" class="container">
+    <div id="contentLeft"></div>
+    <div id="contentRight">
+        <div id="title">
+            <h1>Check List</h1>
+            <i class="glyphicon glyphicon-plus-sign"></i>
+            <i class="glyphicon glyphicon-trash"></i>
+            <i class="glyphicon glyphicon-cog"></i>
+        </div>
+        <div class="steps">
+            <ul class="sortable connectedSortable">
+                <li>
+                    <input id='label-1' type='checkbox'/>
+                    <div>
+                        <label for='label-1'>
+                            <h4>Meet Larry at 6pm </h4>
+                            <span><i class="glyphicon glyphicon-user"></i> Assigned to: <span class="assigned"></span></span><br>
+                        </label>
+                        <span class="modify"><i class="glyphicon glyphicon-menu-hamburger"></i> <i class="glyphicon glyphicon-paperclip">8</i> <i class="glyphicon glyphicon-comment">10</i></span>   
+                    </div>
+                </li>
+                <li>
+                    <input id='label-2' type='checkbox'/>
+                    <div>
+                        <label for='label-2'>
+                            <h4>Team Session</h4>
+                            <span><i class="glyphicon glyphicon-user"></i> Assigned to: <span class="assigned"></span></span><br>   
+                        </label>
+                        <span class="modify"><i class="glyphicon glyphicon-menu-hamburger"></i> <i class="glyphicon glyphicon-paperclip">8</i> <i class="glyphicon glyphicon-comment">10</i></span>   
+                    </div>
+                </li>
+                <li>
+                    <input id='label-3' type='checkbox'/>
+                    <div>
+                        <label for='label-3'>
+                            <h4>Watch Movie</h4>
+                            <span><i class="glyphicon glyphicon-user"></i> Assigned to: <span class="assigned"></span></span><br>   
+                        </label>
+                        <span class="modify"><i class="glyphicon glyphicon-menu-hamburger"></i> <i class="glyphicon glyphicon-paperclip">8</i> <i class="glyphicon glyphicon-comment">10</i></span>   
+                    </div>
+                </li>
+                <li>
+                    <input id='label-4' type='checkbox'/>
+                    <div>
+                        <label for='label-4'>
+                            <h4>Date with babe</h4>  
+                            <span><i class="glyphicon glyphicon-user"></i> Assigned to: <span class="assigned"></span></span><br>   
+                        </label>
+                        <span class="modify"><i class="glyphicon glyphicon-menu-hamburger"></i> <i class="glyphicon glyphicon-paperclip">8</i> <i class="glyphicon glyphicon-comment">10</i></span>   
+                    </div>
+                </li>
+                <li>
+                    <input id='label-5' type='checkbox'/>
+                    <div>
+                        <label for='label-5'>
+                            <h4>Jogging at Ayala</h4>  
+                            <span><i class="glyphicon glyphicon-user"></i> Assigned to: <span class="assigned"></span></span><br>   
+                        </label>
+                        <span class="modify"><i class="glyphicon glyphicon-menu-hamburger"></i> <i class="glyphicon glyphicon-paperclip">8</i> <i class="glyphicon glyphicon-comment">10</i></span>   
+                    </div>
+                </li>
+            </ul>
+            <div id="addCheckList">
+                <i class="glyphicon glyphicon-plus-sign"></i>
+            </div>
+        </div>   
+    </div>
+    <div class="modal fade" id="checkListModify">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">CheckList Title</h4>
+            </div>
+            <div class="modal-body">
+                <div class="modal-menu">
+                    
+                    <h5>업무 담당자</h5>
+                    <div>
+                        <input type="checkbox" id="member1" class="memberCheck">
+                        <label for="member1" class="memberPick">
+                            <div class="memberBox">
+                                <div class="memberPic"></div>
+                                <span>MemberName</span>
+                            </div>
+                        </label>
+                        <input type="checkbox" id="member2" class="memberCheck">
+                        <label for="member2" class="memberPick">
+                            <div class="memberBox">
+                                <div class="memberPic"></div>
+                                <span>MemberName</span>
+                            </div>
+                        </label>
+                        <input type="checkbox" id="member3" class="memberCheck">
+                        <label for="member3" class="memberPick">
+                            <div class="memberBox">
+                                <div class="memberPic"></div>
+                                <span>MemberName</span>
+                            </div>
+                        </label>
+                        <input type="checkbox" id="member4" class="memberCheck">
+                        <label for="member4" class="memberPick">
+                            <div class="memberBox">
+                                <div class="memberPic"></div>
+                                <span>MemberName</span>
+                            </div>
+                        </label>
+                        <input type="checkbox" id="member5" class="memberCheck">
+                        <label for="member5" class="memberPick">
+                            <div class="memberBox">
+                                <div class="memberPic"></div>
+                                <span>MemberName</span>
+                            </div>
+                        </label>
+                        <input type="checkbox" id="member6" class="memberCheck">
+                        <label for="member6" class="memberPick">
+                            <div class="memberBox">
+                                <div class="memberPic"></div>
+                                <span>MemberName</span>
+                            </div>
+                        </label>
+                    </div>
+                    <hr>
+                    <h5>업무 기간</h5>
+                    <div id="datePicker">
+                        <div class="tui-datepicker-input tui-datetime-input tui-has-focus">
+                            <input id="startpicker-input" type="text" aria-label="Date">
+                            <span class="tui-ico-date"></span>
+                            <div id="startpicker-container" style="margin-left: -1px;"></div>
+                        </div>
+                        <span>to</span>
+                        <div class="tui-datepicker-input tui-datetime-input tui-has-focus">
+                            <input id="endpicker-input" type="text" aria-label="Date">
+                            <span class="tui-ico-date"></span>
+                            <div id="endpicker-container" style="margin-left: -1px;"></div>
+                        </div>
+                    </div>
+                    <hr>
+                    <h5>내용</h5>                    
+                    <div class="checkListContent">
+                        <textarea resize="none" disabled>Lorem ipsum dolor, sit amet consectetur adipisicing elit. At alias voluptatum nisi minima, blanditiis inventore! Repudiandae consequuntur veritatis doloremque similique ea. Ipsam, aspernatur! Libero ut, dicta quam blanditiis cupiditate earum?</textarea>
+                    </div>
+                    <hr>
+                    <h5>댓글</h5>                    
+
+
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+</section>
+<div id="footer"></div>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#header").load("../include/header.html");
+        $("#footer").load("../include/footer.html");
+    });
+    $("#addCheckList i").click(function() {
+        // 모달창으로 추가 띄우기
+        $('#checkListModify').modal();
+    });
+    $(".modify").click(function() {
+        $('#checkListModify').modal();
+    });
+
+
+</script>
+<link rel="stylesheet" href="../css/jquery-ui.css">
+<script src="../js/jquery-ui.js"></script>
+<script>
+    
+    //체크리스트 드래그해서 옮기기 가능하도록
+    $(".sortable").sortable({   
+            placeholder: "ui-sortable-placeholder",
+            connectWith: ".connectedSortable"   
+    }).disableSelection();  
+</script>
+<link rel="stylesheet" href="https://uicdn.toast.com/tui.date-picker/latest/tui-date-picker.css">
+<script src="https://uicdn.toast.com/tui.date-picker/latest/tui-date-picker.js"></script>
+<script>
+    var today = new Date();
+    var picker = tui.DatePicker.createRangePicker({
+        startpicker: {
+            date: today,
+            input: '#startpicker-input',
+            container: '#startpicker-container'
+        },
+        endpicker: {
+            date: today,
+            input: '#endpicker-input',
+            container: '#endpicker-container'
+        },
+        // selectableRanges: [
+        //     [today, new Date(today.getFullYear() + 1, today.getMonth(), today.getDate())]
+        // ]
+    });
+</script>
