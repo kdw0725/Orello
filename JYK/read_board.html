@@ -30,7 +30,6 @@
             cursor: pointer;
         }
 
-    
         #profile img {
             display: block;
             float: left;
@@ -38,15 +37,15 @@
             border-radius: 50%;
             width: 40px;
             margin-right: 5px;
-            margin-top: 15px;
+            margin-top: 5px;
         }
         #writer #profile div {
             /* border: 1px solid black; */
             float: left;
             width: 100px;
             height: 20px;
-            margin-top: 28px;
-            margin-left: 0px;  
+            margin-top: 20px;
+            margin-left: 0px;
             font-size: 14px;
             color: #666;
             font-weight: bold;
@@ -76,6 +75,19 @@
             margin-top: 20px;
             margin-bottom: 20px;
         }
+
+        #btn_set input {
+            outline: none;
+            border: 1px solid #f87479;
+            border-radius: 2px;
+            /* background-color: #ccc; */
+            background-color: #f87479;
+            color: white;
+            height: 30px;
+            padding: 0 8px;
+            box-shadow: 0px 0px 3px #666;
+        }
+
         /* comment */
         #comment_title {
             font-size: 25px;
@@ -88,7 +100,7 @@
         }
         #comment_list {
             /* border: 1px solid black; */
-            height: 300px;
+            height: 200px;
             /* background-color: #ccc; */
             padding: 10px;
         }
@@ -96,7 +108,8 @@
             border-bottom: 1px solid #ccc;
             height: 100px;
             padding: 10px;
-            padding-top: 20px;
+            padding-top: 13px;
+            background-color: #eee;
         }
         .comment img {
             display: block;
@@ -130,9 +143,11 @@
         #write_comment {
             border: 1px solid #aaa;
             border-radius: 2px;
-            width: 750px;
+            width: 730px;
             margin-top: 20px;
             padding: 10px;
+            height: 120px;
+            margin-left: 10px;
             /* text-align: center; */
         }
         #write_comment div {
@@ -140,12 +155,33 @@
         }
 
         #write_comment textarea {
-            width: 700px;
+            border: 1px solid black;
+            float: left;
+            width: 680px;
             margin-left: 15px;
             border: none;
             resize: none;
             outline: none;
         }
+
+        #write_comment input {
+            /* float: left; */
+            display: block;
+            position: relative;
+            left: 5px;
+            top: 10px;
+            outline: none;
+            border: 1px solid #ffc477;
+            border-radius: 2px;
+            /* background-color: #ccc; */
+            background-color: #ffc477;
+            color: white;
+            height: 25px;
+            padding: 0 8px;
+            padding-bottom: 2px;
+            box-shadow: 0px 0px 3px #888;
+        }
+
         #hidden {
             border: 1px solid #ccc;
             width: 100px;
@@ -158,7 +194,7 @@
             padding-top: 10px;
             display: none;
             z-index: 1;
-            color:#333;
+            color: #333;
         }
         #hidden span {
             /* border: 1px solid black; */
@@ -173,17 +209,103 @@
             background-color: rgb(154, 255, 59);
             cursor: pointer;
         }
+
+        #top {
+            float: right;
+            outline: none;
+            border: 1px solid #f87479;
+            border-radius: 2px;
+            /* background-color: #ccc; */
+            background-color: #f87479;
+            color: white;
+            height: 25px;
+            padding: 0 8px 2px 5px;
+            box-shadow: 0px 0px 3px #666;
+            margin-top: 10px;
+            margin-right: 10px;
+        }
+        .modal-content {
+            width: 500px;
+            height: 530px;
+        }
+        .modal-body {
+            height: 400px;
+            background-color: rgb(250, 233, 233);
+        }
+        .modal-body img {
+            width: 80px;
+            border: 1.5px solid rgb(255, 253, 137);
+            border-radius: 50%;
+            margin-left: 190px;
+            margin-top: 20px;
+            background-color: white;
+        }
+        .modal-body div:nth-child(2) {
+            /* border: 1px solid black; */
+            border-bottom: 1px solid #ccc;
+            margin-top: 10px;
+            text-align: center;
+            padding-bottom: 10px;
+            font-weight: bold;
+            color: rgb(82, 50, 50);
+        }
     </style>
     <div id="contentRight">
+        <div
+            class="modal fade"
+            id="myModal"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="myModalLabel"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button
+                            type="button"
+                            class="close"
+                            data-dismiss="modal"
+                            aria-label="Close"
+                        >
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            Profile
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            <img src="cookie_images/001.png" alt="" />
+                            <div>HongGildong</div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button
+                            type="button"
+                            class="btn btn-default"
+                            data-dismiss="modal"
+                        >
+                            Close
+                        </button>
+                        <button type="button" class="btn btn-primary">
+                            Send Message
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div id="main">
             <div id="hidden">
-                <span>profile</span>
+                <span data-toggle="modal" data-target="#myModal">profile</span>
                 <span>board list</span>
                 <span>1:1 chat</span>
             </div>
             <div id="main_title">
                 <div>border type</div>
-                <div id="title">Title</div>
+                <div id="title">
+                    Title
+                </div>
                 <div id="writer">
                     <div id="profile">
                         <img src="cookie_images/001.png" alt="" />
@@ -223,11 +345,14 @@
                 <input type="button" value="next" />
             </div>
 
-            <div id="comment_title">comment</div>
+            <div id="comment_title">
+                <li class="glyphicon glyphicon-comment"></li>
+                comment
+            </div>
             <div id="comment_list">
                 <div class="comment">
                     <img src="cookie_images/002.png" alt="" />
-                    <div>HongGildong</div>
+                    <div>Hohoho</div>
                     <div class="comment_txt">Lorem ipsum dolor sit amet.</div>
                 </div>
                 <div class="comment">
@@ -246,7 +371,7 @@
                 ></textarea>
                 <input type="button" value="regist" />
             </div>
-            <input type="button" value="top" />
+            <input type="button" value="▲top" id="top" />
         </div>
     </div>
     <!-- right -->
@@ -268,17 +393,37 @@
     $("#write_comment input").click(function () {
         // alert($("#write_comment div").text());
 
+        if ($("#write_comment textarea").val() == "") {
+            alert("write content");
+        } else {
+            $("#comment_list").append(
+                $("<div>")
+                    .addClass("comment")
+                    .append($("<img>").attr("src", "cookie_images/001.png"))
+                    .append(
+                        $("<div>").append(
+                            document.createTextNode(
+                                $("#write_comment div").text()
+                            )
+                        )
+                    )
+                    .append(
+                        $("<div>").append(
+                            document.createTextNode(
+                                $("#write_comment textarea").val()
+                            )
+                        )
+                    )
+            );
+            $("#comment_list").height($("#comment_list").height() + 100);
+        }
 
-        $("#comment_list").append(
-            $("<div>").addClass("comment")
-                .append($("<img>").attr("src", "cookie_images/001.png"))
-                .append($("<div>").append(document.createTextNode($("#write_comment div").text())))
-                .append($("<div>").append(document.createTextNode($("#write_comment textarea").val()))
-        ));
-      
-      $("#write_comment textarea").val("");
-        // alert($("#comment_list").css("height") + 20 + "px");
+        $("#write_comment textarea").val("");
     });
+
+    $("#btn_set div:nth-child(1)").click(function () {});
+
+    $("#hidden span:first-child()").click(function () {});
 </script>
 <script>
     $(document).ready(function () {

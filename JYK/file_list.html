@@ -4,7 +4,7 @@
         #main_list {
             width: 800px;
             margin-left: 50px;
-            border-bottom: 1px solid #ddd;
+            /* border-bottom: 1px solid #ddd; */
         }
         #main_title {
             font-size: 30px;
@@ -23,276 +23,159 @@
 
         #tbl tr th {
             font-size: 15px;
-            text-align: center;
+            text-align: right;
             border: none;
             border-bottom: 1px solid #eee;
             border-top: 1px solid #ddd;
-            background-color: #f9f9f8;
+            background-color: #ffc477;
+            color: rgb(90, 67, 61);
         }
         #tbl td {
             border: none;
             border-bottom: 1px solid #eee;
             padding: 5px;
-            text-align: center;
+            text-align: right;
             font-size: 13px;
             padding-top: 8px;
             /* padding-left: 10px; */
         }
-
+        td > .glyphicon-folder-open {
+            color: rgb(90, 67, 61);
+        }
+        td > .glyphicon-file {
+            color: rgb(145, 117, 111);
+        }
         #tbl tr:hover {
-            background-color: #ccc;
+            background-color: #fff5e9;
             cursor: pointer;
         }
 
         #tbl td:first-child {
             font-size: 11px;
             font-weight: bold;
+            width: 30px;
         }
         #tbl td:nth-child(2) {
-            text-align: left;
+            width: 30px;
         }
 
-        #search {
-            text-align: center;
-            margin-left: 250px;
-            height: 30px;
-            width: 320px;
+        #tbl td:nth-child(3) {
+            width: 150px;
         }
-        #seaech input {
+
+        #tbl td:nth-child(4) {
+            width: 70px;
+        }
+        #main_list > input {
             outline: none;
-            display: block;
-            float: left;
-        }
-        #search button {
-            display: block;
+            border: 1px solid #ffc477;
+            border-radius: 2px;
+            box-shadow: 0 0 3px #888;
+            color: rgb(90, 67, 61);
+            background-color: #ffc477;
             float: right;
-            height: 25px;
-            /* margin-top: 20px; */
-        }
-        #search #select_title select {
-            outline: none;
-            display: block;
-            float: left;
-            width: 80px;
-            height: 25px;
-        }
-
-        #paging {
-            margin-top: 0px;
-            text-align: center;
-        }
-        #paging nav {
-            height: 80px;
-        }
-        .pagination {
-            height: 60px;
-            padding-top: 0px;
-        }
-        .pagination > li > a {
-            border: none;
-            color: #444;
-        }
-        .pagination > .active > a {
-            background-color: #ccc;
+            height: 30px;
         }
     </style>
     <div id="contentLeft"></div>
     <div id="contentRight">
         <div id="main_list">
-            <div id="main_title">File List</div>
+            <div id="main_title">
+                <li class="glyphicon glyphicon-download-alt"></li>
+                File Download
+            </div>
             <table id="tbl" class="table">
                 <tr>
-                    <th>no.</th>
-                    <th>title</th>
-                    <th>writer</th>
-                    <th>date</th>
-                    <th>view</th>
+                    <th>
+                        <input type="checkbox" />
+                    </th>
+                    <th></th>
+                    <th>file name</th>
+                    <th>update date</th>
                 </tr>
 
                 <tr>
-                    <td>001</td>
-                    <td>Lorem ipsum dolor sit.</td>
-                    <td>Lorem.</td>
-                    <td>2020-07-01</td>
-                    <td>1</td>
+                    <td>
+                        <input type="checkbox" />
+                    </td>
+                    <td>
+                        <li class="glyphicon glyphicon-folder-open"></li>
+                    </td>
+                    <td>Lorem</td>
+                    <td>2020-07-01 16:34:22</td>
                 </tr>
                 <tr>
-                    <td>002</td>
-                    <td>Neque asperiores soluta debitis?</td>
-                    <td>Exercitationem!</td>
-                    <td>2020-07-02</td>
-                    <td>2</td>
+                    <td>
+                        <input type="checkbox" />
+                    </td>
+                    <td>
+                        <li class="glyphicon glyphicon-folder-open"></li>
+                    </td>
+                    <td>Exercitationem</td>
+                    <td>2020-07-02 12:21:34</td>
                 </tr>
                 <tr>
-                    <td>003</td>
-                    <td>Reiciendis laboriosam quo unde?</td>
-                    <td>Id!</td>
-                    <td>2020-07-03</td>
-                    <td>3</td>
+                    <td>
+                        <input type="checkbox" />
+                    </td>
+                    <td>
+                        <li class="glyphicon glyphicon-file"></li>
+                    </td>
+                    <td>Id.txt</td>
+                    <td>2020-07-03 08:11:54</td>
                 </tr>
                 <tr>
-                    <td>004</td>
-                    <td>Sed corrupti distinctio nemo.</td>
-                    <td>Sint.</td>
-                    <td>2020-07-04</td>
-                    <td>4</td>
+                    <td>
+                        <input type="checkbox" />
+                    </td>
+                    <td>
+                        <li class="glyphicon glyphicon-file"></li>
+                    </td>
+                    <td>Sint.hwp</td>
+                    <td>2020-07-04 22:12:34</td>
                 </tr>
                 <tr>
-                    <td>005</td>
-                    <td>Quo corporis cumque nisi.</td>
-                    <td>Officia.</td>
-                    <td>2020-07-05</td>
-                    <td>5</td>
-                </tr>
-                <tr>
-                    <td>006</td>
-                    <td>Libero rerum obcaecati ipsa.</td>
-                    <td>Asperiores.</td>
-                    <td>2020-07-06</td>
-                    <td>6</td>
-                </tr>
-                <tr>
-                    <td>007</td>
-                    <td>Et temporibus earum odit?</td>
-                    <td>Porro.</td>
-                    <td>2020-07-07</td>
-                    <td>7</td>
-                </tr>
-                <tr>
-                    <td>008</td>
-                    <td>Repudiandae vitae voluptatem accusamus.</td>
-                    <td>Officia?</td>
-                    <td>2020-07-08</td>
-                    <td>8</td>
-                </tr>
-                <tr>
-                    <td>009</td>
-                    <td>Est, nemo? Magni, reprehenderit!</td>
-                    <td>Iste!</td>
-                    <td>2020-07-09</td>
-                    <td>9</td>
-                </tr>
-                <tr>
-                    <td>010</td>
-                    <td>Totam fugit ad cum!</td>
-                    <td>Suscipit?</td>
-                    <td>2020-07-10</td>
-                    <td>10</td>
-                </tr>
-                <tr>
-                    <td>011</td>
-                    <td>Pariatur impedit dolores quaerat.</td>
-                    <td>Ad!</td>
-                    <td>2020-07-11</td>
-                    <td>11</td>
-                </tr>
-                <tr>
-                    <td>012</td>
-                    <td>Maxime, obcaecati ipsam. Harum?</td>
-                    <td>Corrupti!</td>
-                    <td>2020-07-12</td>
-                    <td>12</td>
-                </tr>
-                <tr>
-                    <td>013</td>
-                    <td>In nobis eaque sequi.</td>
-                    <td>Quod!</td>
-                    <td>2020-07-13</td>
-                    <td>13</td>
-                </tr>
-                <tr>
-                    <td>014</td>
-                    <td>Aspernatur repellat ipsum natus.</td>
-                    <td>Quam!</td>
-                    <td>2020-07-14</td>
-                    <td>14</td>
-                </tr>
-                <tr>
-                    <td>015</td>
-                    <td>Ea inventore reprehenderit a.</td>
-                    <td>Totam.</td>
-                    <td>2020-07-15</td>
-                    <td>15</td>
-                </tr>
-                <tr>
-                    <td>016</td>
-                    <td>Repellendus a quia fugit?</td>
-                    <td>Aut?</td>
-                    <td>2020-07-16</td>
-                    <td>16</td>
-                </tr>
-                <tr>
-                    <td>017</td>
-                    <td>Laboriosam a facilis aliquid!</td>
-                    <td>Facilis!</td>
-                    <td>2020-07-17</td>
-                    <td>17</td>
-                </tr>
-                <tr>
-                    <td>018</td>
-                    <td>Alias culpa rerum blanditiis.</td>
-                    <td>Quas?</td>
-                    <td>2020-07-18</td>
-                    <td>18</td>
-                </tr>
-                <tr>
-                    <td>019</td>
-                    <td>Saepe non nesciunt natus!</td>
-                    <td>Voluptatibus.</td>
-                    <td>2020-07-19</td>
-                    <td>19</td>
-                </tr>
-                <tr>
-                    <td>020</td>
-                    <td>Natus saepe inventore quibusdam?</td>
-                    <td>Aperiam?</td>
-                    <td>2020-07-20</td>
-                    <td>20</td>
+                    <td>
+                        <input type="checkbox" />
+                    </td>
+                    <td>
+                        <li class="glyphicon glyphicon-file"></li>
+                    </td>
+                    <td>Officia.txt</td>
+                    <td>2020-07-05 19:54:54</td>
                 </tr>
             </table>
-            <hr style="border: 0.2px solid #bbb;" />
-
-            <div id="search">
-                <div id="select_title">
-                    <select name="" id="">
-                        <option value="0">title</option>
-                        <option value="1">writer</option>
-                        <option value="2">date</option>
-                    </select>
-                </div>
-                <input type="text" />
-                <button><i class="glyphicon glyphicon-search"></i></button>
-            </div>
-
-            <!-- pagination -->
-            <div id="paging">
-                <nav>
-                    <ul class="pagination">
-                        <li>
-                            <a href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                        <li class="active"><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li>
-                            <a href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
+            <input type="button" value="selected file download" />
         </div>
     </div>
     <!-- right content -->
 </section>
 <div id="footer"></div>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-
+<script>
+    $("#tbl td > input").change(function () {
+        if ($(this).is(":checked")) {
+            $(this).parent().parent().css("background-color", "#fff5e9");
+        } else {
+            $(this).parent().parent().css("background-color", "white");
+        }
+    });
+    $("th > input").change(function () {
+        if ($(this).is(":checked")) {
+            $("#tbl td > input").prop("checked", true);
+            $("#tbl td > input")
+                .parent()
+                .parent()
+                .css("background-color", "#fff5e9");
+        } else {
+            $("#tbl td > input").prop("checked", false);
+            $("#tbl td > input")
+                .parent()
+                .parent()
+                .css("background-color", "white");
+        }
+    });
+</script>
 <script>
     $(document).ready(function () {
         $("#header").load("../include/header.html");

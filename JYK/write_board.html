@@ -76,7 +76,10 @@
     <div id="contentLeft"></div>
     <div id="contentRight">
         <div id="main">
-            <div id="main_title">Write Content</div>
+            <div id="main_title">
+                <li class="glyphicon glyphicon-pencil"></li>
+                Write Content
+            </div>
             <div id="board_set">
                 <div id="select_type">
                     <span class="board_txt">Board</span>
@@ -1347,6 +1350,21 @@
             ) /* 내용 문자열, 주어진 필드(textarea) 엘리먼트 */,
         });
     }
+</script>
+
+<script>
+    $("#board_type").change(function () {
+        if ($(this).val() == 1) {
+            $("#contentRight").css("background-color", "#B7C6E0");
+            // alert();
+        } else if ($(this).val() == 2) {
+            $("#contentRight").css("background-color", "#FFF5CC");
+        } else if ($(this).val() == 3) {
+            $("#contentRight").css("background-color", "#FBCFD0");
+        } else if ($(this).val() == 0) {
+            $("#contentRight").css("background-color", "white");
+        }
+    });
 </script>
 
 <script>
