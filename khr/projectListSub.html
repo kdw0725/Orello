@@ -1,0 +1,144 @@
+<style>
+    #titleContainer {
+        margin-left: 60px;
+        margin-top: 60px;
+        /* border: 1px solid black; */
+        width: 200px;
+    }
+
+    #contentRight > #titleContainer > i {
+        font-size: 2.7em;
+        float: left;
+        padding-right: 20px;
+    }
+
+    #title {
+        font-size: 2.5em;
+    }
+
+    .subcontainer {
+        width: 600px;
+        margin: 40px auto;
+        clear: both;
+    }
+    .subcontainer:first-child {
+        margin-top: 100px;
+    }
+
+    .subtitle {
+        font-size: 22px;
+        float: left;
+        width: 300px;
+    }
+
+    .subcontent {
+        font-size: 16px;
+    }
+
+    .subcontainer > i {
+        float: left;
+        color: #f8ae45;
+        font-size: 1.7em;
+        padding-right: 18px;
+    }
+
+    .subcontent > select {
+        width: 200px;
+    }
+
+    #btnbox1 > button {
+        float: left;
+        margin-top: 50px;
+        margin-left: 60px;
+    }
+    #btnbox2 > button {
+        float: right;
+        /* margin-right: 500px; */
+        margin-top: 50px;
+    }
+</style>
+<div id="header"></div>
+<section id="content" class="container">
+    <div id="contentLeft"></div>
+    <div id="contentRight">
+        <div id="titleContainer">
+            <!-- <i class="glyphicon glyphicon-folder-open"></i> -->
+            <div id="title">Project Info</div>
+        </div>
+
+        <div class="subcontainer">
+            <i class="glyphicon glyphicon-folder-open"></i>
+            <div class="subtitle"><strong>Name</strong></div>
+            <div class="subcontent">ProjectName6</div>
+        </div>
+        <div class="subcontainer">
+            <i class="glyphicon glyphicon-user"></i>
+            <div class="subtitle"><strong>Team Name</strong></div>
+            <div class="subcontent">TeamName6</div>
+        </div>
+        <div class="subcontainer">
+            <i class="glyphicon glyphicon-play"></i>
+            <div class="subtitle"><strong>Start Date</strong></div>
+            <div class="subcontent">2020-07-15</div>
+        </div>
+        <div class="subcontainer">
+            <i class="glyphicon glyphicon-stop"></i>
+            <div class="subtitle"><strong>Finish Date</strong></div>
+            <div class="subcontent">-</div>
+        </div>
+        <div class="subcontainer">
+            <i class="glyphicon glyphicon-eye-open"></i>
+            <div class="subtitle"><strong>Members</strong></div>
+            <div class="subcontent">
+                <select name="type" class="form-control">
+                    <option value="1">MemberName1</option>
+                    <option value="2">MemberName2</option>
+                    <option value="3">MemberName3</option>
+                    <option value="4">MemberName4</option>
+                    <option value="5">MemberName5</option>
+                </select>
+            </div>
+        </div>
+        <div class="subcontainer">
+            <i class="glyphicon glyphicon-open"></i>
+            <div class="subtitle"><strong>DataRoom</strong></div>
+            <div class="subcontent"><a href="#">http://DataRoom.html</a></div>
+        </div>
+        <div class="subcontainer">
+            <i class="glyphicon glyphicon-floppy-open"></i>
+            <div class="subtitle"><strong>Board</strong></div>
+            <div class="subcontent"><a href="#">http://Board.html</a></div>
+        </div>
+
+        <div id="btnbox1">
+            <button
+                class="btn btn-primary"
+                onclick="location.href='projectList.html'"
+                style="background-color: #f8ae45; outline: none; border: 0px;"
+            >
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                Back
+            </button>
+        </div>
+
+        <div id="btnbox2">
+            <button
+                class="btn btn-primary"
+                onclick="location.href='tabBar1.html'"
+                style="background-color: #f8ae45; outline: none; border: 0px;"
+            >
+                Summary Chart
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </button>
+        </div>
+    </div>
+</section>
+<div id="footer"></div>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#header").load("../include/header.html");
+        $("#footer").load("../include/footer.html");
+    });
+</script>

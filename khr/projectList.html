@@ -1,0 +1,310 @@
+<style>
+    #titleContainer {
+        margin-left: 60px;
+        margin-top: 50px;
+        /* border: 1px solid black; */
+        width: 200px;
+    }
+
+    #contentRight > #titleContainer > i {
+        font-size: 2.7em;
+        float: left;
+        padding-right: 20px;
+    }
+
+    #title {
+        font-size: 2.5em;
+    }
+
+    #projectlist {
+        /* border-left: 1px solid #777;
+        border-right: 1px solid #777; */
+        width: 845px;
+        /* height: 300px; */
+        margin-left: 140px;
+        margin-top: 80px;
+    }
+
+    /* #projectlist tr td:first-child:hover {
+        cursor: pointer;
+    } */
+    #projectlist tr th {
+        /* border: 1px solid black; */
+        background-color: #ddd;
+        font-size: 20px;
+        text-align: center;
+    }
+
+    #projectlist tr th:last-child {
+        width: 110px;
+    }
+
+    #projectlist tr th:first-child {
+        width: 200px;
+    }
+
+    #projectlist tr th:nth-child(2) {
+        width: 150px;
+    }
+
+    #projectlist tr th:nth-child(3) {
+        width: 190px;
+    }
+
+    #projectlist tr td {
+        /* border: 1px solid black; */
+        text-align: center;
+    }
+
+    #projectlist tr td:hover {
+        cursor: pointer;
+    }
+
+    #projectlist tr td:first-child {
+        text-align: left;
+        padding-left: 20px;
+    }
+
+    #typecontainer {
+        margin-left: 200px;
+        margin-top: 40px;
+    }
+
+    #typecontainer > select {
+        width: 150px;
+        height: 35px;
+        float: left;
+        margin-right: 25px;
+    }
+
+    .listsearch > .listsearch-group > input {
+        width: 450px;
+        height: 30px;
+        margin-left: 40px;
+        float: left;
+    }
+
+    .listsearch button {
+        width: 30px;
+        height: 30px;
+        margin-left: 15px;
+    }
+
+    .pagebar {
+        margin-left: 350px;
+        margin-top: 50px;
+    }
+</style>
+<div id="header"></div>
+<section id="content" class="container">
+    <div id="contentLeft"></div>
+    <div id="contentRight">
+        <div id="titleContainer">
+            <i class="glyphicon glyphicon-folder-open"></i>
+            <div id="title">Project</div>
+        </div>
+
+        <table id="projectlist" class="table table-hover">
+            <tr>
+                <th>Project Name</th>
+                <th>Team Name</th>
+                <th>Start Date</th>
+                <th>Finish Date</th>
+                <th>State</th>
+            </tr>
+            <tr
+                title="클릭시 상세정보"
+                onclick="location.href='projectListSub.html'"
+            >
+                <td class="projectname">projectName1</td>
+                <td class="teamname">TeamName1</td>
+                <td class="startdate">2020-03-20</td>
+                <td class="finishdate">2020-03-20</td>
+                <td class="state">End</td>
+            </tr>
+            <tr
+                title="클릭시 상세정보"
+                onclick="location.href='projectListSub.html'"
+            >
+                <td class="projectname">projectName2</td>
+                <td class="teamname">TeamName2</td>
+                <td class="startdate">2020-04-01</td>
+                <td class="finishdate">2020-04-30</td>
+                <td class="state">End</td>
+            </tr>
+            <tr
+                title="클릭시 상세정보"
+                onclick="location.href='projectListSub.html'"
+            >
+                <td class="projectname">projectName3</td>
+                <td class="teamname">TeamName3</td>
+                <td class="startdate">2020-04-05</td>
+                <td class="finishdate">2020-04-28</td>
+                <td class="state">End</td>
+            </tr>
+            <tr
+                title="클릭시 상세정보"
+                onclick="location.href='projectListSub.html'"
+            >
+                <td class="projectname">projectName4</td>
+                <td class="teamname">TeamName4</td>
+                <td class="startdate">2020-05-16</td>
+                <td class="finishdate">2020-06-02</td>
+                <td class="state">End</td>
+            </tr>
+            <tr
+                title="클릭시 상세정보"
+                onclick="location.href='projectListSub.html'"
+            >
+                <td class="projectname">projectName5</td>
+                <td class="teamname">TeamName5</td>
+                <td class="startdate">2020-06-20</td>
+                <td class="finishdate">2020-07-01</td>
+                <td class="state">End</td>
+            </tr>
+            <tr
+                title="클릭시 상세정보"
+                onclick="location.href='projectListSub.html'"
+            >
+                <td class="projectname">projectName6</td>
+                <td class="teamname">TeamName6</td>
+                <td class="startdate">2020-07-15</td>
+                <td class="finishdate">-</td>
+                <td class="state">Ing</td>
+            </tr>
+        </table>
+
+        <div id="typecontainer">
+            <select name="type" class="form-control">
+                <option value="1">Project Name</option>
+                <option value="2">Team Name</option>
+                <option value="3">Start Date</option>
+                <option value="4">Finish Date</option>
+                <option value="5">State</option>
+            </select>
+
+            <!-- 검색창 -->
+            <div class="search">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="searchbtn"
+                            ><i class="glyphicon glyphicon-search"></i
+                        ></span>
+                        <input
+                            type="text"
+                            class="form-control"
+                            placeholder="검색어를 입력하세요."
+                            id="textbox"
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <nav class="pagebar">
+            <ul class="pagination">
+                <li>
+                    <a href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li class="active"><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">6</a></li>
+                <li><a href="#">7</a></li>
+                <li><a href="#">8</a></li>
+                <li><a href="#">9</a></li>
+                <li><a href="#">10</a></li>
+                <li>
+                    <a href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</section>
+<div id="footer"></div>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#header").load("../include/header.html");
+        $("#footer").load("../include/footer.html");
+    });
+</script>
+
+<script>
+    var sel1 = document.all.type;
+    var searchbtn = document.all.searchbtn;
+    var textbox = document.getElementById("textbox");
+    var projectname = document.getElementsByClassName("projectname");
+    var teamname = document.getElementsByClassName("teamname");
+    var startdate = document.getElementsByClassName("startdate");
+    var finishdate = document.getElementsByClassName("finishdate");
+    var state = document.getElementsByClassName("state");
+    var tblproject = document.getElementById("projectlist");
+    var tr = document.getElementById("projectlist").firstElementChild.children;
+
+    searchbtn.onclick = function () {
+        if (textbox.value == "") {
+        } else {
+            if (sel1.selectedIndex == 0) {
+                for (var i = 0; i < tr.length - 1; i++) {
+                    if (
+                        projectname[i].innerText
+                            .toLowerCase()
+                            .indexOf(textbox.value.toLowerCase()) == -1
+                    ) {
+                        tr[i + 1].style.display = "none";
+                    } else {
+                        tr[i + 1].style.display = "";
+                    }
+                }
+            } else if (sel1.selectedIndex == 1) {
+                for (var i = 0; i < tr.length - 1; i++) {
+                    if (
+                        teamname[i].innerText
+                            .toLowerCase()
+                            .indexOf(textbox.value.toLowerCase()) == -1
+                    ) {
+                        tr[i + 1].style.display = "none";
+                    } else {
+                        tr[i + 1].style.display = "";
+                    }
+                }
+            } else if (sel1.selectedIndex == 2) {
+                for (var i = 0; i < tr.length - 1; i++) {
+                    if (startdate[i].innerText.indexOf(textbox.value) == -1) {
+                        tr[i + 1].style.display = "none";
+                    } else {
+                        tr[i + 1].style.display = "";
+                    }
+                }
+            } else if (sel1.selectedIndex == 3) {
+                for (var i = 0; i < tr.length - 1; i++) {
+                    if (finishdate[i].innerText.indexOf(textbox.value) == -1) {
+                        tr[i + 1].style.display = "none";
+                    } else {
+                        tr[i + 1].style.display = "";
+                    }
+                }
+            } else if (sel1.selectedIndex == 4) {
+                for (var i = 0; i < tr.length - 1; i++) {
+                    if (
+                        state[i].innerText
+                            .toLowerCase()
+                            .indexOf(textbox.value.toLowerCase()) == -1
+                    ) {
+                        tr[i + 1].style.display = "none";
+                    } else {
+                        tr[i + 1].style.display = "";
+                    }
+                }
+            }
+        }
+    };
+</script>

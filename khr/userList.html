@@ -1,0 +1,229 @@
+<style>
+    #titleContainer {
+        margin-left: 60px;
+        margin-top: 50px;
+        /* border: 1px solid black; */
+        width: 200px;
+    }
+
+    #contentRight > #titleContainer > i {
+        font-size: 2.7em;
+        float: left;
+        padding-right: 20px;
+    }
+
+    #title {
+        font-size: 2.5em;
+    }
+
+    #projectlist {
+        /* border-left: 1px solid #777;
+        border-right: 1px solid #777; */
+        width: 845px;
+        height: 300px;
+        margin-left: 140px;
+        margin-top: 80px;
+    }
+
+    /* #projectlist tr td:first-child:hover {
+        cursor: pointer;
+    } */
+    #projectlist tr th {
+        /* border: 1px solid black; */
+        background-color: #ddd;
+        font-size: 20px;
+        text-align: center;
+    }
+
+    #projectlist tr th:last-child {
+        width: 110px;
+    }
+
+    #projectlist tr th:first-child {
+        width: 200px;
+    }
+
+    #projectlist tr th:nth-child(2) {
+        width: 150px;
+    }
+
+    #projectlist tr th:nth-child(3) {
+        width: 190px;
+    }
+
+    #projectlist tr td {
+        /* border: 1px solid black; */
+        text-align: center;
+    }
+
+    #projectlist tr td:hover {
+        cursor: pointer;
+    }
+
+    #projectlist tr td:first-child {
+        text-align: left;
+        padding-left: 20px;
+    }
+
+    #typecontainer {
+        margin-left: 200px;
+        margin-top: 40px;
+    }
+
+    #typecontainer > select {
+        width: 150px;
+        height: 35px;
+        float: left;
+        margin-right: 25px;
+    }
+
+    .listsearch > .listsearch-group > input {
+        width: 450px;
+        height: 30px;
+        margin-left: 40px;
+        float: left;
+    }
+
+    .listsearch button {
+        width: 30px;
+        height: 30px;
+        margin-left: 15px;
+    }
+
+    .pagebar {
+        margin-left: 350px;
+        margin-top: 50px;
+    }
+</style>
+<div id="header"></div>
+<section id="content" class="container">
+    <div id="contentLeft"></div>
+    <div id="contentRight">
+        <div id="titleContainer">
+            <i class="glyphicon glyphicon-user"></i>
+            <div id="title">User</div>
+        </div>
+
+        <table id="projectlist" class="table table-hover">
+            <tr>
+                <th>User Name</th>
+                <th>Age</th>
+                <th>NickName</th>
+                <th>Point</th>
+            </tr>
+            <tr
+                title="클릭시 상세정보"
+                onclick="location.href='userListSub.html'"
+            >
+                <td>UserName1</td>
+                <td>42</td>
+                <td>Nn1</td>
+                <td>5000</td>
+            </tr>
+            <tr
+                title="클릭시 상세정보"
+                onclick="location.href='userListSub.html'"
+            >
+                <td>UserName2</td>
+                <td>30</td>
+                <td>Nn2</td>
+                <td>0</td>
+            </tr>
+            <tr
+                title="클릭시 상세정보"
+                onclick="location.href='userListSub.html'"
+            >
+                <td>UserName3</td>
+                <td>35</td>
+                <td>Nn3</td>
+                <td>2000</td>
+            </tr>
+            <tr
+                title="클릭시 상세정보"
+                onclick="location.href='userListSub.html'"
+            >
+                <td>UserName4</td>
+                <td>50</td>
+                <td>Nn4</td>
+                <td>1300</td>
+            </tr>
+            <tr
+                title="클릭시 상세정보"
+                onclick="location.href='userListSub.html'"
+            >
+                <td>UserName5</td>
+                <td>24</td>
+                <td>Nn5</td>
+                <td>0</td>
+            </tr>
+            <tr
+                title="클릭시 상세정보"
+                onclick="location.href='userListSub.html'"
+            >
+                <td>UserName6</td>
+                <td>25</td>
+                <td>Nn6</td>
+                <td>1100</td>
+            </tr>
+        </table>
+
+        <div id="typecontainer">
+            <select name="type" class="form-control">
+                <option value="1">User Name</option>
+                <option value="2">Age</option>
+                <option value="3">NickName</option>
+                <option value="4">Point</option>
+            </select>
+
+            <!-- 검색창 -->
+            <div class="search">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"
+                            ><i class="glyphicon glyphicon-search"></i
+                        ></span>
+                        <input
+                            type="text"
+                            class="form-control"
+                            placeholder="검색어를 입력하세요."
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <nav class="pagebar">
+            <ul class="pagination">
+                <li>
+                    <a href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li class="active"><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">6</a></li>
+                <li><a href="#">7</a></li>
+                <li><a href="#">8</a></li>
+                <li><a href="#">9</a></li>
+                <li><a href="#">10</a></li>
+                <li>
+                    <a href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</section>
+<div id="footer"></div>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#header").load("../include/header.html");
+        $("#footer").load("../include/footer.html");
+    });
+</script>
