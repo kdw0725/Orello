@@ -1,0 +1,410 @@
+<script src="../js/highcharts.js"></script>
+<script src="../js/variable-pie.js"></script>
+<style>
+    #container {
+        height: 500px;
+    }
+
+    .highcharts-figure,
+    .highcharts-data-table table {
+        min-width: 320px;
+        max-width: 700px;
+        margin: 1em auto;
+    }
+
+    .highcharts-data-table table {
+        font-family: Verdana, sans-serif;
+        border-collapse: collapse;
+        border: 1px solid #ebebeb;
+        margin: 10px auto;
+        text-align: center;
+        width: 100%;
+        max-width: 500px;
+    }
+    .highcharts-data-table caption {
+        padding: 1em 0;
+        font-size: 1.2em;
+        color: #555;
+    }
+    .highcharts-data-table th {
+        font-weight: 600;
+        padding: 0.5em;
+    }
+    .highcharts-data-table td,
+    .highcharts-data-table th,
+    .highcharts-data-table caption {
+        padding: 0.5em;
+    }
+    .highcharts-data-table thead tr,
+    .highcharts-data-table tr:nth-child(even) {
+        background: #f8f8f8;
+    }
+    .highcharts-data-table tr:hover {
+        background: #f1f7ff;
+    }
+
+    #titleContainer {
+        margin-left: 60px;
+        margin-top: 30px;
+        /* border: 1px solid black; */
+        width: 200px;
+    }
+
+    #contentRight > #titleContainer > i {
+        font-size: 2.7em;
+        float: left;
+        padding-right: 10px;
+    }
+
+    #title {
+        font-size: 2.5em;
+    }
+
+    .tablink {
+        background-color: #999;
+        color: white;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        width: 200px;
+        height: 40px;
+        font-size: 18px;
+        margin-top: 30px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+
+    .tablink:first-child {
+        display: block;
+        margin-left: 100px;
+    }
+
+    .tablink:hover {
+        background-color: #aaa;
+    }
+
+    #chart {
+        clear: both;
+        width: 1000px;
+        height: 550px;
+        /* border: 1px solid #aaa; */
+        margin-left: 100px;
+    }
+
+    .chartbox {
+        width: 1000px;
+        height: 550px;
+        float: left;
+    }
+</style>
+<div id="header"></div>
+<section id="content" class="container">
+    <div id="contentLeft"></div>
+    <div id="contentRight">
+        <div id="titleContainer">
+            <script src="https://code.highcharts.com/highcharts.js"></script>
+            <script src="https://code.highcharts.com/modules/variable-pie.js"></script>
+            <script src="https://code.highcharts.com/modules/exporting.js"></script>
+            <script src="https://code.highcharts.com/modules/export-data.js"></script>
+            <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+            <i class="glyphicon glyphicon-stats"></i>
+            <div id="title">Summary</div>
+        </div>
+
+        <div id="tabcontainer">
+            <button
+                class="tablink"
+                onclick="openChart('chart1', this)"
+                id="defaultOpen"
+            >
+                실시간 접속 인원
+            </button>
+            <button class="tablink" onclick="openChart('chart2', this)">
+                날짜별 가입인원
+            </button>
+            <button class="tablink" onclick="openChart('chart3', this)">
+                자주 사용하는 언어
+            </button>
+            <button class="tablink" onclick="openChart('chart4', this)">
+                실시간 채팅 빈도
+            </button>
+        </div>
+
+        <div id="chart">
+            <div id="chart1" class="chartbox">
+                <figure class="highcharts-figure">
+                    <div id="container"></div>
+                    <p class="highcharts-description"></p>
+                </figure>
+            </div>
+            <div id="chart2" class="chartbox"></div>
+            <div id="chart3" class="chartbox"></div>
+            <div id="chart4" class="chartbox"></div>
+        </div>
+    </div>
+</section>
+<div id="footer"></div>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#header").load("../include/header.html");
+        $("#footer").load("../include/footer.html");
+    });
+</script>
+
+<script type="text/javascript">
+    Highcharts.chart("container", {
+        chart: {
+            type: "variablepie",
+        },
+        title: {
+            text: "자주 사용하는 언어",
+        },
+        tooltip: {
+            headerFormat: "",
+            pointFormat:
+                '<span style="color:{point.color}">\u25CF</span> <b> {point.name}</b><br/>' +
+                "Area (square km): <b>{point.y}</b><br/>" +
+                "Population density (people per square km): <b>{point.z}</b><br/>",
+        },
+        series: [
+            {
+                minPointSize: 10,
+                innerSize: "20%",
+                zMin: 0,
+                name: "countries",
+                data: [
+                    {
+                        name: "C",
+                        y: 505370,
+                        z: 92.9,
+                    },
+                    {
+                        name: "C++",
+                        y: 551500,
+                        z: 118.7,
+                    },
+                    {
+                        name: "Java",
+                        y: 312685,
+                        z: 124.6,
+                    },
+                    {
+                        name: "Python",
+                        y: 78867,
+                        z: 137.5,
+                    },
+                    {
+                        name: "C#",
+                        y: 301340,
+                        z: 201.8,
+                    },
+                ],
+            },
+        ],
+    });
+
+    Highcharts.chart("chart2", {
+        title: {
+            text: "날짜별 가입인원",
+        },
+
+        subtitle: {
+            text: "2020년도 기준",
+        },
+
+        yAxis: {
+            title: {
+                text: "가입인원(명)",
+            },
+        },
+
+        xAxis: {
+            accessibility: {
+                rangeDescription: "Range: 2010 to 2017",
+            },
+        },
+
+        legend: {
+            layout: "vertical",
+            align: "right",
+            verticalAlign: "middle",
+        },
+
+        plotOptions: {
+            series: {
+                label: {
+                    connectorAllowed: false,
+                },
+                pointStart: 15,
+            },
+        },
+
+        series: [
+            {
+                name: "teamName",
+                data: [70, 69, 71, 73, 75, 79, 86, 72, 69, 68, 70, 71],
+            },
+        ],
+
+        responsive: {
+            rules: [
+                {
+                    condition: {
+                        maxWidth: 500,
+                    },
+                    chartOptions: {
+                        legend: {
+                            layout: "horizontal",
+                            align: "center",
+                            verticalAlign: "bottom",
+                        },
+                    },
+                },
+            ],
+        },
+    });
+
+    Highcharts.chart("chart3", {
+        title: {
+            text: "실시간 접속 인원",
+        },
+
+        subtitle: {
+            text: "-----------",
+        },
+
+        yAxis: {
+            title: {
+                text: "인원(명)",
+            },
+        },
+
+        xAxis: {
+            accessibility: {
+                rangeDescription: "Range: 2010 to 2017",
+            },
+        },
+
+        legend: {
+            layout: "vertical",
+            align: "right",
+            verticalAlign: "middle",
+        },
+
+        plotOptions: {
+            series: {
+                label: {
+                    connectorAllowed: false,
+                },
+                pointStart: 15,
+            },
+        },
+
+        series: [
+            {
+                name: "teamName",
+                data: [70, 69, 71, 73, 75, 79, 86, 72, 69, 68, 70, 71],
+            },
+        ],
+
+        responsive: {
+            rules: [
+                {
+                    condition: {
+                        maxWidth: 500,
+                    },
+                    chartOptions: {
+                        legend: {
+                            layout: "horizontal",
+                            align: "center",
+                            verticalAlign: "bottom",
+                        },
+                    },
+                },
+            ],
+        },
+    });
+
+    Highcharts.chart("chart4", {
+        title: {
+            text: "실시간 채팅 빈도",
+        },
+
+        subtitle: {
+            text: "-----------",
+        },
+
+        yAxis: {
+            title: {
+                text: "빈도수(번)",
+            },
+        },
+
+        xAxis: {
+            accessibility: {
+                rangeDescription: "Range: 2010 to 2017",
+            },
+        },
+
+        legend: {
+            layout: "vertical",
+            align: "right",
+            verticalAlign: "middle",
+        },
+
+        plotOptions: {
+            series: {
+                label: {
+                    connectorAllowed: false,
+                },
+                pointStart: 15,
+            },
+        },
+
+        series: [
+            {
+                name: "teamName",
+                data: [70, 69, 71, 73, 75, 79, 86, 72, 69, 68, 70, 71],
+            },
+        ],
+
+        responsive: {
+            rules: [
+                {
+                    condition: {
+                        maxWidth: 500,
+                    },
+                    chartOptions: {
+                        legend: {
+                            layout: "horizontal",
+                            align: "center",
+                            verticalAlign: "bottom",
+                        },
+                    },
+                },
+            ],
+        },
+    });
+
+    function openChart(chartName, elmnt) {
+        var i, chartbox, tablink;
+        chartbox = document.getElementsByClassName("chartbox");
+        for (i = 0; i < chartbox.length; i++) {
+            chartbox[i].style.display = "none";
+        }
+
+        tablink = document.getElementsByClassName("tablink");
+        for (i = 0; i < tablink.length; i++) {
+            tablink[i].style.backgroundColor = "";
+        }
+        document.getElementById(chartName).style.display = "block";
+
+        elmnt.style.backgroundColor = "#ddd";
+    }
+
+    document.getElementById("defaultOpen").click();
+</script>
