@@ -1,0 +1,60 @@
+<link rel="stylesheet" href="../css/logIn.css" />
+<link
+    rel="stylesheet"
+    href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css"
+/>
+
+<div id="header"></div>
+<section id="content" class="container">
+    <div id="inputArea">
+        <img src="../images/Logo-big.png" alt="Logo" id="logoBig" />
+        <input type="text" class="form-control" placeholder="아이디 (이메일)" />
+        <input type="password" class="form-control" placeholder="비밀번호" />
+        <input
+            type="button"
+            class="btn btn-info btn-logIn"
+            value="로그인"
+            id="logIn"
+        />
+        <hr />
+        <input
+            type="button"
+            class="btn btn-default"
+            value="회원가입"
+            id="signIn"
+        />
+        <hr />
+        <div id="socialLogIn">
+            <button
+                class="btn-social-login"
+                style="background: #d93025;"
+                title="구글 계정으로 로그인"
+            >
+                <i class="xi-2x xi-google"></i>
+            </button>
+            <button
+                class="btn-social-login"
+                style="background: #1fc700;"
+                title="네이버 계정으로 로그인"
+            >
+                <i class="xi-2x xi-naver"></i>
+            </button>
+            <button
+                class="btn-social-login"
+                style="background: #ffeb00;"
+                title="카카오 계정으로 로그인"
+            >
+                <i class="xi-2x xi-kakaotalk text-dark"></i>
+            </button>
+        </div>
+    </div>
+</section>
+<div id="footer"></div>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#header").load("../include/header.html");
+        $("#footer").load("../include/footer.html");
+    });
+</script>
