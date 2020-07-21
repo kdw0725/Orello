@@ -50,63 +50,12 @@
         #tbl td:nth-child(2) {
             text-align: left;
         }
-
-        /* #write {
+        #write {
             float: right;
             margin-bottom: 20px;
-        } */
-        #search {
-            text-align: center;
-            margin-left: 250px;
-            margin-top: 70px;
-            height: 30px;
-            width: 320px;
-        }
-        #seaech input {
-            outline: none;
-            display: block;
-            float: left;
-        }
-        #search button {
-            display: block;
-            float: right;
-            height: 25px;
-            /* margin-top: 20px; */
-        }
-        #search #select_title select {
-            outline: none;
-            display: block;
-            float: left;
-            width: 80px;
-            height: 25px;
-        }
-
-        #paging {
-            margin-top: 0px;
-            text-align: center;
-        }
-        #paging nav {
-            height: 80px;
-        }
-        .pagination {
-            height: 60px;
-            padding-top: 0px;
-        }
-        .pagination > li > a {
-            border: none;
-            color: #444;
-        }
-        .pagination > li > a:hover {
-            color: white;
-            background-color: #ccc;
-        }
-        .pagination > .active > a {
-            background-color: rgb(109, 158, 214);
-        }
-        .pagination > .active > a:hover {
-            background-color: rgb(109, 158, 214);
         }
     </style>
+
     <div id="contentLeft"></div>
     <div id="contentRight">
         <div id="main_list">
@@ -266,12 +215,12 @@
             </table>
             <hr style="border: 0.2px solid #bbb;" />
 
-            <!-- <div>
-                <button id="write">
+            <div>
+                <button id="write" class="btn btn-info">
                     <li class="glyphicon glyphicon-pencil"></li>
                     write
                 </button>
-            </div> -->
+            </div>
 
             <div id="search">
                 <div id="select_title">
@@ -282,7 +231,9 @@
                     </select>
                 </div>
                 <input type="text" />
-                <button><i class="glyphicon glyphicon-search"></i></button>
+                <button class="btn btn-info">
+                    <i class="glyphicon glyphicon-search"></i>
+                </button>
             </div>
 
             <!-- pagination -->
@@ -309,7 +260,6 @@
             </div>
         </div>
     </div>
-    <!-- right content -->
 </section>
 <div id="footer"></div>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>

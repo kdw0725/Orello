@@ -27,8 +27,8 @@
             border: none;
             border-bottom: 1px solid #eee;
             border-top: 1px solid #ddd;
-            background-color: #ffc477;
-            color: rgb(90, 67, 61);
+            background-color: #5bc0de;
+            color: white;
         }
         #tbl td {
             border: none;
@@ -37,13 +37,14 @@
             text-align: right;
             font-size: 13px;
             padding-top: 8px;
+            color: #444;
             /* padding-left: 10px; */
         }
         td > .glyphicon-folder-open {
-            color: rgb(90, 67, 61);
+            color: #333;
         }
         td > .glyphicon-file {
-            color: rgb(145, 117, 111);
+            color: #666;
         }
         #tbl tr:hover {
             background-color: #fff5e9;
@@ -66,15 +67,9 @@
         #tbl td:nth-child(4) {
             width: 70px;
         }
-        #main_list > input {
+        #main_list > button {
             outline: none;
-            border: 1px solid #ffc477;
-            border-radius: 2px;
-            box-shadow: 0 0 3px #888;
-            color: rgb(90, 67, 61);
-            background-color: #ffc477;
             float: right;
-            height: 30px;
         }
     </style>
     <div id="contentLeft"></div>
@@ -145,7 +140,7 @@
                     <td>2020-07-05 19:54:54</td>
                 </tr>
             </table>
-            <input type="button" value="selected file download" />
+            <button class="btn btn-info">selected file download</button>
         </div>
     </div>
     <!-- right content -->

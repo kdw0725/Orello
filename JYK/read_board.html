@@ -34,8 +34,9 @@
             display: block;
             float: left;
             border: 1.5px solid rgb(255, 217, 114);
+            background-color: rgb(255, 217, 114);
             border-radius: 50%;
-            width: 40px;
+            width: 50px;
             margin-right: 5px;
             margin-top: 5px;
         }
@@ -76,153 +77,135 @@
             margin-bottom: 20px;
         }
 
-        #btn_set input {
+        #btn_set button {
             outline: none;
-            border: 1px solid #f87479;
-            border-radius: 2px;
-            /* background-color: #ccc; */
-            background-color: #f87479;
-            color: white;
-            height: 30px;
-            padding: 0 8px;
-            box-shadow: 0px 0px 3px #666;
         }
 
         /* comment */
-        #comment_title {
-            font-size: 25px;
-            font-weight: bold;
-            height: 30px;
-            color: #444;
-            /* border: 1px solid black; */
-            /* margin-bottom: 10px; */
-            margin-top: 0px;
-        }
-        #comment_list {
-            /* border: 1px solid black; */
-            height: 200px;
-            /* background-color: #ccc; */
-            padding: 10px;
-        }
-        .comment {
-            border-bottom: 1px solid #ccc;
-            height: 100px;
-            padding: 10px;
-            padding-top: 13px;
-            background-color: #eee;
-        }
-        .comment img {
-            display: block;
-            float: left;
-            border: 1.5px solid rgb(255, 166, 166);
-            border-radius: 50%;
-            width: 40px;
-            margin-right: 5px;
-        }
-        #comment_list .comment div:nth-child(2) {
-            /* border: 1px solid black; */
-            font-weight: bold;
-            float: left;
-            width: 120px;
-            height: 20px;
-            color: #444;
-            font-size: 14px;
-        }
-        #comment_list .comment div:nth-child(3) {
-            float: left;
-            width: 200px;
-            height: 30px;
-            /* border: 1px solid black; */
-            position: relative;
-            top: 20px;
-            left: -120px;
-            color: #888;
-            font-size: 13px;
-        }
-
-        #write_comment {
-            border: 1px solid #aaa;
-            border-radius: 2px;
-            width: 730px;
+        /* body {
             margin-top: 20px;
-            padding: 10px;
-            height: 120px;
-            margin-left: 10px;
-            /* text-align: center; */
-        }
-        #write_comment div {
-            font-weight: bold;
-        }
+            background-color: #e9ebee;
+        } */
 
-        #write_comment textarea {
-            border: 1px solid black;
-            float: left;
-            width: 680px;
-            margin-left: 15px;
-            border: none;
-            resize: none;
-            outline: none;
+        .container {
+            margin-right: 20px;
         }
-
-        #write_comment input {
-            /* float: left; */
-            display: block;
-            position: relative;
-            left: 5px;
-            top: 10px;
-            outline: none;
-            border: 1px solid #ffc477;
+        .be-comment-block {
+            margin-bottom: 50px !important;
+            border: 1px solid #edeff2;
             border-radius: 2px;
-            /* background-color: #ccc; */
-            background-color: #ffc477;
-            color: white;
-            height: 25px;
-            padding: 0 8px;
-            padding-bottom: 2px;
-            box-shadow: 0px 0px 3px #888;
+            /* padding: 50px 70px; */
+            border: 1px solid #ffffff;
+            width: 730px;
+            margin-right: 20px;
         }
 
-        #hidden {
-            border: 1px solid #ccc;
-            width: 100px;
-            height: 100px;
-            background-color: white;
-            position: absolute;
-            top: 130px;
-            left: 100px;
-            padding: 3px;
-            padding-top: 10px;
-            display: none;
-            z-index: 1;
-            color: #333;
+        .comments-title {
+            font-size: 16px;
+            color: #262626;
+            margin-bottom: 15px;
+            font-family: "Conv_helveticaneuecyr-bold";
         }
-        #hidden span {
-            /* border: 1px solid black; */
-            width: 80px;
-            display: block;
+
+        .be-img-comment {
+            width: 60px;
+            height: 60px;
             float: left;
-            margin-left: 5px;
-            margin-top: 5px;
-            /* border-bottom: 1px solid #ccc; */
+            margin-bottom: 15px;
         }
-        #hidden span:hover {
-            background-color: rgb(154, 255, 59);
-            cursor: pointer;
+
+        .be-ava-comment {
+            border: 1px solid #5bc0de;
+            background-color: #5bc0de;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+        }
+
+        .be-comment-content {
+            margin-left: 80px;
+        }
+
+        .be-comment-content span {
+            display: inline-block;
+            width: 49%;
+            margin-bottom: 15px;
+        }
+
+        .be-comment-name {
+            font-size: 13px;
+            font-family: "Conv_helveticaneuecyr-bold";
+        }
+
+        .be-comment-content a {
+            color: #383b43;
+        }
+
+        .be-comment-content span {
+            display: inline-block;
+            width: 49%;
+            margin-bottom: 15px;
+        }
+
+        .be-comment-time {
+            text-align: right;
+        }
+
+        .be-comment-time {
+            font-size: 11px;
+            color: #b4b7c1;
+        }
+
+        .be-comment-text {
+            font-size: 13px;
+            line-height: 18px;
+            color: #7a8192;
+            display: block;
+            background: #f6f6f7;
+            border: 1px solid #edeff2;
+            padding: 15px 20px 20px 20px;
+        }
+
+
+
+        .form-group .form-input {
+            outline: none;
+            resize: none;
+            font-size: 13px;
+            line-height: 50px;
+            font-weight: 400;
+            color: #b4b7c1;
+            width: 650px;
+            height: 50px;
+            padding-left: 20px;
+            padding-right: 20px;
+            border: 1px solid #edeff2;
+            border-radius: 3px;
+            margin-left: 65px;
+            margin-top: 20px;
+        }
+        .form-group #submit {
+            /* float: left; */
+            position: relative;
+            left: 100px;
+            top: 100px;
+        }
+
+        .form-group.fl_icon .form-input {
+            padding-left: 70px;
+        }
+
+        .form-group textarea.form-input {
+            height: 150px;
         }
 
         #top {
-            float: right;
+            float: left;
             outline: none;
-            border: 1px solid #f87479;
-            border-radius: 2px;
-            /* background-color: #ccc; */
-            background-color: #f87479;
-            color: white;
             height: 25px;
             padding: 0 8px 2px 5px;
-            box-shadow: 0px 0px 3px #666;
-            margin-top: 10px;
-            margin-right: 10px;
+            margin-top: 40px;
+            margin-left: 120px;
         }
         .modal-content {
             width: 500px;
@@ -248,6 +231,9 @@
             padding-bottom: 10px;
             font-weight: bold;
             color: rgb(82, 50, 50);
+        }
+        div.icon {
+            padding-top: 15px;
         }
     </style>
     <div id="contentRight">
@@ -288,7 +274,7 @@
                         >
                             Close
                         </button>
-                        <button type="button" class="btn btn-primary">
+                        <button type="button" class="btn btn-info">
                             Send Message
                         </button>
                     </div>
@@ -340,38 +326,127 @@
                 illum.
             </div>
             <div id="btn_set">
-                <input type="button" value="prev" />
-                <input type="button" value="back to list" />
-                <input type="button" value="next" />
+                <!-- <input type="button" value="prev" class="btn btn-info" />
+                <input
+                    type="button"
+                    value="back to list"
+                    class="btn btn-info"
+                />
+                <input type="button" value="next" class="btn btn-info" />
+             -->
+                <button class="btn btn-info">prev</button>
+                <button class="btn btn-info">back to list</button>
+                <button class="btn btn-info">next</button>
             </div>
 
-            <div id="comment_title">
-                <li class="glyphicon glyphicon-comment"></li>
-                comment
-            </div>
-            <div id="comment_list">
-                <div class="comment">
-                    <img src="cookie_images/002.png" alt="" />
-                    <div>Hohoho</div>
-                    <div class="comment_txt">Lorem ipsum dolor sit amet.</div>
-                </div>
-                <div class="comment">
-                    <img src="cookie_images/003.png" alt="" />
-                    <div>Hahaha</div>
-                    <div class="comment_txt">Lorem ipsum dolor sit amet.</div>
+            <link
+                href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
+                rel="stylesheet"
+            />
+            <div class="container">
+                <div class="be-comment-block">
+                    <h1 class="comments-title">Comments (3)</h1>
+                    <div class="be-comment">
+                        <div class="be-img-comment">
+                            <a href="blog-detail-2.html">
+                                <img
+                                    src="cookie_images/002.png"
+                                    alt=""
+                                    class="be-ava-comment"
+                                />
+                            </a>
+                        </div>
+                        <div class="be-comment-content">
+                            <span class="be-comment-name">
+                                <a href="blog-detail-2.html">Ravi Sah</a>
+                            </span>
+                            <span class="be-comment-time">
+                                <i class="fa fa-clock-o"></i>
+                                May 27, 2015 at 3:14am
+                            </span>
+
+                            <p class="be-comment-text">
+                                Pellentesque gravida tristique ultrices. Sed
+                                blandit varius mauris, vel volutpat urna
+                                hendrerit id. Curabitur rutrum dolor gravida
+                                turpis tristique efficitur.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="be-comment">
+                        <div class="be-img-comment">
+                            <a href="blog-detail-2.html">
+                                <img
+                                    src="cookie_images/003.png"
+                                    alt=""
+                                    class="be-ava-comment"
+                                />
+                            </a>
+                        </div>
+                        <div class="be-comment-content">
+                            <span class="be-comment-name">
+                                <a href="blog-detail-2.html"
+                                    >Phoenix, the Creative Studio</a
+                                >
+                            </span>
+                            <span class="be-comment-time">
+                                <i class="fa fa-clock-o"></i>
+                                May 27, 2015 at 3:14am
+                            </span>
+                            <p class="be-comment-text">
+                                Nunc ornare sed dolor sed mattis. In scelerisque
+                                dui a arcu mattis, at maximus eros commodo. Cras
+                                magna nunc, cursus lobortis luctus at,
+                                sollicitudin vel neque. Duis eleifend lorem non
+                                ant. Proin ut ornare lectus, vel eleifend est.
+                                Fusce hendrerit dui in turpis tristique blandit.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="be-comment">
+                        <div class="be-img-comment">
+                            <a href="blog-detail-2.html">
+                                <img
+                                    src="cookie_images/005.png"
+                                    alt=""
+                                    class="be-ava-comment"
+                                />
+                            </a>
+                        </div>
+                        <div class="be-comment-content">
+                            <span class="be-comment-name">
+                                <a href="blog-detail-2.html">Cüneyt ŞEN</a>
+                            </span>
+                            <span class="be-comment-time">
+                                <i class="fa fa-clock-o"></i>
+                                May 27, 2015 at 3:14am
+                            </span>
+                            <p class="be-comment-text">
+                                Cras magna nunc, cursus lobortis luctus at,
+                                sollicitudin vel neque. Duis eleifend lorem non
+                                ant
+                            </p>
+                        </div>
+                    </div>
+                    <form class="form-block">
+                       
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <textarea
+                                        class="form-input"
+                                        required=""
+                                        placeholder="Your text"
+                                    ></textarea>
+                                </div>
+                            </div>
+                            <a class="btn btn-info pull-right" id="submit">submit</a>
+                        </div>
+                    </form>
                 </div>
             </div>
 
-            <div id="write_comment">
-                <div>HongGildong</div>
-                <textarea
-                    name=""
-                    id="commnet_input"
-                    placeholder="write here"
-                ></textarea>
-                <input type="button" value="regist" />
-            </div>
-            <input type="button" value="▲top" id="top" />
+            <!-- <input type="button" value="▲top" id="top" /> -->
+            <button id="top" class="btn btn-info">▲top</button>
         </div>
     </div>
     <!-- right -->

@@ -25,8 +25,8 @@
             border: none;
             border-bottom: 1px solid #eee;
             border-top: 1px solid #ddd;
-            background-color: rgb(109, 158, 214);
-            color: rgb(232, 243, 255);
+            background-color: 5bc0de;
+            color: white;
         }
         #tbl td {
             border: none;
@@ -51,34 +51,41 @@
             text-align: left;
         }
 
-        /* #write {
+        #write {
             float: right;
             margin-bottom: 20px;
-        } */
+        }
         #search {
+            /* border: 1px solid black; */
             text-align: center;
             margin-left: 250px;
-            margin-top: 70px;
+            /* margin-top: 70px; */
             height: 30px;
-            width: 320px;
+            width: 350px;
         }
-        #seaech input {
+        #search > input.form-control {
             outline: none;
             display: block;
             float: left;
+            width: 200px;
+            height: 30px;
+            margin-right: 10px;
         }
-        #search button {
-            display: block;
-            float: right;
-            height: 25px;
-            /* margin-top: 20px; */
-        }
-        #search #select_title select {
+        #select_title > select.form-control {
             outline: none;
             display: block;
             float: left;
             width: 80px;
-            height: 25px;
+            height: 30px;
+            margin-right: 10px;
+        }
+        #search button {
+            display: block;
+            /* float: right; */
+            float: left;
+            height: 30px;
+
+            /* margin-top: 20px; */
         }
 
         #paging {
@@ -90,7 +97,8 @@
         }
         .pagination {
             height: 60px;
-            padding-top: 0px;
+            margin-top: 25px;
+            margin-left: 100px;
         }
         .pagination > li > a {
             border: none;
@@ -101,10 +109,10 @@
             background-color: #ccc;
         }
         .pagination > .active > a {
-            background-color: rgb(109, 158, 214);
+            background-color: #5bc0de;
         }
         .pagination > .active > a:hover {
-            background-color: rgb(109, 158, 214);
+            background-color: #5bc0de;
         }
     </style>
     <div id="contentLeft"></div>
@@ -193,96 +201,25 @@
                     <td>2020-07-10</td>
                     <td>10</td>
                 </tr>
-                <tr>
-                    <td>011</td>
-                    <td>Pariatur impedit dolores quaerat.</td>
-                    <td>Ad!</td>
-                    <td>2020-07-11</td>
-                    <td>11</td>
-                </tr>
-                <tr>
-                    <td>012</td>
-                    <td>Maxime, obcaecati ipsam. Harum?</td>
-                    <td>Corrupti!</td>
-                    <td>2020-07-12</td>
-                    <td>12</td>
-                </tr>
-                <tr>
-                    <td>013</td>
-                    <td>In nobis eaque sequi.</td>
-                    <td>Quod!</td>
-                    <td>2020-07-13</td>
-                    <td>13</td>
-                </tr>
-                <tr>
-                    <td>014</td>
-                    <td>Aspernatur repellat ipsum natus.</td>
-                    <td>Quam!</td>
-                    <td>2020-07-14</td>
-                    <td>14</td>
-                </tr>
-                <tr>
-                    <td>015</td>
-                    <td>Ea inventore reprehenderit a.</td>
-                    <td>Totam.</td>
-                    <td>2020-07-15</td>
-                    <td>15</td>
-                </tr>
-                <tr>
-                    <td>016</td>
-                    <td>Repellendus a quia fugit?</td>
-                    <td>Aut?</td>
-                    <td>2020-07-16</td>
-                    <td>16</td>
-                </tr>
-                <tr>
-                    <td>017</td>
-                    <td>Laboriosam a facilis aliquid!</td>
-                    <td>Facilis!</td>
-                    <td>2020-07-17</td>
-                    <td>17</td>
-                </tr>
-                <tr>
-                    <td>018</td>
-                    <td>Alias culpa rerum blanditiis.</td>
-                    <td>Quas?</td>
-                    <td>2020-07-18</td>
-                    <td>18</td>
-                </tr>
-                <tr>
-                    <td>019</td>
-                    <td>Saepe non nesciunt natus!</td>
-                    <td>Voluptatibus.</td>
-                    <td>2020-07-19</td>
-                    <td>19</td>
-                </tr>
-                <tr>
-                    <td>020</td>
-                    <td>Natus saepe inventore quibusdam?</td>
-                    <td>Aperiam?</td>
-                    <td>2020-07-20</td>
-                    <td>20</td>
-                </tr>
             </table>
             <hr style="border: 0.2px solid #bbb;" />
 
-            <!-- <div>
-                <button id="write">
-                    <li class="glyphicon glyphicon-pencil"></li>
-                    write
-                </button>
-            </div> -->
-
+            <button id="write" class="btn btn-info">
+                <li class="glyphicon glyphicon-pencil"></li>
+                write
+            </button>
             <div id="search">
                 <div id="select_title">
-                    <select name="" id="">
+                    <select name="" id="" class="form-control">
                         <option value="0">title</option>
                         <option value="1">writer</option>
                         <option value="2">date</option>
                     </select>
                 </div>
-                <input type="text" />
-                <button><i class="glyphicon glyphicon-search"></i></button>
+                <input type="text" class="form-control" />
+                <button class="btn btn-info">
+                    <i class="glyphicon glyphicon-search"></i>
+                </button>
             </div>
 
             <!-- pagination -->

@@ -35,42 +35,8 @@
             font-weight: bold;
             /* margin-right: 20px; */
         }
-        #title_set > span,
-        #title_set > input {
-            margin-top: 10px;
-        }
-        #title_set > span {
-            margin-right: 15px;
-        }
-        #title_set > input {
-            outline: none;
-            border: 1px solid #bbb;
-            border-radius: 2px;
-        }
-        #select_type > select {
-            outline: none;
-            color: #444;
-            border: 1px solid #bbb;
-            height: 25px;
-            border-radius: 2px;
-        }
-        #btn_set {
-            /* border: 1px solid black; */
-            width: 300px;
-            /* margin-bottom: 200px; */
-        }
-
-        #btn_set > input {
-            border: 1px solid #ccc;
-            border-radius: 2px;
-            height: 26px;
-            padding: 0 10px;
-            padding-bottom: 1.5px;
-            outline: none;
-            margin-left: 10px;
-            background-color: #eee;
-            box-shadow: 1px 1px 1px #ccc;
-            color: #444;
+        #selec_set select#board_type.form-control {
+            width: 180px;
         }
     </style>
     <div id="contentLeft"></div>
@@ -83,7 +49,7 @@
             <div id="board_set">
                 <div id="select_type">
                     <span class="board_txt">Board</span>
-                    <select name="" id="board_type">
+                    <select name="" id="board_type" class="form-control">
                         <option value="0">Select Board Type</option>
                         <option value="1">Code Upload</option>
                         <option value="2">File Upload</option>
@@ -92,7 +58,11 @@
                 </div>
                 <div id="title_set">
                     <span class="board_txt">Title</span
-                    ><input type="text" style="width: 600px;" />
+                    ><input
+                        type="text"
+                        style="width: 600px;"
+                        class="form-control"
+                    />
                 </div>
             </div>
             <div class="body">
@@ -1158,8 +1128,10 @@
             </div> -->
 
             <div id="btn_set">
-                <input type="button" value="save" />
-                <input type="button" value="temporary save" />
+                <!-- <input type="button" value="save" />
+                <input type="button" value="temporary save" /> -->
+                <button class="btn btn-info">save</button>
+                <button class="btn btn-info">temporary save</button>
             </div>
             <!-- End: Loading Contents -->
         </div>
@@ -1350,21 +1322,6 @@
             ) /* 내용 문자열, 주어진 필드(textarea) 엘리먼트 */,
         });
     }
-</script>
-
-<script>
-    $("#board_type").change(function () {
-        if ($(this).val() == 1) {
-            $("#contentRight").css("background-color", "#B7C6E0");
-            // alert();
-        } else if ($(this).val() == 2) {
-            $("#contentRight").css("background-color", "#FFF5CC");
-        } else if ($(this).val() == 3) {
-            $("#contentRight").css("background-color", "#FBCFD0");
-        } else if ($(this).val() == 0) {
-            $("#contentRight").css("background-color", "white");
-        }
-    });
 </script>
 
 <script>
