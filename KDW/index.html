@@ -343,11 +343,7 @@
         z-index: 10001;
     }
     #contentLeft {
-        height: 1080px;
-        position: fixed;
-    }
-    #contentLeft div {
-        /* border: 1px solid black; */
+        height: 1110px;
     }
     #profile {
         width: 280px;
@@ -416,6 +412,61 @@
     #commentInput {
         display: none;
     }
+    #timeLine {
+        height: 630px;
+        padding: 10px;
+        margin-top: 50px;
+    }
+    #timeLine h3 {
+        margin-left: 15px;
+        width: 50%;
+        padding-bottom: 5px;
+        border-bottom: 1px solid #ccc;
+    }
+    #timeLineContent {
+        height: 530px;
+        border: 1px solid #ccc;
+    }
+    #timeLine .btn {
+        display: block;
+        width: 80%;
+        margin: 10px auto;
+    }
+    #timeLineContent table {
+        margin: 10px;
+    }
+
+    #timeLineContent table tr {
+        border-bottom: 1px solid #ccc;
+    }
+    #timeLineContent table tr:last-child {
+        border-bottom: 0px;
+    }
+    .timeLineList {
+        width: 250px;
+        height: 65px;
+    }
+    .timeLineList img {
+        width: 55px;
+        height: 55px;
+        border: 1px solid #ccc;
+        border-radius: 50%;
+        display: block;
+        float: left;
+    }
+    .timeLineAction {
+        width: 190px;
+        height: 55px;
+        float: left;
+        padding-left: 10px;
+        font-size: 13px;
+    }
+    .timeLineAction strong {
+        font-size: 15px;
+    }
+    .timeLineAction span {
+        float: right;
+    }
 </style>
 
 <div id="header"></div>
@@ -472,6 +523,104 @@
                 <div class="info">
                     <i class="far fa-building"></i> 쌍용교육센터
                 </div>
+            </div>
+        </div>
+        <div id="timeLine">
+            <h3>
+                <i class="fas fa-user-clock"></i>
+                타임라인
+            </h3>
+            <div id="timeLineContent">
+                <table>
+                    <tr>
+                        <td class="timeLineList">
+                            <img src="../images/man_02.png" alt="profile" />
+                            <div class="timeLineAction">
+                                <strong>김동욱</strong>
+                                <span>1시간전</span>
+                                <div>
+                                    김동욱님이 조윤경님 팔로우를 취소
+                                    하였습니다.
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="timeLineList">
+                            <img src="../images/man_01.png" alt="profile" />
+                            <div class="timeLineAction">
+                                <strong>조윤경</strong>
+                                <span>2시간전</span>
+                                <div>
+                                    조윤경님이 김동욱님을 팔로우 하였습니다.
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="timeLineList">
+                            <img src="../images/man_03.png" alt="profile" />
+                            <div class="timeLineAction">
+                                <strong>강경원</strong>
+                                <span>4시간전</span>
+                                <div>
+                                    강경원님이 Orello프로젝트에 참여하였습니다.
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="timeLineList">
+                            <img src="../images/man_01.png" alt="profile" />
+                            <div class="timeLineAction">
+                                <strong>조윤경</strong>
+                                <span>5시간전</span>
+                                <div>
+                                    조윤경님이 양치를 하였습니다.
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="timeLineList">
+                            <img src="../images/man_04.png" alt="profile" />
+                            <div class="timeLineAction">
+                                <strong>강혜림</strong>
+                                <span>5시간전</span>
+                                <div>
+                                    강혜림님이 칼퇴를 하였습니다.
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="timeLineList">
+                            <img src="../images/man_05.png" alt="profile" />
+                            <div class="timeLineAction">
+                                <strong>이도윤</strong>
+                                <span>6시간전</span>
+                                <div>
+                                    이도윤님이 채팅프로그램을 완성하였습니다!
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="timeLineList">
+                            <img src="../images/man_03.png" alt="profile" />
+                            <div class="timeLineAction">
+                                <strong>강경원</strong>
+                                <span>10시간전</span>
+                                <div>
+                                    강경원님이 40분 지각을 하였습니다.
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <input type="button" class="btn btn-default" value="더보기" />
             </div>
         </div>
     </div>
@@ -1200,6 +1349,12 @@
         $("#comment > span").text($("#profileComment").val());
 
         // $("#comment").innerText($("#profileComment").val());
+    });
+    $("#timeLine .btn").mouseover(function () {
+        $("#timeLine .btn").attr("class", "btn btn-info");
+    });
+    $("#timeLine .btn").mouseleave(function () {
+        $("#timeLine .btn").attr("class", "btn btn-default");
     });
 </script>
 <!-- <link
