@@ -342,11 +342,139 @@
         border: 1px solid #ddd;
         z-index: 10001;
     }
+    #contentLeft {
+        height: 1080px;
+        position: fixed;
+    }
+    #contentLeft div {
+        /* border: 1px solid black; */
+    }
+    #profile {
+        width: 280px;
+        font-size: 25px;
+        padding: 0px 30px;
+        margin-top: 100px;
+    }
+    #alermArea {
+        display: block;
+        z-index: 1;
+        width: 120px;
+        position: relative;
+        left: 190px;
+        top: 15px;
+    }
+    #alermArea i {
+        margin-left: -15px;
+    }
+    #imgArea {
+        margin: 0 auto;
+        border: 1px solid #333;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        overflow: hidden;
+        text-align: center;
+        margin: 10px auto;
+        margin-top: -10px;
+    }
+
+    #imgArea img {
+        width: 120px;
+        height: 120px;
+    }
+    #infoArea {
+        font-size: 30px;
+    }
+    #infoArea #name {
+        text-align: center;
+    }
+    #infoArea .info {
+        font-size: 15px;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #ccc;
+    }
+    #commentArea {
+        font-size: 14px;
+        padding: 10px;
+    }
+    #editComment {
+        float: right;
+    }
+    .alermCount {
+        position: relative;
+        display: inline-block;
+        font-size: 13px;
+        left: -10px;
+        top: -20px;
+        background-color: tomato;
+        border-radius: 50%;
+        width: 17px;
+        height: 17px;
+        color: white;
+        text-align: center;
+    }
+    #commentInput {
+        display: none;
+    }
 </style>
 
 <div id="header"></div>
 <section id="content" class="container">
-    <div id="contentLeft"></div>
+    <div id="contentLeft">
+        <div id="profile">
+            <div id="alermArea">
+                <i class="far fa-envelope"></i>
+                <span class="alermCount">1</span>
+                <i class="far fa-bell"></i>
+                <span class="alermCount">1</span>
+            </div>
+            <div id="imgArea">
+                <img src="../images/man_02.png" />
+            </div>
+            <div id="infoArea">
+                <div id="name">김동욱</div>
+                <div id="commentArea">
+                    <div id="commentInput">
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="profileComment"
+                        />
+                        <input
+                            type="button"
+                            class="btn btn-info btn-xs"
+                            value="저장"
+                            id="commentSave"
+                        />
+                        <input
+                            type="button"
+                            class="btn btn-default btn-xs"
+                            value="취소"
+                            id="commentCancel"
+                        />
+                    </div>
+                    <div id="comment">
+                        <span> 집가고싶다</span
+                        ><input
+                            type="button"
+                            class="btn btn-info btn-xs"
+                            value="edit"
+                            id="editComment"
+                        />
+                    </div>
+                </div>
+                <div class="info">
+                    <i class="fas fa-user"></i> getter@kakao.com
+                </div>
+                <div class="info">
+                    <i class="fas fa-mobile-alt"></i> 010-1234-5678
+                </div>
+                <div class="info">
+                    <i class="far fa-building"></i> 쌍용교육센터
+                </div>
+            </div>
+        </div>
+    </div>
     <div id="contentRight">
         <div id="notice">
             <i class="glyphicon glyphicon-exclamation-sign"></i>
@@ -1004,6 +1132,44 @@
                 addBtn.type = "button";
                 addBtn.value = "+ add";
                 addBtn.className = "btn btn-info";
+                addBtn.onclick = function () {
+                    if (confirm("김동욱 님을 프로젝트에 추가하시겠습니까?")) {
+                        var workers = document.getElementById("workers");
+                        searchUser.value = "";
+                        searchArea.removeChild(searchArea.children[1]);
+                        var addedWorker = document.createElement("div");
+                        addedWorker.className = "team-worker";
+                        console.log(
+                            workers.children[workers.children.length - 2].style
+                                .zIndex
+                        );
+                        addedWorker.style.zIndex =
+                            parseInt(
+                                workers.children[workers.children.length - 2]
+                                    .style.zIndex
+                            ) + 1;
+                        addedWorker.style.left =
+                            -(
+                                parseInt(
+                                    workers.children[
+                                        workers.children.length - 2
+                                    ].style.zIndex
+                                ) + 1
+                            ) * 20;
+                        // addedWorker.style.left = "-80px";
+                        workers.children[
+                            workers.children.length - 1
+                        ].style.left =
+                            parseInt(addedWorker.style.left) - 20 + "px";
+                        var newImg = document.createElement("img");
+                        newImg.src = "../images/man_03.png";
+                        addedWorker.appendChild(newImg);
+
+                        workers.children[workers.children.length - 1].before(
+                            addedWorker
+                        );
+                    }
+                };
 
                 td.appendChild(userImg);
                 td.appendChild(userName);
@@ -1019,6 +1185,22 @@
             searchUser.after(searchUserResult);
         };
     };
+    $("#editComment").click(function () {
+        $("#profileComment").val($("#comment > span").text());
+        $("#commentInput").css("display", "block").css("height", "70px");
+        $("#comment").css("display", "none");
+    });
+    $("#commentCancel").click(function () {
+        $("#commentInput").css("display", "none").css("height", "70px");
+        $("#comment").css("display", "block");
+    });
+    $("#commentSave").click(function () {
+        $("#commentInput").css("display", "none").css("height", "70px");
+        $("#comment").css("display", "block");
+        $("#comment > span").text($("#profileComment").val());
+
+        // $("#comment").innerText($("#profileComment").val());
+    });
 </script>
 <!-- <link
     rel="stylesheet"
