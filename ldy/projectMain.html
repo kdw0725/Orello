@@ -1,4 +1,4 @@
-<link
+        <link
             rel="stylesheet"
             type="text/css"
             href="https://uicdn.toast.com/tui-calendar/latest/tui-calendar.css"
@@ -26,7 +26,16 @@
             href="calendar/css/default.css"
         /> -->
         <link rel="stylesheet" type="text/css" href="../calendar/css/icons.css" />
-
+        <link
+        rel="stylesheet"
+        href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+        integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP"
+        crossorigin="anonymous"
+        />
+        <link
+            href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+            rel="stylesheet"
+        />
         <script
             src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -41,8 +50,6 @@
         <script src="../calendar/js/tui-calendar.js"></script>
         <script src="../calendar/js/data/calendars.js"></script>
         <script src="../calendar/js/data/schedules.js"></script>
-        <!-- <script src="../js/timeline.js"></script> -->
-        <link rel="stylesheet" type="text/css" href="../css/timeline.css" />
 <style>
     
     #contentLeft {
@@ -51,6 +58,7 @@
     #contentLeft * {
         /* border: 1px solid gray; */
     }
+    /* 메뉴 위 프로젝트 정보 */
     #contentLeft > #projectInfo {
         width: 250px;
         height: 200px;
@@ -60,19 +68,27 @@
         top: 0px;
         left: 0px;
     }
-    #projectPeriod {
-        margin-top: 10px;
-        font-style: italic;
-    }
     #contentLeft #projectName {
         margin-top: 70px;
         font-size:1.5em;
     }
+    #contentLeft #projectPeriod {
+        margin-top: 10px;
+        font-style: italic;
+    }
+    #contentLeft #projectContent {
+        margin-top: 20px;
+        /* font-style: italic; */
+    }
     #contentLeft #projectMember {
         width: 100%;
         height: 60px;
-        position: absolute;
-        bottom: 30px;
+        position: relative;
+        top: 0;
+        left: 0;
+        /* bottom: 30px; */
+        margin-top: 30px;
+
     }
     #projectMember .profilePic {
         width: 50px;
@@ -93,27 +109,87 @@
         transition: tranform 0.5s;
     }
     #AddMember {
-        position: absolute;
-        left: 22px;
-        bottom: 10px;
+        text-align: left;
+        padding-top: 5px;
+        padding-left: 25px;
     }
     #AddMember a {
         color: #333;
         font-size: 0.9em;
     }
+
+    /* 메뉴 */
     #contentLeft > #menu {
-        width: 250px;
-        height: 400px;
-        margin: 30px auto;
+        width: 230px;
+        min-height: 400px;
+        margin: 70px auto;
+        /* border: 1px solid black; */
     }
-    .list-group a.active {
-        background-color: #333;
-        border: 1px solid #333;
+    #contentLeft #menu ul, #menu li {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        background-color: transparent;
+        cursor: pointer;
+        box-shadow: 0px 0px 0px white;
     }
-    .list-group a.active {
-        background-color: #333;
-        border: 1px solid #333;
+    #contentLeft #menu .accordion > div, #menu .panel > div{
+        margin: 0 auto;
+        padding-left: 10px;
+        padding-top: 9px;
+        border-bottom: 1px solid #999;
+        height: 40px;
+        padding-right: 10px;
     }
+    #contentLeft #menu .panel > div {
+        margin-left: 30px;
+    }
+    #contentLeft #menu ul.active > div {
+        color: #5bc0de;
+        border-bottom: 1px solid #5bc0de; 
+    }
+    #contentLeft #menu > ul.active > div > i {
+        color: #5bc0de;
+    }
+    #contentLeft #menu > ul.active li {
+        display: block;
+    }
+    #contentLeft #menu ul i {
+        margin-right: 10px;
+        color: #555;
+    }
+    #contentLeft #menu li.panel {
+        display: none;
+    }
+    #contentLeft #menu ul.parent > div::after {
+        content: "\f078";
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        float: right;
+    }
+    #contentLeft #menu ul.active.parent > div::after{
+        content: "\f077";
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        float: right;
+    }
+    #contentLeft #menu ul:hover > div {
+        color: #5bc0de;
+        border-bottom: 1px solid #5bc0de; 
+    }
+    #contentLeft #menu ul:hover > div > i {
+        color: #5bc0de;
+    }
+    #contentLeft #menu li:hover > div {
+        color: #5bc0de;
+        border-bottom: 1px solid #5bc0de; 
+    }
+    #contentLeft #menu li:hover > div > i {
+        color: #5bc0de;
+    }
+
+
+
     #contentRight {
         padding: 30px;
     }
@@ -131,140 +207,6 @@
         box-shadow: 1px 2px 2px #eee;
         /* border: 1px solid #eee; */
     }
-    #timeline * {
-        box-sizing: border-box;
-        /* border: 1px solid black; */
-    }
-
-    /* Set a background color */
-    #timeline {
-        
-        width: 750px;
-        background-color: white;
-        position: relative;
-        margin: 30px auto;
-    }
-
-    /* The actual timeline (the vertical ruler) */
-    .timeline::after {
-    content: '';
-    position: absolute;
-    width: 6px;
-    background-color: #999;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    margin-left: -3px;
-    }
-
-    /* Container around content */
-    #timeline .container {
-    padding: 10px 40px;
-    position: relative;
-    background-color: inherit;
-    width: 50%;
-    }
-
-    /* The circles on the timeline */
-    #timeline .container::after {
-    content: '';
-    position: absolute;
-    width: 15px;
-    height: 15px;
-    right: -8px;
-    background-color: #444;
-    border: 4px solid #444;
-    top: 15px;
-    border-radius: 50%;
-    z-index: 1;
-    }
-
-    /* Place the container to the left */
-    #timeline .left {
-    left: 0;
-    margin: 0;
-    }
-
-    /* Place the container to the right */
-    #timeline .right {
-    left: 50%;
-    margin: 0;
-
-    }
-
-    /* Add arrows to the left container (pointing right) */
-    #timeline .left::before {
-    content: " ";
-    height: 0;
-    position: absolute;
-    top: 22px;
-    width: 0;
-    z-index: 1;
-    right: 30px;
-    border: medium solid #eee;
-    border-width: 10px 0 10px 10px;
-    border-color: transparent transparent transparent #eee;
-    }
-
-    /* Add arrows to the right container (pointing left) */
-    #timeline .right::before {
-    content: " ";
-    height: 0;
-    position: absolute;
-    top: 22px;
-    width: 0;
-    z-index: 1;
-    left: 30px;
-    border: medium solid #eee;
-    border-width: 10px 10px 10px 0;
-    border-color: transparent #eee transparent transparent;
-    }
-
-    /* Fix the circle for containers on the right side */
-    #timeline .right::after {
-    left: -8px;
-    }
-
-    /* The actual content */
-    #timeline .content {
-    padding: 20px 30px;
-    background-color: #eee;
-    position: relative;
-    border-radius: 6px;
-    }
-
-    /* Media queries - Responsive timeline on screens less than 600px wide */
-    @media screen and (max-width: 600px) {
-    /* Place the timelime to the left */
-    #timeline .timeline::after {
-        left: 31px;
-    }
-
-    /* Full-width containers */
-    #timeline .container {
-        width: 100%;
-        padding-left: 70px;
-        padding-right: 25px;
-    }
-
-    /* Make sure that all arrows are pointing leftwards */
-    #timeline .container::before {
-        left: 60px;
-        border: medium solid #eee;
-        border-width: 10px 10px 10px 0;
-        border-color: transparent #eee transparent transparent;
-    }
-
-    /* Make sure all circles are at the same spot */
-    #timeline .left::after, #timeline .right::after {
-        left: 15px;
-    }
-
-    /* Make all right containers behave like the left ones */
-    #timeline .right {
-        left: 0%;
-    }
-    }
 
 
 </style>
@@ -275,25 +217,27 @@
         <div id="projectInfo">
             <div id='projectName'></div>
             <div id="projectPeriod"></div>
+            <div id="projectContent">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Numquam, nesciunt?</div>
             <div id="projectMember"></div>
             <div id="addMember">
                 <a href="#"><i class="glyphicon glyphicon-user"></i><i class="glyphicon glyphicon-plus"></i> <span>Add Member</span></a>
             </div>
         </div>
         <div id="menu">
-            <div class="list-group">
-                <a href="#" class="list-group-item active">Schedule</a>
-                <a href="#" class="list-group-item">Check List</a>
-                <a href="#" class="list-group-item">Board</a>
-                <!-- <div class="list-group">
-                    <a href="#" class="list-group-item">Board1</a>
-                    <a href="#" class="list-group-item">Board2</a>
-                    <a href="#" class="list-group-item">Board3</a>
-                    <a href="#" class="list-group-item">Board4</a>
-                </div> -->
-                <a href="#" class="list-group-item">Branch</a>
-                <a href="#" class="list-group-item">Chat</a>
-              </div>
+            <ul class="accordion"><div><i class="glyphicon glyphicon-home"></i>Project Home</div></ul>            
+            <ul class="accordion parent"><div><i class="glyphicon glyphicon-calendar"></i>Schedule</div>
+                <li class="panel"><div><i class="glyphicon glyphicon-minus"></i>Calendar</div></li>
+                <li class="panel"><div><i class="glyphicon glyphicon-minus"></i>Time Line</div></li>   
+            </ul>         
+            <ul class="accordion"><div><i class="glyphicon glyphicon-check"></i>Check List</div></ul>
+            <ul class="accordion parent"><div><i class="glyphicon glyphicon-list-alt"></i>Board</div>
+                <li class="panel"><div><i class="glyphicon glyphicon-minus"></i>Notice</div></li>
+                <li class="panel"><div><i class="glyphicon glyphicon-minus"></i>Notice</div></li>
+                <li class="panel"><div><i class="glyphicon glyphicon-minus"></i>Notice</div></li>
+                <li class="panel"><div><i class="glyphicon glyphicon-minus"></i>Notice</div></li>
+            </ul>
+            <ul class="accordion"><div><i class="glyphicon glyphicon-comment"></i>Chat</div></ul>
+
         </div>
     </div>
     <div id="contentRight">
@@ -325,21 +269,6 @@
             <div id="calendar" style="height: 600px;"></div>
         </div>
 
-        <div id="timeline" class="timeline">
-            <div class="container left">
-              <div class="content">
-                <h2>2017</h2>
-                <p>Lorem ipsum..</p>
-              </div>
-            </div>
-            <div class="container right">
-              <div class="content">
-                <h2>2016</h2>
-                <p>Lorem ipsum..</p>
-              </div>
-            </div>
-          </div>
-    
     </div>
 </section>
 
@@ -520,6 +449,23 @@
         $(".list-group > a").removeClass("active");
         $(this).addClass("active");
     });
+
+    var acc = document.getElementsByClassName("accordion");
+
+    for (var i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+        var li = $(this).children("li");
+        li.slideToggle(1000);
+        this.classList.toggle("active");
+        // var panel = this.nextElementSibling;
+        // if (panel.style.maxHeight) {
+        // panel.style.maxHeight = null;
+        // } else {
+        // panel.style.maxHeight = panel.scrollHeight + "px";
+        // }
+
+    });
+    }
 
 
 </script>
