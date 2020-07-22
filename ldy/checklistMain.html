@@ -161,9 +161,6 @@
         padding: 20px;
         background-color: white;
     }
-    .modal .modal-content .modal-body {
-        
-    }
     .checkListContent > textarea {
         width: 520px;
         min-height: 200px;
@@ -220,8 +217,75 @@
     .memberCheck:checked + label > .memberBox {
         /* border: 3px solid tomato; */
         box-shadow: -2px -2px -2px #ddd;
-        background-color: #333;
+        background-color: #3dcffc;
         color: white;
+    }
+
+    .be-comment-block {
+        /* margin-bottom: 50px !important; */
+        padding-right: 10px;
+        width: 530px;
+    }
+    .be-img-comment {
+        width: 60px;
+        height: 60px;
+        float: left;
+        margin-bottom: 15px;
+    }
+
+    .be-ava-comment {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+    }
+
+    .be-comment-content {
+        margin-left: 80px;
+    }
+
+    .be-comment-content span {
+        display: inline-block;
+        width: 49%;
+        margin-bottom: 15px;
+    }
+
+    .be-comment-name {
+        font-size: 13px;
+        font-family: 'Conv_helveticaneuecyr-bold';
+    }
+
+    .be-comment-content a {
+        color: #383b43;
+    }
+
+    .be-comment-time {
+        text-align: right;
+        font-size: 11px;
+        color: #b4b7c1;
+    }
+
+    .be-comment-text {
+        font-size: 13px;
+        line-height: 18px;
+        color: #7a8192;
+        display: block;
+        background: #f6f6f7;
+        border: 1px solid #edeff2;
+        padding: 15px 20px 20px 20px;
+    }
+    .form-group {
+        margin-top: 20px;
+    }
+    .form-group textarea.form-input {
+        width: 80%;
+        height: 150px;
+        resize: none;
+        border: 1px solid #edeff2;
+        padding: 20px;
+    }
+
+    #commentEnter {
+        margin: 55px 10px;
     }
     
 
@@ -370,14 +434,78 @@
                         <textarea resize="none" disabled>Lorem ipsum dolor, sit amet consectetur adipisicing elit. At alias voluptatum nisi minima, blanditiis inventore! Repudiandae consequuntur veritatis doloremque similique ea. Ipsam, aspernatur! Libero ut, dicta quam blanditiis cupiditate earum?</textarea>
                     </div>
                     <hr>
-                    <h5>댓글</h5>                    
-
-
+                    <h5>댓글(<span>3</span>)</h5>                    
+                    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+                    <div class="be-comment-block">
+                        <div class="be-comment">
+                            <div class="be-img-comment">	
+                                <a href="blog-detail-2.html">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="be-ava-comment">
+                                </a>
+                            </div>
+                            <div class="be-comment-content">
+                                    <span class="be-comment-name">
+                                        <a href="blog-detail-2.html">Ravi Sah</a>
+                                        </span>
+                                    <span class="be-comment-time">
+                                        <i class="fa fa-clock-o"></i>
+                                        May 27, 2015 at 3:14am
+                                    </span>
+                                <p class="be-comment-text">
+                                    Pellentesque gravida tristique ultrices. 
+                                    Sed blandit varius mauris, vel volutpat urna hendrerit id. 
+                                    Curabitur rutrum dolor gravida turpis tristique efficitur.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="be-comment">
+                            <div class="be-img-comment">	
+                                <a href="blog-detail-2.html">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="" class="be-ava-comment">
+                                </a>
+                            </div>
+                            <div class="be-comment-content">
+                                <span class="be-comment-name">
+                                    <a href="blog-detail-2.html">Phoenix, the Creative Studio</a>
+                                </span>
+                                <span class="be-comment-time">
+                                    <i class="fa fa-clock-o"></i>
+                                    May 27, 2015 at 3:14am
+                                </span>
+                                <p class="be-comment-text">
+                                    Nunc ornare sed dolor sed mattis. In scelerisque dui a arcu mattis, at maximus eros commodo. Cras magna nunc, cursus lobortis luctus at, sollicitudin vel neque. Duis eleifend lorem non ant. Proin ut ornare lectus, vel eleifend est. Fusce hendrerit dui in turpis tristique blandit.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="be-comment">
+                            <div class="be-img-comment">	
+                                <a href="blog-detail-2.html">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="" class="be-ava-comment">
+                                </a>
+                            </div>
+                            <div class="be-comment-content">
+                                <span class="be-comment-name">
+                                    <a href="blog-detail-2.html">Cüneyt ŞEN</a>
+                                </span>
+                                <span class="be-comment-time">
+                                    <i class="fa fa-clock-o"></i>
+                                    May 27, 2015 at 3:14am
+                                </span>
+                                <p class="be-comment-text">
+                                    Cras magna nunc, cursus lobortis luctus at, sollicitudin vel neque. Duis eleifend lorem non ant
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-input" placeholder="Your text"></textarea>
+                            <input type="button" id="commentEnter"class="btn btn-info pull-right" value="submit"></input>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">
+                <button type="button" class="btn btn-info">Save</button>
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save</button>
             </div>
           </div>
         </div>
