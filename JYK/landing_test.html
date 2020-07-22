@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            body {
+                /* margin: 0 auto; */
+                background-color: #222;
+            }
+            section#content.container {
+                margin: 0 auto;
+            }
+            #main {
+                width: 500px;
+                /* height: 700px; */
+                /* border: 1px solid black; */
+                margin: 0 auto;
+                text-align: center;
+            }
+            #main_text {
+                margin: 0 auto;
+            }
+
+            #logo {
+                /* border: 1px solid black; */
+                float: left;
+                margin-top: 20px;
+                margin-left: 150px;
+            }
+
+            .line #top_line {
+                border-top: 1px solid #ddd;
+                width: 500px;
+                position: absolute;
+                top: 165;
+                left: 555;
+                animation: openTopLine 2.5s;
+            }
+            .line #bottom_line {
+                border-bottom: 1px solid #ddd;
+                width: 500px;
+                position: absolute;
+                top: 700;
+                left: 555;
+                animation: openBottomLine 2.5s;
+            }
+            @keyframes openTopLine {
+                0% {
+                    width: 0;
+                    transform: translateY(0);
+                }
+                50% {
+                    width: 500px;
+                    transform: translateY(250px);
+                }
+                100% {
+                    width: 500px;
+                    transform: translateY(0);
+                }
+            }
+
+            @keyframes openBottomLine {
+                0% {
+                    width: 0;
+                    transform: translateY(0);
+                }
+                50% {
+                    width: 500px;
+                    transform: translateY(-250px);
+                }
+                100% {
+                    width: 500px;
+                    transform: translateY(0);
+                }
+            }
+
+            #main #main_text {
+                /* border-top: 1px solid #333;
+        border-bottom: 1px solid #333; */
+                /* border: 1px solid black; */
+
+                width: 500px;
+                height: 550px;
+                position: absolute;
+                top: 185;
+                left: 555;
+                float: left;
+                animation: slideContent 6s;
+            }
+
+            @keyframes slideContent {
+                0%,
+                30% {
+                    transform: translateY(40px);
+                    opacity: 0;
+                }
+                100% {
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+            }
+            #main_text h1 {
+                font-size: 30px;
+                margin-top: 250px;
+                margin-left: 5px;
+                color: #666;
+                font-weight: bold;
+                font-family: verdana;
+            }
+
+            #main_text h2 {
+                font-size: 14px;
+                font-weight: lighter;
+                margin-left: 25px;
+                color: #666;
+                letter-spacing: 1px;
+            }
+            #main_text #btn1 {
+                outline: none;
+                border-radius: 20px;
+                border: 2px solid #888;
+                background-color: #333;
+                color: #888;
+                width: 100px;
+                height: 30px;
+                margin-left: 15px;
+                margin-top: 20px;
+            }
+            #main_text #btn1:hover {
+                background-color: #888;
+                color: #333;
+            }
+
+            .vintage {
+                font-weight: 400;
+                font-size: 2em;
+                text-transform: uppercase;
+                text-shadow: 1px 1px 0px #888;
+                letter-spacing: 4px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="main">
+            <div class="line">
+                <div id="top_line"></div>
+                <div id="bottom_line"></div>
+            </div>
+
+            <div id="main_text">
+                <img src="logo.png" id="logo" />
+                <h1 class="vintage name">
+                    Orello
+                </h1>
+                <h2>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Reprehenderit culpa dolor id nemo eaque similique
+                    praesentium, illo accusantium itaque repellendus? Lorem
+                    ipsum, dolor sit amet consectetur adipisicing elit.
+                    Voluptas, impedit minima ea culpa quae hic repellat adipisci
+                    vero doloribus iste, quia officiis tempora. Saepe neque
+                    aspernatur hic distinctio, asperiores mollitia!
+                </h2>
+
+                <input type="button" value="start now" id="btn1" />
+            </div>
+        </div>
+        <script src="//code.jquery.com/jquery-1.11.0.min.js">
+            skrollr.init()
+        </script>
+    </body>
+</html>

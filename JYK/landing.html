@@ -4,13 +4,21 @@
     body {
         /* margin: 0 auto; */
         background-color: #222;
+        transition: all 1s;
+    }
+    section#content.container {
+        /* margin: 0 auto; */
+        height: 2000px;
     }
     #main {
-        width: 1200px;
-        height: 700px;
+        width: 500px;
+        /* height: 700px; */
         /* border: 1px solid black; */
         margin: 0 auto;
         text-align: center;
+    }
+    #main_text {
+        /* margin: 0 auto; */
     }
 
     #logo {
@@ -23,18 +31,18 @@
     .line #top_line {
         border-top: 1px solid #ddd;
         width: 500px;
-        position: absolute;
-        top: 165;
-        left: 555;
-        animation: openTopLine 2s;
+        position: relative;
+        top: 135;
+        left: 0;
+        animation: openTopLine 2.5s;
     }
     .line #bottom_line {
         border-bottom: 1px solid #ddd;
         width: 500px;
-        position: absolute;
-        top: 700;
-        left: 555;
-        animation: openBottomLine 2s;
+        position: relative;
+        top: 670;
+        left: 0;
+        animation: openBottomLine 2.5s;
     }
     @keyframes openTopLine {
         0% {
@@ -73,17 +81,17 @@
 
         width: 500px;
         height: 550px;
-        position: absolute;
-        top: 185;
-        left: 555;
+        position: relative;
+        top: 150;
+        left: 0;
         float: left;
-        animation: slideContent 4s;
+        animation: slideContent 6s;
     }
 
     @keyframes slideContent {
         0%,
         30% {
-            transform: translateY(100px);
+            transform: translateY(40px);
             opacity: 0;
         }
         100% {
@@ -130,6 +138,18 @@
         text-shadow: 1px 1px 0px #888;
         letter-spacing: 4px;
     }
+    #txt {
+        width: 800px;
+        margin-top: 900px;
+        margin: 900px auto 0 auto;
+    }
+    #txt .content_txt img {
+        width: 500px;
+    }
+    .content_txt h1 {
+        font-size: 20px;
+        color: #ccc;
+    }
 </style>
 <section id="content" class="container">
     <div id="main">
@@ -156,9 +176,83 @@
             <input type="button" value="start now" id="btn1" />
         </div>
     </div>
+
+    <div id="txt">
+        <div class="content_txt">
+            <img src="wall01.jpg" alt="" />
+            <h1>Lorem ipsum dolor sit amet.</h1>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores
+                tenetur exercitationem autem voluptatibus blanditiis nesciunt
+                cum incidunt ea quibusdam, amet, optio voluptatum, ipsa delectus
+                culpa labore molestiae alias sit. Blanditiis!
+            </p>
+        </div>
+        <div class="content_txt">
+            <img src="wall02.jpg" alt="" />
+
+            <h1>Doloribus architecto obcaecati fugit omnis!</h1>
+            <p>
+                Laudantium, voluptatibus fugit repudiandae debitis corrupti quis
+                consequatur obcaecati, asperiores aperiam dolores molestias,
+                mollitia rem fugiat sit consectetur odio? Eaque possimus maxime
+                consequatur sequi ipsa earum sapiente qui voluptatibus
+                distinctio.
+            </p>
+        </div>
+        <div class="content_txt">
+            <img src="wall03.jpg" alt="" />
+
+            <h1>Libero animi doloremque asperiores adipisci?</h1>
+            <p>
+                Esse quas soluta, dicta officia necessitatibus, veritatis
+                numquam vitae dolore fuga tempora iusto praesentium omnis
+                quibusdam nam tenetur quam ullam assumenda! Nesciunt,
+                accusantium? Dolorem, magnam laboriosam doloremque distinctio
+                nemo eius!
+            </p>
+        </div>
+        <div class="content_txt">
+            <img src="wall04.jpg" alt="" />
+
+            <h1>Fugiat sapiente minus assumenda aut.</h1>
+            <p>
+                Corporis dolor sequi ex. Et perspiciatis dicta fugit dolores
+                libero reprehenderit cum distinctio omnis. Aut, non, illo fuga
+                illum repellendus reprehenderit hic obcaecati optio, distinctio
+                praesentium voluptatem quibusdam sunt corporis!
+            </p>
+        </div>
+        <div class="content_txt">
+            <img src="wall04.jpg" alt="" />
+
+            <h1>Suscipit quos perspiciatis incidunt nisi.</h1>
+            <p>
+                Similique minima quaerat a laboriosam, iure eveniet explicabo
+                eos, maiores animi officiis quod, fugiat rem ipsam minus
+                voluptatem? Debitis, alias. Optio saepe aperiam corrupti
+                pariatur nulla! Corrupti voluptatem eligendi dignissimos!
+            </p>
+        </div>
+    </div>
 </section>
 <!-- <div id="footer"></div> -->
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+    console.log($(document).scrollTop());
+    // console.log($("#txt").position().top);
+    $(document).scroll(function () {
+        console.log($(document).scrollTop(), $("#txt").position().top);
+        $(document).scrollTop(860);
+        // if ($(document).scrollTop() > 500) {
+        //     // $("body").css("background-color", "white");
+        //     $("#main").css("opacity", "0");
+        // } else {
+        //     // $("body").css("background-color", "#222");
+        //     $("#main").css("opacity", "1");
+        // }
+    });
+</script>
 
 <script>
     $(document).ready(function () {

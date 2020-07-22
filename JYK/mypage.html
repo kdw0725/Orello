@@ -1,0 +1,333 @@
+<div id="header"></div>
+<style></style>
+<section id="content" class="container">
+    <style>
+        #contentRight {
+            border: 1px solid black;
+        }
+        #top {
+            width: 500px;
+            height: 200px;
+            /* border-bottom: 1px solid black; */
+            background-color: #eee;
+            margin-left: 190px;
+        }
+        #contentRight > div:first-child {
+            font-size: 30px;
+            font-weight: bold;
+            margin-left: 10px;
+            margin-bottom: 10px;
+        }
+
+        #profile {
+            /* border: 1px solid black; */
+            border-right: 1px solid white;
+            height: 200px;
+            width: 180px;
+            text-align: center;
+            float: left;
+            /* position: relative;
+            top: 0;
+            left: 0; */
+            /* margin-left: 380px; */
+        }
+        #profile > img {
+            width: 90px;
+            border-radius: 50%;
+            border: 1px solid white;
+            background-color: white;
+            box-shadow: 0 0 3px #444;
+        }
+
+        #profile div:first-child {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            font-size: 20px;
+            text-align: center;
+            padding-top: 3px;
+            border: 1px solid #ccc;
+            background-color: white;
+            position: relative;
+            top: 20px;
+            left: 110px;
+            box-shadow: 0 0 3px #666;
+        }
+        #profile div:nth-child(3) {
+            /* border-top: 1px solid white; */
+            margin-top: 10px;
+            padding-top: 5px;
+            font-size: 18px;
+            color: #444;
+        }
+        #profile div:nth-child(4) {
+            color: #333;
+            font-size: 12px;
+            text-decoration: underline;
+        }
+        #side_profile {
+            /* border: 1px solid black; */
+            width: 310px;
+            height: 200px;
+            float: left;
+            padding-left: 20px;
+            padding-top: 5px;
+        }
+        #side_profile > div > span {
+            font-weight: bold;
+            font-size: 14px;
+        }
+        #side_profile > div > input {
+            border: none;
+            /* background-color: rgb(247, 243, 243); */
+        }
+        #side_profile > div {
+            padding-top: 20px;
+            font-size: 13px;
+            color: #666;
+        }
+
+        /* ------------------------ */
+        #friend {
+            margin-left: 20px;
+            margin-top: 20px;
+            width: 430px;
+            float: left;
+            border-right: 1px solid black;
+        }
+        #friend .table {
+            width: 400px;
+            height: 100px;
+            /* border: 1px solid #ccc; */
+            border-radius: 5px;
+            border-collapse: collapse;
+        }
+        #friend .table th {
+            background-color: #5bc0de;
+            color: white;
+        }
+
+        #friend .table td:nth-child(1) {
+            width: 50px;
+        }
+        #friend .table td:nth-child(2) {
+            width: 270px;
+        }
+        #friend .table td:nth-child(3) {
+            width: 80px;
+        }
+
+        #friend .table td:nth-child(2),
+        #friend .table td:nth-child(3) {
+            padding-top: 18px;
+        }
+        #friend .table td img {
+            width: 40px;
+            border: 1px solid #ccc;
+            border-radius: 50%;
+        }
+
+        #project {
+            margin-left: 20px;
+            margin-top: 20px;
+            float: left;
+        }
+        #project .table {
+            width: 400px;
+            height: 100px;
+            /* border: 1px solid #ccc; */
+            border-radius: 5px;
+            border-collapse: collapse;
+        }
+        #project .table th {
+            background-color: #5bc0de;
+            color: white;
+        }
+    </style>
+    <div id="contentLeft"></div>
+    <div id="contentRight">
+        <div>My Page</div>
+        <div id="top">
+            <div id="profile">
+                <div>
+                    <li class="glyphicon glyphicon-cog"></li>
+                </div>
+                <img src="cookie_images/001.png" alt="" />
+                <div>
+                    gildong
+                </div>
+                <div>
+                    Lorem ipsum dolor sit amet.
+                </div>
+            </div>
+            <div id="side_profile">
+                <div>
+                    <span>name:</span>
+                    <input type="text" value="Hong-gil-dong" readonly />
+                    <button>
+                        <li class="glyphicon glyphicon-pencil"></li>
+                    </button>
+                </div>
+                <div>
+                    <span>email:</span
+                    ><input type="text" value="hong@gmail.com" readonly />
+                    <button>
+                        <li class="glyphicon glyphicon-pencil"></li>
+                    </button>
+                </div>
+                <div>
+                    <span>tel:</span
+                    ><input type="text" value="010-1234-5678" readonly />
+                    <button>
+                        <li class="glyphicon glyphicon-pencil"></li>
+                    </button>
+                </div>
+                <div>
+                    <span>point:</span> 100p
+                    <button>
+                        <li class="glyphicon glyphicon-shopping-cart"></li>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="content">
+            <div id="friend">
+                <table class="table">
+                    <tr>
+                        <th>friend</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="cookie_images/002.png" alt="" />
+                        </td>
+                        <td>dolor sit</td>
+                        <td>
+                            <button>
+                                <li class="glyphicon glyphicon-comment"></li>
+                            </button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <img src="cookie_images/003.png" alt="" />
+                        </td>
+                        <td>amet consectetu</td>
+                        <td>
+                            <button>
+                                <li class="glyphicon glyphicon-comment"></li>
+                            </button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <img src="cookie_images/004.png" alt="" />
+                        </td>
+                        <td>numquam adipisci.</td>
+                        <td>
+                            <button>
+                                <li class="glyphicon glyphicon-comment"></li>
+                            </button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <img src="cookie_images/005.png" alt="" />
+                        </td>
+                        <td>autem obcaecati</td>
+                        <td>
+                            <button>
+                                <li class="glyphicon glyphicon-comment"></li>
+                            </button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <img src="cookie_images/006.png" alt="" />
+                        </td>
+                        <td>Lorem.</td>
+                        <td>
+                            <button>
+                                <li class="glyphicon glyphicon-comment"></li>
+                            </button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <img src="cookie_images/007.png" alt="" />
+                        </td>
+                        <td>consequatur nostrum</td>
+                        <td>
+                            <button>
+                                <li class="glyphicon glyphicon-comment"></li>
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div id="project">
+                <table class="table">
+                    <tr>
+                        <th>project name</th>
+                        <th></th>
+                        <th>period</th>
+                    </tr>
+                    <tr>
+                        <td>dolor sit</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>amet consectetu</td>
+                        <td></td>
+                        <td>
+                            2020
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>numquam adipisci.</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>autem obcaecati</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Lorem.</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>consequatur nostrum</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+<div id="footer"></div>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#header").load("../include/header.html");
+        $("#footer").load("../include/footer.html");
+    });
+</script>

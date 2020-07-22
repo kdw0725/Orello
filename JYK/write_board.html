@@ -35,8 +35,24 @@
             font-weight: bold;
             /* margin-right: 20px; */
         }
-        #selec_set select#board_type.form-control {
-            width: 180px;
+        #select_type select#board_type.form-control {
+            width: 170px;
+        }
+        #select_type {
+            margin-bottom: 10px;
+        }
+        span.board_txt {
+            display: block;
+            float: left;
+            margin-top: 5px;
+            margin-right: 10px;
+        }
+        #title_set input.form-control {
+            width: 650px;
+        }
+
+        #title_set > span {
+            margin-right: 22px;
         }
     </style>
     <div id="contentLeft"></div>
@@ -58,11 +74,7 @@
                 </div>
                 <div id="title_set">
                     <span class="board_txt">Title</span
-                    ><input
-                        type="text"
-                        style="width: 600px;"
-                        class="form-control"
-                    />
+                    ><input type="text" class="form-control" />
                 </div>
             </div>
             <div class="body">

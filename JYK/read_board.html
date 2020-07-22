@@ -30,6 +30,38 @@
             cursor: pointer;
         }
 
+        #hidden {
+            border: 1px solid #ccc;
+            width: 100px;
+            height: 100px;
+            background-color: white;
+            position: absolute;
+            top: 130;
+            left: 100;
+            text-align: center;
+            display: none;
+        }
+        #hidden span:first-child {
+            margin-top: 4px;
+        }
+        #hidden span {
+            display: block;
+            float: left;
+            width: 100px;
+            height: 30px;
+            /* padding-left: 10px; */
+            padding-right: 5px;
+            padding-top: 5px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        #hidden span:hover {
+            background-color: #5BC0DE;
+            color: white;
+        
+        }
+
         #profile img {
             display: block;
             float: left;
@@ -51,13 +83,14 @@
             color: #666;
             font-weight: bold;
         }
-        #write_date {
+        span#write_date {
             /* border: 1px solid black; */
+            display: block;
             float: left;
-            width: 100px;
+            width: 120px;
             position: relative;
             top: 40px;
-            left: 500px;
+            left: 470px;
             font-size: 10px;
             color: #aaa;
         }
@@ -88,7 +121,9 @@
         } */
 
         .container {
-            margin-right: 20px;
+            /* margin-right: 20px; */
+            margin: 0px;
+            width: 600px;
         }
         .be-comment-block {
             margin-bottom: 50px !important;
@@ -297,7 +332,10 @@
                         <img src="cookie_images/001.png" alt="" />
                         <div>HongGildong</div>
                     </div>
-                    <div id="write_date">2020.07.20 14:32</div>
+                    <span id="write_date" class="be-comment-time">
+                                <i class="fa fa-clock-o"></i>
+                                May 27, 2015 at 3:14am
+                            </span>
                 </div>
             </div>
 
@@ -464,6 +502,8 @@
             flag = true;
         }
     });
+ 
+
 
     $("#write_comment input").click(function () {
         // alert($("#write_comment div").text());

@@ -47,7 +47,7 @@
             color: #666;
         }
         #tbl tr:hover {
-            background-color: #fff5e9;
+            background-color: #d3f3ff;
             cursor: pointer;
         }
 
@@ -150,9 +150,22 @@
 <script>
     $("#tbl td > input").change(function () {
         if ($(this).is(":checked")) {
-            $(this).parent().parent().css("background-color", "#fff5e9");
+            $(this).parent().parent().css("background-color", "#d3f3ff");
         } else {
             $(this).parent().parent().css("background-color", "white");
+        }
+    });
+
+    var flag = true;
+    $("#tbl tr").click(function () {
+        if (flag) {
+            $(this).css("background-color", "#d3f3ff");
+            $(this).children().children().prop("checked", true);
+            flag = false;
+        } else {
+            $(this).css("background-color", "white");
+            $(this).children().children().prop("checked", false);
+            flag = true;
         }
     });
     $("th > input").change(function () {
@@ -161,7 +174,7 @@
             $("#tbl td > input")
                 .parent()
                 .parent()
-                .css("background-color", "#fff5e9");
+                .css("background-color", "#d3f3ff");
         } else {
             $("#tbl td > input").prop("checked", false);
             $("#tbl td > input")
