@@ -428,6 +428,7 @@
     #timeLineContent {
         height: 530px;
         border: 1px solid #ccc;
+        overflow-y: auto;
     }
     #timeLine .btn {
         display: block;
@@ -457,7 +458,7 @@
         float: left;
     }
     .timeLineAction {
-        width: 190px;
+        width: 185px;
         height: 55px;
         float: left;
         padding-left: 10px;
@@ -622,7 +623,12 @@
                         </td>
                     </tr>
                 </table>
-                <input type="button" class="btn btn-default" value="더보기" />
+                <input
+                    type="button"
+                    class="btn btn-default"
+                    value="더보기"
+                    id="timeLineMore"
+                />
             </div>
         </div>
     </div>
@@ -1493,6 +1499,34 @@
     });
     $("#timeLine .btn").mouseleave(function () {
         $("#timeLine .btn").attr("class", "btn btn-default");
+    });
+
+    $("#timeLineMore").click(function () {
+        for (var i = 0; i < 10; i++) {
+            var tr = document.createElement("tr");
+            var td = document.createElement("td");
+            td.className = "timeLineList";
+            var img = document.createElement("img");
+            img.src = "../images/man_01.png";
+            img.alt = "profile";
+            td.appendChild(img);
+
+            var timeLineAction = document.createElement("div");
+            timeLineAction.className = "timeLineAction";
+            var name = document.createElement("strong");
+            name.innerText = "조윤경";
+            timeLineAction.appendChild(name);
+            var time = document.createElement("span");
+            time.innerText = "12시간전";
+            timeLineAction.appendChild(time);
+            var action = document.createElement("div");
+            action.innerText = "조윤경님이 손바닥이 빨개졌습니다.";
+            timeLineAction.appendChild(action);
+
+            td.appendChild(timeLineAction);
+            tr.appendChild(td);
+            $("#timeLineContent tr:last-child").after(tr);
+        }
     });
 </script>
 <!-- <link
