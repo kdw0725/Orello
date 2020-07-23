@@ -10,6 +10,146 @@
 
 <section id="content" class="container">
     <style>
+        #contentLeft {
+            position: fixed;
+        }
+        #contentLeft * {
+            /* border: 1px solid gray; */
+        }
+        /* 메뉴 위 프로젝트 정보 */
+        #contentLeft > #projectInfo {
+            width: 250px;
+            height: 200px;
+            margin: 30px auto;
+            text-align: center;
+            position: relative;
+            top: 0px;
+            left: 0px;
+        }
+        #contentLeft #projectName {
+            margin-top: 70px;
+            font-size: 1.5em;
+        }
+        #contentLeft #projectPeriod {
+            margin-top: 10px;
+            font-style: italic;
+        }
+        #contentLeft #projectContent {
+            margin-top: 20px;
+            /* font-style: italic; */
+        }
+        #contentLeft #projectMember {
+            width: 100%;
+            height: 60px;
+            position: relative;
+            top: 0;
+            left: 0;
+            /* bottom: 30px; */
+            margin-top: 30px;
+        }
+        #projectMember .profilePic {
+            width: 50px;
+            height: 50px;
+            border: 3px solid white;
+            border-radius: 25px;
+            box-shadow: 3px 3px 2px #ccc;
+            display: inline-block;
+            background-color: #ccc;
+            background-repeat: no-repeat;
+            background-size: contain;
+            margin-left: -10px;
+        }
+        #projecMember .profilePic:first-child {
+            margin-left: 0px;
+        }
+
+        #projectMember .profilePic:hover {
+            transform: translate(0px, -15px);
+            transition: tranform 0.5s;
+        }
+        #AddMember {
+            text-align: left;
+            padding-top: 5px;
+            padding-left: 25px;
+        }
+        #AddMember a {
+            color: #333;
+            font-size: 0.9em;
+        }
+
+        /* 메뉴 */
+        #contentLeft > #menu {
+            width: 230px;
+            min-height: 400px;
+            margin: 70px auto;
+            /* border: 1px solid black; */
+        }
+        #contentLeft #menu ul,
+        #menu li {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            background-color: transparent;
+            cursor: pointer;
+            box-shadow: 0px 0px 0px white;
+        }
+        #contentLeft #menu .accordion > div,
+        #menu .panel > div {
+            margin: 0 auto;
+            padding-left: 10px;
+            padding-top: 9px;
+            border-bottom: 1px solid #999;
+            height: 40px;
+            padding-right: 10px;
+        }
+        #contentLeft #menu .panel > div {
+            margin-left: 30px;
+        }
+        #contentLeft #menu ul.active > div {
+            color: #5bc0de;
+            border-bottom: 1px solid #5bc0de;
+        }
+        #contentLeft #menu > ul.active > div > i {
+            color: #5bc0de;
+        }
+        #contentLeft #menu > ul.active li {
+            display: block;
+        }
+        #contentLeft #menu ul i {
+            margin-right: 10px;
+            color: #555;
+        }
+        #contentLeft #menu li.panel {
+            display: none;
+        }
+        #contentLeft #menu ul.parent > div::after {
+            content: "\f078";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            float: right;
+        }
+        #contentLeft #menu ul.active.parent > div::after {
+            content: "\f077";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            float: right;
+        }
+        #contentLeft #menu ul:hover > div {
+            color: #5bc0de;
+            border-bottom: 1px solid #5bc0de;
+        }
+        #contentLeft #menu ul:hover > div > i {
+            color: #5bc0de;
+        }
+        #contentLeft #menu li:hover > div {
+            color: #5bc0de;
+            border-bottom: 1px solid #5bc0de;
+        }
+        #contentLeft #menu li:hover > div > i {
+            color: #5bc0de;
+        }
+    </style>
+    <style>
         #main {
             /* border: 1px solid black; */
             width: 800px;
@@ -55,7 +195,64 @@
             margin-right: 22px;
         }
     </style>
-    <div id="contentLeft"></div>
+    <div id="contentLeft">
+        <div id="projectInfo">
+            <div id="projectName"></div>
+            <div id="projectPeriod"></div>
+            <div id="projectContent">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Numquam, nesciunt?
+            </div>
+            <div id="projectMember"></div>
+            <div id="addMember">
+                <a href="#"
+                    ><i class="glyphicon glyphicon-user"></i
+                    ><i class="glyphicon glyphicon-plus"></i>
+                    <span>Add Member</span></a
+                >
+            </div>
+        </div>
+        <div id="menu">
+            <ul class="accordion">
+                <div><i class="glyphicon glyphicon-home"></i>Project Home</div>
+            </ul>
+            <ul class="accordion parent">
+                <div><i class="glyphicon glyphicon-calendar"></i>Schedule</div>
+                <li class="panel">
+                    <div><i class="glyphicon glyphicon-minus"></i>Calendar</div>
+                </li>
+                <li class="panel">
+                    <div>
+                        <i class="glyphicon glyphicon-minus"></i>Time Line
+                    </div>
+                </li>
+            </ul>
+            <ul class="accordion">
+                <div><i class="glyphicon glyphicon-check"></i>Check List</div>
+            </ul>
+            <ul class="accordion parent">
+                <div><i class="glyphicon glyphicon-list-alt"></i>Board</div>
+                <li class="panel">
+                    <div><i class="glyphicon glyphicon-minus"></i>Notice</div>
+                </li>
+                <li class="panel">
+                    <div><i class="glyphicon glyphicon-minus"></i>Codes</div>
+                </li>
+                <li class="panel">
+                    <div><i class="glyphicon glyphicon-minus"></i>Free</div>
+                </li>
+            </ul>
+            <ul class="accordion">
+                <div><i class="glyphicon glyphicon-hdd"></i>Files</div>
+            </ul>
+            <ul class="accordion">
+                <div><i class="fas fa-code-branch"></i>Git</div>
+            </ul>
+            <ul class="accordion">
+                <div><i class="glyphicon glyphicon-comment"></i>Chat</div>
+            </ul>
+        </div>
+    </div>
     <div id="contentRight">
         <div id="main">
             <div id="main_title">
@@ -1332,6 +1529,38 @@
             content: document.getElementById(
                 "sample_contents_source"
             ) /* 내용 문자열, 주어진 필드(textarea) 엘리먼트 */,
+        });
+    }
+</script>
+
+<script>
+    // 메뉴 상단에 프로젝트 정보 출력하기
+    $("#projectName").append("Project Name");
+    $("#projectPeriod").append("<span>2020.07.01 ~ 2020.07.10</span><br>");
+    for (var i = 0; i < 5; i++) {
+        $("#projectMember").append("<div class='profilePic'></div>");
+    }
+    var profilePic = document.getElementsByClassName("profilePic");
+    for (var i = 0; i < 5; i++) {
+        profilePic[i].setAttribute(
+            "style",
+            `background-image: url('cookie_images/00${i + 1}.png')`
+        );
+    }
+
+    //클릭한 메뉴만 표시되도록
+    $(".list-group > a").click(function () {
+        $(".list-group > a").removeClass("active");
+        $(this).addClass("active");
+    });
+
+    //아코디언 메뉴
+    var acc = document.getElementsByClassName("parent");
+    for (var i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+            var li = $(this).children("li");
+            li.slideToggle(1000);
+            this.classList.toggle("active");
         });
     }
 </script>
