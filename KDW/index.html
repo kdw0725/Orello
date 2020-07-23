@@ -78,7 +78,8 @@
         float: right;
         margin-top: 20px;
     }
-    #calendarArea {
+    #calendarArea,
+    #projectArea {
         margin-left: 50px;
     }
     #calendar {
@@ -180,6 +181,7 @@
     }
     .projectBox {
         transition: all 0.3s linear;
+        margin-bottom: 20px;
     }
     #newProject::after {
         content: " ";
@@ -316,7 +318,7 @@
         width: 50%;
         height: 0px;
         /* display: none; */
-        transition: all 1s;
+        transition: all 0.5s;
         border: 0px;
         padding: 0px;
     }
@@ -663,69 +665,67 @@
                 </span>
             </div>
             <div id="calendar" style="height: 600px;"></div>
+        </div>
+        <hr />
+        <div id="projectArea">
+            <h2>Project</h2>
             <hr />
-            <div id="projectArea">
-                <h2>Project</h2>
-                <hr />
-                <div class="projectBox">
-                    <div class="index"></div>
-                    <p class="detail">
-                        자세히 보기
-                        <i class="glyphicon glyphicon-play"></i>
-                    </p>
-                    <div class="projectTitle">
-                        <strong class="title">Orello</strong>
-                        <p>
-                            <i class="fab fa-internet-explorer"></i> 웹 프로젝트
-                        </p>
-                    </div>
-                    <div class="languagebox">
-                        <i class="fab fa-js" aria-hidden="true"></i>
-                        <label for="fab">JS</label>
-                        <i class="fab fa-css3" aria-hidden="true"></i>
-                        <label for="fab">CSS</label>
-                        <i class="fab fa-java" aria-hidden="true"></i>
-                        <label for="fab">Java</label>
-                    </div>
+            <div class="projectBox">
+                <div class="index"></div>
+                <p class="detail">
+                    자세히 보기
+                    <i class="glyphicon glyphicon-play"></i>
+                </p>
+                <div class="projectTitle">
+                    <strong class="title">Orello</strong>
+                    <p><i class="fab fa-internet-explorer"></i> 웹 프로젝트</p>
                 </div>
-                <div class="projectBox">
-                    <div class="index"></div>
-                    <p class="detail">
-                        자세히 보기
-                        <i class="glyphicon glyphicon-play"></i>
-                    </p>
-                    <div class="projectTitle">
-                        <strong class="title">Orello</strong>
-                        <p><i class="fab fa-android"></i>안드로이드 프로젝트</p>
-                    </div>
-                    <div class="languagebox">
-                        <i class="fab fa-html5" aria-hidden="true"></i>
-                        <label for="fab">HTML</label>
-                        <i class="fab fa-python" aria-hidden="true"></i>
-                        <label for="fab">python</label>
-                        <i class="fab fa-cuttlefish"></i>
-                        <label for="fab">C</label>
-                    </div>
-                </div>
-
-                <div
-                    class="projectBox"
-                    id="newProject"
-                    data-toggle="modal"
-                    data-target="createProject"
-                >
-                    <i class="glyphicon glyphicon-plus-sign"></i>
-                    <br />
-                    Create a new Project
+                <div class="languagebox">
+                    <i class="fab fa-js" aria-hidden="true"></i>
+                    <label for="fab">JS</label>
+                    <i class="fab fa-css3" aria-hidden="true"></i>
+                    <label for="fab">CSS</label>
+                    <i class="fab fa-java" aria-hidden="true"></i>
+                    <label for="fab">Java</label>
                 </div>
             </div>
-            <input
-                type="button"
-                value="더보기"
-                class="btn btn-default"
-                id="moreProject"
-            />
+            <div class="projectBox">
+                <div class="index"></div>
+                <p class="detail">
+                    자세히 보기
+                    <i class="glyphicon glyphicon-play"></i>
+                </p>
+                <div class="projectTitle">
+                    <strong class="title">Orello</strong>
+                    <p><i class="fab fa-android"></i>안드로이드 프로젝트</p>
+                </div>
+                <div class="languagebox">
+                    <i class="fab fa-html5" aria-hidden="true"></i>
+                    <label for="fab">HTML</label>
+                    <i class="fab fa-python" aria-hidden="true"></i>
+                    <label for="fab">python</label>
+                    <i class="fab fa-cuttlefish"></i>
+                    <label for="fab">C</label>
+                </div>
+            </div>
+
+            <div
+                class="projectBox"
+                id="newProject"
+                data-toggle="modal"
+                data-target="createProject"
+            >
+                <i class="glyphicon glyphicon-plus-sign"></i>
+                <br />
+                Create a new Project
+            </div>
         </div>
+        <input
+            type="button"
+            value="더보기"
+            class="btn btn-default"
+            id="moreProject"
+        />
     </div>
     <div
         class="modal fade"
@@ -1143,7 +1143,145 @@
     };
 
     moreProject.onclick = function () {
-        alert("프로젝트 추가 로드");
+        for (var i = 0; i < Math.floor(Math.random() * 10); i++) {
+            var moreProjectBox = document.createElement("div");
+            moreProjectBox.className = "projectBox";
+
+            var index = document.createElement("div");
+            index.className = "index";
+            var temp = Math.floor(Math.random() * color.length);
+            console.log(temp);
+            index.style.backgroundColor = color[temp];
+            moreProjectBox.appendChild(index);
+
+            var detail = document.createElement("p");
+            detail.className = "detail";
+            detail.innerHTML =
+                "자세히 보기<i class='glyphicon glyphicon-play'></i>";
+
+            moreProjectBox.appendChild(detail);
+
+            var moreProjectTitle = document.createElement("div");
+            moreProjectTitle.className = "projectTitle";
+            var title = document.createElement("strong");
+            title.className = "title";
+            title.innerText = "Orello";
+            moreProjectTitle.appendChild(title);
+
+            var moreProjectType = document.createElement("p");
+            var projectList = ["웹", "안드로이드", "IOS", "기타"];
+
+            var projectTemp =
+                projectList[Math.floor(Math.random() * projectList.length)];
+            if (projectTemp == "웹") {
+                moreProjectType.innerHTML =
+                    "<i class='fab fa-internet-explorer'></i> 웹 프로젝트";
+            } else if (projectTemp == "안드로이드") {
+                moreProjectType.innerHTML =
+                    "<i class='fab fa-android'></i> 안드로이드 프로젝트";
+            } else if (projectTemp == "IOS") {
+                moreProjectType.innerHTML =
+                    "<i class='fab fa-apple'></i> IOS 프로젝트";
+            } else if (projectTemp == "기타") {
+                moreProjectType.innerHTML =
+                    "<i class='fas fa-cat'></i> 기타 프로젝트";
+            }
+            moreProjectTitle.appendChild(moreProjectType);
+            moreProjectBox.appendChild(moreProjectTitle);
+
+            var languageList = [
+                "HTML",
+                "CSS",
+                "python",
+                "Java",
+                "JS",
+                "Swift",
+                "C",
+            ];
+            var moreLanguageBox = document.createElement("div");
+            for (var i = 0; i < 3; i++) {
+                var languageTemp =
+                    languageList[
+                        Math.floor(Math.random() * languageList.length)
+                    ];
+                var languageIcon = document.createElement("i");
+                var languageText = document.createElement("label");
+                languageText.for = "fab";
+
+                if (languageTemp == "HTML") {
+                    languageIcon.className = "fab fa-html5";
+                    languageIcon.ariaHidden = "true";
+                    languageText.innerText = "HTML";
+                } else if (languageTemp == "CSS") {
+                    languageIcon.className = "fab fa-css3";
+                    languageIcon.ariaHidden = "true";
+                    languageText.innerText = "CSS";
+                } else if (languageTemp == "python") {
+                    languageIcon.className = "fab fa-python";
+                    languageIcon.ariaHidden = "true";
+                    languageText.innerText = "python";
+                } else if (languageTemp == "Java") {
+                    languageIcon.className = "fab fa-java";
+                    languageIcon.ariaHidden = "true";
+                    languageText.innerText = "Java";
+                } else if (languageTemp == "JS") {
+                    languageIcon.className = "fab fa-js";
+                    languageIcon.ariaHidden = "true";
+                    languageText.innerText = "JS";
+                } else if (languageTemp == "Swift") {
+                    languageIcon.className = "fab fa-swift";
+                    languageIcon.ariaHidden = "true";
+                    languageText.innerText = "Swift";
+                } else if (languageTemp == "C") {
+                    languageIcon.className = "fab fa-cuttlefish";
+                    languageText.innerText = "C";
+                }
+                moreLanguageBox.appendChild(languageIcon);
+                moreLanguageBox.appendChild(languageText);
+            }
+            moreLanguageBox.className = "languageBox";
+            moreProjectBox.appendChild(moreLanguageBox);
+            let moreTemp = moreProjectBox;
+            moreProjectBox.onmouseover = function () {
+                if (onmouseFlag == 0) {
+                    var innerDiv = document.createElement("div");
+                    moreTemp.children[0].style.width = "250px";
+                    moreTemp.children[0].style.height = "130px";
+                    var innerIcon = document.createElement("i");
+                    innerIcon.className = "glyphicon glyphicon-zoom-in";
+                    innerIcon.style.fontSize = "80px";
+                    innerIcon.style.color = "white";
+                    innerIcon.style.margin = "10px";
+                    innerDiv.appendChild(innerIcon);
+                    innerDiv.style.color = "white";
+                    innerDiv.style.textAlign = "center";
+
+                    var innerContent = document.createElement("p");
+                    innerContent.innerText = "자세히 보러가기";
+                    innerDiv.appendChild(innerContent);
+
+                    moreTemp.children[0].appendChild(innerDiv);
+                    moreTemp.children[0].style.cursor = "pointer";
+
+                    onmouseFlag = 1;
+                }
+            };
+            moreProjectBox.onmouseleave = function () {
+                if (onmouseFlag == 1) {
+                    moreTemp.children[0].style.width = "50px";
+                    moreTemp.children[0].style.height = "25px";
+                    moreTemp.children[0].removeChild(
+                        moreTemp.children[0].children[0]
+                    );
+                    moreTemp.children[0].style.cursor = "none";
+                    onmouseFlag = 0;
+                }
+            };
+            $("#newProject").before(moreProjectBox);
+        }
+        $("#moreProject").css("display", "none");
+        console.log($("#contentRight").height());
+        $("#contentLeft").css("height", $("#contentRight").height());
     };
     var notice = document.getElementById("notice");
 
