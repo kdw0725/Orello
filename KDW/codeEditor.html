@@ -1,3 +1,19 @@
+<!-- codeMirror -->
+<link rel="stylesheet" href="../css/docs.css" />
+<link rel="stylesheet" href="../css/codemirror.css" />
+<link rel="stylesheet" href="../css/show-hint.css" />
+
+<script src="../js/codemirror.js"></script>
+<script src="../js/show-hint.js"></script>
+<script src="../js/css-hint.js"></script>
+<script src="../js/xml-hint.js"></script>
+<script src="../js/html-hint.js"></script>
+<script src="../js/javascript-hint.js"></script>
+<script src="../js/xml.js"></script>
+<script src="../js/javascript.js"></script>
+<script src="../js/css.js"></script>
+<script src="../js/htmlmixed.js"></script>
+
 <link
     rel="stylesheet"
     href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
@@ -180,15 +196,16 @@
         border: 1px solid #ccc;
         width: 600px;
     }
-    #codeArea textarea {
-        border: none;
-    }
     /* #tabs-1 {
         background-color: #eee;
     }
     .ui-state-active {
         background-color: #eee;
     } */
+    #code {
+        background-color: white;
+        height: 480px;
+    }
     #fileArea button {
         width: 50px;
         margin: 0 auto;
@@ -236,6 +253,19 @@
         height: 240px;
         margin-top: 10px;
         color: #333;
+    }
+    .CodeMirror-scroll {
+        /* border: 1px solid black; */
+        height: 483px;
+        width: 550px;
+        padding-bottom: 0px;
+        margin-bottom: 0px;
+    }
+    .CodeMirror {
+        height: 483px;
+    }
+    .CodeMirror-sizer {
+        height: 460px;
     }
 </style>
 <div id="header"></div>
@@ -335,7 +365,8 @@
                 </li>
             </ul>
             <div id="tabs-1">
-                <textarea cols="67" rows="22"></textarea>
+                <div id="code"></div>
+                <!-- <textarea cols="67" rows="22"></textarea> -->
                 <input
                     type="text"
                     class="form-control"
@@ -422,9 +453,10 @@
         $("#codeArea ul").append(li);
         var newTab = document.createElement("div");
         newTab.id = "tabs-" + (temp + 1);
-        var textarea = document.createElement("textarea");
-        textarea.cols = "67";
-        textarea.rows = "22";
+        var textarea = document.createElement("div");
+        textarea.id = "code";
+        // textarea.cols = "67";
+        // textarea.rows = "22";
 
         var input = document.createElement("input");
         input.type = "text";
@@ -456,4 +488,12 @@
         tabs.tabs("refresh");
     });
     var tabs = $("#codeArea").tabs();
+
+    window.onload = function () {
+        editor = CodeMirror(document.getElementById("code"), {
+            mode: "text/html",
+            extraKeys: { "Ctrl-Space": "autocomplete" },
+            value: "<h1>소스코드입니다</h1>",
+        });
+    };
 </script>
