@@ -45,165 +45,122 @@
         float: left;
     }
 
-    .joingProject {
-        clear: both;
-        width: 400px;
-        height: 150px;
-        /* border: 3px solid #666; */
-        margin-left: 60px;
-        margin-top: 100px;
-        float: left;
-    }
+ 
 
-    .joingProject > span {
+    .joingProject > button{
         display: block;
-        font-size: 20px;
-        /* font-weight: bold; */
-        margin-left: 40px;
-        margin-top: 10px;
+        float:left;
+        margin-top:150px;
+        margin-left:200px;
+
     }
 
-    .joingProject > .glyphicon {
-        font-size: 1.3em;
-        margin-top: -25px;
-        margin-left: 200px;
+    .finishProject > button{
+        float:right;
+        margin-top:150px;
+        margin-right:200px;
     }
 
-    .joingProjectList {
-        width: 120px;
-        height: 80px;
-        /* border: 2px solid #666; */
-        float: left;
-        border-radius: 10px;
-        margin-top: 15px;
-        margin-left: 8px;
-        text-align: center;
-        padding-top: 30px;
-        cursor: pointer;
-        font-weight: bold;
-        color: #666;
-        display: none;
+
+    .jprojectlist{
+        border:1px solid black;
+        width:200px;
+        height:130px;
+        margin: 40px auto;
+        border-radius: 3px;
     }
 
-    #joingProject1 {
-        background-color: #aaa;
-        background-size: cover;
-        color: white;
-        opacity: 0.5;
-        position: relative;
+    .fprojectlist{
+        border:1px solid black;
+        width:200px;
+        height:130px;
+        margin: 40px auto;
+        border-radius: 3px;
     }
 
-    .darkness {
-        z-index: 0;
-        width: 120px;
-        height: 80px;
-        position: absolute;
-        left: 0;
-        top: 0;
-        background: #000;
-        border-radius: 10px;
-        opacity: 0;
-        transition: all 0.1s linear;
-    }
 
-    .btn-plus {
-        position: absolute;
-        top: 30px;
-        left: 60px;
-        font-size: 20px;
-        opacity: 0;
-        transform: scale(2);
-        transition: all 0.3s linear;
-    }
 
-    #joingProject2 {
-        background-color: #aaa;
-        background-size: cover;
-        color: white;
-        opacity: 0.5;
-        position: relative;
-    }
-
-    #joingProject3 {
-        background-color: #aaa;
-        background-size: cover;
-        color: white;
-        opacity: 0.5;
-        position: relative;
-    }
-
-    .joingProjectList:hover .darkness {
-        opacity: 0.5;
-    }
-
-    .joingProjectList:hover .btn-plus {
-        opacity: 1;
-        transform: scale(1);
-    }
-
-    .finishProject {
-        width: 400px;
-        height: 150px;
-        /* border: 3px solid #666; */
-        /* margin-left: 30px; */
-        margin-top: 100px;
-        /* float: right; */
-    }
-
-    .finishProject > span {
-        display: block;
-        font-size: 20px;
-        /* font-weight: bold; */
-        margin-left: 100px;
-        margin-top: 10px;
-    }
-
-    .finishProjectList {
-        width: 120px;
-        height: 80px;
-        /* border: 2px solid #666; */
-        float: left;
-        margin-top: 15px;
-        margin-left: 8px;
-        border-radius: 10px;
-        text-align: center;
-        padding-top: 30px;
-        cursor: pointer;
-        font-weight: bold;
-        color: #666;
-        display: none;
-    }
-
-    .finishProjectList:hover {
-        background-color: #eee;
-    }
-
-    #finishProject1 {
-        background-image: url(../images/img05.jpg);
-        background-size: cover;
-        color: white;
-        opacity: 0.5;
-    }
-
-    #finishProject2 {
-        background-image: url(../images/img06.jpg);
-        background-size: cover;
-        color: white;
-        opacity: 0.5;
-    }
-
-    #finishProject3 {
-        background-image: url(../images/img01.jpg);
-        background-size: cover;
-        color: white;
-        opacity: 0.5;
-    }
 
     .buttonbox {
         clear: both;
         float: right;
         margin-top: 100px;
     }
+
+
+    .modal.left .modal-dialog,
+	.modal.right .modal-dialog {
+		position: fixed;
+		margin: auto;
+		width: 320px;
+		height: 100%;
+		-webkit-transform: translate3d(0%, 0, 0);
+		    -ms-transform: translate3d(0%, 0, 0);
+		     -o-transform: translate3d(0%, 0, 0);
+		        transform: translate3d(0%, 0, 0);
+	}
+
+	.modal.left .modal-content,
+	.modal.right .modal-content {
+		height: 100%;
+		overflow-y: auto;
+	}
+	
+	.modal.left .modal-body,
+	.modal.right .modal-body {
+		padding: 15px 15px 80px;
+	}
+
+/*Left*/
+	.modal.left.fade .modal-dialog{
+		left: -320px;
+		-webkit-transition: opacity 0.3s linear, left 0.3s ease-out;
+		   -moz-transition: opacity 0.3s linear, left 0.3s ease-out;
+		     -o-transition: opacity 0.3s linear, left 0.3s ease-out;
+		        transition: opacity 0.3s linear, left 0.3s ease-out;
+	}
+	
+	.modal.left.fade.in .modal-dialog{
+		left: 0;
+	}
+        
+/*Right*/
+	.modal.right.fade .modal-dialog {
+		right: -320px;
+		-webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
+		   -moz-transition: opacity 0.3s linear, right 0.3s ease-out;
+		     -o-transition: opacity 0.3s linear, right 0.3s ease-out;
+		        transition: opacity 0.3s linear, right 0.3s ease-out;
+	}
+	
+	.modal.right.fade.in .modal-dialog {
+		right: 0;
+	}
+
+    .modal-content {
+		border-radius: 0;
+		border: none;
+	}
+
+	.modal-header {
+		border-bottom-color: #EEEEEE;
+		background-color: #FAFAFA;
+	}
+
+    .modal *{
+        /* border: 1px solid gray; */
+        outline: none !important;
+    }
+    .modal .modal-content {
+        border: 0px;
+        border-radius: 0%;
+        box-shadow: 0px 0px 0px #ddd;
+        padding: 20px;
+        background-color: white;
+    }
+
+
+
 </style>
 <div id="header"></div>
 <section id="content" class="container">
@@ -211,7 +168,7 @@
     <div id="contentRight">
         <div id="titleContainer">
             <i class="glyphicon glyphicon-user"></i>
-            <div id="title">User</div>
+            <div id="title">User Info</div>
         </div>
 
         <div id="userInfo">
@@ -220,49 +177,87 @@
             <span><strong>Point</strong> : 5,700p</span>
         </div>
         <div id="userImg">
-            <!-- <img src="../images/woman_04.png" /> -->
         </div>
 
         <div class="joingProject">
-            <span><strong>Joining Project</strong></span>
-            <i class="glyphicon glyphicon-triangle-right"></i>
-            <div id="joingProject1" class="joingProjectlist">
-                Project4
-                <i class="glyphicon glyphicon-menu-right"></i>
-            </div>
+            <button
+                type="button"
+                class="btn btn-info"
+                data-toggle="modal"
+                data-target="#myModal1"
+                style="
+                    border: 0px;
+                    font-weight: bold;
+                    font-size: 17px;
+                    background-color: #333;
+                "
+            >
+            <i class="glyphicon glyphicon-menu-left"></i>
+                Joining Project
+            </button>
 
-            <div id="joingProject2" class="joingProjectlist">
-                Project4
-                <i class="glyphicon glyphicon-menu-right"></i>
-            </div>
-            <div id="joingProject3" class="joingProjectlist">
-                Project4
-                <i class="glyphicon glyphicon-menu-right"></i>
-            </div>
-        </div>
 
         <div class="finishProject">
-            <span><strong>Finished Project</strong></span>
-            <i class="glyphicon glyphicon-triangle-right"></i>
-            <div id="finishProject1" class="finishProjectlist">
-                Project4
-                <i class="glyphicon glyphicon-menu-right"></i>
-            </div>
-            <div id="finishProject2" class="finishProjectlist">
-                Project5
-                <i class="glyphicon glyphicon-menu-right"></i>
-            </div>
-            <div id="finishProject3" class="finishProjectlist">
-                Project6
-                <i class="glyphicon glyphicon-menu-right"></i>
-            </div>
-        </div>
+            <button
+                type="button"
+                class="btn btn-info"
+                data-toggle="modal"
+                data-target="#myModal2"
+                style="
+                    border: 0px;
+                    font-weight: bold;
+                    font-size: 17px;
+                    background-color: #333;
+                "
+            >
+            Finish Project
+            <i class="glyphicon glyphicon-menu-right"></i>
+                
+            </button>
+            <div class="modal left fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+        
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Joining Project List</h4>
+                        </div>
+        
+                        <div class="modal-body">
+                            <div class="jprojectlist"></div>
+                            <div class="jprojectlist"></div>
+                            <div class="jprojectlist"></div>
+                        </div>
+        
+                    </div><!-- modal-content -->
+                </div><!-- modal-dialog -->
+            </div><!-- modal -->
+            
+            <!-- Modal -->
+            <div class="modal right fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+        
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel2">Finish Project List</h4>
+                        </div>
+        
+                        <div class="modal-body">
+                            <div class="fprojectlist"></div>
+                            <div class="fprojectlist"></div>
+                            <div class="fprojectlist"></div>
+                        </div>
+        
+                    </div><!-- modal-content -->
+                </div><!-- modal-dialog -->
+            </div><!-- modal -->
 
         <div class="buttonbox">
             <input
                 type="button"
                 value="목록"
-                class="btn btn-primary"
+                class="btn btn-info"
                 onclick="location.href='userList.html'"
             />
         </div>

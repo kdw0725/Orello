@@ -1,144 +1,1121 @@
 <style>
-    #titleContainer {
-        margin-left: 60px;
-        margin-top: 60px;
+    @import "https://s3-us-west-2.amazonaws.com/s.cdpn.io/584938/dashboard.scss";
+    body {
+        background-color: #1b2431;
+        color: #202020;
+        font-family: "Montserrat", "Helvetica", "Open Sans", "Arial";
+        font-size: 13px;
+    }
+
+    /* /////////////////////////////////////////// */
+
+    #contentLeft {
+        position: fixed;
+    }
+    #contentLeft * {
+        /* border: 1px solid gray; */
+    }
+    /* 메뉴 위 프로젝트 정보 */
+    #contentLeft > #projectInfo {
+        width: 250px;
+        height: 200px;
+        margin: 30px auto;
+        text-align: center;
+        position: relative;
+        top: 0px;
+        left: 0px;
+    }
+    #contentLeft #projectName {
+        width: 150px;
+        height: 150px;
         /* border: 1px solid black; */
-        width: 200px;
+        margin: 0 auto;
+        margin-top: 50px;
+        font-size: 1.5em;
+        background-image: url(../images/woman_04.png);
+        background-repeat: no-repeat;
+        background-size: 150px 150px;
+    }
+    #contentLeft #projectPeriod {
+        margin-top: 20px;
+        font-size: 23px;
+        font-style: italic;
+    }
+    #contentLeft #projectContent {
+        margin-top: 10px;
+        /* font-style: italic; */
+    }
+    #contentLeft #projectMember {
+        width: 100%;
+        height: 60px;
+        position: relative;
+        top: 0;
+        left: 0;
+        /* bottom: 30px; */
+        margin-top: 30px;
+    }
+    #projectMember .profilePic {
+        width: 50px;
+        height: 50px;
+        border: 3px solid white;
+        border-radius: 25px;
+        box-shadow: 3px 3px 2px #ccc;
+        display: inline-block;
+        background-color: #ccc;
+        background-repeat: no-repeat;
+        background-size: contain;
+        margin-left: -10px;
+    }
+    #projecMember .profilePic:first-child {
+        margin-left: 0px;
     }
 
-    #contentRight > #titleContainer > i {
-        font-size: 2.7em;
+    #projectMember .profilePic:hover {
+        transform: translate(0px, -15px);
+        transition: tranform 0.5s;
+    }
+    /* 메뉴 */
+    #contentLeft > #menu {
+        width: 230px;
+        min-height: 400px;
+        margin: 100px auto;
+        /* border: 1px solid black; */
+    }
+    #contentLeft #menu ul,
+    #menu li {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        background-color: transparent;
+        cursor: pointer;
+        box-shadow: 0px 0px 0px white;
+    }
+    #contentLeft #menu .accordion > div,
+    #menu .panel > div {
+        margin: 0 auto;
+        padding-left: 10px;
+        padding-top: 9px;
+        border-bottom: 1px solid #999;
+        height: 40px;
+        padding-right: 10px;
+    }
+    #contentLeft #menu .panel > div {
+        margin-left: 30px;
+    }
+    #contentLeft #menu ul.active > div {
+        color: #5bc0de;
+        border-bottom: 1px solid #5bc0de;
+    }
+    #contentLeft #menu > ul.active > div > i {
+        color: #5bc0de;
+    }
+    #contentLeft #menu > ul.active li {
+        display: block;
+    }
+    #contentLeft #menu ul i {
+        margin-right: 10px;
+        color: #555;
+    }
+    #contentLeft #menu li.panel {
+        display: none;
+    }
+    #contentLeft #menu ul.parent > div::after {
+        content: "\f078";
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        float: right;
+    }
+    #contentLeft #menu ul.active.parent > div::after {
+        content: "\f077";
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        float: right;
+    }
+    #contentLeft #menu ul:hover > div {
+        color: #5bc0de;
+        border-bottom: 1px solid #5bc0de;
+    }
+    #contentLeft #menu ul:hover > div > i {
+        color: #5bc0de;
+    }
+    #contentLeft #menu li:hover > div {
+        color: #5bc0de;
+        border-bottom: 1px solid #5bc0de;
+    }
+    #contentLeft #menu li:hover > div > i {
+        color: #5bc0de;
+    }
+
+    /* /////////////////////////////////////////// */
+
+    .welcome {
+        color: black;
+    }
+
+    .welcome .content {
+        background-color: #fff;
+        padding: 15px;
+        margin-top: 25px;
+        margin-left: 20px;
+        box-shadow: 3px 3px 3px #ddd;
+    }
+
+    .welcome h2 {
+        font-family: Calibri;
+        font-weight: 100;
+        margin-top: 0;
+    }
+
+    .welcome p {
+        color: #999;
+    }
+
+    .statistics {
+        margin-top: 25px;
+        color: black;
+    }
+
+    .statistics .box {
+        background-color: #fff;
+        box-shadow: 3px 3px 3px #ddd;
+        padding: 15px;
+        overflow: hidden;
+        background-clip: border-box;
+        margin-left: 40px;
+        margin: 0 50px;
+    }
+
+    .statistics .box > i {
         float: left;
-        padding-right: 20px;
-    }
-
-    #title {
-        font-size: 2.5em;
-    }
-
-    .subcontainer {
-        width: 600px;
-        margin: 40px auto;
-        clear: both;
-    }
-    .subcontainer:first-child {
-        margin-top: 100px;
-    }
-
-    .subtitle {
+        color: #fff;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        line-height: 60px;
         font-size: 22px;
-        float: left;
-        width: 300px;
     }
 
-    .subcontent {
+    .statistics .box .info {
+        float: left;
+        width: auto;
+        margin-left: 10px;
+        font-size: 10px;
+    }
+
+    .statistics .box .info h3 {
+        margin: 5px 0 5px;
+        display: inline-block;
+    }
+
+    .statistics .box .info p {
+        color: #bbb;
+    }
+
+    .danger {
+        background-color: #d9534f;
+    }
+
+    .success {
+        background-color: #5cb85c;
+    }
+
+    .col-md-4 > .box {
+        width: 280px;
+        height: 100px;
+        /* margin-right: 50px; */
+    }
+
+    #teamnameinfo > h3 {
         font-size: 16px;
     }
 
-    .subcontainer > i {
-        float: left;
-        color: #f8ae45;
-        font-size: 1.7em;
-        padding-right: 18px;
+    #startinfo > h3 {
+        font-size: 16px;
     }
 
-    .subcontent > select {
-        width: 200px;
+    #dataroominfo > h3 > a {
+        font-size: 16px;
+        color: black;
     }
 
-    #btnbox1 > button {
-        float: left;
-        margin-top: 50px;
-        margin-left: 60px;
+    #boardinfo > h3 > a {
+        font-size: 17px;
+        color: black;
     }
-    #btnbox2 > button {
+
+    /* /////////////////////////////////////////// */
+
+    .projects {
+        margin-left: 90px;
+        margin-top: 20px;
+        background-color: white;
+        /* border: 1px solid #313d4f; */
+        overflow-x: auto;
+        width: 100%;
+    }
+    .projects-inner {
+        border-radius: 4px;
+    }
+
+    .projects-header {
+        color: #273142;
+        padding: 22px;
+    }
+    .projects-header .count,
+    .projects-header .title {
+        display: inline-block;
+    }
+    .projects-header .count {
+        color: #738297;
+    }
+    .projects-header .zmdi {
+        cursor: pointer;
         float: right;
-        /* margin-right: 500px; */
-        margin-top: 50px;
+        font-size: 16px;
+        margin: 5px 0;
     }
+    .projects-header .title {
+        font-size: 21px;
+    }
+    .projects-header .title + .count {
+        margin-left: 5px;
+    }
+
+    .projects-table {
+        background: white;
+        width: 100%;
+    }
+    .projects-table td,
+    .projects-table th {
+        color: #273142;
+        padding: 10px 22px;
+        vertical-align: middle;
+    }
+    .projects-table td p {
+        font-size: 12px;
+    }
+    .projects-table td p:last-of-type {
+        color: #738297;
+        font-size: 11px;
+    }
+    .projects-table th {
+        background-color: #313d4f;
+        color: white;
+    }
+    .projects-table tr:hover {
+        background-color: #303d52;
+        cursor: pointer;
+        /* color: white; */
+    }
+
+    .projects-table tr:hover > td {
+        color: white;
+    }
+    .projects-table tr:not(:last-of-type) {
+        border-bottom: 1px solid #313d4f;
+    }
+    .projects-table .member figure,
+    .projects-table .member .member-info {
+        display: inline-block;
+        vertical-align: top;
+    }
+    .projects-table .member figure + .member-info {
+        margin-left: 7px;
+    }
+    .projects-table .member img {
+        border-radius: 50%;
+        height: 32px;
+        width: 32px;
+    }
+    .projects-table .status > form {
+        float: right;
+    }
+    .projects-table .status-text {
+        display: inline-block;
+        font-size: 12px;
+        margin: 11px 0;
+        padding-left: 20px;
+        position: relative;
+    }
+    .projects-table .status-text:before {
+        border: 3px solid;
+        border-radius: 50%;
+        content: "";
+        height: 14px;
+        left: 0;
+        position: absolute;
+        top: 1px;
+        width: 14px;
+    }
+    .projects-table .status-text.status-blue:before {
+        border-color: #1c93ed;
+    }
+    .projects-table .status-text.status-green:before {
+        border-color: #66b92e;
+    }
+    .projects-table .status-text.status-orange:before {
+        border-color: #da932c;
+    }
+    .projects-table .status-text.status-red:before {
+        border-color: #d65b4a;
+    }
+
+    .selectric {
+        background-color: transparent;
+        border-color: #313d4f;
+        border-radius: 4px;
+    }
+    .selectric .label {
+        color: #738297;
+        line-height: 34px;
+        margin-right: 10px;
+        text-align: left;
+    }
+    .selectric-wrapper {
+        float: right;
+        width: 150px;
+    }
+
+    /* ************************************************ */
+
+    #dialog1 {
+        width: 800px;
+
+    }
+
+    .modal-body {
+        width: 800px;
+        background-color: #fff;
+
+    }
+
+    .modal-content {
+        background-color: #fff;
+        color: black;
+        width: 800px;
+    }
+
+    .chart-container > span {
+        font-size: 20px;
+    }
+
+
+    #btn1, #btn2 {
+        font-size: 25px;
+        text-align: right;
+        float: right;
+    }
+    #btn1, #btn2:hover {
+        cursor: pointer
+    }
+
+
+    .charts{
+        width:800px;
+
+        
+        margin-left: 40px;
+        margin-top:40px;
+    }
+
+    .charts #chart1, #chart2{
+        width:50%;
+        
+    }
+
+    /* .charts {
+        margin-top: 25px;
+        margin-left: 100px;
+        color: black;
+    }
+    .charts .chart-container h3 {
+        margin: 0 0 10px;
+        font-size: 17px;
+    } */
+
+    .charts .chart-container {
+        background-color: #fff;
+        padding: 15px;
+        margin-left: 20px;
+        box-shadow: 3px 3px 3px #ddd;
+    }
+
+ 
+ 
+
+
 </style>
 <div id="header"></div>
 <section id="content" class="container">
-    <div id="contentLeft"></div>
-    <div id="contentRight">
-        <div id="titleContainer">
-            <!-- <i class="glyphicon glyphicon-folder-open"></i> -->
-            <div id="title">Project Info</div>
+    <div id="contentLeft">
+        <div id="projectInfo">
+            <div id="projectName"></div>
+            <div id="projectPeriod">
+                Manager Name
+            </div>
+            <div id="projectContent">
+                lorem1234@gmail.com
+            </div>
+            <div id="projectMember"></div>
         </div>
+        <div id="menu">
+            <ul class="accordion">
+                <div><i class="glyphicon glyphicon-home"></i>Home</div>
+            </ul>
+            <ul class="accordion parent">
+                <div onclick="location.href='summaryChart.html'"><i class="glyphicon glyphicon-calendar"></i>Chart</div>
+                <!-- <li class="panel"><div><i class="glyphicon glyphicon-minus"></i></div></li>
+                <li class="panel"><div><i class="glyphicon glyphicon-minus"></i></div></li>    -->
+            </ul>
+            <ul class="accordion">
+                <div onclick="location.href='projectList.html'"><i class="glyphicon glyphicon-check"></i>Project</div>
+            </ul>
+            <ul class="accordion parent">
+                <div><i class="glyphicon glyphicon-list-alt"></i>Board</div>
+                <li class="panel">
+                    <div><i class="glyphicon glyphicon-minus"></i>Notice</div>
+                </li>
+                <li class="panel">
+                    <div><i class="glyphicon glyphicon-minus"></i>Codes</div>
+                </li>
+                <li class="panel">
+                    <div><i class="glyphicon glyphicon-minus"></i>Free</div>
+                </li>
+            </ul>
+            <ul class="accordion">
+                <div><i class="glyphicon glyphicon-hdd"></i>Files</div>
+            </ul>
+            <!-- <ul class="accordion"><div><i class="fas fa-code-branch"></i>Git</div></ul> -->
+            <ul class="accordion">
+                <div><i class="glyphicon glyphicon-user"></i>User</div>
+            </ul>
 
-        <div class="subcontainer">
-            <i class="glyphicon glyphicon-folder-open"></i>
-            <div class="subtitle"><strong>Name</strong></div>
-            <div class="subcontent">ProjectName6</div>
+            <!-- Email 카테고리 추가 -->
+            <!-- <ul class="accordion">
+                <div onclick="location.href='http:mail.google.com'">
+                    <i class="glyphicon glyphicon-envelope"></i>Email
+                </div>
+            </ul> -->
+
+            <ul class="accordion">
+                <div><i class="glyphicon glyphicon-comment"></i>FAQ</div>
+            </ul>
         </div>
-        <div class="subcontainer">
-            <i class="glyphicon glyphicon-user"></i>
-            <div class="subtitle"><strong>Team Name</strong></div>
-            <div class="subcontent">TeamName6</div>
-        </div>
-        <div class="subcontainer">
-            <i class="glyphicon glyphicon-play"></i>
-            <div class="subtitle"><strong>Start Date</strong></div>
-            <div class="subcontent">2020-07-15</div>
-        </div>
-        <div class="subcontainer">
-            <i class="glyphicon glyphicon-stop"></i>
-            <div class="subtitle"><strong>Finish Date</strong></div>
-            <div class="subcontent">-</div>
-        </div>
-        <div class="subcontainer">
-            <i class="glyphicon glyphicon-eye-open"></i>
-            <div class="subtitle"><strong>Members</strong></div>
-            <div class="subcontent">
-                <select name="type" class="form-control">
-                    <option value="1">MemberName1</option>
-                    <option value="2">MemberName2</option>
-                    <option value="3">MemberName3</option>
-                    <option value="4">MemberName4</option>
-                    <option value="5">MemberName5</option>
-                </select>
+    </div>
+    <div id="contentRight">
+        <div class="welcome">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="content">
+                            <h2>Project Info</h2>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur
+                                adipisicing elit, sed do eiusmod tempor.
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="subcontainer">
-            <i class="glyphicon glyphicon-open"></i>
-            <div class="subtitle"><strong>DataRoom</strong></div>
-            <div class="subcontent"><a href="#">http://DataRoom.html</a></div>
-        </div>
-        <div class="subcontainer">
-            <i class="glyphicon glyphicon-floppy-open"></i>
-            <div class="subtitle"><strong>Board</strong></div>
-            <div class="subcontent"><a href="#">http://Board.html</a></div>
+
+        <!-- /////////////////////////////////////////////////////////////////// -->
+
+        <div class="container-fluid">
+            <div class="row">
+                <main role="main" class="col-md-9 ml-sm-auto col-lg-10 my-3">
+                    <section class="statistics">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="box">
+                                        <i
+                                            class="fa fa-envelope fa-fw bg-primary"
+                                            style="background-color: #80B1D3;"
+                                        ></i>
+                                        <div class="info">
+                                            <h3>Orello</h3>
+                                            <!-- <span>Emails</span> -->
+                                            <p>Project Name</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="box">
+                                        <i class="fa fa-file fa-fw danger"
+                                        style="background-color: #FB8072;"></i>
+                                        <div class="info" id="teamnameinfo">
+                                            <h3>Team Name 6</h3>
+                                            <!-- <span>Projects</span> -->
+                                            <p>Team Name</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="box">
+                                        <i
+                                            class="fa fa-users fa-fw success"
+                                            style="background-color: #B3DE69;"
+                                        ></i>
+                                        <div class="info" id="startinfo">
+                                            <h3>2020-07-15</h3>
+                                            <!-- <span>Users</span> -->
+                                            <p>Start Date</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="box">
+                                        <i
+                                            class="fa fa-users fa-fw success"
+                                            style="background-color: #BC80BD;"
+                                        ></i>
+                                        <div class="info" id="finishinfo">
+                                            <h3>Ing</h3>
+                                            <!-- <span>Users</span> -->
+                                            <p>Finish Date</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="box">
+                                        <i
+                                            class="fa fa-users fa-fw success"
+                                            style="background-color: #CCEBC5;"
+                                        ></i>
+                                        <div class="info" id="dataroominfo">
+                                            <h3>
+                                                <a href="#"
+                                                    >http://DataRoom.html</a
+                                                >
+                                            </h3>
+                                            <!-- <span>Users</span> -->
+                                            <p>DataRoom Link</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="box">
+                                        <i
+                                            class="fa fa-users fa-fw success"
+                                            style="background-color: #FFED6F;"
+                                        ></i>
+                                        <div class="info" id="boardinfo">
+                                            <h3>
+                                                <a href="#"
+                                                    >http://Board.html</a
+                                                >
+                                            </h3>
+                                            <!-- <span>Users</span> -->
+                                            <p>Board Link</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- /////////////////////////////////////////////////////////////////// -->
+
+                    <div class="projects mb-4">
+                        <div class="projects-inner">
+                            <header class="projects-header">
+                                <div class="title">Project Members</div>
+                                <div class="count">| 6 Members</div>
+                                <i class="zmdi zmdi-download"></i>
+                            </header>
+                            <table class="projects-table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Deadline</th>
+                                        <th>Leader + Team</th>
+                                        <th>Status</th>
+                                       
+                                    </tr>
+                                </thead>
+                                <tr onclick="location.href='userListSub.html'">
+                                    <td>
+                                        <p>홍길동</p>
+                                        <p>Google</p>
+                                    </td>
+                                    <td>
+                                        <p>17th Oct, 15</p>
+                                        <p class="text-danger">Overdue</p>
+                                    </td>
+                                    <td class="member">
+                                        <figure>
+                                            <img
+                                                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/584938/people_8.png"
+                                            />
+                                        </figure>
+                                        <div class="member-info">
+                                            <p>Myrtle Erickson</p>
+                                            <p>UK Design Team</p>
+                                        </div>
+                                    </td>
+                                    <td class="status">
+                                        <span class="status-text status-orange"
+                                            >In progress</span
+                                        >
+                                    </td>
+                                    
+                                </tr>
+                                <tr class="danger-item" onclick="location.href='userListSub.html'">
+                                    <td>
+                                        <p>하하하</p>
+                                        <p>Google</p>
+                                    </td>
+                                    <td>
+                                        <p>17th Oct, 15</p>
+                                        <p class="text-danger">Overdue</p>
+                                    </td>
+                                    <td class="member">
+                                        <figure>
+                                            <img
+                                                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/584938/people_8.png"
+                                            />
+                                        </figure>
+                                        <div class="member-info">
+                                            <p>Myrtle Erickson</p>
+                                            <p>UK Design Team</p>
+                                        </div>
+                                    </td>
+
+                                    <td class="status">
+                                        <span class="status-text status-red"
+                                            >Blocked</span
+                                        >
+                                    </td>
+                                   
+                                </tr>
+                                <tr onclick="location.href='userListSub.html'">
+                                    <td>
+                                        <p>호호호</p>
+                                        <p>Google</p>
+                                    </td>
+                                    <td>
+                                        <p>17th Oct, 15</p>
+                                        <p class="text-danger">Overdue</p>
+                                    </td>
+                                    <td class="member">
+                                        <figure>
+                                            <img
+                                                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/584938/people_8.png"
+                                            />
+                                        </figure>
+                                        <div class="member-info">
+                                            <p>Myrtle Erickson</p>
+                                            <p>UK Design Team</p>
+                                        </div>
+                                    </td>
+
+                                    <td class="status">
+                                        <span class="status-text status-orange"
+                                            >In progress</span
+                                        >
+                                    </td>
+                                   
+                                </tr>
+                                <tr onclick="location.href='userListSub.html'">
+                                    <td>
+                                        <p>히히히</p>
+                                        <p>Google</p>
+                                    </td>
+                                    <td>
+                                        <p>17th Oct, 15</p>
+                                        <p class="text-danger">Overdue</p>
+                                    </td>
+                                    <td class="member">
+                                        <figure>
+                                            <img
+                                                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/584938/people_8.png"
+                                            />
+                                        </figure>
+                                        <div class="member-info">
+                                            <p>Myrtle Erickson</p>
+                                            <p>UK Design Team</p>
+                                        </div>
+                                    </td>
+                                    <td class="status">
+                                        <span class="status-text status-blue"
+                                            >Early stages</span
+                                        >
+                                    </td>
+                                   
+                                </tr>
+                                <tr onclick="location.href='userListSub.html'">
+                                    <td>
+                                        <p>후후후</p>
+                                        <p>Google</p>
+                                    </td>
+                                    <td>
+                                        <p>17th Oct, 15</p>
+                                        <p class="text-danger">Overdue</p>
+                                    </td>
+                                    <td class="member">
+                                        <figure>
+                                            <img
+                                                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/584938/people_8.png"
+                                            />
+                                        </figure>
+                                        <div class="member-info">
+                                            <p>Myrtle Erickson</p>
+                                            <p>UK Design Team</p>
+                                        </div>
+                                    </td>
+
+                                    <td class="status">
+                                        <span class="status-text status-orange"
+                                            >In progress</span
+                                        >
+                                    </td>
+                                   
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    
+
+                    <section class="charts">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-6" id="chart1">
+                                    <div class="chart-container">
+                                        <span>팀원 참여도</span>
+                                        <i class="glyphicon glyphicon-search" id="btn1"></i>
+                                        <canvas id="myChart1"></canvas>
+                                    </div>
+                                </div>
+                                <div class="col-md-6" id="chart2">
+                                    <div class="chart-container">
+                                        <span>날짜별 활성화율</span>
+                                        <i class="glyphicon glyphicon-search" id="btn2"></i>
+                                        <canvas id="myChart2"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                  
+
+
+            </div>
         </div>
 
-        <div id="btnbox1">
-            <button
-                class="btn btn-primary"
-                onclick="location.href='projectList.html'"
-                style="background-color: #f8ae45; outline: none; border: 0px;"
-            >
-                <span class="glyphicon glyphicon-chevron-left"></span>
-                Back
-            </button>
-        </div>
 
-        <div id="btnbox2">
-            <button
-                class="btn btn-primary"
-                onclick="location.href='tabBar1.html'"
-                style="background-color: #f8ae45; outline: none; border: 0px;"
-            >
-                Summary Chart
-                <span class="glyphicon glyphicon-chevron-right"></span>
-            </button>
-        </div>
+    <!-- modal window -->
+
+    <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content" style="background-color: #fff;">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <h3>팀원 참여도</h3>
+                        </div>
+                        <div class="modal-body">
+                            <div class="chart-container">
+
+                                <canvas id="dialog1"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content" style="background-color: #fff;">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <h3>날짜별 활성화율</h3>
+                        </div>
+                        <div class="modal-body">
+                            <div class="chart-container">
+                                <canvas id="dialog2"></canvas>
+                            </div>
+                        </div>
+                    </div>
+        
+                </div>
+        
+            </div>
+        
+
     </div>
 </section>
 <div id="footer"></div>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
 
 <script>
     $(document).ready(function () {
         $("#header").load("../include/header.html");
         $("#footer").load("../include/footer.html");
     });
+
+        //상자에 마우스 오버시 해당 차트의 보더가 두꺼워진다.
+        $("#box_page").mouseover(function() {
+        
+    });
+    // // 메뉴 상단에 프로젝트 정보 출력하기 
+    // $("#projectName").append("Project Name");
+    // $("#projectPeriod").append("<span>2020.07.01 ~ 2020.07.10</span><br>");
+    // for (var i=0; i<5; i++) {
+    //     $("#projectMember").append("<div class='profilePic'></div>")
+    // }
+    // var profilePic = document.getElementsByClassName("profilePic");
+    // for (var i=0; i<5; i++) {
+    //     profilePic[i].setAttribute("style", `background-image: url('../images/${i}.png')`)
+    // }
+
+    //클릭한 메뉴만 표시되도록 
+    $(".list-group > a").click(function() {
+        $(".list-group > a").removeClass("active");
+        $(this).addClass("active");
+    });
+
+    //아코디언 메뉴
+    var acc = document.getElementsByClassName("parent");
+    for (var i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+            var li = $(this).children("li");
+            li.slideToggle(1000);
+            this.classList.toggle("active");
+        });
+    }
+</script>
+
+
+
+<script>
+    $(document).ready(function () {
+        $("#header").load("../include/header.html");
+        $("#footer").load("../include/footer.html");
+    });
+
+    var chart = document.getElementById('myChart1');
+    var myChart = new Chart(chart, {
+        type: 'bar',
+        data: {
+            labels: ["홍길동", "아무개", "하하하", "성춘향", "호호호", '후후후'],
+            datasets: [{
+                label: "참여율",
+                fill: false,
+                lineTension: 0,
+                data: [75, 68, 83, 45, 52, 35],
+                pointBorderColor: "#4bc0c0",
+                borderColor: '#4bc0c0',
+                borderWidth: 2,
+                showLine: true,
+            }, 
+            // {
+            //     label: "Succes",
+            //     fill: false,
+            //     lineTension: 0,
+            //     startAngle: 2,
+            //     data: [20, 40, 20, 45, 25, 60],
+            //     // , '#ff6384', '#4bc0c0', '#ffcd56', '#457ba1'
+            //     backgroundColor: "transparent",
+            //     pointBorderColor: "#ff6384",
+            //     borderColor: '#ff6384',
+            //     borderWidth: 2,
+            //     showLine: true,
+            // }
+            ]
+        },
+        options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    // beginAtZero: true,
+                    suggestedMin: 0,
+                    suggestedMax: 100
+                   
+                }
+            }]
+        }
+    }
+    });
+    var Chart2 = document.getElementById('myChart2').getContext('2d');
+    var chart = new Chart(Chart2, {
+        type: 'line',
+        data: {
+            labels: ["07-15", "07-16", "07-17", "07-18", '07-19', '07-20', '07-21', '07-22'],
+            datasets: [{
+                label: "전체",
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 79, 116)',
+                borderWidth: 2,
+                pointBorderColor: false,
+                data: [80, 76, 35, 46, 58, 24, 97, 95],
+                fill: false,
+                lineTension: .4,
+
+            }, {
+                label: "자료실",
+                fill: false,
+                lineTension: .4,
+                startAngle: 2,
+                data: [20, 54, 20, 25, 40, 15, 67, 85],
+                // , '#ff6384', '#4bc0c0', '#ffcd56', '#457ba1'
+                backgroundColor: "transparent",
+                pointBorderColor: "#4bc0c0",
+                borderColor: '#4bc0c0',
+                borderWidth: 2,
+                showLine: true,
+            }, {
+                label: "게시판",
+                fill: false,
+                lineTension: .4,
+                startAngle: 2,
+                data: [60, 22, 15, 21, 18, 9, 30, 10],
+                // , '#ff6384', '#4bc0c0', '#ffcd56', '#457ba1'
+                backgroundColor: "transparent",
+                pointBorderColor: "#ffcd56",
+                borderColor: '#ffcd56',
+                borderWidth: 2,
+                showLine: true,
+            }]
+        },    // Configuration options
+        options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    // beginAtZero: true,
+                    suggestedMin: 10,
+                    suggestedMax: 100
+                   
+                }
+            }]
+        }
+    }
+    });
+
+    
+</script>
+
+<script src="../js/jquery-ui.js"></script>
+
+<script>
+    var dialog1 = document.getElementById('dialog1');
+    var myChart2 = new Chart(dialog1, {
+        type: 'bar',
+        data: {
+            labels: ["홍길동", "아무개", "하하하", "성춘향", "호호호", '후후후'],
+            datasets: [{
+                label: "참여율",
+                fill: false,
+                lineTension: 0,
+                data: [75, 68, 83, 45, 52, 35],
+                pointBorderColor: "#4bc0c0",
+                borderColor: '#4bc0c0',
+                borderWidth: 2,
+                showLine: true,
+            }, 
+            // {
+            //     label: "Succes",
+            //     fill: false,
+            //     lineTension: 0,
+            //     startAngle: 2,
+            //     data: [20, 40, 20, 45, 25, 60],
+            //     // , '#ff6384', '#4bc0c0', '#ffcd56', '#457ba1'
+            //     backgroundColor: "transparent",
+            //     pointBorderColor: "#ff6384",
+            //     borderColor: '#ff6384',
+            //     borderWidth: 2,
+            //     showLine: true,
+            // }
+            ]
+        },
+        options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    // beginAtZero: true,
+                    suggestedMin: 0,
+                    suggestedMax: 100
+                   
+                }
+            }]
+        }
+    }
+    });
+
+    // $("#dialog1").hide();
+
+   
+
+    $("#btn1").click(function () {
+        $("#myModal1").modal();
+
+    });
+
+
+    var dialog2 = document.getElementById('dialog2');
+    var myChart2 = new Chart(dialog2, {
+        type: 'line',
+        data: {
+            labels: ["07-15", "07-16", "07-17", "07-18", '07-19', '07-20', '07-21', '07-22'],
+            datasets: [{
+                label: "전체",
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 79, 116)',
+                borderWidth: 2,
+                pointBorderColor: false,
+                data: [80, 76, 35, 46, 58, 24, 97, 95],
+                fill: false,
+                lineTension: .4,
+            }, {
+                label: "자료실",
+                fill: false,
+                lineTension: .4,
+                startAngle: 2,
+                data: [20, 54, 20, 25, 40, 15, 67, 85],
+                // , '#ff6384', '#4bc0c0', '#ffcd56', '#457ba1'
+                backgroundColor: "transparent",
+                pointBorderColor: "#4bc0c0",
+                borderColor: '#4bc0c0',
+                borderWidth: 2,
+                showLine: true,
+            }, {
+                label: "게시판",
+                fill: false,
+                lineTension: .4,
+                startAngle: 2,
+                data: [60, 22, 15, 21, 18, 9, 30, 10],
+                // , '#ff6384', '#4bc0c0', '#ffcd56', '#457ba1'
+                backgroundColor: "transparent",
+                pointBorderColor: "#ffcd56",
+                borderColor: '#ffcd56',
+                borderWidth: 2,
+                showLine: true,
+            }]
+        },    // Configuration options
+        options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    // beginAtZero: true,
+                    suggestedMin: 0,
+                    suggestedMax: 100
+                   
+                }
+            }]
+        }
+    }
+    });
+
+    $("#btn2").click(function () {
+        $("#myModal2").modal();
+    });
+
+   
+
+
 </script>

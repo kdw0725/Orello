@@ -1,3 +1,9 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css"
+/>
 <style>
     #contentLeft {
         position: fixed;
@@ -136,7 +142,7 @@
         color: #5bc0de;
     }
 
-    /* ///////////////////////////////////////// */
+    /* //////////////////////////////////////// */
 
     #titleContainer {
         margin-left: 60px;
@@ -145,10 +151,13 @@
         width: 200px;
     }
 
-    #contentRight > #titleContainer > i {
-        font-size: 2.7em;
+    #titleicon {
         float: left;
-        padding-right: 20px;
+        width: 8px;
+        height: 35px;
+        background-color: #5bc0de;
+        margin-right: 10px;
+        margin-top: 7px;
     }
 
     #title {
@@ -156,21 +165,15 @@
     }
 
     #projectlist {
-        /* border-left: 1px solid #777;
-        border-right: 1px solid #777; */
         width: 845px;
-        /* height: 300px; */
         margin-left: 140px;
-        margin-top: 80px;
+        margin-top: 50px;
     }
 
-    /* #projectlist tr td:first-child:hover {
-        cursor: pointer;
-    } */
     #projectlist tr th {
         /* border: 1px solid black; */
-        background-color: #ddd;
-        font-size: 20px;
+        /* background-color: #ddd; */
+        font-size: 18px;
         text-align: center;
     }
 
@@ -179,7 +182,7 @@
     }
 
     #projectlist tr th:first-child {
-        width: 200px;
+        width: 50px;
     }
 
     #projectlist tr th:nth-child(2) {
@@ -193,6 +196,14 @@
     #projectlist tr td {
         /* border: 1px solid black; */
         text-align: center;
+    }
+
+    #projectlist tr:hover {
+        background-color: #eee;
+    }
+
+    #projectlist tr:hover th {
+        background-color: #fff;
     }
 
     #projectlist tr td:hover {
@@ -231,7 +242,13 @@
 
     .pagebar {
         margin-left: 350px;
-        margin-top: 50px;
+        /* margin-top: 30px; */
+        /* background: #5bc0de; */
+    }
+
+    .pagination li.active {
+        background-color: #5bc0de;
+        color: white;
     }
 </style>
 <div id="header"></div>
@@ -252,16 +269,12 @@
                 <div><i class="glyphicon glyphicon-home"></i>Home</div>
             </ul>
             <ul class="accordion parent">
-                <div onclick="location.href='summaryChart.html'">
-                    <i class="glyphicon glyphicon-calendar"></i>Chart
-                </div>
+                <div><i class="glyphicon glyphicon-calendar"></i>Chart</div>
                 <!-- <li class="panel"><div><i class="glyphicon glyphicon-minus"></i></div></li>
                 <li class="panel"><div><i class="glyphicon glyphicon-minus"></i></div></li>    -->
             </ul>
             <ul class="accordion">
-                <div onclick="location.href='projectList.html'">
-                    <i class="glyphicon glyphicon-check"></i>Project
-                </div>
+                <div><i class="glyphicon glyphicon-check"></i>Project</div>
             </ul>
             <ul class="accordion parent">
                 <div><i class="glyphicon glyphicon-list-alt"></i>Board</div>
@@ -297,87 +310,123 @@
     </div>
     <div id="contentRight">
         <div id="titleContainer">
-            <i class="glyphicon glyphicon-folder-open"></i>
-            <div id="title">Project</div>
+            <div id="titleicon"></div>
+            <div id="title">Q&A</div>
         </div>
 
-        <table id="projectlist" class="table table-hover">
+        <table id="projectlist" class="table">
             <tr>
-                <th>Project Name</th>
-                <th>Team Name</th>
-                <th>Start Date</th>
-                <th>Finish Date</th>
-                <th>State</th>
+                <th>Number</th>
+                <th>Title</th>
+                <th>Writer</th>
+                <th>Date</th>
+                <th>Check</th>
             </tr>
-            <tr
-                title="클릭시 상세정보"
-                onclick="location.href='projectListSub.html'"
-            >
-                <td class="projectname">projectName1</td>
-                <td class="teamname">TeamName1</td>
-                <td class="startdate">2020-03-20</td>
+            <tr class="trbox" onclick="location.href='qnaSub.html'">
+                <td class="projectname">1</td>
+                <td class="teamname">질문있습니다.</td>
+                <td class="startdate">홍길동</td>
                 <td class="finishdate">2020-03-20</td>
-                <td class="state">End</td>
+                <td class="state">10</td>
             </tr>
             <tr
                 title="클릭시 상세정보"
                 onclick="location.href='projectListSub.html'"
             >
-                <td class="projectname">projectName2</td>
-                <td class="teamname">TeamName2</td>
-                <td class="startdate">2020-04-01</td>
+                <td class="projectname">2</td>
+                <td class="teamname">무선 네트워크 문의 드립니다.</td>
+                <td class="startdate">하하하</td>
                 <td class="finishdate">2020-04-30</td>
-                <td class="state">End</td>
+                <td class="state">56</td>
             </tr>
             <tr
                 title="클릭시 상세정보"
                 onclick="location.href='projectListSub.html'"
             >
-                <td class="projectname">projectName3</td>
-                <td class="teamname">TeamName3</td>
-                <td class="startdate">2020-04-05</td>
+                <td class="projectname">3</td>
+                <td class="teamname">채팅창 문의</td>
+                <td class="startdate">아무개</td>
                 <td class="finishdate">2020-04-28</td>
-                <td class="state">End</td>
+                <td class="state">230</td>
             </tr>
             <tr
                 title="클릭시 상세정보"
                 onclick="location.href='projectListSub.html'"
             >
-                <td class="projectname">projectName4</td>
-                <td class="teamname">TeamName4</td>
-                <td class="startdate">2020-05-16</td>
+                <td class="projectname">4</td>
+                <td class="teamname">관리자 문의</td>
+                <td class="startdate">호호호</td>
                 <td class="finishdate">2020-06-02</td>
-                <td class="state">End</td>
+                <td class="state">256</td>
             </tr>
             <tr
                 title="클릭시 상세정보"
                 onclick="location.href='projectListSub.html'"
             >
-                <td class="projectname">projectName5</td>
-                <td class="teamname">TeamName5</td>
-                <td class="startdate">2020-06-20</td>
+                <td class="projectname">5</td>
+                <td class="teamname">캘린더 이용에 대해 문의드립니다~</td>
+                <td class="startdate">김김김</td>
                 <td class="finishdate">2020-07-01</td>
-                <td class="state">End</td>
+                <td class="state">389</td>
             </tr>
             <tr
                 title="클릭시 상세정보"
                 onclick="location.href='projectListSub.html'"
             >
-                <td class="projectname">projectName6</td>
-                <td class="teamname">TeamName6</td>
-                <td class="startdate">2020-07-15</td>
-                <td class="finishdate">-</td>
-                <td class="state">Ing</td>
+                <td class="projectname">6</td>
+                <td class="teamname">체크리스트가 오류납니다.</td>
+                <td class="startdate">이이이</td>
+                <td class="finishdate">2020-07-05</td>
+                <td class="state">854</td>
+            </tr>
+            <tr
+                title="클릭시 상세정보"
+                onclick="location.href='projectListSub.html'"
+            >
+                <td class="projectname">7</td>
+                <td class="teamname">오류문의</td>
+                <td class="startdate">박박박</td>
+                <td class="finishdate">2020-07-07</td>
+                <td class="state">123</td>
+            </tr>
+            <tr
+                title="클릭시 상세정보"
+                onclick="location.href='projectListSub.html'"
+            >
+                <td class="projectname">8</td>
+                <td class="teamname">로그인 오류 문의드립니다</td>
+                <td class="startdate">최이박</td>
+                <td class="finishdate">2020-07-10</td>
+                <td class="state">51</td>
+            </tr>
+            <tr
+                title="클릭시 상세정보"
+                onclick="location.href='projectListSub.html'"
+            >
+                <td class="projectname">9</td>
+                <td class="teamname">회원가입이 안돼요</td>
+                <td class="startdate">이최한</td>
+                <td class="finishdate">2020-07-11</td>
+                <td class="state">28</td>
+            </tr>
+            <tr
+                title="클릭시 상세정보"
+                onclick="location.href='projectListSub.html'"
+            >
+                <td class="projectname">10</td>
+                <td class="teamname">페이지 오류</td>
+                <td class="startdate">채채채</td>
+                <td class="finishdate">2020-07-20</td>
+                <td class="state">10</td>
             </tr>
         </table>
 
         <div id="typecontainer">
             <select name="type" class="form-control">
-                <option value="1">Project Name</option>
-                <option value="2">Team Name</option>
-                <option value="3">Start Date</option>
-                <option value="4">Finish Date</option>
-                <option value="5">State</option>
+                <option value="1">Number</option>
+                <option value="2">Title</option>
+                <option value="3">Writer</option>
+                <option value="4">Date</option>
             </select>
 
             <!-- 검색창 -->
@@ -432,15 +481,8 @@
         $("#header").load("../include/header.html");
         $("#footer").load("../include/footer.html");
     });
-</script>
 
-<script>
-    $(document).ready(function () {
-        $("#header").load("../include/header.html");
-        $("#footer").load("../include/footer.html");
-    });
-
-    //상자에 마우스 오버시 해당 차트의 보더가 두꺼워진다.
+    // //상자에 마우스 오버시 해당 차트의 보더가 두꺼워진다.
     // $("#box_page").mouseover(function () {});
     // // 메뉴 상단에 프로젝트 정보 출력하기
     // $("#projectName").append("Project Name");
@@ -471,76 +513,4 @@
             this.classList.toggle("active");
         });
     }
-</script>
-
-<script>
-    var sel1 = document.all.type;
-    var searchbtn = document.all.searchbtn;
-    var textbox = document.getElementById("textbox");
-    var projectname = document.getElementsByClassName("projectname");
-    var teamname = document.getElementsByClassName("teamname");
-    var startdate = document.getElementsByClassName("startdate");
-    var finishdate = document.getElementsByClassName("finishdate");
-    var state = document.getElementsByClassName("state");
-    var tblproject = document.getElementById("projectlist");
-    var tr = document.getElementById("projectlist").firstElementChild.children;
-
-    searchbtn.onclick = function () {
-        if (textbox.value == "") {
-        } else {
-            if (sel1.selectedIndex == 0) {
-                for (var i = 0; i < tr.length - 1; i++) {
-                    if (
-                        projectname[i].innerText
-                            .toLowerCase()
-                            .indexOf(textbox.value.toLowerCase()) == -1
-                    ) {
-                        tr[i + 1].style.display = "none";
-                    } else {
-                        tr[i + 1].style.display = "";
-                    }
-                }
-            } else if (sel1.selectedIndex == 1) {
-                for (var i = 0; i < tr.length - 1; i++) {
-                    if (
-                        teamname[i].innerText
-                            .toLowerCase()
-                            .indexOf(textbox.value.toLowerCase()) == -1
-                    ) {
-                        tr[i + 1].style.display = "none";
-                    } else {
-                        tr[i + 1].style.display = "";
-                    }
-                }
-            } else if (sel1.selectedIndex == 2) {
-                for (var i = 0; i < tr.length - 1; i++) {
-                    if (startdate[i].innerText.indexOf(textbox.value) == -1) {
-                        tr[i + 1].style.display = "none";
-                    } else {
-                        tr[i + 1].style.display = "";
-                    }
-                }
-            } else if (sel1.selectedIndex == 3) {
-                for (var i = 0; i < tr.length - 1; i++) {
-                    if (finishdate[i].innerText.indexOf(textbox.value) == -1) {
-                        tr[i + 1].style.display = "none";
-                    } else {
-                        tr[i + 1].style.display = "";
-                    }
-                }
-            } else if (sel1.selectedIndex == 4) {
-                for (var i = 0; i < tr.length - 1; i++) {
-                    if (
-                        state[i].innerText
-                            .toLowerCase()
-                            .indexOf(textbox.value.toLowerCase()) == -1
-                    ) {
-                        tr[i + 1].style.display = "none";
-                    } else {
-                        tr[i + 1].style.display = "";
-                    }
-                }
-            }
-        }
-    };
 </script>

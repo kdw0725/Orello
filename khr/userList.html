@@ -20,7 +20,7 @@
         /* border-left: 1px solid #777;
         border-right: 1px solid #777; */
         width: 845px;
-        height: 300px;
+        /* height: 300px; */
         margin-left: 140px;
         margin-top: 80px;
     }
@@ -115,54 +115,54 @@
                 title="클릭시 상세정보"
                 onclick="location.href='userListSub.html'"
             >
-                <td>UserName1</td>
-                <td>42</td>
-                <td>Nn1</td>
+                <td class="username">UserName1</td>
+                <td class="age">42</td>
+                <td class="nickname">Nn1</td>
                 <td>5000</td>
             </tr>
             <tr
                 title="클릭시 상세정보"
                 onclick="location.href='userListSub.html'"
             >
-                <td>UserName2</td>
-                <td>30</td>
-                <td>Nn2</td>
+                <td class="username">UserName2</td>
+                <td class="age">30</td>
+                <td class="nickname">Nn2</td>
                 <td>0</td>
             </tr>
             <tr
                 title="클릭시 상세정보"
                 onclick="location.href='userListSub.html'"
             >
-                <td>UserName3</td>
-                <td>35</td>
-                <td>Nn3</td>
+                <td class="username">UserName3</td>
+                <td class="age">35</td>
+                <td class="nickname">Nn3</td>
                 <td>2000</td>
             </tr>
             <tr
                 title="클릭시 상세정보"
                 onclick="location.href='userListSub.html'"
             >
-                <td>UserName4</td>
-                <td>50</td>
-                <td>Nn4</td>
+                <td class="username">UserName4</td>
+                <td class="age">50</td>
+                <td class="nickname">Nn4</td>
                 <td>1300</td>
             </tr>
             <tr
                 title="클릭시 상세정보"
                 onclick="location.href='userListSub.html'"
             >
-                <td>UserName5</td>
-                <td>24</td>
-                <td>Nn5</td>
+                <td class="username">UserName5</td>
+                <td class="age">24</td>
+                <td class="nickname">Nn5</td>
                 <td>0</td>
             </tr>
             <tr
                 title="클릭시 상세정보"
                 onclick="location.href='userListSub.html'"
             >
-                <td>UserName6</td>
-                <td>25</td>
-                <td>Nn6</td>
+                <td class="username">UserName6</td>
+                <td class="age">25</td>
+                <td class="nickname">Nn6</td>
                 <td>1100</td>
             </tr>
         </table>
@@ -172,20 +172,20 @@
                 <option value="1">User Name</option>
                 <option value="2">Age</option>
                 <option value="3">NickName</option>
-                <option value="4">Point</option>
             </select>
 
             <!-- 검색창 -->
             <div class="search">
                 <div class="form-group">
                     <div class="input-group">
-                        <span class="input-group-addon"
+                        <span class="input-group-addon" id="searchbtn"
                             ><i class="glyphicon glyphicon-search"></i
                         ></span>
                         <input
                             type="text"
                             class="form-control"
                             placeholder="검색어를 입력하세요."
+                            id="textbox"
                         />
                     </div>
                 </div>
@@ -226,4 +226,58 @@
         $("#header").load("../include/header.html");
         $("#footer").load("../include/footer.html");
     });
+</script>
+
+<script>
+    var sel1 = document.all.type;
+    var searchbtn = document.all.searchbtn;
+    var textbox = document.getElementById("textbox");
+    var username = document.getElementsByClassName("username");
+    var age = document.getElementsByClassName("age");
+    var nickname = document.getElementsByClassName("nickname");
+    var tblproject = document.getElementById("projectlist");
+    var tr = document.getElementById("projectlist").firstElementChild.children;
+
+    searchbtn.onclick = function () {
+        if (textbox.value == "") {
+        } else {
+            if (sel1.selectedIndex == 0) {
+                for (var i = 0; i < tr.length - 1; i++) {
+                    if (
+                        username[i].innerText
+                            .toLowerCase()
+                            .indexOf(textbox.value.toLowerCase()) == -1
+                    ) {
+                        tr[i + 1].style.display = "none";
+                    } else {
+                        tr[i + 1].style.display = "";
+                    }
+                }
+            } else if (sel1.selectedIndex == 1) {
+                for (var i = 0; i < tr.length - 1; i++) {
+                    if (
+                        age[i].innerText
+                            .toLowerCase()
+                            .indexOf(textbox.value.toLowerCase()) == -1
+                    ) {
+                        tr[i + 1].style.display = "none";
+                    } else {
+                        tr[i + 1].style.display = "";
+                    }
+                }
+            } else if (sel1.selectedIndex == 2) {
+                for (var i = 0; i < tr.length - 1; i++) {
+                    if (
+                        nickname[i].innerText
+                            .toLowerCase()
+                            .indexOf(textbox.value.toLowerCase()) == -1
+                    ) {
+                        tr[i + 1].style.display = "none";
+                    } else {
+                        tr[i + 1].style.display = "";
+                    }
+                }
+            }
+        }
+    };
 </script>
