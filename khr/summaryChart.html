@@ -1,0 +1,1347 @@
+<script src="../js/highcharts.js"></script>
+<script
+    type="text/javascript"
+    src="https://canvasjs.com/assets/script/canvasjs.min.js"
+></script>
+<style>
+    #contentLeft {
+        position: fixed;
+    }
+    #contentLeft * {
+        /* border: 1px solid gray; */
+    }
+    /* 메뉴 위 프로젝트 정보 */
+    #contentLeft > #projectInfo {
+        width: 250px;
+        height: 200px;
+        margin: 30px auto;
+        text-align: center;
+        position: relative;
+        top: 0px;
+        left: 0px;
+    }
+    #contentLeft #projectName {
+        width: 150px;
+        height: 150px;
+        /* border: 1px solid black; */
+        margin: 0 auto;
+        margin-top: 50px;
+        font-size: 1.5em;
+        background-image: url(../images/woman_04.png);
+        background-repeat: no-repeat;
+        background-size: 150px 150px;
+    }
+    #contentLeft #projectPeriod {
+        margin-top: 20px;
+        font-size: 23px;
+        font-style: italic;
+    }
+    #contentLeft #projectContent {
+        margin-top: 10px;
+        /* font-style: italic; */
+    }
+    #contentLeft #projectMember {
+        width: 100%;
+        height: 60px;
+        position: relative;
+        top: 0;
+        left: 0;
+        /* bottom: 30px; */
+        margin-top: 30px;
+    }
+    #projectMember .profilePic {
+        width: 50px;
+        height: 50px;
+        border: 3px solid white;
+        border-radius: 25px;
+        box-shadow: 3px 3px 2px #ccc;
+        display: inline-block;
+        background-color: #ccc;
+        background-repeat: no-repeat;
+        background-size: contain;
+        margin-left: -10px;
+    }
+    #projecMember .profilePic:first-child {
+        margin-left: 0px;
+    }
+
+    #projectMember .profilePic:hover {
+        transform: translate(0px, -15px);
+        transition: tranform 0.5s;
+    }
+    /* 메뉴 */
+    #contentLeft > #menu {
+        width: 230px;
+        min-height: 400px;
+        margin: 100px auto;
+        /* border: 1px solid black; */
+    }
+    #contentLeft #menu ul,
+    #menu li {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        background-color: transparent;
+        cursor: pointer;
+        box-shadow: 0px 0px 0px white;
+    }
+    #contentLeft #menu .accordion > div,
+    #menu .panel > div {
+        margin: 0 auto;
+        padding-left: 10px;
+        padding-top: 9px;
+        border-bottom: 1px solid #999;
+        height: 40px;
+        padding-right: 10px;
+    }
+    #contentLeft #menu .panel > div {
+        margin-left: 30px;
+    }
+    #contentLeft #menu ul.active > div {
+        color: #5bc0de;
+        border-bottom: 1px solid #5bc0de;
+    }
+    #contentLeft #menu > ul.active > div > i {
+        color: #5bc0de;
+    }
+    #contentLeft #menu > ul.active li {
+        display: block;
+    }
+    #contentLeft #menu ul i {
+        margin-right: 10px;
+        color: #555;
+    }
+    #contentLeft #menu li.panel {
+        display: none;
+    }
+    #contentLeft #menu ul.parent > div::after {
+        content: "\f078";
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        float: right;
+    }
+    #contentLeft #menu ul.active.parent > div::after {
+        content: "\f077";
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        float: right;
+    }
+    #contentLeft #menu ul:hover > div {
+        color: #5bc0de;
+        border-bottom: 1px solid #5bc0de;
+    }
+    #contentLeft #menu ul:hover > div > i {
+        color: #5bc0de;
+    }
+    #contentLeft #menu li:hover > div {
+        color: #5bc0de;
+        border-bottom: 1px solid #5bc0de;
+    }
+    #contentLeft #menu li:hover > div > i {
+        color: #5bc0de;
+    }
+
+    /* //////////////////////////////////////// */
+
+    #contentRight {
+        /* width: 100%;
+        height: 100%; */
+        background-color: #f8f9fa;
+    }
+
+    #titleContainer {
+        margin-left: 60px;
+        margin-top: 50px;
+        /* border: 1px solid black; */
+        width: 300px;
+    }
+
+    #titleicon {
+        float: left;
+        width: 8px;
+        height: 35px;
+        background-color: #5bc0de;
+        margin-right: 10px;
+        margin-top: 7px;
+    }
+
+    #title {
+        font-size: 2.5em;
+    }
+
+    #user_time {
+        float: left;
+        width: 500px;
+        height: 300px;
+        /* border: 1px solid black; */
+        margin-left: 60px;
+        margin-top: 30px;
+    }
+
+    #pl {
+        width: 250px;
+        height: 300px;
+        /* border: 1px solid black; */
+        float: right;
+        margin-top: 30px;
+        margin-right: 60px;
+    }
+
+    #pl:hover {
+        cursor: pointer;
+    }
+
+    #point_date {
+        clear: both;
+        width: 200px;
+        height: 120px;
+        /* border: 1px solid black; */
+        background-color: white;
+        float: left;
+        margin-left: 60px;
+        margin-top: 30px;
+    }
+
+    #point_date > i {
+        /* margin-top: 30px; */
+        float: right;
+        padding-top: 7px;
+        margin-right: 5px;
+        color: #333;
+        /* position: absolute; */
+    }
+
+    #point_date:hover {
+        cursor: pointer;
+    }
+
+    #pointmenu {
+        /* border: 1px solid black; */
+        float: left;
+        list-style: none;
+        float: right;
+        position: relative;
+        font-size: 14px;
+        margin-right: -10px;
+        margin-top: 15px;
+        background-color: #eee;
+
+        /* display: none; */
+    }
+
+    #point_date > span {
+        clear: both;
+        float: left;
+        display: block;
+        text-align: center;
+        padding-top: 7px;
+        margin-left: 7px;
+        font-size: 16px;
+    }
+
+    #point_date > #pbarChart1 {
+        clear: both;
+        width: 20px;
+        height: 70px;
+        /* border: 1px solid black; */
+        float: left;
+        margin-left: 30px;
+        margin-top: 10px;
+        background-color: #d9534f;
+    }
+    #point_date > #pbarChart2 {
+        width: 20px;
+        height: 50px;
+        /* border: 1px solid black; */
+        float: left;
+        /* margin-left: 50px; */
+        margin-top: 30px;
+        background-color: #337ab7;
+    }
+    #point_date > #pbarChart3 {
+        width: 20px;
+        height: 30px;
+        /* border: 1px solid black; */
+        float: left;
+        /* margin-left: 50px; */
+        margin-top: 50px;
+        background-color: #5cb85c;
+    }
+
+    #point_date > #pbarText {
+        width: 80px;
+        height: 60px;
+        /* border: 1px solid black; */
+        float: right;
+        margin-right: 10px;
+        margin-top: 10px;
+    }
+
+    #point_date > #pbarText > span {
+        display: block;
+        padding-bottom: 5px;
+    }
+
+    #join_date {
+        float: left;
+        width: 200px;
+        height: 120px;
+        /* border: 1px solid black; */
+        margin-top: 30px;
+        margin-left: 30px;
+        background-color: white;
+    }
+
+    #join_date:hover {
+        cursor: pointer;
+    }
+
+    #join_date > span {
+        display: block;
+        text-align: center;
+        padding-top: 7px;
+        font-size: 16px;
+    }
+
+    #join_date > #jbarChart1 {
+        width: 20px;
+        height: 70px;
+        /* border: 1px solid black; */
+        float: left;
+        margin-left: 30px;
+        margin-top: 10px;
+        background-color: #d9534f;
+    }
+    #join_date > #jbarChart2 {
+        width: 20px;
+        height: 50px;
+        /* border: 1px solid black; */
+        float: left;
+        /* margin-left: 50px; */
+        margin-top: 30px;
+        background-color: #337ab7;
+    }
+    #join_date > #jbarChart3 {
+        width: 20px;
+        height: 30px;
+        /* border: 1px solid black; */
+        float: left;
+        /* margin-left: 50px; */
+        margin-top: 50px;
+        background-color: #5cb85c;
+    }
+
+    #join_date > #jbarText {
+        width: 80px;
+        height: 60px;
+        /* border: 1px solid black; */
+        float: right;
+        margin-right: 10px;
+        margin-top: 25px;
+    }
+
+    #join_date > #jbarText > span {
+        display: block;
+        padding-bottom: 5px;
+    }
+
+    #join_date > .plusIcon {
+        width: 200px;
+        height: 120px;
+        /* background-color: red; */
+        z-index: 0;
+        position: relative;
+        margin-top: -30px;
+    }
+
+    #join_date > .plusIcon > i {
+        display: block;
+        text-align: center;
+        font-size: 2.2em;
+        /* padding-top: 5px; */
+        display: none;
+    }
+
+    #project_month {
+        clear: both;
+        width: 430px;
+        height: 130px;
+        margin-top: 30px;
+        /* border: 1px solid black; */
+        margin-left: 60px;
+        float: left;
+        background-color: white;
+    }
+
+    #project_month:hover {
+        cursor: pointer;
+    }
+
+    #project_month > span {
+        display: block;
+        text-align: center;
+        padding-top: 7px;
+        font-size: 16px;
+    }
+
+    #chating_time {
+        float: right;
+        width: 320px;
+        height: 280px;
+        /* border: 1px solid black; */
+        /* margin-bottom: 100px; */
+        margin-top: -120px;
+        margin-right: 60px;
+    }
+
+    #chating_time:hover {
+        cursor: pointer;
+    }
+
+
+
+    /* .modal-body {
+        display: block;
+        width: 800px;
+        height: 300px;
+    } */
+</style>
+<div id="header"></div>
+<section id="content" class="container">
+    <div id="contentLeft">
+        <div id="projectInfo">
+            <div id="projectName"></div>
+            <div id="projectPeriod">
+                Manager Name
+            </div>
+            <div id="projectContent">
+                lorem1234@gmail.com
+            </div>
+            <div id="projectMember"></div>
+        </div>
+        <div id="menu">
+            <ul class="accordion">
+                <div><i class="glyphicon glyphicon-home"></i>Home</div>
+            </ul>
+            <ul class="accordion parent">
+                <div onclick="location.href='summaryChart.html'">
+                    <i class="glyphicon glyphicon-calendar"></i>Chart
+                </div>
+                <!-- <li class="panel"><div><i class="glyphicon glyphicon-minus"></i></div></li>
+                <li class="panel"><div><i class="glyphicon glyphicon-minus"></i></div></li>    -->
+            </ul>
+            <ul class="accordion">
+                <div onclick="location.href='projectList.html'">
+                    <i class="glyphicon glyphicon-check"></i>Project
+                </div>
+            </ul>
+            <ul class="accordion parent">
+                <div><i class="glyphicon glyphicon-list-alt"></i>Board</div>
+                <li class="panel">
+                    <div><i class="glyphicon glyphicon-minus"></i>Notice</div>
+                </li>
+                <li class="panel">
+                    <div><i class="glyphicon glyphicon-minus"></i>Codes</div>
+                </li>
+                <li class="panel">
+                    <div><i class="glyphicon glyphicon-minus"></i>Free</div>
+                </li>
+            </ul>
+            <ul class="accordion">
+                <div><i class="glyphicon glyphicon-hdd"></i>Files</div>
+            </ul>
+            <!-- <ul class="accordion"><div><i class="fas fa-code-branch"></i>Git</div></ul> -->
+            <ul class="accordion">
+                <div><i class="glyphicon glyphicon-user"></i>User</div>
+            </ul>
+
+            <!-- Email 카테고리 추가 -->
+            <!-- <ul class="accordion">
+                <div onclick="location.href='http:mail.google.com'">
+                    <i class="glyphicon glyphicon-envelope"></i>Email
+                </div>
+            </ul> -->
+
+            <ul class="accordion">
+                <div><i class="glyphicon glyphicon-comment"></i>FAQ</div>
+            </ul>
+        </div>
+    </div>
+    <div id="contentRight">
+        <!-- <script src="https://code.highcharts.com/highcharts.js"></script> -->
+        <script src="https://code.highcharts.com/modules/variable-pie.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/modules/export-data.js"></script>
+        <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+        <div id="titleContainer">
+            <div id="titleicon"></div>
+            <div id="title">Summary Chart</div>
+        </div>
+
+        <!-- 실시간 접속 인원 차트 박스 -->
+        <div id="user_time"></div>
+
+        <!-- 자주 사용하는 PL 차트 박스 -->
+        <div id="pl"></div>
+
+        <!-- 날짜별 포인트 사용량 차트 박스 -->
+        <div id="point_date">
+            <span>포인트 사용량</span>
+            <!-- <i class="glyphicon glyphicon-menu-hamburger"></i>
+            <div id="pointmenu">
+                <li>날짜별</li>
+                <li>회원별</li>
+            </div> -->
+            <div id="pbarChart1"></div>
+            <div id="pbarChart2"></div>
+            <div id="pbarChart3"></div>
+            <div id="pbarText">
+                <span><strong>3,560P</strong></span>
+                <p>2020-07-23</p>
+            </div>
+        </div>
+
+        <!-- 날짜별 회원가입 수 차트 박스 -->
+        <div id="join_date">
+            <span>날짜별 회원가입 수</span>
+            <div id="jbarChart1"></div>
+            <div id="jbarChart2"></div>
+            <div id="jbarChart3"></div>
+            <div id="jbarText">
+                <span><strong>3.5k</strong></span>
+                <p>2020-07-23</p>
+            </div>
+        </div>
+
+        <!-- 월별 프로젝트 생성 수 차트 박스 -->
+        <div id="project_month">
+            <span>월별 프로젝트 생성수</span>
+        </div>
+
+        <!-- 실시간 채팅 빈도수 차트 박스 -->
+        <div id="chating_time"></div>
+
+        <!-- ////////////Modal//////////// -->
+        <div
+            class="modal fade"
+            id="myModal1"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="myModalLabel"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog">
+                <div class="modal-content" style="background-color: #fff;">
+                    <div class="modal-header">
+                        <button
+                            type="button"
+                            class="close"
+                            data-dismiss="modal"
+                            aria-label="Close"
+                        >
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h3>자주 사용하는 Programming Language</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="chart-container" id="dialog1">
+                            <!-- <canvas id="dialog1"></canvas> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- second modal -->
+        <div
+            class="modal fade"
+            id="myModal2"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="myModalLabel"
+            aria-hidden="true"
+            z-index:1050;
+        >
+            <div class="modal-dialog">
+                <div class="modal-content" style="background-color: #fff;">
+                    <div class="modal-header">
+                        <button
+                            type="button"
+                            class="close"
+                            data-dismiss="modal"
+                            aria-label="Close"
+                        >
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h3>회원별</h3>
+                        <p>2020-07-23</p>
+                    </div>
+                    <div class="modal-body">
+                        <div class="chart-container">
+                            <!-- <canvas id="dialog2_1"> -->
+                                <table id="memberpoint" class="table table-bordered">
+                                    <tr>
+                                        <th>회원명</th>
+                                        <th>회원 아이디</th>
+                                        <th>포인트 사용량</th>
+                                        <th>포인트 누적사용량</th>
+                                    </tr>
+                                    <tr>
+                                        <td>홍길동</td>
+                                        <td>hong123</td>
+                                        <td>1,020p</td>
+                                        <td>3,546p</td>
+                                    </tr>
+                                    <tr>
+                                        <td>아무개</td>
+                                        <td>ahahahah111</td>
+                                        <td>523p</td>
+                                        <td>45,306p</td>
+                                    </tr>
+                                    <tr>
+                                        <td>하하하</td>
+                                        <td>haha777</td>
+                                        <td>846p</td>
+                                        <td>85,001p</td>
+                                    </tr>
+                                    <tr>
+                                        <td>호호호</td>
+                                        <td>hohhh1212</td>
+                                        <td>716p</td>
+                                        <td>21,335p</td>
+                                    </tr>
+                                </table>
+                            <!-- </canvas> -->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <!-- <a href="#" data-dismiss="modal" class="btn">Close</a> -->
+                        <button type="button" class="btn btn-info" id="btnmodal" style="outline:none;">날짜별</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- first modal -->
+        <div
+            class="modal fade"
+            id="myModal2_1"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="myModalLabel"
+            aria-hidden="true"
+            z-index:1060;
+        >
+            <div class="modal-dialog">
+                <div class="modal-content" style="background-color: #fff;">
+                    <div class="modal-header">
+                        <button
+                            type="button"
+                            class="close"
+                            data-dismiss="modal"
+                            aria-label="Close"
+                        >
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h3>날짜별</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="chart-container">
+                            <canvas id="dialog2"></canvas>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+
+        <div
+            class="modal fade"
+            id="myModal3"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="myModalLabel"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog">
+                <div class="modal-content" style="background-color: #fff;">
+                    <div class="modal-header">
+                        <button
+                            type="button"
+                            class="close"
+                            data-dismiss="modal"
+                            aria-label="Close"
+                        >
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h3>날짜별 회원가입 수</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="chart-container">
+                            <canvas id="dialog3"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div
+            class="modal fade"
+            id="myModal4"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="myModalLabel"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog">
+                <div class="modal-content" style="background-color: #fff;">
+                    <div class="modal-header">
+                        <button
+                            type="button"
+                            class="close"
+                            data-dismiss="modal"
+                            aria-label="Close"
+                        >
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h3>실시간 채팅 빈도수</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="chart-container" id="dialog4">
+                            <!-- <canvas id="dialog4"></canvas> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div
+            class="modal fade"
+            id="myModal5"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="myModalLabel"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog">
+                <div class="modal-content" style="background-color: #fff;">
+                    <div class="modal-header">
+                        <button
+                            type="button"
+                            class="close"
+                            data-dismiss="modal"
+                            aria-label="Close"
+                        >
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h3>월별 프로젝트 생성수</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="chart-container" id="dialog5">
+                            <!-- <canvas id="dialog5"></canvas> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div id="footer"></div>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#header").load("../include/header.html");
+        $("#footer").load("../include/footer.html");
+
+        // //상자에 마우스 오버시 해당 차트의 보더가 두꺼워진다.
+        // $("#box_page").mouseover(function () {});
+        // // 메뉴 상단에 프로젝트 정보 출력하기
+        // $("#projectName").append("Project Name");
+        // $("#projectPeriod").append("<span>2020.07.01 ~ 2020.07.10</span><br>");
+        // for (var i = 0; i < 5; i++) {
+        //     $("#projectMember").append("<div class='profilePic'></div>");
+        // }
+        // var profilePic = document.getElementsByClassName("profilePic");
+        // for (var i = 0; i < 5; i++) {
+        //     profilePic[i].setAttribute(
+        //         "style",
+        //         `background-image: url('../images/${i}.png')`
+        //     );
+        // }
+
+        //클릭한 메뉴만 표시되도록
+        $(".list-group > a").click(function () {
+            $(".list-group > a").removeClass("active");
+            $(this).addClass("active");
+        });
+
+        //아코디언 메뉴
+        var acc = document.getElementsByClassName("parent");
+        for (var i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function () {
+                var li = $(this).children("li");
+                li.slideToggle(1000);
+                this.classList.toggle("active");
+            });
+        }
+    });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+<script type="text/javascript">
+    Highcharts.chart("user_time", {
+        title: {
+            text: "실시간 접속 인원",
+        },
+
+        subtitle: {
+            text: "오전 9시 측정",
+        },
+
+        yAxis: {
+            title: {
+                text: "접속 인원(명)",
+            },
+        },
+
+        xAxis: {
+            accessibility: {
+                rangeDescription: "Range: 2010 to 2017",
+            },
+        },
+
+        legend: {
+            layout: "vertical",
+            align: "right",
+            verticalAlign: "middle",
+        },
+
+        plotOptions: {
+            series: {
+                label: {
+                    connectorAllowed: false,
+                },
+                pointStart: 1,
+            },
+        },
+
+        series: [
+            {
+                name: "인원수",
+                data: [70, 69, 71, 73, 75, 79, 86, 72, 69, 68, 70, 71],
+            },
+        ],
+
+        responsive: {
+            rules: [
+                {
+                    condition: {
+                        maxWidth: 500,
+                    },
+                    chartOptions: {
+                        legend: {
+                            layout: "horizontal",
+                            align: "center",
+                            verticalAlign: "bottom",
+                        },
+                    },
+                },
+            ],
+        },
+        user_time: {
+            bgColor: "#eee",
+        },
+    });
+
+    Highcharts.chart("pl", {
+        chart: {
+            type: "bar",
+        },
+        title: {
+            text: "자주 사용하는 PL",
+        },
+        xAxis: {
+            categories: ["C", "C++", "Java", "Python", "C#"],
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: "Total fruit consumption",
+            },
+        },
+        legend: {
+            reversed: true,
+        },
+        plotOptions: {
+            series: {
+                stacking: "normal",
+            },
+        },
+        series: [
+            {
+                name: "John",
+                data: [5, 3, 4, 7, 2],
+            },
+            {
+                name: "Jane",
+                data: [2, 2, 3, 2, 1],
+            },
+            {
+                name: "Joe",
+                data: [3, 4, 4, 2, 5],
+            },
+        ],
+    });
+
+    var chat = Highcharts.chart("chating_time", {
+        title: {
+            text: "실시간 채팅 빈도수",
+        },
+
+        subtitle: {
+            text: "오전 9시 측정",
+        },
+
+        yAxis: {
+            title: {
+                text: "빈도수(번)",
+            },
+        },
+
+        xAxis: {
+            accessibility: {
+                rangeDescription: "Range: 2010 to 2017",
+            },
+        },
+
+        legend: {
+            layout: "vertical",
+            align: "right",
+            verticalAlign: "middle",
+        },
+
+        plotOptions: {
+            series: {
+                label: {
+                    connectorAllowed: false,
+                },
+                pointStart: 1,
+            },
+        },
+
+        series: [
+            {
+                name: "빈도수",
+                data: [
+                    100,
+                    862,
+                    732,
+                    4832,
+                    4246,
+                    5835,
+                    19853,
+                    19885,
+                    24854,
+                    9425,
+                    12123,
+                    15321,
+                ],
+                color: "#D9534F",
+            },
+        ],
+
+        responsive: {
+            rules: [
+                {
+                    condition: {
+                        maxWidth: 500,
+                    },
+                    chartOptions: {
+                        legend: {
+                            layout: "horizontal",
+                            align: "center",
+                            verticalAlign: "bottom",
+                        },
+                    },
+                },
+            ],
+        },
+        user_time: {
+            bgColor: "#eee",
+        },
+    });
+
+    chat.setSize(320, 270);
+
+    var projectChart = Highcharts.chart("project_month", {
+        chart: {
+            type: "line",
+        },
+        title: {
+            text: "월별 프로젝트 생성 수",
+        },
+        // subtitle: {
+        //     text: "Source: WorldClimate.com",
+        // },
+        // xAxis: {
+        //     categories: ["1월", "2월", "3월"],
+        // },
+        yAxis: {
+            title: {
+                text: "생성수(수)",
+            },
+            min: 0,
+            max: 100,
+        },
+        plotOptions: {
+            line: {
+                dataLabels: {
+                    enabled: true,
+                },
+                enableMouseTracking: false,
+            },
+        },
+        series: [
+            {
+                name: "프로젝트",
+                data: [36, 69, 95],
+                color: "#5cb85c",
+            },
+        ],
+    });
+
+    projectChart.setSize(430, 150);
+
+    // 자주 사용하는 프로그래밍 언어 모달창 차트
+    var dia1 = Highcharts.chart("dialog1", {
+        chart: {
+            type: "bar",
+        },
+        // title: {
+        //     text: none,
+        // },
+        xAxis: {
+            categories: ["C", "C++", "Java", "Python", "C#"],
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: "Total fruit consumption",
+            },
+        },
+        legend: {
+            reversed: true,
+        },
+        plotOptions: {
+            series: {
+                stacking: "normal",
+            },
+        },
+        series: [
+            {
+                name: "총 회원",
+                data: [5, 3, 4, 7, 2],
+                color: "#BEBADA",
+            },
+        ],
+    });
+
+    $("#pl").click(function () {
+        $("#myModal1").modal();
+    });
+
+    dia1.setSize(600, 500);
+
+    // 날짜별 포인트 사용량 모달창 차트
+    var dialog2 = document.getElementById("dialog2");
+    var myChart2 = new Chart(dialog2, {
+        type: "bar",
+        data: {
+            labels: ["07-15", "07-16", "07-17", "07-18", "07-19", "07-20"],
+            datasets: [
+                {
+                    label: "사용량",
+                    // fill: false,
+                    // lineTension: 0,
+                    data: [45, 25, 40, 25, 45, 27],
+                    pointBorderColor: "#8DD3C7",
+                    borderColor: "#8DD3C7",
+                    backgroundColor: "#8DD3C7",
+                    borderWidth: 2,
+                    showLine: true,
+                },
+            ],
+        },
+        options: {
+            scales: {
+                yAxes: [
+                    {
+                        ticks: {
+                            // beginAtZero: true,
+                            suggestedMin: 0,
+                            // suggestedMax: 100
+                        },
+                    },
+                ],
+            },
+        },
+    });
+
+    // var dialog2_1 = document.getElementById("dialog2_1");
+    // var myChart2_1 = new Chart(dialog2_1, {
+    //     type: "bar",
+    //     data: {
+    //         labels: ["홍길동", "아무개", "하하하", "호호호", "히히히", "후후후"],
+    //         datasets: [
+    //             {
+    //                 label: "사용량",
+    //                 // fill: false,
+    //                 // lineTension: 0,
+    //                 data: [45, 25, 40, 25, 45, 27],
+    //                 pointBorderColor: "#B3DE69",
+    //                 borderColor: "#B3DE69",
+    //                 backgroundColor: "#B3DE69",
+    //                 borderWidth: 2,
+    //                 showLine: true,
+    //             },
+    //         ],
+    //     },
+    //     options: {
+    //         scales: {
+    //             yAxes: [
+    //                 {
+    //                     ticks: {
+    //                         // beginAtZero: true,
+    //                         suggestedMin: 0,
+    //                         // suggestedMax: 100
+    //                     },
+    //                 },
+    //             ],
+    //         },
+    //     },
+    // });
+
+    $("#point_date").click(function () {
+        $("#myModal2").modal();
+    });
+
+    $("#btnmodal").click(function(){
+        $("#myModal2_1").modal();
+    })
+
+    // 날짜별 회원가입 수 모달창 차트
+    var dialog3 = document.getElementById("dialog3");
+    var myChart3 = new Chart(dialog3, {
+        type: "bar",
+        data: {
+            labels: ["07-15", "07-16", "07-17", "07-18", "07-19", "07-20"],
+            datasets: [
+                {
+                    label: "총 인원",
+                    fill: true,
+                    lineTension: 0,
+                    startAngle: 2,
+                    data: [20, 40, 20, 45, 25, 60],
+                    // , '#ff6384', '#4bc0c0', '#ffcd56', '#457ba1'
+                    backgroundColor: "#FB8072",
+                    opacity: 0.8,
+                    pointBorderColor: "#ff6384",
+                    borderColor: "#FB8072",
+                    borderWidth: 2,
+                    showLine: true,
+                },
+                {
+                    label: "홈페이지 가입",
+                    fill: true,
+                    lineTension: 0,
+                    startAngle: 2,
+                    data: [13, 5, 8, 25, 23, 24],
+                    // , '#ff6384', '#4bc0c0', '#ffcd56', '#457ba1'
+                    backgroundColor: "#80B1D3",
+                    opacity: 0.8,
+                    pointBorderColor: "#ff6384",
+                    borderColor: "#80B1D3",
+                    borderWidth: 2,
+                    showLine: true,
+                },
+                {
+                    label: "SNS 가입",
+                    fill: true,
+                    lineTension: 0,
+                    startAngle: 2,
+                    data: [7, 35, 12, 20, 2, 36],
+                    // , '#ff6384', '#4bc0c0', '#ffcd56', '#457ba1'
+                    backgroundColor: "#B3DE69",
+                    opacity: 0.8,
+                    pointBorderColor: "#ff6384",
+                    borderColor: "#B3DE69",
+                    borderWidth: 2,
+                    showLine: true,
+                },
+            ],
+        },
+    });
+
+    $("#join_date").click(function () {
+        $("#myModal3").modal();
+    });
+
+    // 실시간 채팅 빈도수 모달창 차트
+    var dia4 = Highcharts.chart("dialog4", {
+        // title: {
+        //     text: "실시간 접속 인원",
+        // },
+
+        // subtitle: {
+        //     text: "오전 9시 측정",
+        // },
+
+        yAxis: {
+            title: {
+                text: "빈도수(번)",
+            },
+        },
+
+        xAxis: {
+            accessibility: {
+                rangeDescription: "Range: 2010 to 2017",
+            },
+        },
+
+        legend: {
+            layout: "vertical",
+            align: "right",
+            verticalAlign: "middle",
+        },
+
+        plotOptions: {
+            series: {
+                label: {
+                    connectorAllowed: false,
+                },
+                pointStart: 1,
+            },
+        },
+
+        series: [
+            {
+                name: "빈도수",
+                data: [
+                    100,
+                    862,
+                    732,
+                    4832,
+                    4246,
+                    5835,
+                    19853,
+                    19885,
+                    24854,
+                    9425,
+                    12123,
+                    15321,
+                ],
+                color: "#D9534F",
+            },
+        ],
+
+        responsive: {
+            rules: [
+                {
+                    condition: {
+                        maxWidth: 500,
+                    },
+                    chartOptions: {
+                        legend: {
+                            layout: "horizontal",
+                            align: "center",
+                            verticalAlign: "bottom",
+                        },
+                    },
+                },
+            ],
+        },
+    });
+
+    $("#chating_time").click(function () {
+        $("#myModal4").modal();
+    });
+
+    dia4.setSize(600, 500);
+
+    //월별 프로젝트 생성수 모달창 차트
+
+    var dia5 = Highcharts.chart("dialog5", {
+        chart: {
+            type: "line",
+        },
+        // title: {
+        //     text: "Monthly Average Temperature",
+        // },
+        // subtitle: {
+        //     text: "Source: WorldClimate.com",
+        // },
+        xAxis: {
+            categories: [
+                "1월",
+                "2월",
+                "3월",
+                "4월",
+                "5월",
+                "6월",
+                "7월",
+                "8월",
+                "9월",
+                "10월",
+                "11월",
+                "12월",
+            ],
+        },
+        yAxis: {
+            title: {
+                text: "생성수(수)",
+            },
+            min: 0,
+            // max: 100,
+        },
+        plotOptions: {
+            line: {
+                dataLabels: {
+                    enabled: true,
+                },
+                enableMouseTracking: false,
+            },
+        },
+        series: [
+            {
+                name: "프로젝트",
+                data: [
+                    7850,
+                    9620,
+                    10020,
+                    1352,
+                    68250,
+                    81002,
+                    9568,
+                    4859,
+                    11235,
+                    15685,
+                    36565,
+                    20101,
+                ],
+                color: "#5cb85c",
+            },
+        ],
+    });
+
+    $("#project_month").click(function () {
+        $("#myModal5").modal();
+    });
+
+    dia5.setSize(550, 400);
+
+    $(".highcharts-credits").remove();
+    // $(".highcharts-title").remove();
+</script>
