@@ -1,0 +1,527 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css"
+/>
+<style>
+        #contentLeft {
+        position: fixed;
+    }
+    /* #contentLeft * {
+        border: 1px solid gray;
+    } */
+    /* 메뉴 위 프로젝트 정보 */
+    #contentLeft > #projectInfo {
+        width: 250px;
+        height: 200px;
+        margin: 30px auto;
+        text-align: center;
+        position: relative;
+        top: 0px;
+        left: 0px;
+    }
+    #contentLeft #projectName {
+        margin-top: 70px;
+        font-size:1.5em;
+    }
+    #contentLeft #projectPeriod {
+        margin-top: 10px;
+        font-style: italic;
+    }
+    #contentLeft #projectContent {
+        margin-top: 20px;
+        /* font-style: italic; */
+    }
+    #contentLeft #projectMember {
+        width: 100%;
+        height: 60px;
+        position: relative;
+        top: 0;
+        left: 0;
+        /* bottom: 30px; */
+        margin-top: 30px;
+
+    }
+    #projectMember .profilePic {
+        width: 50px;
+        height: 50px;
+        border: 3px solid white;
+        border-radius: 25px;
+        box-shadow: 3px 3px 2px #ccc;
+        display: inline-block;
+        background-color: #ccc;
+        background-repeat: no-repeat;
+        background-size: contain;
+        margin-left: -10px;
+    }
+    #projecMember .profilePic:first-child {margin-left: 0px;}
+
+    #projectMember .profilePic:hover {
+        transform: translate(0px, -15px);
+        transition: tranform 0.5s;
+    }
+    /* 메뉴 */
+    #contentLeft > #menu {
+        width: 230px;
+        min-height: 400px;
+        margin: 70px auto;
+        /* border: 1px solid black; */
+    }
+    #contentLeft #menu ul, #menu li {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        background-color: transparent;
+        cursor: pointer;
+        box-shadow: 0px 0px 0px white;
+    }
+    #contentLeft #menu .accordion > div, #menu .panel > div{
+        margin: 0 auto;
+        padding-left: 10px;
+        padding-top: 9px;
+        border-bottom: 1px solid #999;
+        height: 40px;
+        padding-right: 10px;
+    }
+    #contentLeft #menu .panel > div {
+        margin-left: 30px;
+    }
+    #contentLeft #menu ul.active > div {
+        color: #5bc0de;
+        border-bottom: 1px solid #5bc0de; 
+    }
+    #contentLeft #menu > ul.active > div > i {
+        color: #5bc0de;
+    }
+    #contentLeft #menu > ul.active li {
+        display: block;
+    }
+    #contentLeft #menu ul i {
+        margin-right: 10px;
+        color: #555;
+    }
+    #contentLeft #menu li.panel {
+        display: none;
+    }
+    #contentLeft #menu ul.parent > div::after {
+        content: "\f078";
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        float: right;
+    }
+    #contentLeft #menu ul.active.parent > div::after{
+        content: "\f077";
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        float: right;
+    }
+    #contentLeft #menu ul:hover > div {
+        color: #5bc0de;
+        border-bottom: 1px solid #5bc0de; 
+    }
+    #contentLeft #menu ul:hover > div > i {
+        color: #5bc0de;
+    }
+    #contentLeft #menu li:hover > div {
+        color: #5bc0de;
+        border-bottom: 1px solid #5bc0de; 
+    }
+    #contentLeft #menu li:hover > div > i {
+        color: #5bc0de;
+    }
+    /* #contentRight {
+        background-color: #f8f9fa;
+    } */
+    #titleContainer {
+        margin-left: 60px;
+        margin-top: 50px;
+        /* border: 1px solid black; */
+        width: 200px;
+    }
+
+
+    #titleicon {
+        float: left;
+        width: 8px;
+        height: 35px;
+        background-color: #5bc0de;
+        margin-right: 10px;
+        margin-top: 7px;
+    }
+
+    #title {
+        font-size: 2.5em;
+    }
+
+    #projectlist {
+        width: 845px;
+        margin-left: 100px;
+        margin-top: 50px;
+    }
+    #projectlist {
+        border-bottom: 1px solid #ddd;
+    }
+
+    #projectlist tr th {
+        /* border: 1px solid black; */
+        /* background-color: #ddd; */
+        font-size: 18px;
+        text-align: center;
+    }
+
+    #projectlist tr th:last-child {
+        width: 110px;
+    }
+
+    #projectlist tr th:first-child {
+        width: 50px;
+    }
+
+    #projectlist tr th:nth-child(2) {
+        width: 150px;
+    }
+
+    #projectlist tr th:nth-child(3) {
+        width: 190px;
+    }
+
+    #projectlist tr td {
+        /* border: 1px solid black; */
+        text-align: center;
+    }
+    #projectlist tr td:nth-child(3) {
+        text-align:left;
+    }
+
+    #projectlist tr:hover {
+        background-color: #eee;
+    }
+
+    #projectlist tr:hover th {
+        background-color: #fff;
+    }
+
+    .teamname:hover, .startdate:hover {
+        cursor: pointer;
+        text-decoration: underline;;
+    }
+
+    #projectlist tr td:first-child {
+        text-align: left;
+        padding-left: 20px;
+    }
+
+    #typecontainer {
+        margin-left: 200px;
+        margin-top: 40px;
+    }
+
+    #typecontainer > select {
+        width: 150px;
+        height: 35px;
+        float: left;
+        margin-right: 25px;
+    }
+
+    .listsearch > .listsearch-group > input {
+        width: 450px;
+        height: 30px;
+        margin-left: 40px;
+        float: left;
+    }
+
+    .listsearch button {
+        width: 30px;
+        height: 30px;
+        margin-left: 15px;
+    }
+
+    .pagebar {
+        margin-left: 350px;
+        /* margin-top: 30px; */
+        /* background: #5bc0de; */
+    }
+
+    .pagination li.active {
+        background-color: #5bc0de;
+        color: white;
+    }
+    #btn1 {
+        text-align: right;
+    }
+#QnA_title {
+    position: relative;
+  /* top:-50px; */
+  left:350px;
+  margin-bottom: 20px;
+  display: block;
+  font-weight: 600;
+  line-height: 1;
+}
+#QnA_title h2::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    width: 60px;
+    height: 2px;
+    background: #E91E63;
+    bottom: -25px;
+    margin-left: -30px;
+}
+#QnA_img {
+    width: 700px;
+    height: 250px;
+}
+
+</style>
+<div id="header"></div>
+<section id="content" class="container">
+    <div id="contentLeft">
+        <div id="projectInfo">
+            <div id='projectName'></div>
+            <div id="projectPeriod"></div>
+            <div id="projectContent">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Numquam, nesciunt?</div>
+            <div id="projectMember"></div>
+        </div>
+        <div id="menu">
+            <ul class="accordion"><div><i class="glyphicon glyphicon-home"></i>Home</div></ul>            
+            <ul class="accordion parent"><div><i class="glyphicon glyphicon-calendar"></i>Chart</div>
+                <!-- <li class="panel"><div><i class="glyphicon glyphicon-minus"></i></div></li>
+                <li class="panel"><div><i class="glyphicon glyphicon-minus"></i></div></li>    -->
+            </ul>         
+            <ul class="accordion"><div><i class="glyphicon glyphicon-check"></i>Project</div></ul>
+            <ul class="accordion parent"><div><i class="glyphicon glyphicon-list-alt"></i>Board</div>
+                <li class="panel"><div><i class="glyphicon glyphicon-minus"></i>Notice</div></li>
+                <li class="panel"><div><i class="glyphicon glyphicon-minus"></i>Codes</div></li>
+                <li class="panel"><div><i class="glyphicon glyphicon-minus"></i>Free</div></li>
+            </ul>
+            <ul class="accordion"><div><i class="glyphicon glyphicon-hdd"></i>Files</div></ul>
+            <!-- <ul class="accordion"><div><i class="fas fa-code-branch"></i>Git</div></ul> -->
+            <ul class="accordion"><div><i class="glyphicon glyphicon-comment"></i>Chat</div></ul>
+
+        </div>
+
+    </div>
+    </div>
+    <div id="contentRight">
+        <div id="titleContainer">                
+            <div class="faq-title text-center pb-3" id="QnA_title">
+                <h2>QnA</h2>
+            </div>
+        </div>
+        <table id="projectlist" class="table">
+            <tr>
+                <th><input type="checkbox" name="checkAll" id="th_checkAll" onclick="checkAll();"></th>
+                <th>Number</th>
+                <th>Title</th>
+                <th>Writer</th>
+                <th>Date</th>
+                <th>Check</th>
+            </tr>
+            <tr>
+                <td class="chk"><input type="checkbox" name="checkRow" value="${content.IDX}"></td>
+                <td class="projectname">1</td>
+                <td class="teamname">질문있습니다.</td>
+                <td class="startdate">홍길동</td>
+                <td class="finishdate">2020-03-20</td>
+                <td class="state">10</td>
+            </tr>
+            <tr>
+                <td class="chk"><input type="checkbox" name="checkRow" value="${content.IDX}"></td>
+                <td class="projectname">2</td>
+                <td class="teamname">무선 네트워크 문의 드립니다.</td>
+                <td class="startdate">하하하</td>
+                <td class="finishdate">2020-04-30</td>
+                <td class="state">56</td>
+            </tr>
+            <tr>
+                <td class="chk"><input type="checkbox" name="checkRow" value="${content.IDX}"></td>
+                <td class="projectname">3</td>
+                <td class="teamname">채팅창 문의</td>
+                <td class="startdate">아무개</td>
+                <td class="finishdate">2020-04-28</td>
+                <td class="state">230</td>
+            </tr>
+            <tr>
+                <td class="chk"><input type="checkbox" name="checkRow" value="${content.IDX}"></td>
+                <td class="projectname">4</td>
+                <td class="teamname">관리자 문의</td>
+                <td class="startdate">호호호</td>
+                <td class="finishdate">2020-06-02</td>
+                <td class="state">256</td>
+            </tr>
+            <tr>
+                <td class="chk"><input type="checkbox" name="checkRow" value="${content.IDX}"></td>
+                <td class="projectname">5</td>
+                <td class="teamname">캘린더 이용에 대해 문의드립니다~</td>
+                <td class="startdate">김김김</td>
+                <td class="finishdate">2020-07-01</td>
+                <td class="state">389</td>
+            </tr>
+            <tr>
+                <td class="chk"><input type="checkbox" name="checkRow" value="${content.IDX}"></td>
+                <td class="projectname">6</td>
+                <td class="teamname">체크리스트가 오류납니다.</td>
+                <td class="startdate">이이이</td>
+                <td class="finishdate">2020-07-05</td>
+                <td class="state">854</td>
+            </tr>
+            <tr>
+                <td class="chk"><input type="checkbox" name="checkRow" value="${content.IDX}"></td>
+                <td class="projectname">7</td>
+                <td class="teamname">오류문의</td>
+                <td class="startdate">박박박</td>
+                <td class="finishdate">2020-07-07</td>
+                <td class="state">123</td>
+            </tr>
+            <tr>
+                <td class="chk"><input type="checkbox" name="checkRow" value="${content.IDX}"></td>
+                <td class="projectname">8</td>
+                <td class="teamname">로그인 오류 문의드립니다</td>
+                <td class="startdate">최이박</td>
+                <td class="finishdate">2020-07-10</td>
+                <td class="state">51</td>
+            </tr>
+            <tr>
+                <td class="chk"><input type="checkbox" name="checkRow" value="${content.IDX}"></td>
+                <td class="projectname">9</td>
+                <td class="teamname">회원가입이 안돼요</td>
+                <td class="startdate">이최한</td>
+                <td class="finishdate">2020-07-11</td>
+                <td class="state">28</td>
+            </tr>
+            <tr>
+                <td class="chk"><input type="checkbox" name="checkRow" value="${content.IDX}"></td>
+                <td class="projectname">10</td>
+                <td class="teamname">페이지 오류</td>
+                <td class="startdate">채채채</td>
+                <td class="finishdate">2020-07-20</td>
+                <td class="state">10</td>
+            </tr>
+        </table>
+        <div id="btn1">
+            <button class="btn btn-info" id="deleteButton" data-toggle="modal" data-target="#deleteModal">Delete</button>
+            <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title" id="deleteModalLabel">Orello</h4>
+                        </div>
+                        <div class="modal-body">
+                            게시글을 삭제하시겠습니까?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-info" data-dismiss="modal">Yes</button>
+                            <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="typecontainer">
+            <select name="type" class="form-control">
+                <option value="1">Number</option>
+                <option value="2">Title</option>
+                <option value="3">Writer</option>
+                <option value="4">Date</option>
+            </select>
+
+            <!-- 검색창 -->
+            <div class="search">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="searchbtn"
+                            ><i class="glyphicon glyphicon-search"></i
+                        ></span>
+                        <input
+                            type="text"
+                            class="form-control"
+                            placeholder="검색어를 입력하세요."
+                            id="textbox"
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="pagebar">
+            <ul class="pagination">
+                <li>
+                    <a href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li class="active"><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">6</a></li>
+                <li><a href="#">7</a></li>
+                <li><a href="#">8</a></li>
+                <li><a href="#">9</a></li>
+                <li><a href="#">10</a></li>
+                <li>
+                    <a href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</section>
+<div id="footer"></div>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#header").load("../include/header.html");
+        $("#footer").load("../include/footer.html");
+    });
+
+    var cb = document.getElementsByClassName(".checkbox");
+    var allcb = document.getElementsByClassName(".top_chk");
+
+    function checkAll() {
+        if ($("#th_checkAll").is(':checked') ) {
+            $("input[name=checkRow]").prop("checked", true);
+        } else {
+            $("input[name=checkRow]").prop("checked",false);
+        }
+    }
+        //상자에 마우스 오버시 해당 차트의 보더가 두꺼워진다.
+        $("#box_page").mouseover(function() {
+        
+    });
+    // 메뉴 상단에 프로젝트 정보 출력하기 
+    $("#projectName").append("Project Name");
+    $("#projectPeriod").append("<span>2020.07.01 ~ 2020.07.10</span><br>");
+    for (var i=0; i<5; i++) {
+        $("#projectMember").append("<div class='profilePic'></div>")
+    }
+    var profilePic = document.getElementsByClassName("profilePic");
+    for (var i=0; i<5; i++) {
+        profilePic[i].setAttribute("style", `background-image: url('../images/${i}.png')`)
+    }
+
+    //클릭한 메뉴만 표시되도록 
+    $(".list-group > a").click(function() {
+        $(".list-group > a").removeClass("active");
+        $(this).addClass("active");
+    });
+
+    //아코디언 메뉴
+    var acc = document.getElementsByClassName("parent");
+    for (var i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+            var li = $(this).children("li");
+            li.slideToggle(1000);
+            this.classList.toggle("active");
+        });
+    }
+</script>

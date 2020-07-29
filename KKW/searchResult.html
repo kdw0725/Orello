@@ -1,0 +1,315 @@
+<style>
+        #contentLeft {
+        position: fixed;
+    }
+    li{list-style: none;}
+    /* #contentLeft * {
+        border: 1px solid gray;
+    } */
+    /* 메뉴 위 프로젝트 정보 */
+    #contentLeft > #projectInfo {
+        width: 250px;
+        height: 200px;
+        margin: 30px auto;
+        text-align: center;
+        position: relative;
+        top: 0px;
+        left: 0px;
+    }
+    #contentLeft #projectName {
+        margin-top: 70px;
+        font-size:1.5em;
+    }
+    #contentLeft #projectPeriod {
+        margin-top: 10px;
+        font-style: italic;
+    }
+    #contentLeft #projectContent {
+        margin-top: 20px;
+        /* font-style: italic; */
+    }
+    #contentLeft #projectMember {
+        width: 100%;
+        height: 60px;
+        position: relative;
+        top: 0;
+        left: 0;
+        /* bottom: 30px; */
+        margin-top: 30px;
+
+    }
+    #projectMember .profilePic {
+        width: 50px;
+        height: 50px;
+        border: 3px solid white;
+        border-radius: 25px;
+        box-shadow: 3px 3px 2px #ccc;
+        display: inline-block;
+        background-color: #ccc;
+        background-repeat: no-repeat;
+        background-size: contain;
+        margin-left: -10px;
+    }
+    #projecMember .profilePic:first-child {margin-left: 0px;}
+
+    #projectMember .profilePic:hover {
+        transform: translate(0px, -15px);
+        transition: tranform 0.5s;
+    }
+    #AddMember {
+        text-align: left;
+        padding-top: 5px;
+        padding-left: 25px;
+    }
+    #AddMember a {
+        color: #333;
+        font-size: 0.9em;
+    }
+
+    /* 메뉴 */
+    #contentLeft > #menu {
+        width: 230px;
+        min-height: 400px;
+        margin: 70px auto;
+        /* border: 1px solid black; */
+    }
+    #contentLeft #menu ul, #menu li {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        background-color: transparent;
+        cursor: pointer;
+        box-shadow: 0px 0px 0px white;
+    }
+    #contentLeft #menu .accordion > div, #menu .panel > div{
+        margin: 0 auto;
+        padding-left: 10px;
+        padding-top: 9px;
+        border-bottom: 1px solid #999;
+        height: 40px;
+        padding-right: 10px;
+    }
+    #contentLeft #menu .panel > div {
+        margin-left: 30px;
+    }
+    #contentLeft #menu ul.active > div {
+        color: #5bc0de;
+        border-bottom: 1px solid #5bc0de; 
+    }
+    #contentLeft #menu > ul.active > div > i {
+        color: #5bc0de;
+    }
+    #contentLeft #menu > ul.active li {
+        display: block;
+    }
+    #contentLeft #menu ul i {
+        margin-right: 10px;
+        color: #555;
+    }
+    #contentLeft #menu li.panel {
+        display: none;
+    }
+    #contentLeft #menu ul.parent > div::after {
+        content: "\f078";
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        float: right;
+    }
+    #contentLeft #menu ul.active.parent > div::after{
+        content: "\f077";
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        float: right;
+    }
+    #contentLeft #menu ul:hover > div {
+        color: #5bc0de;
+        border-bottom: 1px solid #5bc0de; 
+    }
+    #contentLeft #menu ul:hover > div > i {
+        color: #5bc0de;
+    }
+    #contentLeft #menu li:hover > div {
+        color: #5bc0de;
+        border-bottom: 1px solid #5bc0de; 
+    }
+    #contentLeft #menu li:hover > div > i {
+        color: #5bc0de;
+    }
+
+    .search {
+        width: 300px;
+        margin: 20px auto;
+    }
+    #textbox {
+        width: 400px;
+        height: 50px;
+    }
+    #searchbtn {
+        background-color: #31B0D5;
+        color: #eee;
+    }
+    #allSearch {
+        text-align:center;
+        height: 30px;
+        border-bottom: 1px solid #ddd;
+        width: 700px;
+        margin: 0 auto;
+    }
+    /* 2020-07-26 통합검색 리스트 css */
+    .search_listbox{margin: 0 auto; width: 700px; margin-top: 35px;}
+    .bd_box{border-bottom:1px solid #ddd; margin: 0 0 30px 0;height:auto;position: relative;}
+    .btn_box1{text-align: right; margin-bottom: 10px;}
+    .sh_box{   padding: 13px 10px;     background: #eee;}
+    .sh_box > li{padding: 0;}
+    .sh_box > li > a {font-size: 1.1em;color: #999;}
+    .text_blue{color:blue}
+    .box5 {
+        border-bottom-left-radius: 50px;
+        background: #7F7FD5; 
+        background: -webkit-linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);  
+        background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); 
+        float:left;
+        margin-right: 5px;
+         width: 20px;
+         height:20px;
+        }
+    /* 2020-07-26 통합검색 리스트 css */
+</style>
+<div id="header"></div>
+<section id="content" class="container">
+    <div id="contentLeft">
+        <div id="projectInfo">
+            <div id='projectName'></div>
+            <div id="projectPeriod"></div>
+            <div id="projectContent">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Numquam, nesciunt?</div>
+            <div id="projectMember"></div>
+            <div id="addMember">
+                <a href="#"><i class="glyphicon glyphicon-user"></i><i class="glyphicon glyphicon-plus"></i> <span>Add Member</span></a>
+            </div>
+        </div>
+        <div id="menu">
+            <ul class="accordion"><div><i class="glyphicon glyphicon-home"></i>Project Home</div></ul>            
+            <ul class="accordion parent"><div><i class="glyphicon glyphicon-calendar"></i>Schedule</div>
+                <li class="panel"><div><i class="glyphicon glyphicon-minus"></i>Calendar</div></li>
+                <li class="panel"><div><i class="glyphicon glyphicon-minus"></i>Time Line</div></li>   
+            </ul>         
+            <ul class="accordion"><div><i class="glyphicon glyphicon-check"></i>Check List</div></ul>
+            <ul class="accordion parent"><div><i class="glyphicon glyphicon-list-alt"></i>Board</div>
+                <li class="panel"><div><i class="glyphicon glyphicon-minus"></i>Notice</div></li>
+                <li class="panel"><div><i class="glyphicon glyphicon-minus"></i>Codes</div></li>
+                <li class="panel"><div><i class="glyphicon glyphicon-minus"></i>Free</div></li>
+            </ul>
+            <ul class="accordion"><div><i class="glyphicon glyphicon-hdd"></i>Files</div></ul>
+            <ul class="accordion"><div><i class="fas fa-code-branch"></i>Git</div></ul>
+            <ul class="accordion"><div><i class="glyphicon glyphicon-comment"></i>Chat</div></ul>
+
+        </div>
+
+    </div>
+    <div id="contentRight">
+        <div class="search">
+            <div class="form-group">
+                <div class="input-group">
+                    <input
+                        type="text"
+                        class="form-control"
+                        value="Codes"
+                        id="textbox"
+                    /><span class="input-group-addon" id="searchbtn"
+                    ><i class="glyphicon glyphicon-search"></i>
+                </div>
+            </div>
+        </div>
+        <div id="allSearch">
+            <div class="allText"><i class="glyphicon glyphicon-star"></i><span>통합검색</span><span class="searchNumber">(500)</span></div>
+        </div>
+        <!-- 통합검색 list start -->
+        
+            <div class="search_listbox">
+                <div class="bd_box">
+                <!-- 메뉴안내 start -->
+                <div class="box5"></div><h4>메뉴안내</h4>
+                <ul class="sh_box">
+                    <li><a href="#">1. 관리자화면 &gt; <span class="text_blue">2. test</span> &gt; 3. 테스트중입니다.</a></li>
+                    <li><a href="#">1. 관리자화면 &gt; <span class="text_blue">2. test</span> &gt; 3. 테스트중입니다.</a></li>
+                    <li><a href="#">1. 관리자화면 &gt; <span class="text_blue">2. test</span> &gt; 3. 테스트중입니다.</a></li>
+                    <li><a href="#">1. 관리자화면 &gt; <span class="text_blue">2. test</span> &gt; 3. 테스트중입니다.</a></li>
+                </ul>
+                <div class="btn_box1"><button>더보기</button></div>
+                </div>
+                <!-- 메뉴안내 end -->
+
+                <div class="bd_box">
+                    <div class="box5"></div><h4>공지사항</h4>
+                    <ul class="sh_box">
+                    <!-- 메뉴안내 start -->
+                       <li>
+                        <dl>
+                            <dt><a href="#">테스트중입니다.</a></dt>
+                            <dd>test중입니다.</dd>
+                        </dl>
+                        <dl>
+                            <dt><a href="#">테스트중입니다.</a></dt>
+                            <dd>test중입니다.</dd>
+                        </dl>
+                        <dl>
+                            <dt><a href="#">테스트중입니다.</a></dt>
+                            <dd>test중입니다.</dd>
+                        </dl>
+                       </li>
+                    </ul>
+                    <div class="btn_box1"><button>더보기</button></div>
+                    </div>
+
+                    <div class="bd_box">
+                        <div class="box5"></div><h4>게시판</h4>
+                        <ul class="sh_box">
+                            <li><a href="#">1. 관리자화면 &gt; <span class="text_blue">2. test</span> &gt; 3. 테스트중입니다.</a></li>
+                            <li><a href="#">1. 관리자화면 &gt; <span class="text_blue">2. test</span> &gt; 3. 테스트중입니다.</a></li>
+                            <li><a href="#">1. 관리자화면 &gt; <span class="text_blue">2. test</span> &gt; 3. 테스트중입니다.</a></li>
+                            <li><a href="#">1. 관리자화면 &gt; <span class="text_blue">2. test</span> &gt; 3. 테스트중입니다.</a></li>
+                        </ul>
+                        <div class="btn_box1"><button>더보기</button></div>
+                        </div>
+            </div>
+            
+        <!-- 통합검색 list end -->
+
+    </div>
+</section>
+<div id="footer"></div>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#header").load("../include/header.html");
+        $("#footer").load("../include/footer.html");
+    });
+
+    // 메뉴 상단에 프로젝트 정보 출력하기 
+    $("#projectName").append("Project Name");
+    $("#projectPeriod").append("<span>2020.07.01 ~ 2020.07.10</span><br>");
+    for (var i=0; i<5; i++) {
+        $("#projectMember").append("<div class='profilePic'></div>")
+    }
+    var profilePic = document.getElementsByClassName("profilePic");
+    for (var i=0; i<5; i++) {
+        profilePic[i].setAttribute("style", `background-image: url('../images/${i}.png')`)
+    }
+
+    //클릭한 메뉴만 표시되도록 
+    $(".list-group > a").click(function() {
+        $(".list-group > a").removeClass("active");
+        $(this).addClass("active");
+    });
+
+    //아코디언 메뉴
+    var acc = document.getElementsByClassName("parent");
+    for (var i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+            var li = $(this).children("li");
+            li.slideToggle(1000);
+            this.classList.toggle("active");
+        });
+    }
+</script>
