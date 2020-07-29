@@ -1,5 +1,6 @@
 <style>
-        #contentLeft {
+    /* contentLeft */
+    #contentLeft {
         position: fixed;
     }
     #contentLeft * {
@@ -16,15 +17,23 @@
         left: 0px;
     }
     #contentLeft #projectName {
-        margin-top: 70px;
-        font-size:1.5em;
+        width: 150px;
+        height: 150px;
+        /* border: 1px solid black; */
+        margin: 0 auto;
+        margin-top: 50px;
+        font-size: 1.5em;
+        background-image: url(../images/woman_04.png);
+        background-repeat: no-repeat;
+        background-size: 150px 150px;
     }
     #contentLeft #projectPeriod {
-        margin-top: 10px;
+        margin-top: 20px;
+        font-size: 23px;
         font-style: italic;
     }
     #contentLeft #projectContent {
-        margin-top: 20px;
+        margin-top: 10px;
         /* font-style: italic; */
     }
     #contentLeft #projectMember {
@@ -35,7 +44,6 @@
         left: 0;
         /* bottom: 30px; */
         margin-top: 30px;
-
     }
     #projectMember .profilePic {
         width: 50px;
@@ -49,7 +57,9 @@
         background-size: contain;
         margin-left: -10px;
     }
-    #projecMember .profilePic:first-child {margin-left: 0px;}
+    #projecMember .profilePic:first-child {
+        margin-left: 0px;
+    }
 
     #projectMember .profilePic:hover {
         transform: translate(0px, -15px);
@@ -59,10 +69,11 @@
     #contentLeft > #menu {
         width: 230px;
         min-height: 400px;
-        margin: 70px auto;
+        margin: 100px auto;
         /* border: 1px solid black; */
     }
-    #contentLeft #menu ul, #menu li {
+    #contentLeft #menu ul,
+    #menu li {
         list-style: none;
         margin: 0;
         padding: 0;
@@ -70,7 +81,8 @@
         cursor: pointer;
         box-shadow: 0px 0px 0px white;
     }
-    #contentLeft #menu .accordion > div, #menu .panel > div{
+    #contentLeft #menu .accordion > div,
+    #menu .panel > div {
         margin: 0 auto;
         padding-left: 10px;
         padding-top: 9px;
@@ -83,7 +95,7 @@
     }
     #contentLeft #menu ul.active > div {
         color: #5bc0de;
-        border-bottom: 1px solid #5bc0de; 
+        border-bottom: 1px solid #5bc0de;
     }
     #contentLeft #menu > ul.active > div > i {
         color: #5bc0de;
@@ -104,7 +116,7 @@
         font-weight: 900;
         float: right;
     }
-    #contentLeft #menu ul.active.parent > div::after{
+    #contentLeft #menu ul.active.parent > div::after {
         content: "\f077";
         font-family: "Font Awesome 5 Free";
         font-weight: 900;
@@ -112,18 +124,20 @@
     }
     #contentLeft #menu ul:hover > div {
         color: #5bc0de;
-        border-bottom: 1px solid #5bc0de; 
+        border-bottom: 1px solid #5bc0de;
     }
     #contentLeft #menu ul:hover > div > i {
         color: #5bc0de;
     }
     #contentLeft #menu li:hover > div {
         color: #5bc0de;
-        border-bottom: 1px solid #5bc0de; 
+        border-bottom: 1px solid #5bc0de;
     }
     #contentLeft #menu li:hover > div > i {
         color: #5bc0de;
     }
+
+    /* contentRight */
     #contentRight {
         background-color: #f8f9fa;
     }
@@ -322,27 +336,57 @@
 <section id="content" class="container">
     <div id="contentLeft">
         <div id="projectInfo">
-            <div id='projectName'></div>
-            <div id="projectPeriod"></div>
-            <div id="projectContent">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Numquam, nesciunt?</div>
+            <div id="projectName"></div>
+            <div id="projectPeriod">
+                Manager Name
+            </div>
+            <div id="projectContent">
+                lorem1234@gmail.com
+            </div>
             <div id="projectMember"></div>
         </div>
         <div id="menu">
-            <ul class="accordion"><div><i class="glyphicon glyphicon-home"></i>Home</div></ul>            
-            <ul class="accordion parent"><div><i class="glyphicon glyphicon-calendar"></i>Chart</div>
+            <ul class="accordion">
+                <div><i class="glyphicon glyphicon-home"></i>Home</div>
+            </ul>
+            <ul class="accordion parent">
+                <div><i class="glyphicon glyphicon-calendar"></i>Chart</div>
                 <!-- <li class="panel"><div><i class="glyphicon glyphicon-minus"></i></div></li>
                 <li class="panel"><div><i class="glyphicon glyphicon-minus"></i></div></li>    -->
-            </ul>         
-            <ul class="accordion"><div><i class="glyphicon glyphicon-check"></i>Project</div></ul>
-            <ul class="accordion parent"><div><i class="glyphicon glyphicon-list-alt"></i>Board</div>
-                <li class="panel"><div><i class="glyphicon glyphicon-minus"></i>Notice</div></li>
-                <li class="panel"><div><i class="glyphicon glyphicon-minus"></i>Codes</div></li>
-                <li class="panel"><div><i class="glyphicon glyphicon-minus"></i>Free</div></li>
             </ul>
-            <ul class="accordion"><div><i class="glyphicon glyphicon-hdd"></i>Files</div></ul>
+            <ul class="accordion">
+                <div><i class="glyphicon glyphicon-check"></i>Project</div>
+            </ul>
+            <ul class="accordion parent">
+                <div><i class="glyphicon glyphicon-list-alt"></i>Board</div>
+                <li class="panel">
+                    <div><i class="glyphicon glyphicon-minus"></i>Notice</div>
+                </li>
+                <li class="panel">
+                    <div><i class="glyphicon glyphicon-minus"></i>Codes</div>
+                </li>
+                <li class="panel">
+                    <div><i class="glyphicon glyphicon-minus"></i>Free</div>
+                </li>
+            </ul>
+            <ul class="accordion">
+                <div><i class="glyphicon glyphicon-hdd"></i>Files</div>
+            </ul>
             <!-- <ul class="accordion"><div><i class="fas fa-code-branch"></i>Git</div></ul> -->
-            <ul class="accordion"><div><i class="glyphicon glyphicon-comment"></i>Chat</div></ul>
+            <ul class="accordion">
+                <div><i class="glyphicon glyphicon-user"></i>User</div>
+            </ul>
 
+            <!-- Email 카테고리 추가 -->
+            <!-- <ul class="accordion">
+                <div onclick="location.href='http:mail.google.com'">
+                    <i class="glyphicon glyphicon-envelope"></i>Email
+                </div>
+            </ul> -->
+
+            <ul class="accordion">
+                <div><i class="glyphicon glyphicon-comment"></i>FAQ</div>
+            </ul>
         </div>
 
     </div>
@@ -511,6 +555,27 @@
         $("#header").load("../include/header.html");
         $("#footer").load("../include/footer.html");
     });
+
+    //contentLeft
+    //클릭한 메뉴만 표시되도록
+    $(".list-group > a").click(function () {
+        $(".list-group > a").removeClass("active");
+        $(this).addClass("active");
+    });
+
+    //아코디언 메뉴
+    var acc = document.getElementsByClassName("parent");
+    for (var i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+            var li = $(this).children("li");
+            li.slideToggle(1000);
+            this.classList.toggle("active");
+        });
+    }
+
+
+
+    //contentRight
     var chart = document.getElementById('myChart1');
     var myChart = new Chart(chart, {
         type: 'bar',
@@ -750,35 +815,6 @@
         location.href="UserScreen.html";
     });
     
-    //상자에 마우스 오버시 해당 차트의 보더가 두꺼워진다.
-    $("#box_page").mouseover(function() {
-        
-    });
-    // 메뉴 상단에 프로젝트 정보 출력하기 
-    $("#projectName").append("Project Name");
-    $("#projectPeriod").append("<span>2020.07.01 ~ 2020.07.10</span><br>");
-    for (var i=0; i<5; i++) {
-        $("#projectMember").append("<div class='profilePic'></div>")
-    }
-    var profilePic = document.getElementsByClassName("profilePic");
-    for (var i=0; i<5; i++) {
-        profilePic[i].setAttribute("style", `background-image: url('../images/${i}.png')`)
-    }
 
-    //클릭한 메뉴만 표시되도록 
-    $(".list-group > a").click(function() {
-        $(".list-group > a").removeClass("active");
-        $(this).addClass("active");
-    });
-
-    //아코디언 메뉴
-    var acc = document.getElementsByClassName("parent");
-    for (var i = 0; i < acc.length; i++) {
-        acc[i].addEventListener("click", function() {
-            var li = $(this).children("li");
-            li.slideToggle(1000);
-            this.classList.toggle("active");
-        });
-    }
 
 </script>

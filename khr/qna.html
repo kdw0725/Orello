@@ -165,8 +165,8 @@
     }
 
     #projectlist {
-        width: 845px;
-        margin-left: 140px;
+        width: 840px;
+        margin-left: 60px;
         margin-top: 50px;
     }
 
@@ -217,7 +217,7 @@
 
     #typecontainer {
         margin-left: 200px;
-        margin-top: 40px;
+        margin-top: 20px;
     }
 
     #typecontainer > select {
@@ -241,7 +241,7 @@
     }
 
     .pagebar {
-        margin-left: 350px;
+        margin-left: 260px;
         /* margin-top: 30px; */
         /* background: #5bc0de; */
     }
@@ -249,6 +249,15 @@
     .pagination li.active {
         background-color: #5bc0de;
         color: white;
+    }
+
+    #deletebtn {
+        text-align: right;
+    }
+
+    #textbox {
+        width: 300px;
+        p
     }
 </style>
 <div id="header"></div>
@@ -314,7 +323,7 @@
             <div id="title">Q&A</div>
         </div>
 
-        <table id="projectlist" class="table">
+        <!-- <table id="projectlist" class="table">
             <tr>
                 <th>Number</th>
                 <th>Title</th>
@@ -419,7 +428,224 @@
                 <td class="finishdate">2020-07-20</td>
                 <td class="state">10</td>
             </tr>
+        </table> -->
+
+        <table id="projectlist" class="table">
+            <tr>
+                <th>
+                    <input
+                        type="checkbox"
+                        name="checkAll"
+                        id="th_checkAll"
+                        onclick="checkAll();"
+                    />
+                </th>
+                <th>Number</th>
+                <th>Title</th>
+                <th>Writer</th>
+                <th>Date</th>
+                <th>Check</th>
+            </tr>
+            <tr>
+                <td class="chk">
+                    <input
+                        type="checkbox"
+                        name="checkRow"
+                        value="${content.IDX}"
+                    />
+                </td>
+                <td class="projectname">1</td>
+                <td class="teamname">질문있습니다.</td>
+                <td class="startdate">홍길동</td>
+                <td class="finishdate">2020-03-20</td>
+                <td class="state">10</td>
+            </tr>
+            <tr>
+                <td class="chk">
+                    <input
+                        type="checkbox"
+                        name="checkRow"
+                        value="${content.IDX}"
+                    />
+                </td>
+                <td class="projectname">2</td>
+                <td class="teamname">무선 네트워크 문의 드립니다.</td>
+                <td class="startdate">하하하</td>
+                <td class="finishdate">2020-04-30</td>
+                <td class="state">56</td>
+            </tr>
+            <tr>
+                <td class="chk">
+                    <input
+                        type="checkbox"
+                        name="checkRow"
+                        value="${content.IDX}"
+                    />
+                </td>
+                <td class="projectname">3</td>
+                <td class="teamname">채팅창 문의</td>
+                <td class="startdate">아무개</td>
+                <td class="finishdate">2020-04-28</td>
+                <td class="state">230</td>
+            </tr>
+            <tr>
+                <td class="chk">
+                    <input
+                        type="checkbox"
+                        name="checkRow"
+                        value="${content.IDX}"
+                    />
+                </td>
+                <td class="projectname">4</td>
+                <td class="teamname">관리자 문의</td>
+                <td class="startdate">호호호</td>
+                <td class="finishdate">2020-06-02</td>
+                <td class="state">256</td>
+            </tr>
+            <tr>
+                <td class="chk">
+                    <input
+                        type="checkbox"
+                        name="checkRow"
+                        value="${content.IDX}"
+                    />
+                </td>
+                <td class="projectname">5</td>
+                <td class="teamname">캘린더 이용에 대해 문의드립니다~</td>
+                <td class="startdate">김김김</td>
+                <td class="finishdate">2020-07-01</td>
+                <td class="state">389</td>
+            </tr>
+            <tr>
+                <td class="chk">
+                    <input
+                        type="checkbox"
+                        name="checkRow"
+                        value="${content.IDX}"
+                    />
+                </td>
+                <td class="projectname">6</td>
+                <td class="teamname">체크리스트가 오류납니다.</td>
+                <td class="startdate">이이이</td>
+                <td class="finishdate">2020-07-05</td>
+                <td class="state">854</td>
+            </tr>
+            <tr>
+                <td class="chk">
+                    <input
+                        type="checkbox"
+                        name="checkRow"
+                        value="${content.IDX}"
+                    />
+                </td>
+                <td class="projectname">7</td>
+                <td class="teamname">오류문의</td>
+                <td class="startdate">박박박</td>
+                <td class="finishdate">2020-07-07</td>
+                <td class="state">123</td>
+            </tr>
+            <tr>
+                <td class="chk">
+                    <input
+                        type="checkbox"
+                        name="checkRow"
+                        value="${content.IDX}"
+                    />
+                </td>
+                <td class="projectname">8</td>
+                <td class="teamname">로그인 오류 문의드립니다</td>
+                <td class="startdate">최이박</td>
+                <td class="finishdate">2020-07-10</td>
+                <td class="state">51</td>
+            </tr>
+            <tr>
+                <td class="chk">
+                    <input
+                        type="checkbox"
+                        name="checkRow"
+                        value="${content.IDX}"
+                    />
+                </td>
+                <td class="projectname">9</td>
+                <td class="teamname">회원가입이 안돼요</td>
+                <td class="startdate">이최한</td>
+                <td class="finishdate">2020-07-11</td>
+                <td class="state">28</td>
+            </tr>
+            <tr>
+                <td class="chk">
+                    <input
+                        type="checkbox"
+                        name="checkRow"
+                        value="${content.IDX}"
+                    />
+                </td>
+                <td class="projectname">10</td>
+                <td class="teamname">페이지 오류</td>
+                <td class="startdate">채채채</td>
+                <td class="finishdate">2020-07-20</td>
+                <td class="state">10</td>
+            </tr>
         </table>
+
+        <!-- <div id="btn1">
+            <button
+                class="btn btn-info"
+                id="deleteButton"
+                data-toggle="modal"
+                data-target="#deleteModal"
+            >
+                Delete
+            </button>
+            <div
+                class="modal fade"
+                id="deleteModal"
+                tabindex="-1"
+                role="dialog"
+                aria-labelledby="deleteModalLabel"
+                aria-hidden="true"
+            >
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button
+                                type="button"
+                                class="close"
+                                data-dismiss="modal"
+                                aria-label="Close"
+                            >
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title" id="deleteModalLabel">
+                                Orello
+                            </h4>
+                        </div>
+                        <div class="modal-body">
+                            게시글을 삭제하시겠습니까?
+                        </div>
+                        <div class="modal-footer">
+                            <button
+                                type="button"
+                                class="btn btn-info"
+                                data-dismiss="modal"
+                            >
+                                Yes
+                            </button>
+                            <button
+                                type="button"
+                                class="btn btn-info"
+                                data-dismiss="modal"
+                            >
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <div id="deletebtn">
+            <button class="btn btn-info" style="outline: none;">Delete</button>
+        </div>
 
         <div id="typecontainer">
             <select name="type" class="form-control">
@@ -482,21 +708,16 @@
         $("#footer").load("../include/footer.html");
     });
 
-    // //상자에 마우스 오버시 해당 차트의 보더가 두꺼워진다.
-    // $("#box_page").mouseover(function () {});
-    // // 메뉴 상단에 프로젝트 정보 출력하기
-    // $("#projectName").append("Project Name");
-    // $("#projectPeriod").append("<span>2020.07.01 ~ 2020.07.10</span><br>");
-    // for (var i = 0; i < 5; i++) {
-    //     $("#projectMember").append("<div class='profilePic'></div>");
-    // }
-    // var profilePic = document.getElementsByClassName("profilePic");
-    // for (var i = 0; i < 5; i++) {
-    //     profilePic[i].setAttribute(
-    //         "style",
-    //         `background-image: url('../images/${i}.png')`
-    //     );
-    // }
+    var cb = document.getElementsByClassName(".checkbox");
+    var allcb = document.getElementsByClassName(".top_chk");
+
+    function checkAll() {
+        if ($("#th_checkAll").is(":checked")) {
+            $("input[name=checkRow]").prop("checked", true);
+        } else {
+            $("input[name=checkRow]").prop("checked", false);
+        }
+    }
 
     //클릭한 메뉴만 표시되도록
     $(".list-group > a").click(function () {

@@ -155,8 +155,6 @@
             </ul>
             <ul class="accordion parent">
                 <div><i class="glyphicon glyphicon-calendar"></i>Chart</div>
-                <!-- <li class="panel"><div><i class="glyphicon glyphicon-minus"></i></div></li>
-                <li class="panel"><div><i class="glyphicon glyphicon-minus"></i></div></li>    -->
             </ul>
             <ul class="accordion">
                 <div><i class="glyphicon glyphicon-check"></i>Project</div>
@@ -176,17 +174,10 @@
             <ul class="accordion">
                 <div><i class="glyphicon glyphicon-hdd"></i>Files</div>
             </ul>
-            <!-- <ul class="accordion"><div><i class="fas fa-code-branch"></i>Git</div></ul> -->
+
             <ul class="accordion">
                 <div><i class="glyphicon glyphicon-user"></i>User</div>
             </ul>
-
-            <!-- Email 카테고리 추가 -->
-            <!-- <ul class="accordion">
-                <div onclick="location.href='http:mail.google.com'">
-                    <i class="glyphicon glyphicon-envelope"></i>Email
-                </div>
-            </ul> -->
 
             <ul class="accordion">
                 <div><i class="glyphicon glyphicon-comment"></i>FAQ</div>
@@ -203,22 +194,6 @@
         $("#header").load("../include/header.html");
         $("#footer").load("../include/footer.html");
     });
-
-    // //상자에 마우스 오버시 해당 차트의 보더가 두꺼워진다.
-    // $("#box_page").mouseover(function () {});
-    // // 메뉴 상단에 프로젝트 정보 출력하기
-    // $("#projectName").append("Project Name");
-    // $("#projectPeriod").append("<span>2020.07.01 ~ 2020.07.10</span><br>");
-    // for (var i = 0; i < 5; i++) {
-    //     $("#projectMember").append("<div class='profilePic'></div>");
-    // }
-    // var profilePic = document.getElementsByClassName("profilePic");
-    // for (var i = 0; i < 5; i++) {
-    //     profilePic[i].setAttribute(
-    //         "style",
-    //         `background-image: url('../images/${i}.png')`
-    //     );
-    // }
 
     //클릭한 메뉴만 표시되도록
     $(".list-group > a").click(function () {
