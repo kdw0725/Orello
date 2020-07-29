@@ -163,8 +163,8 @@
             width: 180px;
             text-align: center;
             float: left;
-            /* position: relative;
-            top: 0;
+            position: relative;
+            /*top: 0;
             left: 0; */
             /* margin-left: 380px; */
         }
@@ -174,6 +174,27 @@
             border: 1px solid white;
             background-color: white;
             box-shadow: 0 0 3px #444;
+        }
+        #profile > #edit_img {
+            border: 1px solid #bbb;
+            border-radius: 5px;
+            box-shadow: 2px 2px 2px #bbb;
+            width: 300px;
+            height: 120px;
+            background-color: rgb(245, 245, 245);
+            padding-top: 20px;
+            padding-left: 30px;
+            position: absolute;
+            top: 40px;
+            left: 110px;
+            display: none;
+            z-index: 1;
+        }
+
+        #profile > #edit_img > div {
+            width: 300px;
+            margin-top: 20px;
+            margin-left: 40px;
         }
 
         #profile div:first-child {
@@ -441,9 +462,17 @@
         <div>My Page</div>
         <div id="top">
             <div id="profile">
-                <div>
+                <div id="edit_icon">
                     <li class="glyphicon glyphicon-cog"></li>
                 </div>
+                <div id="edit_img">
+                    <input type="file" />
+                    <div id="edit_btn">
+                        <button class="btn btn-info">save</button>
+                        <button class="btn btn-info">close</button>
+                    </div>
+                </div>
+
                 <img src="cookie_images/001.png" alt="" />
                 <div>
                     gildong
@@ -781,6 +810,20 @@
 
     $("#project td > button").click(function () {
         // alert();
+    });
+
+    //profile image edit
+    $("#profile > #edit_icon").click(function () {
+        $("#profile > #edit_img").css("display", "block");
+    });
+
+    $("#profile > #edit_img > div > button:last-child").click(function () {
+        $("#profile > #edit_img").css("display", "none");
+    });
+
+    //move payment page
+    $("#side_profile > div:last-child > button").click(function () {
+        location.href = "payment.html";
     });
 </script>
 <script>
