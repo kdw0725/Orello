@@ -1,14 +1,143 @@
 <style>
+        #contentLeft {
+        position: fixed;
+    }
+    #contentLeft * {
+        /* border: 1px solid gray; */
+    }
+    /* 메뉴 위 프로젝트 정보 */
+    #contentLeft > #projectInfo {
+        width: 250px;
+        height: 200px;
+        margin: 30px auto;
+        text-align: center;
+        position: relative;
+        top: 0px;
+        left: 0px;
+    }
+    #contentLeft #projectName {
+        margin-top: 70px;
+        font-size:1.5em;
+    }
+    #contentLeft #projectPeriod {
+        margin-top: 10px;
+        font-style: italic;
+    }
+    #contentLeft #projectContent {
+        margin-top: 20px;
+        /* font-style: italic; */
+    }
+    #contentLeft #projectMember {
+        width: 100%;
+        height: 60px;
+        position: relative;
+        top: 0;
+        left: 0;
+        /* bottom: 30px; */
+        margin-top: 30px;
+
+    }
+    #projectMember .profilePic {
+        width: 50px;
+        height: 50px;
+        border: 3px solid white;
+        border-radius: 25px;
+        box-shadow: 3px 3px 2px #ccc;
+        display: inline-block;
+        background-color: #ccc;
+        background-repeat: no-repeat;
+        background-size: contain;
+        margin-left: -10px;
+    }
+    #projecMember .profilePic:first-child {margin-left: 0px;}
+
+    #projectMember .profilePic:hover {
+        transform: translate(0px, -15px);
+        transition: tranform 0.5s;
+    }
+    /* 메뉴 */
+    #contentLeft > #menu {
+        width: 230px;
+        min-height: 400px;
+        margin: 70px auto;
+        /* border: 1px solid black; */
+    }
+    #contentLeft #menu ul, #menu li {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        background-color: transparent;
+        cursor: pointer;
+        box-shadow: 0px 0px 0px white;
+    }
+    #contentLeft #menu .accordion > div, #menu .panel > div{
+        margin: 0 auto;
+        padding-left: 10px;
+        padding-top: 9px;
+        border-bottom: 1px solid #999;
+        height: 40px;
+        padding-right: 10px;
+    }
+    #contentLeft #menu .panel > div {
+        margin-left: 30px;
+    }
+    #contentLeft #menu ul.active > div {
+        color: #5bc0de;
+        border-bottom: 1px solid #5bc0de; 
+    }
+    #contentLeft #menu > ul.active > div > i {
+        color: #5bc0de;
+    }
+    #contentLeft #menu > ul.active li {
+        display: block;
+    }
+    #contentLeft #menu ul i {
+        margin-right: 10px;
+        color: #555;
+    }
+    #contentLeft #menu li.panel {
+        display: none;
+    }
+    #contentLeft #menu ul.parent > div::after {
+        content: "\f078";
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        float: right;
+    }
+    #contentLeft #menu ul.active.parent > div::after{
+        content: "\f077";
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        float: right;
+    }
+    #contentLeft #menu ul:hover > div {
+        color: #5bc0de;
+        border-bottom: 1px solid #5bc0de; 
+    }
+    #contentLeft #menu ul:hover > div > i {
+        color: #5bc0de;
+    }
+    #contentLeft #menu li:hover > div {
+        color: #5bc0de;
+        border-bottom: 1px solid #5bc0de; 
+    }
+    #contentLeft #menu li:hover > div > i {
+        color: #5bc0de;
+    }
+    #contentRight {
+        background-color: #f8f9fa;
+    }
     .welcome {
-        color: #CCC;
+        color: black;
     }
 
     .welcome .content {
-        background-color: #444;
+        background-color: #fff;
         padding: 15px;
         margin-top: 25px;
         margin-left: 20px;
-        box-shadow: 3px 3px 3px #777;
+        box-shadow: 3px 3px 3px #ddd;
+        border-radius: 5px;
     }
 
     .welcome h2 {
@@ -23,17 +152,17 @@
 
     .statistics {
         margin-top: 25px;
-        color: #CCC;
+        color: black;
     }
 
     .statistics .box {
         background-color: #fff;
-        border: 1px solid rgba(0,0,0,.125);
+        box-shadow: 3px 3px 3px #ddd;
         padding: 15px;
         overflow: hidden;
         background-clip: border-box;
         margin-left: 20px;
-        
+        border-radius: 5px;
     }
 
     .statistics .box>i {
@@ -64,14 +193,15 @@
 
     .charts {
         margin-top: 25px;
-        color: #BBB
+        color: black;
     }
 
     .charts .chart-container {
-        background-color: #444;
+        background-color: #fff;
         padding: 15px;
-        box-shadow: 3px 3px 3px #777;
         margin-left: 20px;
+        box-shadow: 3px 3px 3px #ddd;
+        border-radius: 5px;
     }
 
     .charts .chart-container h3 {
@@ -100,7 +230,7 @@
         margin-top: 15px;
         margin-bottom: 25px;
         margin-left: 20px;
-        box-shadow: 3px 3px 3px #777;
+        box-shadow: 3px 3px 3px #ddd;
     }
 
     .statis .box h3:after {
@@ -147,38 +277,28 @@
         background-color: #5bc0de
     }
 
-    /* #contentRight {
-        background-color: #ccc;
-    } */
-
     #dialog1 {
-        background-color: #444;
         width: 800px;
 
+    }
+    #myModal1, #myModal2 {
+        margin: 0px auto;
     }
 
     .modal-body {
-        width: 800px;
-
+        width: 990px;
+        background-color: #fff;
     }
 
     .modal-content {
-        background-color: #444;
-        color: white;
-        width: 800px;
-
+        background-color: #fff;
+        color: black;
+        width: 1000px;
     }
 
-    .chart-container>span {
+    .chart-container > span {
         font-size: 20px;
     }
-
-    /* .glyphicon {
-        font-size: 25px;
-        text-align: right;
-        float: right;
-    } */
-
     #btn1, #btn2 {
         font-size: 25px;
         text-align: right;
@@ -187,11 +307,45 @@
     #btn1, #btn2:hover {
         cursor: pointer
     }
+    /* .col-md-4:hover {
+        cursor: pointer;
+    } */
+    .statistics .box:hover {
+        cursor:pointer;
+        background-color: #eee;
+    }
+
     
 </style>
+<title>adminMain</title>
 <div id="header"></div>
 <section id="content" class="container">
-    <div id="contentLeft"></div>
+    <div id="contentLeft">
+        <div id="projectInfo">
+            <div id='projectName'></div>
+            <div id="projectPeriod"></div>
+            <div id="projectContent">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Numquam, nesciunt?</div>
+            <div id="projectMember"></div>
+        </div>
+        <div id="menu">
+            <ul class="accordion"><div><i class="glyphicon glyphicon-home"></i>Home</div></ul>            
+            <ul class="accordion parent"><div><i class="glyphicon glyphicon-calendar"></i>Chart</div>
+                <!-- <li class="panel"><div><i class="glyphicon glyphicon-minus"></i></div></li>
+                <li class="panel"><div><i class="glyphicon glyphicon-minus"></i></div></li>    -->
+            </ul>         
+            <ul class="accordion"><div><i class="glyphicon glyphicon-check"></i>Project</div></ul>
+            <ul class="accordion parent"><div><i class="glyphicon glyphicon-list-alt"></i>Board</div>
+                <li class="panel"><div><i class="glyphicon glyphicon-minus"></i>Notice</div></li>
+                <li class="panel"><div><i class="glyphicon glyphicon-minus"></i>Codes</div></li>
+                <li class="panel"><div><i class="glyphicon glyphicon-minus"></i>Free</div></li>
+            </ul>
+            <ul class="accordion"><div><i class="glyphicon glyphicon-hdd"></i>Files</div></ul>
+            <!-- <ul class="accordion"><div><i class="fas fa-code-branch"></i>Git</div></ul> -->
+            <ul class="accordion"><div><i class="glyphicon glyphicon-comment"></i>Chat</div></ul>
+
+        </div>
+
+    </div>
     <div id="contentRight">
         <div class="welcome">
             <div class="container-fluid">
@@ -220,7 +374,7 @@
                     <div class="col-md-4">
                         <div class="box">
                             <i class="fa fa-file fa-fw danger"></i>
-                            <div class="info">
+                            <div class="info" id="projInfo">
                                 <h3>34</h3> <span>Projects</span>
                                 <p>Lorem ipsum dolor sit amet</p>
                             </div>
@@ -229,7 +383,7 @@
                     <div class="col-md-4">
                         <div class="box">
                             <i class="fa fa-users fa-fw success"></i>
-                            <div class="info">
+                            <div class="info" id="userInfo">
                                 <h3>5,245</h3> <span>Users</span>
                                 <p>Lorem ipsum dolor sit amet</p>
                             </div>
@@ -261,32 +415,32 @@
         <section class='statis text-center'>
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-3" id="box_page">
                         <div class="box bg-primary">
                             <i class="fa fa-eye"></i>
-                            <h3>5,154</h3>
+                            <h3>3,824</h3>
                             <p class="lead">Page views</p>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3" id="box_user">
                         <div class="box danger">
                             <i class="fa fa-user-o"></i>
-                            <h3>245</h3>
+                            <h3>921</h3>
                             <p class="lead">User registered</p>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3" id="box_post">
                         <div class="box warning">
                             <i class="fa fa-shopping-cart"></i>
-                            <h3>5,154</h3>
-                            <p class="lead">Product sales</p>
+                            <h3>1,283</h3>
+                            <p class="lead">Posts Written</p>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3" id="box_qna">
                         <div class="box success">
                             <i class="fa fa-handshake-o"></i>
-                            <h3>5,154</h3>
-                            <p class="lead">Transactions</p>
+                            <h3>512</h3>
+                            <p class="lead">QnA</p>
                         </div>
                     </div>
                 </div>
@@ -309,7 +463,7 @@
         <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
             aria-hidden="true">
             <div class="modal-dialog">
-                <div class="modal-content" style="background-color: #444;">
+                <div class="modal-content" style="background-color: #fff; margin: 100px -200px;">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                 aria-hidden="true">&times;</span></button>
@@ -317,7 +471,6 @@
                     </div>
                     <div class="modal-body">
                         <div class="chart-container">
-
                             <canvas id="dialog1"></canvas>
                         </div>
                     </div>
@@ -327,7 +480,7 @@
     </div>
     <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content" style="background-color: #444;">
+            <div class="modal-content" style="background-color: #fff; margin: 100px -200px;">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                             aria-hidden="true">&times;</span></button>
@@ -361,6 +514,7 @@
     var chart = document.getElementById('myChart1');
     var myChart = new Chart(chart, {
         type: 'bar',
+
         data: {
             labels: ["January", "February", "March", "April", "May", 'Jul'],
             datasets: [{
@@ -368,8 +522,10 @@
                 fill: false,
                 lineTension: 0,
                 data: [45, 25, 40, 20, 45, 20],
-                pointBorderColor: "#4bc0c0",
-                borderColor: '#4bc0c0',
+                pointBorderColor: "#f87c85",
+                borderColor: '#f87c85',
+                // minBarLength: 20,
+                backgroundColor: '#f87c85',
                 borderWidth: 2,
                 showLine: true,
             }, {
@@ -379,13 +535,25 @@
                 startAngle: 2,
                 data: [20, 40, 20, 45, 25, 60],
                 // , '#ff6384', '#4bc0c0', '#ffcd56', '#457ba1'
-                backgroundColor: "transparent",
-                pointBorderColor: "#ff6384",
-                borderColor: '#ff6384',
+                backgroundColor: "#b985ea",
+                pointBorderColor: "#b985ea",
+                borderColor: '#b985ea',
                 borderWidth: 2,
                 showLine: true,
             }]
         },
+        options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    // beginAtZero: true,
+                    suggestedMin: 10,
+                    suggestedMax: 100
+                   
+                }
+            }]
+        }
+    }
     });
     var Chart2 = document.getElementById('myChart2').getContext('2d');
     var chart = new Chart(Chart2, {
@@ -427,12 +595,7 @@
                 borderWidth: 2,
                 showLine: true,
             }]
-        },    // Configuration options
-        options: {
-            title: {
-                display: false
-            }
-        }
+        },
     });
 </script>
 <script src="../js/jquery-ui.js"></script>
@@ -447,8 +610,9 @@
                 fill: false,
                 lineTension: 0,
                 data: [45, 25, 40, 20, 45, 20],
-                pointBorderColor: "#4bc0c0",
-                borderColor: '#4bc0c0',
+                pointBorderColor: "#f87c85",
+                borderColor: '#f87c85',
+                backgroundColor: '#f87c85',
                 borderWidth: 2,
                 showLine: true,
             }, {
@@ -458,9 +622,9 @@
                 startAngle: 2,
                 data: [20, 40, 20, 45, 25, 60],
                 // , '#ff6384', '#4bc0c0', '#ffcd56', '#457ba1'
-                backgroundColor: "transparent",
-                pointBorderColor: "#ff6384",
-                borderColor: '#ff6384',
+                backgroundColor: "#b985ea",
+                pointBorderColor: "#b985ea",
+                borderColor: '#b985ea',
                 borderWidth: 2,
                 showLine: true,
             }]
@@ -529,53 +693,92 @@
     var myChart = new Chart(chart, {
         type: 'line',
         data: {
-            labels: ["One", "Two", "Three", "Four", "Five", 'Six', "Seven", "Eight"],
+            labels: ["Jan", "Feb", "Mar", "Apr", "May", 'June', "July", "Aug", "Sep", "Oct", "Nov", "Dec"],
             datasets: [{
-                label: "Lost",
+                label: "Page views",
                 fill: false,
                 lineTension: .5,
-                pointBorderColor: "transparent",
-                pointColor: "white",
-                borderColor: '#d9534f',
+                pointBorderColor: "#337AB7",
+                pointColor: "#337AB7",
+                borderColor: '#337AB7',
                 borderWidth: 0,
                 showLine: true,
-                data: [0, 40, 10, 30, 10, 20, 15, 20],
+                data: [3401, 2942, 3506, 4021, 4721, 3999, 4924, 4128, 4242, 1042, 4129, 3824],
                 pointBackgroundColor: 'transparent',
             }, {
-                label: "Lost",
+                label: "User registered",
                 fill: false,
                 lineTension: .5,
-                pointColor: "white",
-                borderColor: '#5cb85c',
+                pointColor: "#D9534F",
+                borderColor: '#D9534F',
                 borderWidth: 0,
                 showLine: true,
-                data: [40, 0, 20, 10, 25, 15, 30, 0],
+                data: [259, 412, 123, 234, 331, 242, 192, 332, 412, 122, 159, 921],
                 pointBackgroundColor: 'transparent',
             },
             {
-                label: "Lost",
+                label: "Posts written",
                 fill: false,
                 lineTension: .5,
                 pointColor: "white",
-                borderColor: '#f0ad4e',
+                borderColor: '#F9d71c',
                 borderWidth: 0,
                 showLine: true,
-                data: [10, 40, 20, 5, 35, 15, 35, 0],
+                data: [4192, 4121, 3232, 4450, 2932, 1925, 4141, 3941, 4142, 3123, 3812, 1283, 4244],
                 pointBackgroundColor: 'transparent',
             },
             {
-                label: "Lost",
+                label: "QnA",
                 fill: false,
                 lineTension: .5,
-                pointColor: "white",
-                borderColor: '#337ab7',
+                pointColor: "#5CB85C",
+                borderColor: '#5CB85C',
                 borderWidth: 0,
                 showLine: true,
-                data: [0, 30, 10, 25, 10, 40, 20, 0],
+                data: [284, 599, 341, 412, 321, 213, 333, 414, 553, 516, 751, 512],
                 pointBackgroundColor: 'transparent',
             }]
         },
     });
 
+    $("#projInfo").click(function() {
+        location.href="projectList.html";
+    });
+
+    $("#userInfo").click(function() {
+        //유저 목록으로 이동하는 href 생성
+        location.href="UserScreen.html";
+    });
+    
+    //상자에 마우스 오버시 해당 차트의 보더가 두꺼워진다.
+    $("#box_page").mouseover(function() {
+        
+    });
+    // 메뉴 상단에 프로젝트 정보 출력하기 
+    $("#projectName").append("Project Name");
+    $("#projectPeriod").append("<span>2020.07.01 ~ 2020.07.10</span><br>");
+    for (var i=0; i<5; i++) {
+        $("#projectMember").append("<div class='profilePic'></div>")
+    }
+    var profilePic = document.getElementsByClassName("profilePic");
+    for (var i=0; i<5; i++) {
+        profilePic[i].setAttribute("style", `background-image: url('../images/${i}.png')`)
+    }
+
+    //클릭한 메뉴만 표시되도록 
+    $(".list-group > a").click(function() {
+        $(".list-group > a").removeClass("active");
+        $(this).addClass("active");
+    });
+
+    //아코디언 메뉴
+    var acc = document.getElementsByClassName("parent");
+    for (var i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+            var li = $(this).children("li");
+            li.slideToggle(1000);
+            this.classList.toggle("active");
+        });
+    }
 
 </script>

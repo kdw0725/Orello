@@ -2,32 +2,166 @@
     /* #contentright * {
         border: 1px solid black;
     } */
+    * {
+        outline: none !important;
+    }
+    #contentLeft {
+        position: fixed;
+    }
+    #contentLeft * {
+        /* border: 1px solid gray; */
+    }
+    /* 메뉴 위 프로젝트 정보 */
+    #contentLeft > #projectInfo {
+        width: 250px;
+        height: 200px;
+        margin: 30px auto;
+        text-align: center;
+        position: relative;
+        top: 0px;
+        left: 0px;
+    }
+    #contentLeft #projectName {
+        margin-top: 70px;
+        font-size:1.5em;
+    }
+    #contentLeft #projectPeriod {
+        margin-top: 10px;
+        font-style: italic;
+    }
+    #contentLeft #projectContent {
+        margin-top: 20px;
+        /* font-style: italic; */
+    }
+    #contentLeft #projectMember {
+        width: 100%;
+        height: 60px;
+        position: relative;
+        top: 0;
+        left: 0;
+        /* bottom: 30px; */
+        margin-top: 30px;
+
+    }
+    #projectMember .profilePic {
+        width: 50px;
+        height: 50px;
+        border: 3px solid white;
+        border-radius: 25px;
+        box-shadow: 3px 3px 2px #ccc;
+        display: inline-block;
+        background-color: #ccc;
+        background-repeat: no-repeat;
+        background-size: contain;
+        margin-left: -10px;
+    }
+    #projecMember .profilePic:first-child {margin-left: 0px;}
+
+    #projectMember .profilePic:hover {
+        transform: translate(0px, -15px);
+        transition: tranform 0.5s;
+    }
+    /* 메뉴 */
+    #contentLeft > #menu {
+        width: 230px;
+        min-height: 400px;
+        margin: 70px auto;
+        /* border: 1px solid black; */
+    }
+    #contentLeft #menu ul, #menu li {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        background-color: transparent;
+        cursor: pointer;
+        box-shadow: 0px 0px 0px white;
+    }
+    #contentLeft #menu .accordion > div, #menu .panel > div{
+        margin: 0 auto;
+        padding-left: 10px;
+        padding-top: 9px;
+        border-bottom: 1px solid #999;
+        height: 40px;
+        padding-right: 10px;
+    }
+    #contentLeft #menu .panel > div {
+        margin-left: 30px;
+    }
+    #contentLeft #menu ul.active > div {
+        color: #5bc0de;
+        border-bottom: 1px solid #5bc0de; 
+    }
+    #contentLeft #menu > ul.active > div > i {
+        color: #5bc0de;
+    }
+    #contentLeft #menu > ul.active li {
+        display: block;
+    }
+    #contentLeft #menu ul i {
+        margin-right: 10px;
+        color: #555;
+    }
+    #contentLeft #menu li.panel {
+        display: none;
+    }
+    #contentLeft #menu ul.parent > div::after {
+        content: "\f078";
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        float: right;
+    }
+    #contentLeft #menu ul.active.parent > div::after{
+        content: "\f077";
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        float: right;
+    }
+    #contentLeft #menu ul:hover > div {
+        color: #5bc0de;
+        border-bottom: 1px solid #5bc0de; 
+    }
+    #contentLeft #menu ul:hover > div > i {
+        color: #5bc0de;
+    }
+    #contentLeft #menu li:hover > div {
+        color: #5bc0de;
+        border-bottom: 1px solid #5bc0de; 
+    }
+    #contentLeft #menu li:hover > div > i {
+        color: #5bc0de;
+    }
+    #contentRight {
+        background-color: #f8f9fa;
+    }
+
     .ArticleTop {
         width: 843px;
         height: 100px;
         padding-top: 30px;
-        padding-left: 55px;
+        padding-left: 60px;
     }
 
-    .leftButton {
-        width: 80px;
-        height: 50px;
+    .ArticleLeft {
         float: left;
-        margin: 4px;
-        background-color:#999;
-        border: 0px;
-        border-radius: 10%;
     }
 
-    .rightButton {
-        width: 80px;
-        height: 50px;
+    .ArticleRight {
         float: right;
-        margin: 4px;
-        background-color: #aaa;
-        border: 0px;
-        border-radius: 10%;
     }
+
+    #Bottom_left {
+        width: 780px;
+        padding-top: 20px;
+        padding-left: 60px;
+
+    }
+
+    button {
+        width: 100px;
+        height: 40px;
+        outline: none;
+    }
+
 
     #mainArea {
         width: 780px;
@@ -42,14 +176,33 @@
         clear: both;
     }
 
+    .wri_name {
+        padding-left: 20px;
+    }
+
+    .wri_name:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    .date {
+        width: 300px;
+        padding-left: 30px;
+        margin-left: 30px;
+    }
+
     .postname {
         font-weight: bold;
         font-size: 50px;
     }
 
-    .img {
+    .make_img {
         width: 40px;
         float: left;
+        border-radius: 100%;
+    }
+    .make_img:hover {
+        cursor: pointer;
     }
 
     .mainTop {
@@ -65,178 +218,229 @@
     .commentBox {
         border: 1px solid black;
         border-radius: 5%;
-        
+
     }
 
     .commentArea {
         padding: 10px;
     }
 
-    .inputButton {
+    .inputBtn {
         float: right;
     }
-    /**
- * Oscuro: #283035
- * Azul: #03658c
- * Detalle: #c7cacb
- * Fondo: #dee1e3
- ----------------------------------*/
- * {
- 	margin: 0;
- 	padding: 0;
- 	-webkit-box-sizing: border-box;
- 	-moz-box-sizing: border-box;
- 	box-sizing: border-box;
- }
 
- a {
- 	color: #03658c;
- 	text-decoration: none;
- }
+    * {
+        margin: 0;
+        padding: 0;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
 
-ul {
-	list-style-type: none;
-}
+    a {
+        color: #03658c;
+        text-decoration: none;
+    }
 
-body {
-	font-family: 'Roboto', Arial, Helvetica, Sans-serif, Verdana;
-	background: #dee1e3;
-}
-body{
-    margin-top:20px;
-    background-color:#e9ebee;
-}
+    ul {
+        list-style-type: none;
+    }
 
-.be-comment-block {
-    margin-bottom: 50px !important;
-    /* border: 1px solid #edeff2; */
-    border-radius: 2px;
-    padding: 10px 3px;
-    /* border:1px solid #ffffff; */
-    width: 700px
-}
+    body {
+        font-family: 'Roboto', Arial, Helvetica, Sans-serif, Verdana;
+        background: #dee1e3;
+    }
 
-.comments-title {
-    font-size: 16px;
-    color: #262626;
-    margin-bottom: 15px;
-    font-family: 'Conv_helveticaneuecyr-bold';
-}
+    body {
+        margin-top: 20px;
+        background-color: #e9ebee;
+    }
 
-.be-img-comment {
-    width: 60px;
-    height: 60px;
-    float: left;
-    margin-bottom: 15px;
-}
+    .be-comment-block {
+        margin-bottom: 50px !important;
+        /* border: 1px solid #edeff2; */
+        border-radius: 2px;
+        padding: 10px 3px;
+        /* border:1px solid #ffffff; */
+        width: 700px
+    }
 
-.be-ava-comment {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-}
+    .comments-title {
+        font-size: 16px;
+        color: #262626;
+        margin-bottom: 15px;
+        font-family: 'Conv_helveticaneuecyr-bold';
+    }
 
-.be-comment-content {
-    margin-left: 80px;
-}
+    .be-img-comment {
+        width: 60px;
+        height: 60px;
+        float: left;
+        margin-bottom: 15px;
+    }
 
-.be-comment-content span {
-    display: inline-block;
-    width: 49%;
-    margin-bottom: 15px;
-}
+    .be-ava-comment {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+    }
 
-.be-comment-name {
-    font-size: 13px;
-    font-family: 'Conv_helveticaneuecyr-bold';
-}
+    .be-comment-content {
+        margin-left: 80px;
+    }
 
-.be-comment-content a {
-    color: #383b43;
-}
+    .be-comment-content span {
+        display: inline-block;
+        width: 49%;
+        margin-bottom: 15px;
+    }
 
-.be-comment-content span {
-    display: inline-block;
-    width: 49%;
-    margin-bottom: 15px;
-}
+    .be-comment-name {
+        font-size: 13px;
+        font-family: 'Conv_helveticaneuecyr-bold';
+    }
 
-.be-comment-time {
-    text-align: right;
-}
+    .be-comment-content a {
+        color: #383b43;
+    }
 
-.be-comment-time {
-    font-size: 11px;
-    color: #b4b7c1;
-}
+    .be-comment-time {
+        text-align: right;
+        font-size: 11px;
+        color: #b4b7c1;
+    }
 
-.be-comment-text {
-    font-size: 13px;
-    line-height: 18px;
-    color: #7a8192;
-    display: block;
-    background: #f6f6f7;
-    border: 1px solid #edeff2;
-    padding: 15px 20px 20px 20px;
-}
+    .be-comment-text {
+        font-size: 13px;
+        line-height: 18px;
+        color: #7a8192;
+        display: block;
+        background: #f6f6f7;
+        border: 1px solid #edeff2;
+        padding: 15px 20px 20px 20px;
+    }
 
-.form-group.fl_icon .icon {
-    position: absolute;
-    top: 1px;
-    left: 16px;
-    width: 48px;
-    height: 48px;
-    background: #f6f6f7;
-    color: #b5b8c2;
-    text-align: center;
-    line-height: 50px;
-    -webkit-border-top-left-radius: 2px;
-    -webkit-border-bottom-left-radius: 2px;
-    -moz-border-radius-topleft: 2px;
-    -moz-border-radius-bottomleft: 2px;
-    border-top-left-radius: 2px;
-    border-bottom-left-radius: 2px;
-}
+    .form-group.fl_icon .icon {
+        position: absolute;
+        top: 1px;
+        left: 16px;
+        width: 48px;
+        height: 48px;
+        background: #f6f6f7;
+        color: #b5b8c2;
+        text-align: center;
+        line-height: 50px;
+        -webkit-border-top-left-radius: 2px;
+        -webkit-border-bottom-left-radius: 2px;
+        -moz-border-radius-topleft: 2px;
+        -moz-border-radius-bottomleft: 2px;
+        border-top-left-radius: 2px;
+        border-bottom-left-radius: 2px;
+    }
 
-.form-group .form-input {
-    font-size: 13px;
-    line-height: 50px;
-    font-weight: 400;
-    color: #b4b7c1;
-    width: 100%;
-    height: 50px;
-    padding-left: 20px;
-    padding-right: 30px;
-    border: 1px solid #edeff2;
-    border-radius: 3px;
-}
+    .form-group .form-input {
+        font-size: 13px;
+        line-height: 50px;
+        font-weight: 400;
+        color: #b4b7c1;
+        width: 100%;
+        height: 50px;
+        padding-left: 20px;
+        padding-right: 30px;
+        border: 1px solid #edeff2;
+        border-radius: 3px;
+    }
 
-.form-group.fl_icon .form-input {
-    padding-left: 70px;
-}
+    .form-group.fl_icon .form-input {
+        padding-left: 70px;
+    }
 
-.form-group textarea.form-input {
-    height: 150px;
-}
-.btn {
-    margin-right: 16px;
-}
+    .form-group textarea.form-input {
+        height: 150px;
+    }
+
+    .btn {
+        margin-right: 16px;
+    }
+
+    .list {
+        padding: 7px 0;
+
+    }
+
+    .list:hover {
+        cursor: pointer;
+        background-color: #ffeeee;
+    }
+    .dropdown {
+        width: 300px;
+        margin-left: 40px;
+        height: 20px;
+    }
 
 </style>
+<title>NoticeRead</title>
 <div id="header"></div>
 <section id="content" class="container">
-    <div id="contentLeft"></div>
+    <div id="contentLeft">
+        <div id="projectInfo">
+            <div id='projectName'></div>
+            <div id="projectPeriod"></div>
+            <div id="projectContent">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Numquam, nesciunt?</div>
+            <div id="projectMember"></div>
+        </div>
+        <div id="menu">
+            <ul class="accordion"><div><i class="glyphicon glyphicon-home"></i>Home</div></ul>            
+            <ul class="accordion parent"><div><i class="glyphicon glyphicon-calendar"></i>Chart</div>
+                <!-- <li class="panel"><div><i class="glyphicon glyphicon-minus"></i></div></li>
+                <li class="panel"><div><i class="glyphicon glyphicon-minus"></i></div></li>    -->
+            </ul>         
+            <ul class="accordion"><div><i class="glyphicon glyphicon-check"></i>Project</div></ul>
+            <ul class="accordion parent"><div><i class="glyphicon glyphicon-list-alt"></i>Board</div>
+                <li class="panel"><div><i class="glyphicon glyphicon-minus"></i>Notice</div></li>
+                <li class="panel"><div><i class="glyphicon glyphicon-minus"></i>Codes</div></li>
+                <li class="panel"><div><i class="glyphicon glyphicon-minus"></i>Free</div></li>
+            </ul>
+            <ul class="accordion"><div><i class="glyphicon glyphicon-hdd"></i>Files</div></ul>
+            <!-- <ul class="accordion"><div><i class="fas fa-code-branch"></i>Git</div></ul> -->
+            <ul class="accordion"><div><i class="glyphicon glyphicon-comment"></i>Chat</div></ul>
+
+        </div>
+
+    </div>
+    </div>
     <div id="contentRight">
         <div class="ArticleTop">
             <div class="ArticleLeft">
-                <button class="leftButton" id="modifyButton"><span>수정</span></button>
-                <button class="leftButton" id="deleteButton"><span>삭제</span></button>
+                <button class="btn btn-info" id="modifyButton"><span>수정</span></button>
+                <button class="btn btn-info" id="deleteButton" data-toggle="modal"
+                    data-target="#deleteModal"><span>삭제</span></button>
+                <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <h4 class="modal-title" id="deleteModalLabel">Orello</h4>
+                            </div>
+                            <div class="modal-body">
+                                게시글을 삭제하시겠습니까?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-info" data-dismiss="modal">Yes</button>
+                                <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="ArticleRight">
-                <button class="rightButton" id="listButton"><span>목록</span></button>
-                <button class="rightButton" id="nextButton"><span class="
+                <button class="btn btn-info" id="listButton"><span>목록</span></button>
+                <button class="btn btn-info" id="nextButton"><span class="
                     glyphicon glyphicon-chevron-down">다음글</span></button>
-                <button class="rightButton" id="beforeButton"><span class="
+                <button class="btn btn-info" id="beforeButton"><span class="
                         glyphicon glyphicon-chevron-up">이전글</span></button>
             </div>
         </div>
@@ -244,7 +448,17 @@ body{
             <div class="mainTop">
                 <div class="postname"><span>질문있습니다.</span></div>
                 <div class="id1">
-                    <img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" class="img"><span>Admin</span>
+                    <img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" class="make_img">
+                    <div class="dropdown">
+                        <span class="wri_name" id="dLabel" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">Admin</span>
+                        <ul class="dropdown-menu dropdown-menu-bottom" role="menu" aria-labelledby="dLabel" id="myType"
+                            style="min-width:100px; text-align:center; height:110px;">
+                            <li class="list" id="list1">게시글 보기</li>
+                            <li class="list" id="list2">1:1 채팅</li>
+                            <li class="list" id="list3">회원 정보 보기</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="date">
                     <span>2020.07.17 17:23 조회 570</span>
@@ -253,91 +467,117 @@ body{
             <div class="mainMiddle">
                 <div class="mainContent">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque inventore
                     laborum odio, saepe similique necessitatibus quisquam hic, quia molestiae alias illum ut vero
-                    repellat unde officia, doloribus eos cupiditate! Quam! Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti quia nisi unde rem, ullam eligendi dolores repellendus eum quaerat pariatur! Dolores quasi nulla earum expedita omnis inventore assumenda maiores esse! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe nesciunt odio consequuntur, aliquid itaque ea voluptate voluptatibus doloribus a voluptas. Impedit ex nostrum, voluptatibus sapiente placeat veritatis odio voluptates exercitationem!</div>
-                    <img src="../images/Logo.png">
+                    repellat unde officia, doloribus eos cupiditate! Quam! Lorem ipsum dolor sit amet consectetur
+                    adipisicing elit. Corrupti quia nisi unde rem, ullam eligendi dolores repellendus eum quaerat
+                    pariatur! Dolores quasi nulla earum expedita omnis inventore assumenda maiores esse! Lorem ipsum,
+                    dolor sit amet consectetur adipisicing elit. Saepe nesciunt odio consequuntur, aliquid itaque ea
+                    voluptate voluptatibus doloribus a voluptas. Impedit ex nostrum, voluptatibus sapiente placeat
+                    veritatis odio voluptates exercitationem!</div>
+                <img src="../images/Logo.png">
             </div>
-            <div class="comments-container"  id="first_screen">
+            <div class="comments-container" id="first_screen">
                 <h1>댓글</h1>
-        
-                <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-<div class="container">
-<div class="be-comment-block">
-    <h1 class="comments-title">Comments (3)</h1>
-	<div class="be-comment" id="be-comment">
-		<div class="be-img-comment">	
-			<a href="blog-detail-2.html">
-				<img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="be-ava-comment">
-			</a>
-		</div>
-		<div class="be-comment-content">
-			
-				<span class="be-comment-name">
-					<a href="blog-detail-2.html">Ravi Sah</a>
-					</span>
-				<span class="be-comment-time">
-					<i class="fa fa-clock-o"></i>
-					May 27, 2015 at 3:14am
-				</span>
-			<p class="be-comment-text">
-				Pellentesque gravida tristique ultrices. 
-				Sed blandit varius mauris, vel volutpat urna hendrerit id. 
-				Curabitur rutrum dolor gravida turpis tristique efficitur.
-			</p>
-		</div>
-	</div>
-	<div class="be-comment" id="be-comment">
-		<div class="be-img-comment">	
-			<a href="blog-detail-2.html">
-				<img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="" class="be-ava-comment">
-			</a>
-		</div>
-		<div class="be-comment-content">
-			<span class="be-comment-name">
-				<a href="blog-detail-2.html">Phoenix, the Creative Studio</a>
-			</span>
-			<span class="be-comment-time">
-				<i class="fa fa-clock-o"></i>
-				May 27, 2015 at 3:14am
-			</span>
-			<p class="be-comment-text">
-				Nunc ornare sed dolor sed mattis. In scelerisque dui a arcu mattis, at maximus eros commodo. Cras magna nunc, cursus lobortis luctus at, sollicitudin vel neque. Duis eleifend lorem non ant. Proin ut ornare lectus, vel eleifend est. Fusce hendrerit dui in turpis tristique blandit.
-			</p>
-		</div>
-	</div>
-	<div class="be-comment" id="be-comment">
-		<div class="be-img-comment">	
-			<a href="blog-detail-2.html">
-				<img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="" class="be-ava-comment">
-			</a>
-		</div>
-		<div class="be-comment-content">
-			<span class="be-comment-name">
-				<a href="blog-detail-2.html">Cüneyt ŞEN</a>
-			</span>
-			<span class="be-comment-time">
-				<i class="fa fa-clock-o"></i>
-				May 27, 2015 at 3:14am
-			</span>
-			<p class="be-comment-text">
-				Cras magna nunc, cursus lobortis luctus at, sollicitudin vel neque. Duis eleifend lorem non ant
-			</p>
-		</div>
-    </div>
-	<form class="form-block">
-		<div class="row">
-			<div class="col-xs-12">
-				<div class="form-group">
-					<textarea class="form-input" required="" placeholder="Your text" style="resize: none;"></textarea>
-				</div>
-			</div>
-			<a id="btn" class="btn btn-primary pull-right">submit</a>
-		</div>
-	</form>
-</div>
-</div>
+
+                <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
+                    rel="stylesheet">
+                <div class="container">
+                    <div class="be-comment-block">
+                        <h1 class="comments-title">Comments (3)</h1>
+                        <div class="be-comment" id="be-comment">
+                            <div class="be-img-comment">
+                                <a href="blog-detail-2.html">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt=""
+                                        class="be-ava-comment">
+                                </a>
+                            </div>
+                            <div class="be-comment-content">
+
+                                <span class="be-comment-name">
+                                    <a href="blog-detail-2.html">Ravi Sah</a>
+                                </span>
+                                <span class="be-comment-time">
+                                    <i class="fa fa-clock-o"></i>
+                                    May 27, 2015 at 3:14am
+                                </span>
+                                <p class="be-comment-text">
+                                    Pellentesque gravida tristique ultrices.
+                                    Sed blandit varius mauris, vel volutpat urna hendrerit id.
+                                    Curabitur rutrum dolor gravida turpis tristique efficitur.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="be-comment" id="be-comment">
+                            <div class="be-img-comment">
+                                <a href="blog-detail-2.html">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt=""
+                                        class="be-ava-comment">
+                                </a>
+                            </div>
+                            <div class="be-comment-content">
+                                <span class="be-comment-name">
+                                    <a href="blog-detail-2.html">Phoenix, the Creative Studio</a>
+                                </span>
+                                <span class="be-comment-time">
+                                    <i class="fa fa-clock-o"></i>
+                                    May 27, 2015 at 3:14am
+                                </span>
+                                <p class="be-comment-text">
+                                    Nunc ornare sed dolor sed mattis. In scelerisque dui a arcu mattis, at maximus eros
+                                    commodo. Cras magna nunc, cursus lobortis luctus at, sollicitudin vel neque. Duis
+                                    eleifend lorem non ant. Proin ut ornare lectus, vel eleifend est. Fusce hendrerit
+                                    dui in turpis tristique blandit.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="be-comment" id="be-comment">
+                            <div class="be-img-comment">
+                                <a href="blog-detail-2.html">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt=""
+                                        class="be-ava-comment">
+                                </a>
+                            </div>
+                            <div class="be-comment-content">
+                                <span class="be-comment-name">
+                                    <a href="blog-detail-2.html">Cüneyt ŞEN</a>
+                                </span>
+                                <span class="be-comment-time">
+                                    <i class="fa fa-clock-o"></i>
+                                    May 27, 2015 at 3:14am
+                                </span>
+                                <p class="be-comment-text">
+                                    Cras magna nunc, cursus lobortis luctus at, sollicitudin vel neque. Duis eleifend
+                                    lorem non ant
+                                </p>
+                            </div>
+                        </div>
+                        <form class="form-block">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="form-group">
+                                        <textarea class="form-input" required="" placeholder="Your text"
+                                            style="resize: none;"></textarea>
+                                    </div>
+                                </div>
+                                <a id="btn" class="btn btn-info pull-right">submit</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-        
-    </div>
+        <div id="ArticleBottom">
+            <div id=Bottom_left>
+
+                <button class="btn btn-info" id="butList"><span>목록</span></button>
+                <a href="#header">
+                    <button class="btn btn-info" id="butUp"><span>맨 위</span></button>
+                </a>
+            </div>
+        </div>
+        <a style="display:scroll;position:fixed;bottom:10px;right:10px;" href="#" title=”맨위로"><i
+                class="glyphicon glyphicon-arrow-up" id="up"></i></a>
+
+
 
 </section>
 <div id="footer"></div>
@@ -351,13 +591,61 @@ body{
 
     var n = document.getElementById("listButton");
 
-    $("#listButton").click(function() {
-        location.href="noticeMain.html";
+    $("#listButton, #butList").click(function () {
+        location.href = "noticeMain.html";
     });
 
-    $("#deleteButton").click(function() {
+    $("#deleteButton").click(function () {
+        //클릭시 페이지 삭제 기능 구현해야함
+    });
 
+    $("#butUp").click(function () {
+        href = "#";
+    });
+
+    $("#list1").click(function () {
+        location.href = "noticeMain.html";
     });
     
+    $(".make_img").click(function() {
+        
+        //나중에 그 사람이 작성한 게시글 목록으로 이동하게 만듬
+        location.href = "userListSub.html";
+    });
+
+        //상자에 마우스 오버시 해당 차트의 보더가 두꺼워진다.
+        $("#box_page").mouseover(function() {
+        
+    });
+    // 메뉴 상단에 프로젝트 정보 출력하기 
+    $("#projectName").append("Project Name");
+    $("#projectPeriod").append("<span>2020.07.01 ~ 2020.07.10</span><br>");
+    for (var i=0; i<5; i++) {
+        $("#projectMember").append("<div class='profilePic'></div>")
+    }
+    var profilePic = document.getElementsByClassName("profilePic");
+    for (var i=0; i<5; i++) {
+        profilePic[i].setAttribute("style", `background-image: url('../images/${i}.png')`)
+    }
+
+    //클릭한 메뉴만 표시되도록 
+    $(".list-group > a").click(function() {
+        $(".list-group > a").removeClass("active");
+        $(this).addClass("active");
+    });
+
+    //아코디언 메뉴
+    var acc = document.getElementsByClassName("parent");
+    for (var i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+            var li = $(this).children("li");
+            li.slideToggle(1000);
+            this.classList.toggle("active");
+        });
+    }
+
+
+
+
 
 </script>
