@@ -1,35 +1,77 @@
 <style>
-    
-    #contentRight * {
-        /* border: 1px solid black; */
+    * {
+        /* border: 1px solid gray; */
     }
-    #contentRight {
-        min-width: 900px;
-    }
-    #contentRight #title {
-        min-width: 870px;
-        height: 50px;
-        margin-top: 30px;
-        margin-left: 30px;
-        color: #444;
-        font-variant: small-caps;
-    }
-    #contentRight #title h1 {
-        /* display: inline-block; */
-        float: left;
-        margin: 0;
-    }
-    #contentRight #title i {
-        font-size: 2em;
-        float: right;
-        margin-left: 10px;
+    #content {
+        padding: 80px 100px;
+        /* 우선순위 밀려서 안먹음.. */
+        margin: 0px !important;
+        /* min-width: 1000px; */
     }
 
+    #title {
+        width: 1600px;
+        height: 50px;
+        margin-top: 30px;
+        color: #444;
+        /* margin-left: 30px; */
+    }
+    #title h1 {
+        float: left;
+        margin: 0;
+        padding-left: 10px;
+        font-weight: bold;
+        border-left: 10px solid #5bc0de;
+        
+    }
+    #title .titleBarFunction {
+        height: 50px;
+        display: inline-block;
+        float: right;
+    }
+    #title .titleBarFunction i {
+        font-size: 1.4em;
+        /* float: right; */
+        margin-left: 10px;
+    }
+    #title .titleBarFunction span {
+        font-size: 1.6em;
+    }
+    #title .titleBarFunction:hover {
+        color: #5bc0de;
+    }
+
+    /* 체크리스트 */
     .steps {
-        width: 300px;
+        width: 280px;
         margin-top: 30px;
         margin-left: 30px;
         float: left;
+    }
+    .steps .listTitle {
+        padding: 2px 15px;
+        height: 40px;
+        background-color: #6eceeb;
+        margin-bottom: 10px;
+        color: white;
+        
+    }
+
+    .steps .listTitle h3 {
+        margin-top: 5px;
+        font-weight: bold;
+        display: inline-block;
+
+    }
+    .steps .listTitle i {
+        float: right;
+        margin-top: 10px;
+        cursor: pointer;
+        font-size: 1.2em;
+    }
+    .steps .listTitle i:hover {
+        color: #ddd;
+
     }
     .steps h4{
         margin: 10px;
@@ -80,7 +122,7 @@
         left: 0;
         padding: 5px 5px 10px 70px;
         margin-bottom: 5px;
-        box-shadow: 2px 2px 2px #bbb;
+        box-shadow: 2px 2px 2px #eee;
     }
     .steps div span{
         display: block;
@@ -92,8 +134,6 @@
         /* margin-bottom: 10px; */
         cursor: pointer;
         transition: all 0.7s ease;
-
-
     } 
     .steps input[type='checkbox'] + div:before {
         content:"";
@@ -118,10 +158,10 @@
     }
     .steps input[type='checkbox']:checked + div{
         background: white;
-        color: #1ABC9C;
+        color: #5bc0de;
     }
     .steps input[type='checkbox']:checked + div span {
-        color: #1ABC9C;
+        color: #5bc0de;
     }
     .steps input[type='checkbox']:checked + div:before{
         background: url("../images/tick.png") no-repeat center center;
@@ -130,28 +170,28 @@
 
     }
 
-    .steps li:nth-child(1) div{ border-right: 8px solid #f87c85;}
-    .steps li:nth-child(2) div{ border-right: 8px solid #feb47f; }
-    .steps li:nth-child(3) div{ border-right: 8px solid #3498db; }
-    .steps li:nth-child(4) div{ border-right: 8px solid #b985ea; }
-    .steps li:nth-child(5) div{ border-right: 8px solid #43d6b0; }
-    .steps li:nth-child(6) div{ border-right: 8px solid #f87c85;}
-    .steps li:nth-child(7) div{ border-right: 8px solid #feb47f; }
-    .steps li:nth-child(8) div{ border-right: 8px solid #3498db; }
-    .steps li:nth-child(9) div{ border-right: 8px solid #b985ea; }
-    .steps li:nth-child(10) div{ border-right: 8px solid #43d6b0; }
+    .steps li:nth-child(1) div{ border-right: 10px solid #A4DCD2;}
+    .steps li:nth-child(2) div{ border-right: 10px solid #b3de69; }
+    .steps li:nth-child(3) div{ border-right: 10px solid #ffed6f; }
+    .steps li:nth-child(4) div{ border-right: 10px solid #fdb462; }
+    .steps li:nth-child(5) div{ border-right: 10px solid #bebada; }
+    .steps li:nth-child(6) div{ border-right: 10px solid #80b1d3; }
+    .steps li:nth-child(7) div{ border-right: 10px solid #bc80bd; }
+    .steps li:nth-child(8) div{ border-right: 10px solid #fb8072;}
+    .steps li:nth-child(9) div{ border-right: 10px solid #fccde5; }
+    .steps li:nth-child(10) div{ border-right: 10px solid #ffffb3; }
 
-    #addCheckList {
+    .steps .addCheckList {
         text-align: center;
         font-size: 2em;
         margin-top: 20px;
     }
-    #addCheckList i:hover {
-        color: #555;
+    .steps .addCheckList i:hover {
+        color: #5bc0de;
         text-shadow: 2px 2px 2px #ddd;
     }
 
-    /* **모달창** */
+    /* **체크리스트 추가 모달창** */
     .modal *{
         /* border: 1px solid gray; */
         outline: none !important;
@@ -165,12 +205,15 @@
     }
     .checkListContent > textarea {
         width: 520px;
-        min-height: 200px;
+        min-height: 150px;
         border: 1px solid #ddd;
         /* margin: 20px auto; */
         padding: 20px;
         display: block;
         resize: none;
+    }
+    .checkListFile {
+        margin: 15px 0px;
     }
     #datePicker > div {
         border: 1px solid #ddd;
@@ -230,7 +273,11 @@
         height: 60px;
         float: left;
         margin-bottom: 15px;
+        background-color: #5bc0de;
+        border-radius: 50%;
+        /* padding: 5px; */
     }
+
     .be-ava-comment {
         width: 60px;
         height: 60px;
@@ -265,8 +312,9 @@
         border: 1px solid #edeff2;
         padding: 15px 20px 20px 20px;
     }
-    .form-group {
+    .modal .form-group {
         margin-top: 20px;
+        margin-bottom: 0px;
     }
     .form-group textarea.form-input {
         width: 80%;
@@ -275,22 +323,143 @@
         border: 1px solid #edeff2;
         padding: 20px;
     }
+
     #commentEnter {
         margin: 55px 10px;
     }
+    .modal .modal-footer {
+        /* margin-top: 20px; */
+    }
+    .modal .modal-footer #btnDelete {
+        float: left;
+        margin-left: -15px;
+    }
+    #titleModify{
+        display: none;
+    }
+    
 
 </style>
 <div id="header" style="z-index: 100;"></div>
 <section id="content" class="container">
-    <div id="contentLeft"></div>
-    <div id="contentRight">
+
         <div id="title">
             <h1>Check List</h1>
-            <i class="glyphicon glyphicon-plus-sign"></i>
-            <i class="glyphicon glyphicon-trash"></i>
-            <i class="glyphicon glyphicon-cog"></i>
+            <div class="titleBarFunction" id="listAdd"><i class="glyphicon glyphicon-plus-sign"></i> <span>ADD</span></div>
+            <div class="titleBarFunction" id="goToProjectHome"><i class="glyphicon glyphicon-home"></i> <span>PROJECT</span></div>
         </div>
         <div class="steps">
+            <div class="listTitle"><h3>List Title</h3><i class="glyphicon glyphicon-trash deleteList"></i></div>
+            <ul class="sortable connectedSortable">
+                <li>
+                    <input id='label-1' type='checkbox'/>
+                    <div>
+                        <label for='label-1'>
+                            <h4>Meet Larry at 6pm </h4>
+                            <span><i class="glyphicon glyphicon-user"></i> Assigned to: <span class="assigned"></span></span><br>
+                        </label>
+                        <span class="modify"><i class="glyphicon glyphicon-menu-hamburger"></i> <i class="glyphicon glyphicon-paperclip">8</i> <i class="glyphicon glyphicon-comment">10</i></span>   
+                    </div>
+                </li>
+                <li>
+                    <input id='label-2' type='checkbox'/>
+                    <div>
+                        <label for='label-2'>
+                            <h4>Team Session</h4>
+                            <span><i class="glyphicon glyphicon-user"></i> Assigned to: <span class="assigned"></span></span><br>   
+                        </label>
+                        <span class="modify"><i class="glyphicon glyphicon-menu-hamburger"></i> <i class="glyphicon glyphicon-paperclip">8</i> <i class="glyphicon glyphicon-comment">10</i></span>   
+                    </div>
+                </li>
+                <li>
+                    <input id='label-3' type='checkbox'/>
+                    <div>
+                        <label for='label-3'>
+                            <h4>Watch Movie</h4>
+                            <span><i class="glyphicon glyphicon-user"></i> Assigned to: <span class="assigned"></span></span><br>   
+                        </label>
+                        <span class="modify"><i class="glyphicon glyphicon-menu-hamburger"></i> <i class="glyphicon glyphicon-paperclip">8</i> <i class="glyphicon glyphicon-comment">10</i></span>   
+                    </div>
+                </li>
+                <li>
+                    <input id='label-4' type='checkbox'/>
+                    <div>
+                        <label for='label-4'>
+                            <h4>Date with babe</h4>  
+                            <span><i class="glyphicon glyphicon-user"></i> Assigned to: <span class="assigned"></span></span><br>   
+                        </label>
+                        <span class="modify"><i class="glyphicon glyphicon-menu-hamburger"></i> <i class="glyphicon glyphicon-paperclip">8</i> <i class="glyphicon glyphicon-comment">10</i></span>   
+                    </div>
+                </li>
+                <li>
+                    <input id='label-5' type='checkbox'/>
+                    <div>
+                        <label for='label-5'>
+                            <h4>Jogging at Ayala</h4>  
+                            <span><i class="glyphicon glyphicon-user"></i> Assigned to: <span class="assigned"></span></span><br>   
+                        </label>
+                        <span class="modify"><i class="glyphicon glyphicon-menu-hamburger"></i> <i class="glyphicon glyphicon-paperclip">8</i> <i class="glyphicon glyphicon-comment">10</i></span>   
+                    </div>
+                </li>
+                <li>
+                    <input id='label-5' type='checkbox'/>
+                    <div>
+                        <label for='label-5'>
+                            <h4>Jogging at Ayala</h4>  
+                            <span><i class="glyphicon glyphicon-user"></i> Assigned to: <span class="assigned"></span></span><br>   
+                        </label>
+                        <span class="modify"><i class="glyphicon glyphicon-menu-hamburger"></i> <i class="glyphicon glyphicon-paperclip">8</i> <i class="glyphicon glyphicon-comment">10</i></span>   
+                    </div>
+                </li>
+                <li>
+                    <input id='label-5' type='checkbox'/>
+                    <div>
+                        <label for='label-5'>
+                            <h4>Jogging at Ayala</h4>  
+                            <span><i class="glyphicon glyphicon-user"></i> Assigned to: <span class="assigned"></span></span><br>   
+                        </label>
+                        <span class="modify"><i class="glyphicon glyphicon-menu-hamburger"></i> <i class="glyphicon glyphicon-paperclip">8</i> <i class="glyphicon glyphicon-comment">10</i></span>   
+                    </div>
+                </li>
+                <li>
+                    <input id='label-5' type='checkbox'/>
+                    <div>
+                        <label for='label-5'>
+                            <h4>Jogging at Ayala</h4>  
+                            <span><i class="glyphicon glyphicon-user"></i> Assigned to: <span class="assigned"></span></span><br>   
+                        </label>
+                        <span class="modify"><i class="glyphicon glyphicon-menu-hamburger"></i> <i class="glyphicon glyphicon-paperclip">8</i> <i class="glyphicon glyphicon-comment">10</i></span>   
+                    </div>
+                </li>
+                <li>
+                    <input id='label-5' type='checkbox'/>
+                    <div>
+                        <label for='label-5'>
+                            <h4>Jogging at Ayala</h4>  
+                            <span><i class="glyphicon glyphicon-user"></i> Assigned to: <span class="assigned"></span></span><br>   
+                        </label>
+                        <span class="modify"><i class="glyphicon glyphicon-menu-hamburger"></i> <i class="glyphicon glyphicon-paperclip">8</i> <i class="glyphicon glyphicon-comment">10</i></span>   
+                    </div>
+                </li>
+                <li>
+                    <input id='label-5' type='checkbox'/>
+                    <div>
+                        <label for='label-5'>
+                            <h4>Jogging at Ayala</h4>  
+                            <span><i class="glyphicon glyphicon-user"></i> Assigned to: <span class="assigned"></span></span><br>   
+                        </label>
+                        <span class="modify"><i class="glyphicon glyphicon-menu-hamburger"></i> <i class="glyphicon glyphicon-paperclip">8</i> <i class="glyphicon glyphicon-comment">10</i></span>   
+                    </div>
+                </li>
+                
+            </ul>
+            <div class="addCheckList">
+                <i class="glyphicon glyphicon-plus-sign"></i>
+            </div>
+        </div>   
+        <div class="steps">
+            <div class="listTitle"><h3>List Title</h3><i class="glyphicon glyphicon-trash deleteList"></i></div>
+
             <ul class="sortable connectedSortable">
                 <li>
                     <input id='label-1' type='checkbox'/>
@@ -343,17 +512,20 @@
                     </div>
                 </li>
             </ul>
-            <div id="addCheckList">
+            <div class="addCheckList">
                 <i class="glyphicon glyphicon-plus-sign"></i>
             </div>
-        </div>   
+        </div>
     </div>
+
+
     <div class="modal fade" id="checkListModify">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title">CheckList Title</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <input id="titleModify"></input>
+                <h4 class="modal-title" id="titleArea">CheckList Title</h4>
             </div>
             <div class="modal-body">
                 <div class="modal-menu">
@@ -430,7 +602,7 @@
                         <div class="be-comment">
                             <div class="be-img-comment">	
                                 <a href="blog-detail-2.html">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="be-ava-comment">
+                                    <img src="../images/3.png" alt="" class="be-ava-comment">
                                 </a>
                             </div>
                             <div class="be-comment-content">
@@ -499,7 +671,99 @@
             </div>
           </div>
         </div>
-      </div>
+    </div>
+
+      <!-- 체크리스트 항목 추가 모달 -->
+    <div class="modal fade" id="checkListAdd">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">CheckList Title</h4>
+            </div>
+            <div class="modal-body">
+                <div class="modal-menu">
+                    
+                    <h5>업무 담당자</h5>
+                    <div>
+                        <input type="checkbox" id="member1" class="memberCheck">
+                        <label for="member1" class="memberPick">
+                            <div class="memberBox">
+                                <div class="memberPic"></div>
+                                <span>MemberName</span>
+                            </div>
+                        </label>
+                        <input type="checkbox" id="member2" class="memberCheck">
+                        <label for="member2" class="memberPick">
+                            <div class="memberBox">
+                                <div class="memberPic"></div>
+                                <span>MemberName</span>
+                            </div>
+                        </label>
+                        <input type="checkbox" id="member3" class="memberCheck">
+                        <label for="member3" class="memberPick">
+                            <div class="memberBox">
+                                <div class="memberPic"></div>
+                                <span>MemberName</span>
+                            </div>
+                        </label>
+                        <input type="checkbox" id="member4" class="memberCheck">
+                        <label for="member4" class="memberPick">
+                            <div class="memberBox">
+                                <div class="memberPic"></div>
+                                <span>MemberName</span>
+                            </div>
+                        </label>
+                        <input type="checkbox" id="member5" class="memberCheck">
+                        <label for="member5" class="memberPick">
+                            <div class="memberBox">
+                                <div class="memberPic"></div>
+                                <span>MemberName</span>
+                            </div>
+                        </label>
+                        <input type="checkbox" id="member6" class="memberCheck">
+                        <label for="member6" class="memberPick">
+                            <div class="memberBox">
+                                <div class="memberPic"></div>
+                                <span>MemberName</span>
+                            </div>
+                        </label>
+                    </div>
+                    <hr>
+                    <h5>업무 기간</h5>
+                    <div id="datePicker">
+                        <div class="tui-datepicker-input tui-datetime-input tui-has-focus">
+                            <input id="startpicker-input2" type="text" aria-label="Date">
+                            <span class="tui-ico-date"></span>
+                            <div id="startpicker-container2" style="margin-left: -1px;"></div>
+                        </div>
+                        <span>to</span>
+                        <div class="tui-datepicker-input tui-datetime-input tui-has-focus">
+                            <input id="endpicker-input2" type="text" aria-label="Date">
+                            <span class="tui-ico-date"></span>
+                            <div id="endpicker-container2" style="margin-left: -1px;"></div>
+                        </div>
+                    </div>
+                    <hr>
+                    <h5>내용</h5>                    
+                    <div class="checkListContent">
+                        <textarea resize="none" disabled>Lorem ipsum dolor, sit amet consectetur adipisicing elit. At alias voluptatum nisi minima, blanditiis inventore! Repudiandae consequuntur veritatis doloremque similique ea. Ipsam, aspernatur! Libero ut, dicta quam blanditiis cupiditate earum?</textarea>
+                    </div>
+                    <!-- <hr> -->
+                    <div class="checkListFile">
+                        <input type="file">
+
+                    </div>
+                </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-info" id="btnDelete">Delete</button>
+            <button type="button" class="btn btn-info">Save</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+    </div>
+    
 </section>
 <div id="footer"></div>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -509,14 +773,58 @@
         $("#header").load("../include/header.html");
         $("#footer").load("../include/footer.html");
     });
-    $("#addCheckList i").click(function() {
+    function addCheckList () {$(".addCheckList i").click(function() {
         // 모달창으로 추가 띄우기
-        $('#checkListModify').modal();
-    });
+        $('#checkListAdd').modal();
+    });}
+    addCheckList();
+
     $(".modify").click(function() {
         $('#checkListModify').modal();
     });
+    
+    //모달창에서 체크리스트 항목 타이틀 수정
+    $("#titleArea").dblclick(function(){
+        $("#titleArea").css("display","none");
+        $("#titleModify").css("display","block").val($("#titleArea").text());
+    });
+    $("#titleModify").keydown(function(key) {
+        if (key.keyCode == 13) {
+            $("#titleModify").css("display","none");
+            $("#titleArea").css("display","inline").text($("#titleModify").val());
+        }
+    });
 
+    //리스트 타이틀 옆 삭제 아이콘 클릭
+    function deleteList() {$(".deleteList").click(function() {
+        var confirmflag = confirm("리스트를 삭제하시겠습니까?");
+        if (confirmflag) {
+            $(this).parent().parent().remove();
+        }
+    });}
+    deleteList();
+
+    //리스트 추가를 위한 템플릿 선언
+    var listTemplate = 
+            `<div class="steps">
+                <div class="listTitle"><h3>List Title</h3><i class="glyphicon glyphicon-trash deleteList"></i></div>
+                <ul class="sortable connectedSortable">
+                </ul>
+                <div class="addCheckList">
+                    <i class="glyphicon glyphicon-plus-sign"></i>
+                </div>
+            </div>`;
+
+    $("#listAdd").click(function() {
+        $(".container").append(listTemplate);
+        addCheckList();
+        deleteList();
+    });
+
+    //프로젝트 홈으로 이동
+    $("#goToProjectHome").click(function() {
+        location.href = "projectMain.html";
+    });
 
 </script>
 <link rel="stylesheet" href="../css/jquery-ui.css">
@@ -533,7 +841,7 @@
 <script src="https://uicdn.toast.com/tui.date-picker/latest/tui-date-picker.js"></script>
 <script>
     var today = new Date();
-    var picker = tui.DatePicker.createRangePicker({
+    var picker1 = tui.DatePicker.createRangePicker({
         startpicker: {
             date: today,
             input: '#startpicker-input',
@@ -543,6 +851,21 @@
             date: today,
             input: '#endpicker-input',
             container: '#endpicker-container'
+        },
+        // selectableRanges: [
+        //     [today, new Date(today.getFullYear() + 1, today.getMonth(), today.getDate())]
+        // ]
+    });
+    var picker2 = tui.DatePicker.createRangePicker({
+        startpicker: {
+            date: today,
+            input: '#startpicker-input2',
+            container: '#startpicker-container2'
+        },
+        endpicker: {
+            date: today,
+            input: '#endpicker-input2',
+            container: '#endpicker-container2'
         },
         // selectableRanges: [
         //     [today, new Date(today.getFullYear() + 1, today.getMonth(), today.getDate())]

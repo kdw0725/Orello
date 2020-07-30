@@ -1,0 +1,776 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<style>
+
+    .container * {
+        /* border: 1px solid black; */
+    } 
+    #chatModal .modal * {
+        /* border: 1px solid gray; */
+        outline: none !important;
+    }
+    #modal-dialog {
+        width: 750px;
+        margin: 0px auto;
+    }
+    #chatModal .modal .modal-content {
+        width: 750px;
+        height: 850px;
+        border: 0px;
+        border-radius: 0%;
+        box-shadow: 0px 0px 0px #ddd;
+        background-color: transparent;
+    }
+
+    #chatModal .container {
+        margin: 0 auto;
+        width: 800px;
+        background-color: #5bc0de;
+        border-radius: 5px;
+        padding: 0;
+        margin: 0;
+    }
+    #chatModal .listConvert {
+        /* padding-top: 100px; */
+        width: 310px;
+        height: 30px;
+        padding-left: 30px;
+        margin-top: 15px;
+        /* background-color: white; */
+        text-align: center;
+    }
+    #chatModal .listConvert .convertBtn {
+        min-width: 50px;
+        height: 30px;
+        float: left;
+        padding: 0px 10px;
+        padding-top: 5px;
+        background-color: #5bc0de;
+        color: white;
+        /* border: 1px solid #bbb; */
+        border-top-left-radius: 10px 10px;
+        border-top-right-radius: 10px 10px;
+        /* margin-right: 1px; */
+        cursor: pointer;
+    }
+    #chatModal .listConvert div.active {
+        border: 1px solid white;
+        border-bottom: 0px;
+        background-color: #5bc0de;
+    }
+    #chatModal .listConvert .convertBtn {
+        background-color: #0784aa;
+        
+    }
+
+    #chatModal .people-list {
+        width: 310px;
+        float: left;
+
+    }
+
+    #chatModal .people-list .search {
+        /* padding: 20px; */
+        padding-left: 30px;
+        padding-top: 20px;
+
+    }
+
+    #chatModal .people-list input {
+        border-radius: 3px;
+        border: none;
+        padding: 14px;
+        color: white;
+        background: #87d2e9;
+
+        width: 90%;
+        font-size: 14px;
+    }
+
+    #chatModal .people-list .fa-search {
+        position: relative;
+        left: -25px;
+    }
+
+    #chatModal .people-list ul {
+        padding: 20px;
+        padding-left: 30px;
+        padding-top: 15px;
+        padding-bottom: 0px;
+        height: 750px;
+        overflow-y: auto;
+        margin: 0;
+    }
+
+    #chatModal .people-list ul li {
+        padding-bottom: 20px;
+        list-style: none;
+    }
+
+    #chatModal .people-list img,
+    .chat-header img {
+        display: block;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: #ffffb3;
+        margin-right: 5px;
+        float: left;
+        border: 3px solid white;
+    }
+
+    #chatModal .people-list .about {
+        float: left;
+        margin-top: 8px;
+        padding-left: 8px;
+    }
+
+    #chatModal .people-list .about .name {
+        color: #eee;
+        font-size: 1.2em;
+        font-weight: bold;
+    }
+
+    #chatModal .people-list .status {
+        color: #e6e6ec;
+    }
+
+    #chatModal .chat {
+        width: 490px;
+        float: left;
+        /* background: #F2F5F8; */
+        background-color: white;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        color: #444;
+        margin: 0;
+    }
+
+    #chatModal .chat ul,
+    #chatModal .chat li {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    #chatModal .people-list li:hover {
+        opacity: 0.8;
+    }
+
+    #chatModal .chat .chat-header {
+        padding: 20px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    #chatModal .chat .chat-header img {
+        float: left;
+    }
+
+    #chatModal .chat .chat-header .chat-about {
+        float: left;
+        padding-left: 10px;
+        margin-top: 6px;
+    }
+
+    #chatModal .chat .chat-header .chat-with {
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    #chatModal .chat .chat-header .chat-num-messages {
+        color: #92959E;
+    }
+
+    #chatModal .chat .chat-header .fa-star {
+        float: right;
+        color: #D8DADF;
+        font-size: 20px;
+        margin-top: 12px;
+    }
+
+    #chatModal .chat .chat-history {
+        padding: 30px 30px 20px;
+        border-bottom: 1px solid #ddd;
+        overflow-y: scroll;
+        height: 587px;
+    }
+
+    #chatModal .chat .chat-history .message-data {
+        margin-bottom: 15px;
+    }
+
+    #chatModal .chat .chat-history .message-data-time {
+        color: #a8aab1;
+        padding-left: 6px;
+    }
+
+    #chatModal .chat .chat-history .message {
+        color: white;
+        padding: 18px 20px;
+        line-height: 26px;
+        font-size: 16px;
+        border-radius: 7px;
+        margin-bottom: 30px;
+        width: 90%;
+        position: relative;
+    }
+
+    #chatModal .chat .chat-history .message:after {
+        bottom: 100%;
+        left: 7%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        border-bottom-color: #bcdf81;
+        border-width: 10px;
+        margin-left: -10px;
+    }
+
+    #chatModal .chat .chat-history .my-message {
+        color: #555;
+        background: rgb(183, 229, 250);
+
+    }
+
+    #chatModal .chat .chat-history .other-message {
+        background: #bcdf81;
+        color: #555;
+    }
+
+    #chatModal .chat .chat-history .my-message:after {
+        border-bottom-color: rgb(183, 229, 250);
+        left: 93%;
+    }
+
+    #chatModal .chat .chat-message {
+        padding: 30px;
+    }
+    #chatModal .fileSend {
+        min-height: 50px;    
+        margin-top: 10px;
+        width: 100%;
+        padding-left: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+
+    }
+    #chatModal .other-message .fileSend {
+        background-color: #e3f3ca;
+    }
+    #chatModal .my-message .fileSend {
+        background-color:  rgb(220, 242, 252);
+    }
+    #chatModal .fileSend .fileThumbnail {
+        width: 50px;
+        height: 50px;    
+        float: left;
+        font-size: 2.5em;
+        text-align: center;
+        padding-top: 7px;
+    }
+    #chatModal .fileSend .fileContent {
+        width: 250px;
+        min-height: 50px;
+        float: left;
+        margin-left: 5px;
+        padding-left: 10px;
+        padding-top: 5px;
+    
+    }
+    #chatModal .fileSend .fileContent .fileName {
+        display: block;
+        
+    }
+    #chatModal .fileSend .fileContent .fileSize {
+        display: block;
+        color: #888;
+        font-size: 0.8em;
+        margin-top: -7px;
+    }
+    #chatModal .imageSend {
+        max-width: 100%;
+        margin-top: 10px;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    #chatModal .imageSend .img {
+        max-width: 100%;
+        border-radius: 5px;
+    }
+
+    #chatModal .chat .chat-message textarea {
+        width: 100%;
+        border: none;
+        padding: 10px 20px;
+        font: 14px/22px "Lato", Arial, sans-serif;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        resize: none;
+        background-color: rgb(243, 243, 243);
+    }
+
+    #chatModal .chat .chat-message .fa-file-o,
+    .chat .chat-message .fa-file-image-o {
+        font-size: 16px;
+        color: gray;
+        cursor: pointer;
+    }
+
+    #chatModal .chat .chat-message button {
+        float: right;
+        /* color: #94C2ED; */
+        font-size: 16px;
+        text-transform: uppercase;
+        border: none;
+        cursor: pointer;
+        font-weight: bold;
+        /* background: #F2F5F8; */
+    }
+
+    #chatModal .chat .chat-message button:hover {
+        color: #beddfa;
+    }
+
+    #chatModal .online,
+    .offline,
+    .me {
+        margin-right: 3px;
+        font-size: 10px;
+    }
+
+    #chatModal .online {
+        color: #b3de69;
+    }
+
+    #chatModal .offline {
+        color: #E38968;
+    }
+
+    #chatModal .me {
+        color: rgb(183, 229, 250);
+    }
+
+    #chatModal .align-left {
+        text-align: left;
+    }
+
+    #chatModal .align-right {
+        text-align: right;
+    }
+
+    #chatModal .float-right {
+        float: right;
+    }
+
+    #chatModal .clearfix:after {
+        visibility: hidden;
+        display: block;
+        font-size: 0;
+        content: " ";
+        clear: both;
+        height: 0;
+    }
+</style>
+<div id="header"></div>
+<section id="content" class="container">
+    <button id="">모달</button>
+
+    <div id="chatModal">
+        <div class="modal fade">
+            <div class="modal-dialog" id="modal-dialog">
+                <div class="modal-content">
+                    <div class="container clearfix">
+                        <div class="people-list" id="people-list">
+                            <div class="search">
+                                <input type="text" placeholder="search" />
+                                <i class="fa fa-search"></i>
+                            </div>
+                            <div class="listConvert">
+                                <div id="toFriend" class="convertBtn">Friend</div>
+                                <div id="toHistory" class="convertBtn">Chat History</div>
+                            </div>
+                            <ul class="list">
+                                <li class="clearfix">
+                                    <img src="../images/0.png" alt="avatar" />
+                                    <div class="about">
+                                        <div class="name">Vincent Porter</div>
+                                        <div class="status">
+                                            <i class="fa fa-circle online"></i> online
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="clearfix">
+                                    <img src="../images/1.png" alt="avatar" />
+                                    <div class="about">
+                                        <div class="name">Aiden Chavez</div>
+                                        <div class="status">
+                                            <i class="fa fa-circle offline"></i> left 7 mins ago
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="clearfix">
+                                    <img src="../images/2.png" alt="avatar" />
+                                    <div class="about">
+                                        <div class="name">Mike Thomas</div>
+                                        <div class="status">
+                                            <i class="fa fa-circle online"></i> online
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="clearfix">
+                                    <img src="../images/3.png" alt="avatar" />
+
+                                    <div class="about">
+                                        <div class="name">Erica Hughes</div>
+                                        <div class="status">
+                                            <i class="fa fa-circle online"></i> online
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="clearfix">
+                                    <img src="../images/4.png" alt="avatar" />
+
+                                    <div class="about">
+                                        <div class="name">Ginger Johnston</div>
+                                        <div class="status">
+                                            <i class="fa fa-circle online"></i> online
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="clearfix">
+                                    <img src="../images/5.png" alt="avatar" />
+
+                                    <div class="about">
+                                        <div class="name">Tracy Carpenter</div>
+                                        <div class="status">
+                                            <i class="fa fa-circle offline"></i> left 30 mins ago
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="clearfix">
+                                    <img src="../images/6.png" alt="avatar" />
+
+                                    <div class="about">
+                                        <div class="name">Christian Kelly</div>
+                                        <div class="status">
+                                            <i class="fa fa-circle offline"></i> left 10 hours ago
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="clearfix">
+                                    <img src="../images/7.png" alt="avatar" />
+
+                                    <div class="about">
+                                        <div class="name">Monica Ward</div>
+                                        <div class="status">
+                                            <i class="fa fa-circle online"></i> online
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="clearfix">
+                                    <img src="../images/8.png" alt="avatar" />
+
+                                    <div class="about">
+                                        <div class="name">Dean Henry</div>
+                                        <div class="status">
+                                            <i class="fa fa-circle offline"></i> offline since Oct 28
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="clearfix">
+                                    <img src="../images/9.png" alt="avatar" />
+
+                                    <div class="about">
+                                        <div class="name">Peyton Mckinney</div>
+                                        <div class="status">
+                                            <i class="fa fa-circle online"></i> online
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- 채팅 헤더 -->
+                        <div class="chat">
+                            <div class="chat-header clearfix">
+                                <img src="../images/9.png" alt="avatar" />
+                                <div class="chat-about">
+                                    <div class="chat-with">Chat with Vincent Porter</div>
+                                    <div class="chat-num-messages">already 1902 messages</div>
+                                </div>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              
+                            </div> <!-- end chat-header -->
+
+                            <!-- 채팅 내용창 -->
+                            <div class="chat-history">
+                                <ul>
+                                    <li class="clearfix">
+                                        <div class="message-data align-right">
+                                            <span class="message-data-time">10:10 AM, Today</span> &nbsp; &nbsp;
+                                            <span class="message-data-name">Olia</span> <i class="fa fa-circle me"></i>
+
+                                        </div>
+                                        <div class="message my-message float-right">
+                                            Hi Vincent, how are you? How is the project coming along?
+                                            <!-- 파일 전송했을 때 -->
+                                            <div class="fileSend">
+                                                <div class="fileThumbnail"><i class="glyphicon glyphicon-floppy-disk"></i></div>
+                                                <div class="fileContent">
+                                                    <span class="fileName">testfilename.txt</span>
+                                                    <span class="fileSize">5kb</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <div class="message-data">
+                                            <span class="message-data-name"><i class="fa fa-circle online"></i>
+                                                Vincent</span>
+                                            <span class="message-data-time">10:12 AM, Today</span>
+                                        </div>
+                                        <div class="message other-message">
+                                            Are we meeting today? Project has been already finished and I have results
+                                            to show you.
+                                            <!-- 파일 전송했을 때 -->
+                                            <div class="fileSend">
+                                                <div class="fileThumbnail"><i class="glyphicon glyphicon-floppy-disk"></i></div>
+                                                <div class="fileContent">
+                                                    <span class="fileName">testfilename.txt</span>
+                                                    <span class="fileSize">5kb</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li class="clearfix">
+                                        <div class="message-data align-right">
+                                            <span class="message-data-time">10:14 AM, Today</span> &nbsp; &nbsp;
+                                            <span class="message-data-name">Olia</span> <i class="fa fa-circle me"></i>
+
+                                        </div>
+                                        <div class="message my-message float-right">
+                                            Well I am not sure. The rest of the team is not  ㅌhere yet. Maybe in an hour
+                                            or so? Have you faced any problems at the last phase of the project?
+                                            <!-- 이미지 전송했을 때 -->
+                                            <div class="imageSend">
+                                                <img class="img" src="../images/Logo-wide.jpg">        
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <div class="message-data">
+                                            <span class="message-data-name"><i class="fa fa-circle online"></i>
+                                                Vincent</span>
+                                            <span class="message-data-time">10:20 AM, Today</span>
+                                        </div>
+                                        <div class="message other-message">
+                                            Actually everything was fine. I'm very excited to show this to our team.
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <div class="message-data">
+                                            <span class="message-data-name"><i class="fa fa-circle online"></i>
+                                                Vincent</span>
+                                            <span class="message-data-time">10:31 AM, Today</span>
+                                        </div>
+                                        <i class="fa fa-circle online"></i>
+                                        <i class="fa fa-circle online" style="color: #AED2A6"></i>
+                                        <i class="fa fa-circle online" style="color:#DAE9DA"></i>
+                                    </li>
+
+                                </ul>
+
+                            </div> <!-- end chat-history -->
+
+                            <!-- 채팅 전송창 -->
+                            <div class="chat-message clearfix">
+                                <textarea name="message-to-send" id="message-to-send" placeholder="Type your message"
+                                    rows="3"></textarea>
+
+                                <i class="fa fa-file-o"></i> &nbsp;&nbsp;&nbsp;
+                                <i class="fa fa-file-image-o"></i>
+
+                                <button class="btn btn-info">Send</button>
+
+                            </div> <!-- end chat-message -->
+
+                        </div> <!-- end chat -->
+
+                    </div> <!-- end container -->
+                </div>
+            </div>
+        </div>
+
+        <!-- 뭔지 모르겠지만 이게 있으면 메세지 전송이 됨... -->
+        <script id="message-template" type="text/x-handlebars-template">
+          <li class="clearfix">
+            <div class="message-data align-right">
+              <span class="message-data-time" >{{time}}, Today</span> &nbsp; &nbsp;
+              <span class="message-data-name" >Olia</span> <i class="fa fa-circle me"></i>
+            </div>
+            <div class="message other-message float-right">
+              {{messageOutput}}
+            </div>
+          </li>
+        </script>
+        
+        <script id="message-response-template" type="text/x-handlebars-template">
+          <li>
+            <div class="message-data">
+              <span class="message-data-name"><i class="fa fa-circle online"></i> Vincent</span>
+              <span class="message-data-time">{{time}}, Today</span>
+            </div>
+            <div class="message my-message">
+              {{response}}
+            </div>
+          </li>
+        </script>
+
+    </div>
+
+</section>
+<div id="footer"></div>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#header").load("../include/header.html");
+        $("#footer").load("../include/footer.html");
+    });
+
+    $("button").click(function () {
+        // 모달창으로 추가 띄우기
+        $('#chatModal .modal').modal();
+    });
+
+    //채팅목록 탭 
+    $("#chatModal .listConvert .convertBtn:first-child").addClass("active");
+    $("#chatModal .listConvert .convertBtn").click(function() {
+        $("#chatModal .listConvert .convertBtn").removeClass("active");
+        $(this).addClass("active");
+    });
+
+
+    var chat = {
+        messageToSend: '',
+        messageResponses: [
+            'Why did the web developer leave the restaurant? Because of the table layout.',
+            'How do you comfort a JavaScript bug? You console it.',
+            'An SQL query enters a bar, approaches two tables and asks: "May I join you?"',
+            'What is the most used language in programming? Profanity.',
+            'What is the object-oriented way to become wealthy? Inheritance.',
+            'An SEO expert walks into a bar, bars, pub, tavern, public house, Irish pub, drinks, beer, alcohol'
+        ],
+        init: function () {
+            this.cacheDOM();
+            this.bindEvents();
+            this.render();
+        },
+        cacheDOM: function () {
+            this.$chatHistory = $('.chat-history');
+            this.$button = $('button');
+            this.$textarea = $('#message-to-send');
+            this.$chatHistoryList = this.$chatHistory.find('ul');
+        },
+        bindEvents: function () {
+            this.$button.on('click', this.addMessage.bind(this));
+            this.$textarea.on('keyup', this.addMessageEnter.bind(this));
+        },
+        render: function () {
+            this.scrollToBottom();
+            if (this.messageToSend.trim() !== '') {
+                var template = Handlebars.compile($("#message-template").html());
+                var context = {
+                    messageOutput: this.messageToSend,
+                    time: this.getCurrentTime()
+                };
+
+                this.$chatHistoryList.append(template(context));
+                this.scrollToBottom();
+                this.$textarea.val('');
+
+                // responses
+                var templateResponse = Handlebars.compile($("#message-response-template").html());
+                var contextResponse = {
+                    response: this.getRandomItem(this.messageResponses),
+                    time: this.getCurrentTime()
+                };
+
+                setTimeout(function () {
+                    this.$chatHistoryList.append(templateResponse(contextResponse));
+                    this.scrollToBottom();
+                }.bind(this), 1500);
+
+            }
+
+        },
+
+        addMessage: function () {
+            this.messageToSend = this.$textarea.val()
+            this.render();
+        },
+        addMessageEnter: function (event) {
+            // enter was pressed
+            if (event.keyCode === 13) {
+                this.addMessage();
+            }
+        },
+        scrollToBottom: function () {
+            this.$chatHistory.scrollTop(this.$chatHistory[0].scrollHeight);
+        },
+        getCurrentTime: function () {
+            return new Date().toLocaleTimeString().
+                replace(/([\d]+:[\d]{2})(:[\d]{2})(.*)/, "$1$3");
+        },
+        getRandomItem: function (arr) {
+            return arr[Math.floor(Math.random() * arr.length)];
+        }
+
+    };
+
+    chat.init();
+
+    var searchFilter = {
+        options: { valueNames: ['name'] },
+        init: function () {
+            var userList = new List('people-list', this.options);
+            var noItems = $('<li id="no-items-found">No items found</li>');
+
+            userList.on('updated', function (list) {
+                if (list.matchingItems.length === 0) {
+                    $(list.list).append(noItems);
+                } else {
+                    noItems.detach();
+                }
+            });
+        }
+    };
+
+    searchFilter.init();
+
+
+
+
+
+
+
+
+
+</script>

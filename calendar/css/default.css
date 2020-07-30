@@ -188,6 +188,7 @@ body {
 
 #renderRange {
   padding-left: 12px;
+  padding-right: 12px;
   font-size: 19px;
   vertical-align: middle;
 }
@@ -216,11 +217,11 @@ body {
 }
 
 #calendar {
-    position: absolute;
+    /* position: absolute;
     left: 0;
     right: 0;
     bottom: 5px;
-    top: 64px;
+    top: 64px; */
 }
 
 /** custom fontawesome */

@@ -1,32 +1,4 @@
         <link
-            rel="stylesheet"
-            type="text/css"
-            href="https://uicdn.toast.com/tui-calendar/latest/tui-calendar.css"
-        />
-
-        <!-- If you use the default popups, use this. -->
-        <link
-            rel="stylesheet"
-            type="text/css"
-            href="https://uicdn.toast.com/tui.date-picker/latest/tui-date-picker.css"
-        />
-        <link
-            rel="stylesheet"
-            type="text/css"
-            href="https://uicdn.toast.com/tui.time-picker/latest/tui-time-picker.css"
-        />
-        <link
-            rel="stylesheet"
-            type="text/css"
-            href="../calendar/css/tui-calendar.css"
-        />
-        <!-- <link
-            rel="stylesheet"
-            type="text/css"
-            href="calendar/css/default.css"
-        /> -->
-        <link rel="stylesheet" type="text/css" href="../calendar/css/icons.css" />
-        <link
         rel="stylesheet"
         href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
         integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP"
@@ -36,27 +8,15 @@
             href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
             rel="stylesheet"
         />
-        <script
-            src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-            crossorigin="anonymous"
-        ></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-        <script src="https://uicdn.toast.com/tui.code-snippet/v1.5.2/tui-code-snippet.min.js"></script>
-        <script src="https://uicdn.toast.com/tui.time-picker/v2.0.3/tui-time-picker.min.js"></script>
-        <script src="https://uicdn.toast.com/tui.date-picker/v4.0.3/tui-date-picker.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/chance/1.0.13/chance.min.js"></script>
-        <script src="../calendar/js/tui-calendar.js"></script>
-        <script src="../calendar/js/data/calendars.js"></script>
-        <script src="../calendar/js/data/schedules.js"></script>
+        <script src="../js/timelines-chart.js"></script>
+        <script src="../js/highcharts.js"></script>
+
+
+
 <style>
     
     #contentLeft {
-        position: fixed;
-    }
-    #contentLeft * {
-        /* border: 1px solid gray; */
+        min-height: 900px;
     }
     /* 메뉴 위 프로젝트 정보 */
     #contentLeft > #projectInfo {
@@ -75,9 +35,11 @@
     #contentLeft #projectPeriod {
         margin-top: 10px;
         font-style: italic;
+        color: #777;
     }
     #contentLeft #projectContent {
         margin-top: 20px;
+        padding: 0 10px;
         /* font-style: italic; */
     }
     #contentLeft #projectMember {
@@ -112,9 +74,10 @@
         text-align: left;
         padding-top: 5px;
         padding-left: 25px;
+        color: #777;
     }
     #AddMember a {
-        color: #333;
+        color: #777;
         font-size: 0.9em;
     }
 
@@ -122,7 +85,7 @@
     #contentLeft > #menu {
         width: 230px;
         min-height: 400px;
-        margin: 70px auto;
+        margin: 100px auto;
         /* border: 1px solid black; */
     }
     #contentLeft #menu ul, #menu li {
@@ -188,29 +151,148 @@
         color: #5bc0de;
     }
 
-
-
     #contentRight {
         padding: 30px;
     }
-    #calendarArea {
-        width: 850px;
-        text-align: center;
-        padding-bottom: 30px;
-        border-bottom: 1px solid #ddd;
-    }
-    #calendarArea #menu {
-        margin-bottom: 20px;
-        font-size: 2em;
-    }
-    #calendar {
-        box-shadow: 1px 2px 2px #eee;
+    #contentRight * {
         /* border: 1px solid #eee; */
     }
+    /* 타임라인 */
+    #contentRight .timelines-chart {
+        border: 1px solid #eee;
+        width: 840px;
+        padding: 20px;
+    }
+    .color-slot {
+        opacity: 0.8;
+    }
+    .overlay {
+        fill: #eee;
+    }
+    .chart-zoom-selection, .brusher .brush .selection {
+        stroke: #5bc0de;
+        fill: #5bc0de;
+    }
+    .timelines-chart .reset-zoom-btn {
+        fill: #3cb4d8;
+        font-size: 12px !important;
+    }
+    .chart-tooltip {
+        background-color: #3cb4d8;
+    }
+    .timelines-chart .axises line, .timelines-chart .axises path {
+        stroke: #eee;
+    }
+    /* 차트 */
+    #contentRight #contributor {
+        border: 1px solid #eee;
+        width: 350px;
+        margin-top: 30px;
+        opacity: 0.8;
+        float: left;
 
+    }
+    #contentRight #dataStorage {
+        border: 1px solid #eee;
+        width: 460px;
+        height: 100px;
+        margin-top: 30px;
+        margin-left: 30px;
+        float: left;
+    }
+    #contentRight #memberProgress {
+        border: 1px solid #eee;
+        width: 460px;
+        height: 150px;
+        margin-top: 30px;
+        margin-left: 30px;
+        float: left;
+        overflow: auto;
+    }
+
+    #contentRight #projectCondition {
+        border: 1px solid #eee;
+        width: 460px;
+        height: 92px;
+        margin-top: 30px;
+        margin-left: 30px;
+        float: left;
+    }
+    #dataStorage, #projectCondition, #memberProgress {
+        padding: 20px;
+    }
+    #contentRight .progress {
+        /* width: 90%; */
+        /* margin-top: 10px; */
+        margin: 10px auto;
+    }
+    #projectCondition .progress-bar {
+        background-color: #b3de69;
+    }
+    #noticeBox {
+        width: 90%;
+        margin: 10px auto;
+    }
+    #noticeBox td {
+        font-size: 0.8em;
+
+    }
+
+    /* 프로젝트 멤버 추가 모달창 */
+    .modal *{
+        /* border: 1px solid gray; */
+        outline: none !important;
+    }
+    .modal .modal-content {
+        border: 0px;
+        border-radius: 0%;
+        box-shadow: 0px 0px 0px #ddd;
+        padding: 20px;
+        background-color: white;
+    }
+    .modal .input-group {
+        margin-bottom: 20px;
+    }
+    .modal .input-group-addon {
+        cursor: pointer;
+    }
+    .modal #userSearchResult #userListBox {
+        padding: 20px 30px;
+        background-color: #e5f8ff;
+    }
+    .modal #userSearchResult .userList {
+        height: 40px;
+        border-bottom: 1px solid #ddd;
+    }
+    .modal #userSearchResult .userImage {
+        width: 37px;
+        height: 37px;
+        border: 3px solid white;
+        border-radius: 50%;
+        background-color: #5bc0de;
+        background-size: 100%;
+        box-shadow: 2px 2px 2px #ddd;
+        float: left;
+    }
+    .modal #userSearchResult .userName {
+        height: 40px;
+        color: #666;
+        padding-top: 10px;
+        padding-left: 10px;
+        float: left;
+    }
+    .modal #userSearchResult .add {
+        float: right;
+        color: #5bc0de;
+        height: 40px;
+        padding-top: 15px;
+        cursor: pointer;
+    }
+    .modal #userSearchResult .add:hover {
+        color: #168baf;
+    }
 
 </style>
-
 <div id="header"></div>
 <section id="content" class="container">
     <div id="contentLeft">
@@ -220,7 +302,7 @@
             <div id="projectContent">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Numquam, nesciunt?</div>
             <div id="projectMember"></div>
             <div id="addMember">
-                <a href="#"><i class="glyphicon glyphicon-user"></i><i class="glyphicon glyphicon-plus"></i> <span>Add Member</span></a>
+                <a href="#" data-toggle="modal" data-target="#addMemberModal"><i class="glyphicon glyphicon-user"></i><i class="glyphicon glyphicon-plus"></i> <span>Add Member</span></a>
             </div>
         </div>
         <div id="menu">
@@ -232,201 +314,91 @@
             <ul class="accordion"><div><i class="glyphicon glyphicon-check"></i>Check List</div></ul>
             <ul class="accordion parent"><div><i class="glyphicon glyphicon-list-alt"></i>Board</div>
                 <li class="panel"><div><i class="glyphicon glyphicon-minus"></i>Notice</div></li>
-                <li class="panel"><div><i class="glyphicon glyphicon-minus"></i>Notice</div></li>
-                <li class="panel"><div><i class="glyphicon glyphicon-minus"></i>Notice</div></li>
-                <li class="panel"><div><i class="glyphicon glyphicon-minus"></i>Notice</div></li>
+                <li class="panel"><div><i class="glyphicon glyphicon-minus"></i>Codes</div></li>
+                <li class="panel"><div><i class="glyphicon glyphicon-minus"></i>Free</div></li>
             </ul>
+            <ul class="accordion"><div><i class="glyphicon glyphicon-hdd"></i>Files</div></ul>
+            <ul class="accordion"><div><i class="fas fa-code-branch"></i>Git</div></ul>
             <ul class="accordion"><div><i class="glyphicon glyphicon-comment"></i>Chat</div></ul>
 
         </div>
     </div>
     <div id="contentRight">
-        <div id="calendarArea">
-            <div id="menu">
-                <span id="menu-navi">
-                    <button type="button"
-                        class="btn btn-default btn-sm move-day"
-                        data-action="move-prev"
-                    >
-                        <i
-                            class="calendar-icon ic-arrow-line-left"
-                            data-action="move-prev"
-                        ></i>
-                    </button>
-                    <span id="renderRange" class="render-range"></span>
-                    <button
-                    type="button"
-                    class="btn btn-default btn-sm move-day"
-                    data-action="move-next"
-                    >
-                    <i
-                        class="calendar-icon ic-arrow-line-right"
-                        data-action="move-next"
-                    ></i>
-                    </button>
-                </span>
-            </div>
-            <div id="calendar" style="height: 600px;"></div>
+        <div class="timelines-chart"></div>
+        <div id="contributor"></div>
+        <div id="dataStorage">
+            <i class="glyphicon glyphicon-hdd"></i> <span>자료실 이용량</span>
+            <div class="progress">
+                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="50"
+                aria-valuemin="0" aria-valuemax="100" style="width:50%">
+                  5.0GB Used
+                </div>
+              </div>
         </div>
+        <div id="memberProgress"> 
+            <i class="fas fa-chart-pie"></i> <span>최근 활동</span><br>
 
+
+            
+        </div>
+        <div id="projectCondition">
+            <i class="fas fa-stopwatch"></i> <span>프로젝트 진행상황</span>
+            <div class="progress">
+                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20"
+                aria-valuemin="0" aria-valuemax="100" style="width:20%">
+                12 Tasks Left
+                
+                </div>
+              </div>
+        </div>
     </div>
+
+    <!-- 프로젝트 멤버 추가 모달창 -->
+    <div class="modal fade" id="addMemberModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel"><i class="fas fa-user-plus"></i> 프로젝트 멤버 추가</h4>
+            </div>
+            <div class="modal-body">
+                 <h5><i class="fas fa-users"></i> 유저 검색</h5>
+                 <div class="input-group">
+                    <input type="text" class="form-control" id="exampleInputAmount" placeholder="ex) user@email.com">
+                    <div class="input-group-addon"><i class="fas fa-search"></i></div>
+                  </div>
+
+                  <div id="userSearchResult">
+                    <h5><i class="fas fa-stream"></i> 검색 결과</h5>
+                    <div id="userListBox">
+                        <div class="userList">
+                            <div class="userImage" style="background-image: url('../images/1.png');"></div>
+                            <div class="userName">Lorem ipsum(email@mail.com)</div>
+                            <div class="add"><i class="glyphicon glyphicon-envelope"></i> INVITE</div>
+                        </div>
+                        <div class="userList">
+                            <div class="userImage" style="background-image: url('../images/1.png');"></div>
+                            <div class="userName">Lorem ipsum(email@mail.com)</div>
+                            <div class="add"><i class="glyphicon glyphicon-envelope"></i> INVITE</div>
+                        </div>
+                    </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
 </section>
 
 <div id="footer"></div>
+
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" class="code-js">
-    var MONTHLY_CUSTOM_THEME = {
-        // month header 'dayname'
-        "month.dayname.height": "42px",
-        "month.dayname.borderLeft": "none",
-        "month.dayname.paddingLeft": "8px",
-        "month.dayname.paddingRight": "0",
-        "month.dayname.fontSize": "13px",
-        "month.dayname.backgroundColor": "inherit",
-        "month.dayname.fontWeight": "normal",
-        "month.dayname.textAlign": "left",
-        // month day grid cell 'day'
-        "month.holidayExceptThisMonth.color": "#f3acac",
-        "month.dayExceptThisMonth.color": "#bbb",
-        "month.weekend.backgroundColor": "#fafafa",
-        "month.day.fontSize": "16px",
-        // month schedule style
-        "month.schedule.borderRadius": "5px",
-        "month.schedule.height": "18px",
-        "month.schedule.marginTop": "2px",
-        "month.schedule.marginLeft": "10px",
-        "month.schedule.marginRight": "10px",
-        // month more view
-        "month.moreView.boxShadow": "none",
-        "month.moreView.paddingBottom": "0",
-        "month.moreView.border": "1px solid #9a935a",
-        "month.moreView.backgroundColor": "#f9f3c6",
-        "month.moreViewTitle.height": "28px",
-        "month.moreViewTitle.marginBottom": "0",
-        "month.moreViewTitle.backgroundColor": "#f4f4f4",
-        "month.moreViewTitle.borderBottom": "1px solid #ddd",
-        "month.moreViewTitle.padding": "0 10px",
-        "month.moreViewList.padding": "10px",
-    };
-    var cal = new tui.Calendar("#calendar", {
-        defaultView: "month",
-        theme: MONTHLY_CUSTOM_THEME, // set theme
-        calendars: [{
-            id: '1',
-            name: 'project1',
-            color: '#ffffff',
-            bgColor: '#61BD6D',
-            dragBgColor: '#61BD6D',
-            borderColor: '#61BD6D',
-        }, 
-        {
-            id: '2',
-            name: 'project2',
-            color: '#ffffff',
-            bgColor: '#61BD6D',
-            dragBgColor: '#61BD6D',
-            borderColor: '#61BD6D',
-        },
-        {
-            id: '3',
-            name: 'project3',
-            color: '#ffffff',
-            bgColor: '#61BD6D',
-            dragBgColor: '#61BD6D',
-            borderColor: '#61BD6D',
-        }
-            
-        ],
-        useCreationPopup: true,
-        useDetailPopup: true
-    });
 
-
-    cal.createSchedules([
-        {
-            id: '1',
-            calendarId: 'Major Lecture',
-            title: '자료 구조',
-            category: 'time',
-            start: '2020-07-20T10:30:00',
-            end: '2020-07-20T12:30:00'
-        },
-        {
-            id: '2',
-            calendarId: 'General Lecture',
-            title: '건강과 영양',
-            category: 'time',
-            dueDateClass: '',
-            start: '2020-07-20T14:30:00',
-            end: '2020-07-20T16:30:00',
-            isReadOnly: true // schedule is read-only
-        }
-        ]);
-
-    // 달력 누르면 팝업 띄우기
-    // register templates
-    var templates = {
-        popupIsAllDay: function() {
-        return 'All Day';
-        },
-        popupStateFree: function() {
-        return 'Free';
-        },
-        popupStateBusy: function() {
-        return 'Busy';
-        },
-        titlePlaceholder: function() {
-        return 'Subject';
-        },
-        locationPlaceholder: function() {
-        return 'Location';
-        },
-        startDatePlaceholder: function() {
-        return 'Start date';
-        },
-        endDatePlaceholder: function() {
-        return 'End date';
-        },
-        popupSave: function() {
-        return 'Save';
-        },
-        popupUpdate: function() {
-        return 'Update';
-        },
-        popupDetailDate: function(isAllDay, start, end) {
-        var isSameDate = moment(start).isSame(end);
-        var endFormat = (isSameDate ? '' : 'YYYY.MM.DD ') + 'hh:mm a';
-
-        if (isAllDay) {
-            return moment(start).format('YYYY.MM.DD') + (isSameDate ? '' : ' - ' + moment(end).format('YYYY.MM.DD'));
-        }
-
-        return (moment(start).format('YYYY.MM.DD hh:mm a') + ' - ' + moment(end).format(endFormat));
-        },
-        popupDetailLocation: function(schedule) {
-        return 'Location : ' + schedule.location;
-        },
-        popupDetailUser: function(schedule) {
-        return 'User : ' + (schedule.attendees || []).join(', ');
-        },
-        popupDetailState: function(schedule) {
-        return 'State : ' + schedule.state || 'Busy';
-        },
-        popupDetailRepeat: function(schedule) {
-        return 'Repeat : ' + schedule.recurrenceRule;
-        },
-        popupDetailBody: function(schedule) {
-        return 'Body : ' + schedule.body;
-        },
-        popupEdit: function() {
-        return 'Edit';
-        },
-        popupDelete: function() {
-        return 'Delete';
-        }
-    };
-</script>
-<script src="../calendar/js/default.js"></script>
 <script>
     $(document).ready(function () {
         $("#header").load("../include/header.html");
@@ -450,22 +422,204 @@
         $(this).addClass("active");
     });
 
-    var acc = document.getElementsByClassName("accordion");
-
+    //아코디언 메뉴
+    var acc = document.getElementsByClassName("parent");
     for (var i = 0; i < acc.length; i++) {
-    acc[i].addEventListener("click", function() {
-        var li = $(this).children("li");
-        li.slideToggle(1000);
-        this.classList.toggle("active");
-        // var panel = this.nextElementSibling;
-        // if (panel.style.maxHeight) {
-        // panel.style.maxHeight = null;
-        // } else {
-        // panel.style.maxHeight = panel.scrollHeight + "px";
-        // }
-
-    });
+        acc[i].addEventListener("click", function() {
+            var li = $(this).children("li");
+            li.slideToggle(1000);
+            this.classList.toggle("active");
+        });
     }
+
+    //타임라인 출력하기 
+
+    //사용자 정의 데이터 생성
+    var myData1 = 
+    [
+        {
+            group: "화면설계",
+            data: 
+            [
+                {
+                    label: "메인",
+                    data: 
+                    [
+                        {
+                            timeRange: [new Date(2020,01,01), new Date(2020,02,01)],
+                            val: 1
+                        },
+                        {
+                            timeRange: [new Date(2020,03,01), new Date(2020,04,01)],
+                            val: 2
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            group: "기능구현",
+            data: 
+            [
+                {
+                    label: "2",
+                    data: 
+                    [
+                        {
+                            timeRange: [new Date(2020,05,01), new Date(2020,06,01)],
+                            val: 3
+                        },
+                        {
+                            timeRange: [new Date(2020,06,01), new Date(2020,07,01)],
+                            val: 4
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            group: "산출물",
+            data: 
+            [
+                {
+                    label: "3",
+                    data: 
+                    [
+                        {
+                            timeRange: [new Date(2020,01,01), new Date(2020,02,01)],
+                            val: 10
+                        },
+                        {
+                            timeRange: [new Date(2020,03,01), new Date(2020,04,01)],
+                            val: 20
+                        }
+                    ]
+                }
+            ]
+        }
+    ];
+    // 랜덤 데이터 생성 메소드(나중에 지우기)
+    function getRandomData(ordinal = false) {
+
+        const NGROUPS = 2,
+        MAXLINES = 15,
+        MAXSEGMENTS = 20,
+        MAXCATEGORIES = 20,
+        MINTIME = new Date(2018,2,21);
+
+        const nCategories = Math.ceil(Math.random()*MAXCATEGORIES),
+        categoryLabels = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+
+        return [...Array(NGROUPS).keys()].map(i => ({
+            group: 'group' + (i+1),
+            data: getGroupData()}));
+
+        function getGroupData() {
+
+            return [...Array(Math.ceil(Math.random()*MAXLINES)).keys()].map(i => ({
+                label: 'label' + (i+1),
+                data: getSegmentsData()
+            }));
+
+            function getSegmentsData() {
+                const nSegments = Math.ceil(Math.random()*MAXSEGMENTS),
+                segMaxLength = Math.round(((new Date())-MINTIME)/nSegments);
+                let runLength = MINTIME;
+
+                return [...Array(nSegments).keys()].map(i => {
+                const tDivide = [Math.random(), Math.random()].sort(),
+                    start = new Date(runLength.getTime() + tDivide[0]*segMaxLength),
+                    end = new Date(runLength.getTime() + tDivide[1]*segMaxLength);
+
+                runLength = new Date(runLength.getTime() + segMaxLength);
+
+                    return {
+                        timeRange: [start, end],
+                        val: ordinal ? categoryLabels[Math.ceil(Math.random()*nCategories)] : Math.random()
+                        //labelVal: is optional - only displayed in the labels
+                    };
+                });
+            }
+        }
+    }
+
+    //타임라인을 출력할 DOM 요소 선언
+    var timelines = document.getElementsByClassName("timelines-chart")[0];
+    //랜덤 데이터 생성하기(일단은)
+    const myData = getRandomData(true);
+    //타임라인 생성 후 출력
+    const myChart = TimelinesChart();
+    myChart.data(myData).width(840).maxHeight(400).zQualitative(true)(timelines);
+    //타임라인 그라데이션 배경화면 지우기
+    $(".timelines-chart").children().eq(0).children().eq(0).remove();
+
+
+    // Build the chart
+    Highcharts.chart('contributor', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        colors: [
+            '#8dd3c7','#ffffb3','#bebada', '#fb8072','#80b1d3','#fdb462','#b3de69','#fccde5','#d9d9d9','#bc80bd','#ccebc5','#ffed6f'
+        ],
+        title: {
+            text: 'Project Contibutors'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        accessibility: {
+            point: {
+                valueSuffix: '%'
+            }
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: false
+                },
+                showInLegend: true
+            }
+        },
+        series: [{
+            name: 'Members',
+            colorByPoint: true,
+            data: [{
+                name: 'Doyun Lee',
+                y: 22,
+                sliced: true,
+                selected: true
+            }, {
+                name: 'DongWook Kim',
+                y: 22
+            }, {
+                name: 'Hyerim Kang',
+                y: 16
+            }, {
+                name: 'Yoonkyoug Cho',
+                y: 21
+            }, {
+                name: 'Kyoungwon Kang',
+                y: 19
+            }]
+        }]
+    });
+    Highcharts.setOptions({
+        colors: ['#058DC7', '#50B432', '#ED561B', '#DDDF00', '#24CBE5', '#64E572', '#FF9655', '#FFF263', '#6AF9C4']
+    });
+
+    
+
+
+
+    //하이차트 라벨?? 없애기
+    $(".highcharts-credits").remove();
+
 
 
 </script>
