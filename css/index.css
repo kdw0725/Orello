@@ -296,17 +296,6 @@
     padding: 0px 30px;
     margin-top: 100px;
 }
-#alermArea {
-    display: block;
-    z-index: 1;
-    width: 120px;
-    position: relative;
-    left: 190px;
-    top: 15px;
-}
-#alermArea i {
-    margin-left: -15px;
-}
 #imgArea {
     margin: 0 auto;
     border: 1px solid #333;
@@ -341,19 +330,7 @@
 #editComment {
     float: right;
 }
-.alermCount {
-    position: relative;
-    display: inline-block;
-    font-size: 13px;
-    left: -10px;
-    top: -20px;
-    background-color: tomato;
-    border-radius: 50%;
-    width: 17px;
-    height: 17px;
-    color: white;
-    text-align: center;
-}
+
 #commentInput {
     display: none;
 }
@@ -366,7 +343,6 @@
     margin-left: 15px;
     width: 50%;
     padding-bottom: 5px;
-    border-bottom: 1px solid #ccc;
 }
 #timeLineContent {
     height: 530px;

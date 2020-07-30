@@ -13,6 +13,8 @@
 <script src="../js/javascript.js"></script>
 <script src="../js/css.js"></script>
 <script src="../js/htmlmixed.js"></script>
+<script src="../js/python.js"></script>
+<script src="../js/markdown.js"></script>
 
 <link
     rel="stylesheet"
@@ -197,11 +199,11 @@
         width: 600px;
     }
     /* #tabs-1 {
-        background-color: #eee;
-    }
-    .ui-state-active {
-        background-color: #eee;
-    } */
+            background-color: #eee;
+        }
+        .ui-state-active {
+            background-color: #eee;
+        } */
     #code {
         background-color: white;
         height: 480px;
@@ -266,6 +268,75 @@
     }
     .CodeMirror-sizer {
         height: 460px;
+    }
+    .fab {
+        font-family: "Font Awesome 5 Brands";
+        font-size: 15px;
+    }
+    .fa-html5 {
+        color: #e44d26;
+    }
+    .fa-css3 {
+        color: #42a5f5;
+    }
+    .fa-js {
+        color: #f1e05a;
+    }
+    .fa-java {
+        background: linear-gradient(-180deg, #e4292f 59%, #0d73ad 41%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        white-space: nowrap;
+    }
+    .fa-python {
+        background: linear-gradient(-215deg, #3674a7 50%, #f1e05a 50%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        white-space: nowrap;
+    }
+    .fa-swift {
+        color: #fb7039;
+    }
+    .fa-cuttlefish {
+        color: #26338f;
+    }
+    .ztree li span.button.ico_docu {
+        background-size: 16px 16px;
+    }
+    .ztree li span.button.htmlIco_ico_docu {
+        margin-right: 2px;
+        background-image: url(../images/icon/code/html5.png);
+        background-size: 16px 16px;
+    }
+    .ztree li span.button.jsIco_ico_docu {
+        margin-right: 2px;
+        background-image: url(../images/icon/code/javascript.png);
+        background-size: 16px 16px;
+    }
+    .ztree li span.button.javaIco_ico_docu {
+        margin-right: 2px;
+        background-image: url(../images/icon/code/java.png);
+        background-size: 16px 16px;
+    }
+    .ztree li span.button.cssIco_ico_docu {
+        margin-right: 2px;
+        background-image: url(../images/icon/code/css3.png);
+        background-size: 16px 16px;
+    }
+    .ztree li span.button.pythonIco_ico_docu {
+        margin-right: 2px;
+        background-image: url(../images/icon/code/python.png);
+        background-size: 16px 16px;
+    }
+    .ztree li span.button.mdIco_ico_docu {
+        margin-right: 2px;
+        background-image: url(../images/icon/code/markdown.png);
+        background-size: 16px 16px;
+    }
+    .ztree li span.button.swiftIco_ico_docu {
+        margin-right: 2px;
+        background-image: url(../images/icon/code/swift.png);
+        background-size: 16px 16px;
     }
 </style>
 <div id="header"></div>
@@ -421,12 +492,25 @@
 
     // 파일시스템을 위한 ztree 기본 설정
     const zNodes = [
-        { id: "1", name: "Jo" },
+        { id: "1", name: "Jo", open: "true" },
         { id: "2", pId: "1", name: "resource" },
-        { id: "21", pId: "2", name: "resource.data" },
-        { id: "12", pId: "1", name: "JoYoonKyung.java" },
-        { id: "13", pId: "1", name: "Hello.java" },
-        { id: "14", pId: "1", name: "readme.md" },
+        {
+            id: "21",
+            pId: "2",
+            name: "resource.html",
+            iconSkin: "htmlIco",
+        },
+        {
+            id: "12",
+            pId: "1",
+            name: "JoYoonKyung.js",
+            iconSkin: "jsIco",
+        },
+        { id: "13", pId: "1", name: "Hello.java", iconSkin: "javaIco" },
+        { id: "14", pId: "1", name: "coffee.css", iconSkin: "cssIco" },
+        { id: "15", pId: "1", name: "coffee.py", iconSkin: "pythonIco" },
+        { id: "16", pId: "1", name: "coffee.swift", iconSkin: "swiftIco" },
+        { id: "17", pId: "1", name: "readme.md", iconSkin: "mdIco" },
     ];
     const setting = {
         data: {
@@ -479,7 +563,7 @@
                 )
             );
         }
-        // $("#codeArea").tabs("refresh");
+        $("#codeArea").tabs("refresh");
         if (temp >= 3) {
             $("#codeArea ul li")
                 .css("width", 550 / (temp + 1))
@@ -489,11 +573,68 @@
     });
     var tabs = $("#codeArea").tabs();
 
-    window.onload = function () {
-        editor = CodeMirror(document.getElementById("code"), {
-            mode: "text/html",
-            extraKeys: { "Ctrl-Space": "autocomplete" },
-            value: "<h1>소스코드입니다</h1>",
-        });
-    };
+    // window.onload = function () {
+    //     editor = CodeMirror(document.getElementById("code"), {
+    //         mode: "text/html",
+    //         extraKeys: { "Ctrl-Space": "autocomplete" },
+    //         value: "<h1>소스코드입니다</h1>",
+    //     });
+    // };
+    setTimeout(function () {
+        var list = document.getElementsByClassName("node_name");
+        console.log(list);
+        for (var i = 0; i < list.length; i++) {
+            list[i].addEventListener("dblclick", function () {
+                var position = event.srcElement.innerHTML.lastIndexOf(".");
+                if (position != -1) {
+                    var extension = event.srcElement.innerHTML.substring(
+                        position
+                    );
+                    if (extension == ".js") {
+                        editor = CodeMirror(document.getElementById("code"), {
+                            lineNumbers: true,
+                            mode: "javascript",
+                            matchBrackets: true,
+                            extraKeys: { "Ctrl-Space": "autocomplete" },
+                        });
+                    } else if (extension == ".html") {
+                        editor = CodeMirror(document.getElementById("code"), {
+                            lineNumbers: true,
+                            mode: "text/html",
+                            matchBrackets: true,
+                            extraKeys: { "Ctrl-Space": "autocomplete" },
+                            value: "<h1>소스코드입니다22</h1>",
+                        });
+                    } else if (extension == ".java") {
+                    } else if (extension == ".py") {
+                        editor = CodeMirror(document.getElementById("code"), {
+                            lineNumbers: true,
+                            mode: {
+                                name: "python",
+                                version: 3,
+                                singleLineStringErrors: false,
+                            },
+                            indentUnit: 4,
+                            matchBrackets: true,
+                            extraKeys: { "Ctrl-Space": "autocomplete" },
+                        });
+                    } else if (extension == ".css") {
+                        editor = CodeMirror(document.getElementById("code"), {
+                            lineNumbers: true,
+                            mode: "css",
+                            matchBrackets: true,
+                            extraKeys: { "Ctrl-Space": "autocomplete" },
+                        });
+                    } else if (extension == ".md") {
+                        editor = CodeMirror(document.getElementById("code"), {
+                            lineNumbers: true,
+                            mode: "markdown",
+                            matchBrackets: true,
+                            extraKeys: { "Ctrl-Space": "autocomplete" },
+                        });
+                    }
+                }
+            });
+        }
+    }, 100);
 </script>
