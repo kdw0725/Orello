@@ -1,91 +1,197 @@
 <!-- <link rel="stylesheet" type="text/css" href="https://uicdn.toast.com/tui-calendar/latest/tui-calendar.css"/> -->
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous"/>
+
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+<script src="https://uicdn.toast.com/tui.code-snippet/v1.5.2/tui-code-snippet.min.js"></script>
+<script src="https://uicdn.toast.com/tui.time-picker/v2.0.3/tui-time-picker.min.js"></script>
+<script src="https://uicdn.toast.com/tui.date-picker/v4.0.3/tui-date-picker.min.js"></script>
+<script src="../calendar/js/tui-calendar.js"></script>
+<script src="../calendar/js/data/calendars.js"></script>
+<script src="../calendar/js/data/schedules.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chance/1.0.13/chance.min.js"></script>
+<!-- <script src="./js/app.js"></script> -->
 <link rel="stylesheet" type="text/css" href="../calendar/css/tui-calendar.css"/>
 <!-- If you use the default popups, use this. -->
 <link rel="stylesheet" type="text/css" href="https://uicdn.toast.com/tui.date-picker/latest/tui-date-picker.css"/>
 <link rel="stylesheet" type="text/css" href="https://uicdn.toast.com/tui.time-picker/latest/tui-time-picker.css"/>
-<!-- <link rel="stylesheet" type="text/css" href="../calendar/css/tui-calendar.css"/> -->
-<!-- <link rel="stylesheet" type="text/css" href="../calendar/css/default.css"/> -->
+<link rel="stylesheet" type="text/css" href="../calendar/css/default.css"/>
 <link rel="stylesheet" type="text/css" href="../calendar/css/icons.css"/>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous"/>
-<!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/> -->
-<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
-<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> -->
-<script src="https://uicdn.toast.com/tui.code-snippet/v1.5.2/tui-code-snippet.min.js"></script>
-<script src="https://uicdn.toast.com/tui.time-picker/v2.0.3/tui-time-picker.min.js"></script>
-<script src="https://uicdn.toast.com/tui.date-picker/v4.0.3/tui-date-picker.min.js"></script>
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script> -->
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/chance/1.0.13/chance.min.js"></script> -->
-<script src="../calendar/js/tui-calendar.js"></script>
-<script src="../calendar/js/data/calendars.js"></script>
-<script src="../calendar/js/data/schedules.js"></script>
 <style>
 
     #contentRight {
-        padding: 30px;
+        padding-left: 30px;
+    }
+    #contentRight * {
+        /* border: 1px solid gray; */
     }
     #calendarArea {
         width: 850px;
-        /* text-align: center; */
+        min-height: 650px;
         padding-bottom: 30px;
-        border-bottom: 1px solid #ddd;
+        position: relative;
+        top: 0;
+        left: 0;
     }
     #calendarArea #menu {
-        margin-bottom: 20px;
         font-size: 2em;
+    }    
+    #calendarArea #menu .dropdown {
+        float: right;
+        margin-top: 4px;
     }
-    #calendar {
-        box-shadow: 1px 2px 2px #eee;
-        /* border: 1px solid #eee; */
+    /* 높이를 안주면 화면이 이상해짐... */
+    #calendar, .tui-view-7 {
+        height: 650px !important;
+    }
+    /* 달력 팝업창에 Location 지우기 */
+    .tui-full-calendar-popup-section:nth-child(3) {
+        display: none !important;
     }
 
+    /**  custom bootstrap - start */
+    #calendarArea .btn {
+    border-radius: 25px;
+    border-color: #ddd;
+    }
 
+    #calendarArea .btn:hover {
+    border: solid 1px #bbb;
+    background-color: #fff;
+    }
+
+    #calendarArea .btn:active {
+    background-color: #f9f9f9;
+    border: solid 1px #bbb;
+    outline: none;
+    }
+
+    #calendarArea .btn:disabled {
+    background-color: #f9f9f9;
+    border: solid 1px #ddd;
+    color: #bbb;
+    }
+
+    #calendarArea .btn:focus:active, #calendarArea .btn:focus, #calendarArea .btn:active {
+    outline: none;
+    }
+
+    #calendarArea .open > #calendarArea .dropdown-toggle.btn-default {
+    background-color: #fff;
+    }
+
+    #calendarArea .dropdown-menu {
+    top: 25px;
+    padding: 3px 0;
+    border-radius: 2px;
+    border: 1px solid #bbb;
+    }
+
+    #calendarArea .dropdown-menu > li > a {
+    padding: 9px 12px;
+    cursor: pointer;
+    }
+
+    #calendarArea .dropdown-menu > li > a:hover {
+    background-color: rgba(81, 92, 230, 0.05);
+    color: #333;
+    }
+
+    #calendarArea .bi15 {
+    width: 15px;
+    height: 15px;
+    }
 
 </style>
 <div id="header"></div>
 <section id="content" class="container">
     <div id="contentLeft"></div>
     <div id="contentRight">
-
         <div id="calendarArea">
+            <!-- 캘린더 위에 메뉴바 -->
             <div id="menu">
                 <span id="menu-navi">
-                    <button type="button"
-                        class="btn btn-default btn-sm move-day"
-                        data-action="move-prev"
-                    >
-                        <i
-                            class="calendar-icon ic-arrow-line-left"
-                            data-action="move-prev"
-                        ></i>
+                    <button type="button" class="btn btn-default btn-sm move-day" data-action="move-prev">
+                        <i class="calendar-icon ic-arrow-line-left" data-action="move-prev"></i>
                     </button>
                     <span id="renderRange" class="render-range"></span>
-                    <button
-                    type="button"
-                    class="btn btn-default btn-sm move-day"
-                    data-action="move-next"
-                    >
-                    <i
-                        class="calendar-icon ic-arrow-line-right"
-                        data-action="move-next"
-                    ></i>
+                    <button type="button" class="btn btn-default btn-sm move-day" data-action="move-next">
+                        <i class="calendar-icon ic-arrow-line-right" data-action="move-next"></i>
                     </button>
+                    <button type="button" class="btn btn-default btn-sm move-today" data-action="move-today">Today</button>
+                </span>
+                <span class="dropdown">
+                    <button id="dropdownMenu-calendarType" class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="true">
+                        <i id="calendarTypeIcon" class="calendar-icon ic_view_month" style="margin-right: 4px;"></i>
+                        <span id="calendarTypeName">View</span>&nbsp;
+                        <i class="calendar-icon tui-full-calendar-dropdown-arrow"></i>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu-calendarType">
+                        <li role="presentation">
+                            <a class="dropdown-menu-title" role="menuitem" data-action="toggle-daily">
+                                <i class="calendar-icon ic_view_day"></i>Daily
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a class="dropdown-menu-title" role="menuitem" data-action="toggle-weekly">
+                                <i class="calendar-icon ic_view_week"></i>Weekly
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a class="dropdown-menu-title" role="menuitem" data-action="toggle-monthly">
+                                <i class="calendar-icon ic_view_month"></i>Month
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a class="dropdown-menu-title" role="menuitem" data-action="toggle-weeks2">
+                                <i class="calendar-icon ic_view_week"></i>2 weeks
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a class="dropdown-menu-title" role="menuitem" data-action="toggle-weeks3">
+                                <i class="calendar-icon ic_view_week"></i>3 weeks
+                            </a>
+                        </li>
+                        <li role="presentation" class="dropdown-divider"></li>
+                        <li role="presentation">
+                            <a role="menuitem" data-action="toggle-workweek">
+                                <input type="checkbox" class="tui-full-calendar-checkbox-square" value="toggle-workweek" checked>
+                                <span class="checkbox-title"></span>Show weekends
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" data-action="toggle-start-day-1">
+                                <input type="checkbox" class="tui-full-calendar-checkbox-square" value="toggle-start-day-1">
+                                <span class="checkbox-title"></span>Start Week on Monday
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a role="menuitem" data-action="toggle-narrow-weekend">
+                                <input type="checkbox" class="tui-full-calendar-checkbox-square" value="toggle-narrow-weekend">
+                                <span class="checkbox-title"></span>Narrower than weekdays
+                            </a>
+                        </li>
+                    </ul>
                 </span>
             </div>
-            <div id="calendar" style="height: 600px;"></div>
+            <!-- 캘린더 영역 -->
+            <div id="calendar"></div>
         </div>
-
-
     </div>
 </section>
 <div id="footer"></div>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-
 <script>
     $(document).ready(function () {
         $("#header").load("../include/header.html");
         $("#footer").load("../include/footer.html");
     });
 </script>
+
+
 <script type="text/javascript" class="code-js">
     var MONTHLY_CUSTOM_THEME = {
         // month header 'dayname'
@@ -123,29 +229,46 @@
     var cal = new tui.Calendar("#calendar", {
         defaultView: "month",
         theme: MONTHLY_CUSTOM_THEME, // set theme
+        // 캘린더 카테고리(?) 생성 -> 나중에 멤버별로 적용하기 
         calendars: [{
             id: '1',
             name: 'project1',
             color: '#ffffff',
-            bgColor: '#61BD6D',
-            dragBgColor: '#61BD6D',
-            borderColor: '#61BD6D',
+            bgColor: '#F87C85',
+            dragBgColor: '#F87C85',
+            borderColor: '#F87C85',
         }, 
         {
             id: '2',
             name: 'project2',
             color: '#ffffff',
-            bgColor: '#61BD6D',
-            dragBgColor: '#61BD6D',
-            borderColor: '#61BD6D',
+            bgColor: '#feb47f',
+            dragBgColor: '#feb47f',
+            borderColor: '#feb47f',
         },
         {
             id: '3',
             name: 'project3',
             color: '#ffffff',
-            bgColor: '#61BD6D',
-            dragBgColor: '#61BD6D',
-            borderColor: '#61BD6D',
+            bgColor: '#43d6b0',
+            dragBgColor: '#43d6b0',
+            borderColor: '#43d6b0',
+        },
+        {
+            id: '4',
+            name: 'project4',
+            color: '#ffffff',
+            bgColor: '#3498db',
+            dragBgColor: '#3498db',
+            borderColor: '#3498db',
+        },
+        {
+            id: '5',
+            name: 'project5',
+            color: '#ffffff',
+            bgColor: '#b985ea',
+            dragBgColor: '#b985ea',
+            borderColor: '#b985ea',
         }
             
         ],
@@ -153,23 +276,23 @@
         useDetailPopup: true
     });
 
-
+    // 캘린더 내용 생성하기 
     cal.createSchedules([
         {
             id: '1',
             calendarId: '1',
-            title: '자료 구조',
+            title: '프론트 구현',
             category: 'time',
-            start: '2020-07-20T10:30:00',
+            start: '2020-07-01T10:30:00',
             end: '2020-07-20T12:30:00'
         },
         {
             id: '2',
-            calendarId: 'General Lecture',
-            title: '건강과 영양',
+            calendarId: '2',
+            title: '서버 연결',
             category: 'time',
             dueDateClass: '',
-            start: '2020-07-20T14:30:00',
+            start: '2020-07-18T14:30:00',
             end: '2020-07-20T16:30:00',
             isReadOnly: true // schedule is read-only
         }
@@ -239,4 +362,5 @@
     };
 </script>
 <script src="../calendar/js/default.js"></script>
+
 

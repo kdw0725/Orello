@@ -1,391 +1,592 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <style>
-    * {
-      border: 1px solid black;
+<style>
+    #contentRight {
+        background-color: #f8f9fa;
     }
-    body {
-      font-family: sans-serif;
-      margin: 0;
-      padding: 0;
+    .welcome {
+        color: black;
     }
 
-h1 {
-  position: absolute;
-  top: 20px;
-  left: 935px;
-  color: #fff;
-  font-weight: normal;
-  font-size: 28px;
-  text-transform: uppercase;
-}
+    .welcome .content {
+        background-color: #fff;
+        padding: 15px;
+        margin-top: 25px;
+        margin-left: 20px;
+        box-shadow: 3px 3px 3px #ddd;
+    }
 
-/* Timeline - Years */
-.timelines-years {
-  position: absolute;
-  top: 300px;
-  padding: 0 0 0 200px;
-  margin: 0;
-  white-space: nowrap;
-  border-top: 1px solid #282828;
-  list-style: none;
-  /* Fix display: inline-block spacing issue */
-  font-size: 0;
-}
+    .welcome h2 {
+        font-family: Calibri;
+        font-weight: 100;
+        margin-top: 0;
+    }
 
-.timelines-years li {
-  position: relative;
-  top: -6px;
-  display: inline-block;
-  width: 200px;
-  color: #868686;
-  font-size: 11px;
-  line-height: 11px;
-  text-indent: -12px;
-}
+    .welcome p {
+        color: #999;
+    }
 
-/* Display last year */
-.timelines-years li:last-child {
-  width: 100px;
-}
+    .statistics {
+        margin-top: 25px;
+        color: black;
+    }
 
-/* Timeline - Events */
-.timeline-events {
-  position: absolute;
-  top: 170px;
-  padding: 0;
-  list-style: none;
-  white-space: nowrap;
-  /* Fix display: inline-block spacing issue */
-  font-size: 0;
-}
+    .statistics .box {
+        background-color: #fff;
+        box-shadow: 3px 3px 3px #ddd;
+        padding: 15px;
+        overflow: hidden;
+        background-clip: border-box;
+        margin-left: 20px;
+    }
 
-.timeline-events h2,
-.timeline-events h3,
-.timeline-events h4 {
-  margin: 0 0 1px 0;
-  font-weight: normal;
-  font-size: 11px;
-}
+    .statistics .box>i {
+        float: left;
+        color: #FFF;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        line-height: 60px;
+        font-size: 22px;
+    }
 
-.timeline-events h2 {
-  color: #777;
-  text-transform: uppercase;
-}
+    .statistics .box .info {
+        float: left;
+        width: auto;
+        margin-left: 10px;
+        font-size:12px;
+    }
 
-.timeline-events h4 {
-  color: #fff;
-  font-style: italic;
-}
+    .statistics .box .info h3 {
+        margin: 5px 0 5px;
+        display: inline-block;
+    }
 
-.timeline-events li {
-  position: relative;
-  display: inline-block;
-}
+    .statistics .box .info p {
+        color: #BBB
+    }
 
-.timeline-events li:before {
-  position: absolute;
-  left: 0;
-  bottom: -36px;
-  height: 8px;
-  border-radius: 8px;
-  content: '';
-}
+    .charts {
+        margin-top: 25px;
+        color: black;
+    }
 
-.timeline-events li:nth-child(1) {
-  bottom: 0px;
-}
+    .charts .chart-container {
+        background-color: #fff;
+        padding: 15px;
+        margin-left: 20px;
+        box-shadow: 3px 3px 3px #ddd;
+    }
 
-.timeline-events li:nth-child(2) {
-  bottom: 16px;
-}
+    .charts .chart-container h3 {
+        margin: 0 0 10px;
+        font-size: 17px;
+    }
+    .chrt3 {
+        padding-bottom: 50px;
+    }
+    .chrt3 .chart-container {
+        height: 400px;
+        padding: 15px;
+        margin-top: 25px;
+        width: 900px;
+    }
+    .statis {
+        color: #EEE;
+        margin-top: 15px;
+    }
 
-.timeline-events li:nth-child(3) {
-  bottom: 32px;
-}
+    .statis .box {
+        position: relative;
+        padding: 15px;
+        overflow: hidden;
+        border-radius: 3px;
+        margin-top: 15px;
+        margin-bottom: 25px;
+        margin-left: 20px;
+        box-shadow: 3px 3px 3px #ddd;
+    }
 
-.timeline-events li:nth-child(4) {
-  bottom: 48px;
-}
+    .statis .box h3:after {
+        content: "";
+        height: 2px;
+        width: 70%;
+        margin: auto;
+        background-color: rgba(255, 255, 255, 0.12);
+        display: block;
+        margin-top: 10px;
+    }
 
-.timeline-events li:nth-child(5) {
-  bottom: 64px;
-}
+    .statis .box i {
+        position: absolute;
+        height: 70px;
+        width: 70px;
+        font-size: 22px;
+        padding: 15px;
+        top: -25px;
+        left: -25px;
+        background-color: rgba(255, 255, 255, 0.15);
+        line-height: 60px;
+        text-align: right;
+        border-radius: 50%;
+    }
 
-/* Timeline - Events - Colours */
-/* Grey/Green */
-.timeline-events li:nth-child(1):before {
-  background: #C2E34E;
-  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuMCIgeTE9IjAuNSIgeDI9IjEuMCIgeTI9IjAuNSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzBmMGYwZiIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2MyZTM0ZSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
-  background-size: 100%;
-  background-image: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, #0f0f0f), color-stop(100%, #c2e34e));
-  background-image: -moz-linear-gradient(left, #0f0f0f 0%, #c2e34e 100%);
-  background-image: -webkit-linear-gradient(left, #0f0f0f 0%, #c2e34e 100%);
-  background-image: linear-gradient(to right, #0f0f0f 0%, #c2e34e 100%);
-  border-radius: 0 6px 6px 0;
-}
+    .main-color {
+        color: #ffc107
+    }
 
-.timeline-events li:nth-child(1) h3 {
-  color: #C2E34E;
-}
+    .warning {
+        background-color: #f0ad4e
+    }
 
-/* Orange */
-.timeline-events li:nth-child(2):before {
-  background: #FF9704;
-}
+    .danger {
+        background-color: #d9534f
+    }
 
-.timeline-events li:nth-child(2) h3 {
-  color: #FF9704;
-}
+    .success {
+        background-color: #5cb85c
+    }
 
-/* Blue */
-.timeline-events li:nth-child(3):before {
-  background: #56C2F3;
-}
+    .inf {
+        background-color: #5bc0de
+    }
 
-.timeline-events li:nth-child(3) h3 {
-  color: #56C2F3;
-}
+    #dialog1 {
+        width: 800px;
 
-/* Red */
-.timeline-events li:nth-child(4):before {
-  background: #DD3D01;
-}
+    }
+    #myModal1, #myModal2 {
+        margin: 0px auto;
+    }
 
-.timeline-events li:nth-child(4) h3 {
-  color: #DD3D01;
-}
+    .modal-body {
+        width: 990px;
+        background-color: #fff;
+    }
 
-/* Aqua/Grey */
-.timeline-events li:nth-child(5):before {
-  background: #4A8B8F;
-  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuMCIgeTE9IjAuNSIgeDI9IjEuMCIgeTI9IjAuNSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzRhOGI4ZiIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBmMGYwZiIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
-  background-size: 100%;
-  background-image: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, #4a8b8f), color-stop(100%, #0f0f0f));
-  background-image: -moz-linear-gradient(left, #4a8b8f 0%, #0f0f0f 100%);
-  background-image: -webkit-linear-gradient(left, #4a8b8f 0%, #0f0f0f 100%);
-  background-image: linear-gradient(to right, #4a8b8f 0%, #0f0f0f 100%);
-  border-radius: 6px 0 0 6px;
-}
+    .modal-content {
+        background-color: #fff;
+        color: black;
+        width: 1000px;
+    }
 
-.timeline-events li:nth-child(5) h3 {
-  color: #4A8B8F;
-}
+    .chart-container > span {
+        font-size: 20px;
+    }
+    #btn1, #btn2 {
+        font-size: 25px;
+        text-align: right;
+        float: right;
+    }
+    #btn1, #btn2:hover {
+        cursor: pointer
+    }
+    .col-md-4:hover {
+        cursor: pointer;
+    }
 
-/* Timeline - Events - Grid */
-/* X years */
-.timeline-event-years-0,
-.timeline-event-years-0:before {
-  width: 0px;
-}
+    
+</style>
+<title>adminMain</title>
+<div id="header"></div>
+<section id="content" class="container">
+    <div id="contentLeft"></div>
+    <div id="contentRight">
+        <div class="welcome">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="content">
+                            <h2>Welcome to Dashboard</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="statistics">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="box">
+                            <i class="fa fa-envelope fa-fw bg-primary"></i>
+                            <div class="info">
+                                <h3>1,245</h3> <span>Emails</span>
+                                <p>Lorem ipsum dolor sit amet</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="box">
+                            <i class="fa fa-file fa-fw danger"></i>
+                            <div class="info" id="projInfo">
+                                <h3>34</h3> <span>Projects</span>
+                                <p>Lorem ipsum dolor sit amet</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="box">
+                            <i class="fa fa-users fa-fw success"></i>
+                            <div class="info" id="userInfo">
+                                <h3>5,245</h3> <span>Users</span>
+                                <p>Lorem ipsum dolor sit amet</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="charts">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6" id="chart1">
+                        <div class="chart-container">
+                            <span>Chart1</span>
+                            <i class="glyphicon glyphicon-search" id="btn1"></i>
+                            <canvas id="myChart1"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="chart-container">
+                            <span>Chart2</span>
+                            <i class="glyphicon glyphicon-search" id="btn2"></i>
+                            <canvas id="myChart2"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class='statis text-center'>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-3" id="box_page">
+                        <div class="box bg-primary">
+                            <i class="fa fa-eye"></i>
+                            <h3>3,824</h3>
+                            <p class="lead">Page views</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3" id="box_user">
+                        <div class="box danger">
+                            <i class="fa fa-user-o"></i>
+                            <h3>921</h3>
+                            <p class="lead">User registered</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3" id="box_post">
+                        <div class="box warning">
+                            <i class="fa fa-shopping-cart"></i>
+                            <h3>1,283</h3>
+                            <p class="lead">Posts Written</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3" id="box_qna">
+                        <div class="box success">
+                            <i class="fa fa-handshake-o"></i>
+                            <h3>512</h3>
+                            <p class="lead">QnA</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <section class="chrt3">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-9">
+                      <div class="chart-container">
+                        <canvas id="chart3" width="100%"></canvas>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
 
-/* X.5 years */
-.timeline-event-years-0-5,
-.timeline-event-years-0-5:before {
-  width: 50px;
-}
+                    </div>
+                  </div>
+                </div>
+              </section>
+        </section>
+        <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content" style="background-color: #fff; margin: 100px -200px;">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h3>Chart1</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="chart-container">
+                            <canvas id="dialog1"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="background-color: #fff; margin: 100px -200px;">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h3>Chart2</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="chart-container">
+                        <canvas id="dialog2"></canvas>
+                    </div>
+                </div>
+            </div>
 
-/* X years */
-.timeline-event-years-1,
-.timeline-event-years-1:before {
-  width: 100px;
-}
+        </div>
 
-/* X.5 years */
-.timeline-event-years-1-5,
-.timeline-event-years-1-5:before {
-  width: 150px;
-}
+    </div>
 
-/* X years */
-.timeline-event-years-2,
-.timeline-event-years-2:before {
-  width: 200px;
-}
+    </div>
 
-/* X.5 years */
-.timeline-event-years-2-5,
-.timeline-event-years-2-5:before {
-  width: 250px;
-}
+</section>
 
-/* X years */
-.timeline-event-years-3,
-.timeline-event-years-3:before {
-  width: 300px;
-}
+<div id="footer"></div>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
-/* X.5 years */
-.timeline-event-years-3-5,
-.timeline-event-years-3-5:before {
-  width: 350px;
-}
 
-/* X years */
-.timeline-event-years-4,
-.timeline-event-years-4:before {
-  width: 400px;
-}
+<script>
+    $(document).ready(function () {
+        $("#header").load("../include/header.html");
+        $("#footer").load("../include/footer.html");
+    });
+    var chart = document.getElementById('myChart1');
+    var myChart = new Chart(chart, {
+        type: 'bar',
+        data: {
+            labels: ["January", "February", "March", "April", "May", 'Jul'],
+            datasets: [{
+                label: "Lost",
+                fill: false,
+                lineTension: 0,
+                data: [45, 25, 40, 20, 45, 20],
+                pointBorderColor: "#f87c85",
+                borderColor: '#f87c85',
+                backgroundColor: '#f87c85',
+                borderWidth: 2,
+                showLine: true,
+            }, {
+                label: "Succes",
+                fill: false,
+                lineTension: 0,
+                startAngle: 2,
+                data: [20, 40, 20, 45, 25, 60],
+                // , '#ff6384', '#4bc0c0', '#ffcd56', '#457ba1'
+                backgroundColor: "#b985ea",
+                pointBorderColor: "#b985ea",
+                borderColor: '#b985ea',
+                borderWidth: 2,
+                showLine: true,
+            }]
+        },
+    });
+    var Chart2 = document.getElementById('myChart2').getContext('2d');
+    var chart = new Chart(Chart2, {
+        type: 'line',
+        data: {
+            labels: ["January", "February", "March", "April", 'test', 'test', 'test', 'test'],
+            datasets: [{
+                label: "My First dataset",
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 79, 116)',
+                borderWidth: 2,
+                pointBorderColor: false,
+                data: [5, 10, 5, 8, 20, 30, 20, 10],
+                fill: false,
+                lineTension: .4,
 
-/* X.5 years */
-.timeline-event-years-4-5,
-.timeline-event-years-4-5:before {
-  width: 450px;
-}
+            }, {
+                label: "Month",
+                fill: false,
+                lineTension: .4,
+                startAngle: 2,
+                data: [20, 14, 20, 25, 10, 15, 25, 10],
+                // , '#ff6384', '#4bc0c0', '#ffcd56', '#457ba1'
+                backgroundColor: "transparent",
+                pointBorderColor: "#4bc0c0",
+                borderColor: '#4bc0c0',
+                borderWidth: 2,
+                showLine: true,
+            }, {
+                label: "Month",
+                fill: false,
+                lineTension: .4,
+                startAngle: 2,
+                data: [40, 20, 5, 10, 30, 15, 15, 10],
+                // , '#ff6384', '#4bc0c0', '#ffcd56', '#457ba1'
+                backgroundColor: "transparent",
+                pointBorderColor: "#ffcd56",
+                borderColor: '#ffcd56',
+                borderWidth: 2,
+                showLine: true,
+            }]
+        },    // Configuration options
+        options: {
+            title: {
+                display: false
+            }
+        }
+    });
+</script>
+<script src="../js/jquery-ui.js"></script>
+<script>
+    var dialog1 = document.getElementById('dialog1');
+    var myChart2 = new Chart(dialog1, {
+        type: 'bar',
+        data: {
+            labels: ["January", "February", "March", "April", "May", 'Jul'],
+            datasets: [{
+                label: "Lost",
+                fill: false,
+                lineTension: 0,
+                data: [45, 25, 40, 20, 45, 20],
+                pointBorderColor: "#f87c85",
+                borderColor: '#f87c85',
+                backgroundColor: '#f87c85',
+                borderWidth: 2,
+                showLine: true,
+            }, {
+                label: "Succes",
+                fill: false,
+                lineTension: 0,
+                startAngle: 2,
+                data: [20, 40, 20, 45, 25, 60],
+                // , '#ff6384', '#4bc0c0', '#ffcd56', '#457ba1'
+                backgroundColor: "#b985ea",
+                pointBorderColor: "#b985ea",
+                borderColor: '#b985ea',
+                borderWidth: 2,
+                showLine: true,
+            }]
+        },
+    });
 
-/* X years */
-.timeline-event-years-5,
-.timeline-event-years-5:before {
-  width: 500px;
-}
+    // $("#dialog1").hide();
 
-/* X.5 years */
-.timeline-event-years-5-5,
-.timeline-event-years-5-5:before {
-  width: 550px;
-}
+    $("#btn1").click(function () {
+        $("#myModal1").modal();
 
-/* X years */
-.timeline-event-years-6,
-.timeline-event-years-6:before {
-  width: 600px;
-}
+    });
 
-/* X.5 years */
-.timeline-event-years-6-5,
-.timeline-event-years-6-5:before {
-  width: 650px;
-}
+    var dialog2 = document.getElementById('dialog2');
+    var myChart2 = new Chart(dialog2, {
+        type: 'line',
+        data: {
+            labels: ["January", "February", "March", "April", 'test', 'test', 'test', 'test'],
+            datasets: [{
+                label: "My First dataset",
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 79, 116)',
+                borderWidth: 2,
+                pointBorderColor: false,
+                data: [5, 10, 5, 8, 20, 30, 20, 10],
+                fill: false,
+                lineTension: .4,
+            }, {
+                label: "Month",
+                fill: false,
+                lineTension: .4,
+                startAngle: 2,
+                data: [20, 14, 20, 25, 10, 15, 25, 10],
+                // , '#ff6384', '#4bc0c0', '#ffcd56', '#457ba1'
+                backgroundColor: "transparent",
+                pointBorderColor: "#4bc0c0",
+                borderColor: '#4bc0c0',
+                borderWidth: 2,
+                showLine: true,
+            }, {
+                label: "Month",
+                fill: false,
+                lineTension: .4,
+                startAngle: 2,
+                data: [40, 20, 5, 10, 30, 15, 15, 10],
+                // , '#ff6384', '#4bc0c0', '#ffcd56', '#457ba1'
+                backgroundColor: "transparent",
+                pointBorderColor: "#ffcd56",
+                borderColor: '#ffcd56',
+                borderWidth: 2,
+                showLine: true,
+            }]
+        },    // Configuration options
+        options: {
+            title: {
+                display: false
+            }
+        }
+    });
 
-/* X years */
-.timeline-event-years-7,
-.timeline-event-years-7:before {
-  width: 700px;
-}
+    $("#btn2").click(function () {
+        $("#myModal2").modal();
+    });
 
-/* X.5 years */
-.timeline-event-years-7-5,
-.timeline-event-years-7-5:before {
-  width: 750px;
-}
+    var chart = document.getElementById('chart3');
+    var myChart = new Chart(chart, {
+        type: 'line',
+        data: {
+            labels: ["Jan", "Feb", "Mar", "Apr", "May", 'June', "July", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            datasets: [{
+                label: "Page views",
+                fill: false,
+                lineTension: .5,
+                pointBorderColor: "#337AB7",
+                pointColor: "#337AB7",
+                borderColor: '#337AB7',
+                borderWidth: 0,
+                showLine: true,
+                data: [3401, 2942, 3506, 4021, 4721, 3999, 4924, 4128, 4242, 1042, 4129, 3824],
+                pointBackgroundColor: 'transparent',
+            }, {
+                label: "User registered",
+                fill: false,
+                lineTension: .5,
+                pointColor: "#D9534F",
+                borderColor: '#D9534F',
+                borderWidth: 0,
+                showLine: true,
+                data: [259, 412, 123, 234, 331, 242, 192, 332, 412, 122, 159, 921],
+                pointBackgroundColor: 'transparent',
+            },
+            {
+                label: "Posts written",
+                fill: false,
+                lineTension: .5,
+                pointColor: "white",
+                borderColor: '#F9d71c',
+                borderWidth: 0,
+                showLine: true,
+                data: [4192, 4121, 3232, 4450, 2932, 1925, 4141, 3941, 4142, 3123, 3812, 1283, 4244],
+                pointBackgroundColor: 'transparent',
+            },
+            {
+                label: "QnA",
+                fill: false,
+                lineTension: .5,
+                pointColor: "#5CB85C",
+                borderColor: '#5CB85C',
+                borderWidth: 0,
+                showLine: true,
+                data: [284, 599, 341, 412, 321, 213, 333, 414, 553, 516, 751, 512],
+                pointBackgroundColor: 'transparent',
+            }]
+        },
+    });
 
-/* X years */
-.timeline-event-years-8,
-.timeline-event-years-8:before {
-  width: 800px;
-}
+    $("#projInfo").click(function() {
+        location.href="projectList.html";
+    });
 
-/* X.5 years */
-.timeline-event-years-8-5,
-.timeline-event-years-8-5:before {
-  width: 850px;
-}
+    $("#userInfo").click(function() {
+        //유저 목록으로 이동하는 href 생성
+        location.href="UserScreen.html";
+    });
+    
+    //상자에 마우스 오버시 해당 차트의 보더가 두꺼워진다.
+    $("#box_page").mouseover(function() {
+        
+    });
 
-/* Timeline - Legend */
-.timeline-event-legend {
-  position: relative;
-}
-
-.timeline-event-legend span {
-  position: absolute;
-  bottom: -150px;
-  left: 850px;
-}
-
-.timeline-event-legend h2,
-.timeline-event-legend h3,
-.timeline-event-legend h4 {
-  display: inline;
-  margin-right: 10px;
-}
-
-.timeline-event-legend i {
-  position: absolute;
-  width: 0;
-  height: 0;
-  border: 4px solid transparent;
-  border-bottom-color: #fff;
-}
-
-.timeline-event-legend i:after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 0;
-  border: 4px solid transparent;
-  border-top-color: #fff;
-}
-
-.timeline-event-legend > i {
-  bottom: -32px;
-  right: -12px;
-}
-
-.timeline-event-legend > i:after {
-  left: -4px;
-  bottom: -12px;
-}
-
-.timeline-event-legend span > i {
-  top: -1px;
-  left: -14px;
-}
-
-.timeline-event-legend span > i:after {
-  left: -4px;
-  bottom: -12px;
-}
-
-  </style>
-</head>
-<body>
-  <h1>Timeline</h1>
-<ul class="timeline-events">
-	<li class="timeline-event-years-6-5 timeline-event-legend">
-		<span>
-			<i></i>
-			<h2>Graduation</h2>
-			<h3>University of California, San Diego</h3>
-			<h4>BA Visual Arts</h4>		
-		</span>
-		<i></i>
-	</li>
-	<li class="timeline-event-years-2">
-		<h2>2004-2006</h2>
-		<h3>Ideaworks Advertising</h3>
-		<h4>Interactive Designer</h4>
-	</li>
-	<li class="timeline-event-years-2">
-		<h2>2006-2008</h2>
-		<h3>Pint, Inc</h3>
-		<h4>Associate Creative Director</h4>
-	</li>
-	<li class="timeline-event-years-3">
-		<h2>2008-2011</h2>
-		<h3>Cuker Interactive</h3>
-		<h4>Creative</h4>
-	</li>
-	<li class="timeline-event-years-7">
-		<h2>2011-Present</h2>
-		<h3>Independent</h3>
-		<h4>Interactive Art Director</h4>
-	</li>
-</ul>
-<ul class="timelines-years">
-	<li>2000</li>
-	<li>2002</li>
-	<li>2004</li>
-	<li>2006</li>
-	<li>2008</li>
-	<li>2010</li>
-	<li>2012</li>
-	<li>2014</li>
-	<li>2016</li>
-	<li>2018</li>
-</ul>
-</body>
-</html>
+</script>
