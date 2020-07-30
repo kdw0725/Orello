@@ -1,11 +1,7 @@
 <style>
     /* contentLeft */
-    #contentLeft {
-        position: fixed;
-    }
-    #contentLeft * {
-        /* border: 1px solid gray; */
-    }
+   
+    
     /* 메뉴 위 프로젝트 정보 */
     #contentLeft > #projectInfo {
         width: 250px;
@@ -138,9 +134,7 @@
     }
 
     /* contentRight */
-    #contentRight {
-        background-color: #f8f9fa;
-    }
+    
     .welcome {
         color: black;
     }
@@ -150,7 +144,8 @@
         padding: 15px;
         margin-top: 25px;
         margin-left: 20px;
-        box-shadow: 3px 3px 3px #ddd;
+        /* box-shadow: 3px 3px 3px #ddd; */
+        border : 1px solid #eee;
         border-radius: 5px;
     }
 
@@ -171,8 +166,9 @@
 
     .statistics .box {
         background-color: #fff;
-        box-shadow: 3px 3px 3px #ddd;
+        /* box-shadow: 3px 3px 3px #ddd; */
         padding: 15px;
+        border: 1px solid #eee;
         overflow: hidden;
         background-clip: border-box;
         margin-left: 20px;
@@ -214,7 +210,8 @@
         background-color: #fff;
         padding: 15px;
         margin-left: 20px;
-        box-shadow: 3px 3px 3px #ddd;
+        /* box-shadow: 3px 3px 3px #ddd; */
+        border: 1px solid #eee;
         border-radius: 5px;
     }
 
@@ -349,10 +346,8 @@
             <ul class="accordion">
                 <div><i class="glyphicon glyphicon-home"></i>Home</div>
             </ul>
-            <ul class="accordion parent">
+            <ul class="accordion">
                 <div><i class="glyphicon glyphicon-calendar"></i>Chart</div>
-                <!-- <li class="panel"><div><i class="glyphicon glyphicon-minus"></i></div></li>
-                <li class="panel"><div><i class="glyphicon glyphicon-minus"></i></div></li>    -->
             </ul>
             <ul class="accordion">
                 <div><i class="glyphicon glyphicon-check"></i>Project</div>
@@ -568,7 +563,7 @@
     for (var i = 0; i < acc.length; i++) {
         acc[i].addEventListener("click", function () {
             var li = $(this).children("li");
-            li.slideToggle(1000);
+            li.slideToggle(400);
             this.classList.toggle("active");
         });
     }

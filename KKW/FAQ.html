@@ -1,11 +1,6 @@
 <style>
     /* contentLeft */
-    #contentLeft {
-        position: fixed;
-    }
-    #contentLeft * {
-        /* border: 1px solid gray; */
-    }
+
     /* 메뉴 위 프로젝트 정보 */
     #contentLeft > #projectInfo {
         width: 250px;
@@ -279,6 +274,15 @@
     #faq_content {
         width: 780px;
     }
+    #QnA_pic {
+        border-left: 10px solid #5bc0de;
+        height: 50px;
+        margin-left: 20px;
+        padding-left: 10px;
+    }
+    #QnA_pic h1 {
+        display: inline-block;
+    }
 </style>
 <div id="header"></div>
 <section id="content" class="container">
@@ -336,10 +340,9 @@
                         <!-- ***** FAQ Start ***** -->
                         <div class="col-md-6 offset-md-3">
                             <div class="QnA_title_pic" id="QnA_pic">
-                                <img
-                                    src="../images/FAQ-1496222256.png"
-                                    id="QnA_img"
-                                />
+                                <h1>
+                                    FAQ
+                                </h1>
                             </div>
                         </div>
                         <div class="col-md-6 offset-md-3" id="faq_content">
