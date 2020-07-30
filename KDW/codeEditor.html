@@ -1,0 +1,640 @@
+<!-- codeMirror -->
+<link rel="stylesheet" href="../css/docs.css" />
+<link rel="stylesheet" href="../css/codemirror.css" />
+<link rel="stylesheet" href="../css/show-hint.css" />
+
+<script src="../js/codemirror.js"></script>
+<script src="../js/show-hint.js"></script>
+<script src="../js/css-hint.js"></script>
+<script src="../js/xml-hint.js"></script>
+<script src="../js/html-hint.js"></script>
+<script src="../js/javascript-hint.js"></script>
+<script src="../js/xml.js"></script>
+<script src="../js/javascript.js"></script>
+<script src="../js/css.js"></script>
+<script src="../js/htmlmixed.js"></script>
+<script src="../js/python.js"></script>
+<script src="../js/markdown.js"></script>
+
+<link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+    integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP"
+    crossorigin="anonymous"
+/>
+<link
+    href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    rel="stylesheet"
+/>
+<link rel="stylesheet" href="../css/jquery-ui.css" />
+<link rel="stylesheet" href="../css/zTreeStyle.css" />
+
+<style>
+    #contentLeft {
+        position: fixed;
+    }
+    #contentLeft * {
+        /* border: 1px solid gray; */
+    }
+    /* 메뉴 위 프로젝트 정보 */
+    #contentLeft > #projectInfo {
+        width: 250px;
+        height: 200px;
+        margin: 30px auto;
+        text-align: center;
+        position: relative;
+        top: 0px;
+        left: 0px;
+    }
+    #contentLeft #projectName {
+        margin-top: 70px;
+        font-size: 1.5em;
+    }
+    #contentLeft #projectPeriod {
+        margin-top: 10px;
+        font-style: italic;
+    }
+    #contentLeft #projectContent {
+        margin-top: 20px;
+        /* font-style: italic; */
+    }
+    #contentLeft #projectMember {
+        width: 100%;
+        height: 60px;
+        position: relative;
+        top: 0;
+        left: 0;
+        /* bottom: 30px; */
+        margin-top: 30px;
+    }
+    #projectMember .profilePic {
+        width: 50px;
+        height: 50px;
+        border: 3px solid white;
+        border-radius: 25px;
+        box-shadow: 3px 3px 2px #ccc;
+        display: inline-block;
+        background-color: #ccc;
+        background-repeat: no-repeat;
+        background-size: contain;
+        margin-left: -10px;
+    }
+    #projecMember .profilePic:first-child {
+        margin-left: 0px;
+    }
+
+    #projectMember .profilePic:hover {
+        transform: translate(0px, -15px);
+        transition: tranform 0.5s;
+    }
+    #AddMember {
+        text-align: left;
+        padding-top: 5px;
+        padding-left: 25px;
+    }
+    #AddMember a {
+        color: #333;
+        font-size: 0.9em;
+    }
+
+    /* 메뉴 */
+    #contentLeft > #menu {
+        width: 230px;
+        min-height: 400px;
+        margin: 70px auto;
+        /* border: 1px solid black; */
+    }
+    #contentLeft #menu ul,
+    #menu li {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        background-color: transparent;
+        cursor: pointer;
+        box-shadow: 0px 0px 0px white;
+    }
+    #contentLeft #menu .accordion > div,
+    #menu .panel > div {
+        margin: 0 auto;
+        padding-left: 10px;
+        padding-top: 9px;
+        border-bottom: 1px solid #999;
+        height: 40px;
+        padding-right: 10px;
+    }
+    #contentLeft #menu .panel > div {
+        margin-left: 30px;
+    }
+    #contentLeft #menu ul.active > div {
+        color: #5bc0de;
+        border-bottom: 1px solid #5bc0de;
+    }
+    #contentLeft #menu > ul.active > div > i {
+        color: #5bc0de;
+    }
+    #contentLeft #menu > ul.active li {
+        display: block;
+    }
+    #contentLeft #menu ul i {
+        margin-right: 10px;
+        color: #555;
+    }
+    #contentLeft #menu li.panel {
+        display: none;
+    }
+    #contentLeft #menu ul.parent > div::after {
+        content: "\f078";
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        float: right;
+    }
+    #contentLeft #menu ul.active.parent > div::after {
+        content: "\f077";
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        float: right;
+    }
+    #contentLeft #menu ul:hover > div {
+        color: #5bc0de;
+        border-bottom: 1px solid #5bc0de;
+    }
+    #contentLeft #menu ul:hover > div > i {
+        color: #5bc0de;
+    }
+    #contentLeft #menu li:hover > div {
+        color: #5bc0de;
+        border-bottom: 1px solid #5bc0de;
+    }
+    #contentLeft #menu li:hover > div > i {
+        color: #5bc0de;
+    }
+    #contentRight {
+        padding: 40px;
+        padding-right: 0px;
+    }
+    #projectName {
+        margin-left: 15px;
+        color: #555;
+    }
+    #fileArea {
+        border: 1px solid #ccc;
+        width: 250px;
+        height: 610px;
+        float: left;
+        background-color: #eceadf;
+        /* background-color: #eee; */
+        padding: 15px;
+    }
+    #fileList {
+        width: 220px;
+        height: 250px;
+        background-color: white;
+        border-radius: 5px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+    #codeArea {
+        float: left;
+        border: 1px solid #ccc;
+        width: 600px;
+    }
+    /* #tabs-1 {
+            background-color: #eee;
+        }
+        .ui-state-active {
+            background-color: #eee;
+        } */
+    #code {
+        background-color: white;
+        height: 480px;
+    }
+    #fileArea button {
+        width: 50px;
+        margin: 0 auto;
+    }
+    #codeArea li span {
+        position: absolute;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        top: 10px;
+        /* left: -6px; */
+        right: 1px;
+        /* border: 1px solid #333; */
+        /* border-radius: 50%; */
+        /* border: 1px solid #333; */
+        text-align: center;
+        background-color: #eceadf;
+        font-size: 16px;
+    }
+    #codeArea li:hover span {
+        background-color: #654b24;
+    }
+    #codeArea li span:hover {
+        /* border: 1px solid #333; */
+        cursor: pointer;
+    }
+    #codeArea > div {
+        height: 560px;
+    }
+    textarea {
+        resize: none;
+    }
+    #codeArea > div > input {
+        margin-top: 20px;
+        width: 90%;
+        float: left;
+    }
+    #codeArea > div > button {
+        margin-top: 22px;
+        float: right;
+    }
+    #commitHistory {
+        background-color: white;
+        width: 220px;
+        height: 240px;
+        margin-top: 10px;
+        color: #333;
+    }
+    .CodeMirror-scroll {
+        /* border: 1px solid black; */
+        height: 483px;
+        width: 550px;
+        padding-bottom: 0px;
+        margin-bottom: 0px;
+    }
+    .CodeMirror {
+        height: 483px;
+    }
+    .CodeMirror-sizer {
+        height: 460px;
+    }
+    .fab {
+        font-family: "Font Awesome 5 Brands";
+        font-size: 15px;
+    }
+    .fa-html5 {
+        color: #e44d26;
+    }
+    .fa-css3 {
+        color: #42a5f5;
+    }
+    .fa-js {
+        color: #f1e05a;
+    }
+    .fa-java {
+        background: linear-gradient(-180deg, #e4292f 59%, #0d73ad 41%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        white-space: nowrap;
+    }
+    .fa-python {
+        background: linear-gradient(-215deg, #3674a7 50%, #f1e05a 50%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        white-space: nowrap;
+    }
+    .fa-swift {
+        color: #fb7039;
+    }
+    .fa-cuttlefish {
+        color: #26338f;
+    }
+    .ztree li span.button.ico_docu {
+        background-size: 16px 16px;
+    }
+    .ztree li span.button.htmlIco_ico_docu {
+        margin-right: 2px;
+        background-image: url(../images/icon/code/html5.png);
+        background-size: 16px 16px;
+    }
+    .ztree li span.button.jsIco_ico_docu {
+        margin-right: 2px;
+        background-image: url(../images/icon/code/javascript.png);
+        background-size: 16px 16px;
+    }
+    .ztree li span.button.javaIco_ico_docu {
+        margin-right: 2px;
+        background-image: url(../images/icon/code/java.png);
+        background-size: 16px 16px;
+    }
+    .ztree li span.button.cssIco_ico_docu {
+        margin-right: 2px;
+        background-image: url(../images/icon/code/css3.png);
+        background-size: 16px 16px;
+    }
+    .ztree li span.button.pythonIco_ico_docu {
+        margin-right: 2px;
+        background-image: url(../images/icon/code/python.png);
+        background-size: 16px 16px;
+    }
+    .ztree li span.button.mdIco_ico_docu {
+        margin-right: 2px;
+        background-image: url(../images/icon/code/markdown.png);
+        background-size: 16px 16px;
+    }
+    .ztree li span.button.swiftIco_ico_docu {
+        margin-right: 2px;
+        background-image: url(../images/icon/code/swift.png);
+        background-size: 16px 16px;
+    }
+</style>
+<div id="header"></div>
+<section id="content" class="container">
+    <div id="contentLeft">
+        <div id="projectInfo">
+            <div id="projectName"></div>
+            <div id="projectPeriod"></div>
+            <div id="projectContent">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Numquam, nesciunt?
+            </div>
+            <div id="projectMember"></div>
+            <div id="addMember">
+                <a href="#"
+                    ><i class="glyphicon glyphicon-user"></i
+                    ><i class="glyphicon glyphicon-plus"></i>
+                    <span>Add Member</span></a
+                >
+            </div>
+        </div>
+        <div id="menu">
+            <ul class="accordion">
+                <div><i class="glyphicon glyphicon-home"></i>Project Home</div>
+            </ul>
+            <ul class="accordion parent">
+                <div><i class="glyphicon glyphicon-calendar"></i>Schedule</div>
+                <li class="panel">
+                    <div><i class="glyphicon glyphicon-minus"></i>Calendar</div>
+                </li>
+                <li class="panel">
+                    <div>
+                        <i class="glyphicon glyphicon-minus"></i>Time Line
+                    </div>
+                </li>
+            </ul>
+            <ul class="accordion">
+                <div><i class="glyphicon glyphicon-check"></i>Check List</div>
+            </ul>
+            <ul class="accordion parent">
+                <div><i class="glyphicon glyphicon-list-alt"></i>Board</div>
+                <li class="panel">
+                    <div><i class="glyphicon glyphicon-minus"></i>Notice</div>
+                </li>
+                <li class="panel">
+                    <div><i class="glyphicon glyphicon-minus"></i>Codes</div>
+                </li>
+                <li class="panel">
+                    <div><i class="glyphicon glyphicon-minus"></i>Free</div>
+                </li>
+            </ul>
+            <ul class="accordion">
+                <div><i class="glyphicon glyphicon-hdd"></i>Files</div>
+            </ul>
+            <ul class="accordion">
+                <div><i class="fas fa-code-branch"></i>Git</div>
+            </ul>
+            <ul class="accordion">
+                <div><i class="glyphicon glyphicon-comment"></i>Chat</div>
+            </ul>
+        </div>
+    </div>
+    <div id="contentRight">
+        <div id="projectName">
+            <h3><i class="fas fa-code-branch"></i> Orello</h3>
+        </div>
+        <div id="fileArea">
+            <button
+                type="button"
+                class="btn btn-default"
+                title="새 파일"
+                id="newFile"
+            >
+                <i class="fa fa-file-o"></i>
+            </button>
+            <button type="button" class="btn btn-default" title="새 폴더">
+                <i class="far fa-folder"></i>
+            </button>
+            <button type="button" class="btn btn-default" title="새로고침">
+                <i class="fas fa-sync-alt"></i>
+            </button>
+            <button type="button" class="btn btn-default" title="삭제">
+                <i class="far fa-trash-alt"></i>
+            </button>
+            <div id="fileList">
+                <ul id="treeDemo" class="ztree"></ul>
+            </div>
+            <h4>Commit History</h4>
+            <div id="commitHistory"></div>
+        </div>
+
+        <div id="codeArea">
+            <ul>
+                <li>
+                    <a href="#tabs-1">Lorem, ipsum.</a>
+                    <span><i class="fas fa-times"></i></span>
+                </li>
+            </ul>
+            <div id="tabs-1">
+                <div id="code"></div>
+                <!-- <textarea cols="67" rows="22"></textarea> -->
+                <input
+                    type="text"
+                    class="form-control"
+                    placeholder="commit할 메시지 입력"
+                />
+                <button class="btn btn-info">
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+<div id="footer"></div>
+<!-- <script src="//code.jquery.com/jquery-1.11.0.min.js"></script> -->
+<script src="../js/jquery-1.12.4.js"></script>
+<script src="../js/jquery-ui.js"></script>
+
+<script src="../js/jquery.ztree.core.js"></script>
+<script>
+    // 메뉴 상단에 프로젝트 정보 출력하기
+    $("#projectName").append("Project Name");
+    $("#projectPeriod").append("<span>2020.07.01 ~ 2020.07.10</span><br>");
+    for (var i = 0; i < 5; i++) {
+        $("#projectMember").append("<div class='profilePic'></div>");
+    }
+    var profilePic = document.getElementsByClassName("profilePic");
+    for (var i = 0; i < 5; i++) {
+        profilePic[i].setAttribute(
+            "style",
+            `background-image: url('../images/${i}.png')`
+        );
+    }
+
+    //클릭한 메뉴만 표시되도록
+    $(".list-group > a").click(function () {
+        $(".list-group > a").removeClass("active");
+        $(this).addClass("active");
+    });
+
+    //아코디언 메뉴
+    var acc = document.getElementsByClassName("parent");
+    for (var i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+            var li = $(this).children("li");
+            li.slideToggle(1000);
+            this.classList.toggle("active");
+        });
+    }
+
+    // 탭 만들기 메뉴
+    // $("#codeArea").tabs();
+
+    // 파일시스템을 위한 ztree 기본 설정
+    const zNodes = [
+        { id: "1", name: "Jo", open: "true" },
+        { id: "2", pId: "1", name: "resource" },
+        {
+            id: "21",
+            pId: "2",
+            name: "resource.html",
+            iconSkin: "htmlIco",
+        },
+        {
+            id: "12",
+            pId: "1",
+            name: "JoYoonKyung.js",
+            iconSkin: "jsIco",
+        },
+        { id: "13", pId: "1", name: "Hello.java", iconSkin: "javaIco" },
+        { id: "14", pId: "1", name: "coffee.css", iconSkin: "cssIco" },
+        { id: "15", pId: "1", name: "coffee.py", iconSkin: "pythonIco" },
+        { id: "16", pId: "1", name: "coffee.swift", iconSkin: "swiftIco" },
+        { id: "17", pId: "1", name: "readme.md", iconSkin: "mdIco" },
+    ];
+    const setting = {
+        data: {
+            simpleData: {
+                enable: true,
+            },
+        },
+    };
+
+    $(document).ready(function () {
+        $("#header").load("../include/header.html");
+        $("#footer").load("../include/footer.html");
+
+        $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+    });
+    // 새파일 만들기
+    $("#newFile").click(function () {
+        var li = document.createElement("li");
+        var temp = $(".ui-tabs-anchor").length;
+        li.innerHTML =
+            "<a href='#tabs-" +
+            (temp + 1) +
+            "'>Lorem, ipsum.</a><span><i class='fas fa-times'></i></span>";
+        $("#codeArea ul").append(li);
+        var newTab = document.createElement("div");
+        newTab.id = "tabs-" + (temp + 1);
+        var textarea = document.createElement("div");
+        textarea.id = "code";
+        // textarea.cols = "67";
+        // textarea.rows = "22";
+
+        var input = document.createElement("input");
+        input.type = "text";
+        input.className = "form-control";
+        input.placeholder = "commit할 메시지 입력";
+
+        var commitBtn = document.createElement("button");
+        commitBtn.className = "btn btn-info";
+        commitBtn.innerHTML = "<i class='fas fa-arrow-right'></i>";
+
+        newTab.append(textarea);
+        newTab.append(input);
+        newTab.append(commitBtn);
+        $("#codeArea").append(newTab);
+        for (var i = 0; i < temp + 1; i++) {
+            $("#codeArea ul li:nth-child(" + (i + 1) + ") span").css(
+                "background-color",
+                $("#codeArea ul li:nth-child(" + (i + 1) + ")").css(
+                    "background-color"
+                )
+            );
+        }
+        $("#codeArea").tabs("refresh");
+        if (temp >= 3) {
+            $("#codeArea ul li")
+                .css("width", 550 / (temp + 1))
+                .css("overflow", "hidden");
+        }
+        tabs.tabs("refresh");
+    });
+    var tabs = $("#codeArea").tabs();
+
+    // window.onload = function () {
+    //     editor = CodeMirror(document.getElementById("code"), {
+    //         mode: "text/html",
+    //         extraKeys: { "Ctrl-Space": "autocomplete" },
+    //         value: "<h1>소스코드입니다</h1>",
+    //     });
+    // };
+    setTimeout(function () {
+        var list = document.getElementsByClassName("node_name");
+        console.log(list);
+        for (var i = 0; i < list.length; i++) {
+            list[i].addEventListener("dblclick", function () {
+                var position = event.srcElement.innerHTML.lastIndexOf(".");
+                if (position != -1) {
+                    var extension = event.srcElement.innerHTML.substring(
+                        position
+                    );
+                    if (extension == ".js") {
+                        editor = CodeMirror(document.getElementById("code"), {
+                            lineNumbers: true,
+                            mode: "javascript",
+                            matchBrackets: true,
+                            extraKeys: { "Ctrl-Space": "autocomplete" },
+                        });
+                    } else if (extension == ".html") {
+                        editor = CodeMirror(document.getElementById("code"), {
+                            lineNumbers: true,
+                            mode: "text/html",
+                            matchBrackets: true,
+                            extraKeys: { "Ctrl-Space": "autocomplete" },
+                            value: "<h1>소스코드입니다22</h1>",
+                        });
+                    } else if (extension == ".java") {
+                    } else if (extension == ".py") {
+                        editor = CodeMirror(document.getElementById("code"), {
+                            lineNumbers: true,
+                            mode: {
+                                name: "python",
+                                version: 3,
+                                singleLineStringErrors: false,
+                            },
+                            indentUnit: 4,
+                            matchBrackets: true,
+                            extraKeys: { "Ctrl-Space": "autocomplete" },
+                        });
+                    } else if (extension == ".css") {
+                        editor = CodeMirror(document.getElementById("code"), {
+                            lineNumbers: true,
+                            mode: "css",
+                            matchBrackets: true,
+                            extraKeys: { "Ctrl-Space": "autocomplete" },
+                        });
+                    } else if (extension == ".md") {
+                        editor = CodeMirror(document.getElementById("code"), {
+                            lineNumbers: true,
+                            mode: "markdown",
+                            matchBrackets: true,
+                            extraKeys: { "Ctrl-Space": "autocomplete" },
+                        });
+                    }
+                }
+            });
+        }
+    }, 100);
+</script>

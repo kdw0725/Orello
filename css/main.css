@@ -45,3 +45,23 @@ section.container {
         max-height: none;
     }
 }
+#alermArea {
+    font-size: 20px;
+    color: white;
+    margin-top: 15px;
+    cursor: pointer;
+}
+.alermCount {
+    position: relative;
+    display: inline-block;
+    font-size: 13px;
+    left: -10px;
+    top: -15px;
+    background-color: tomato;
+    border-radius: 50%;
+    width: 17px;
+    height: 17px;
+    color: white;
+    text-align: center;
+    z-index: 1;
+}

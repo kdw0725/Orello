@@ -54,299 +54,160 @@
 />
 
 <link rel="stylesheet" href="../css/index.css" />
-<style>
-    #notice {
-        width: 700px;
-        margin: 20px auto;
-        margin-top: 50px;
-        font-weight: bold;
-        color: #eb5837;
-        font-size: 15px;
-        text-align: center;
-    }
-    #menu {
-        display: block;
-        text-align: center;
-        width: 800px;
-        margin: 0 auto;
-    }
-    #menu > span {
-        font-size: 3em;
-    }
-
-    .move-today {
-        float: right;
-        margin-top: 20px;
-    }
-    #calendarArea {
-        margin-left: 50px;
-    }
-    #calendar {
-        height: 600px;
-    }
-    .projectBox {
-        border: 1px solid #aaa;
-        width: 250px;
-        height: 150px;
-        border-radius: 15px;
-        margin-right: 30px;
-        padding: 20px;
-        float: left;
-        color: #aaa;
-        overflow: hidden;
-        background-color: #f1f1f1;
-    }
-
-    .projectBox:last-child {
-        margin-right: 0px;
-        text-align: center;
-        color: #aaaaaa;
-        cursor: pointer;
-        border-style: dotted;
-    }
-    .projectBox:last-child i {
-        font-size: 80px;
-        margin-bottom: 10px;
-        transition: all 0.3s;
-    }
-    .index {
-        display: inline-block;
-        position: relative;
-        top: -10px;
-        left: -30px;
-        width: 50px;
-        height: 25px;
-        border-radius: 5px;
-        transition: all 0.3s;
-    }
-    .detail {
-        float: right;
-        width: 80px;
-        font-size: 0.8em;
-    }
-    .projectTitle {
-        color: #555;
-        margin-top: -5px;
-    }
-    .title {
-        display: inline;
-        font-size: 2em;
-    }
-    .languagebox label {
-        display: inline;
-        margin-right: 10px;
-    }
-    .language {
-        border-radius: 100%;
-        display: inline-block;
-        width: 10px;
-        height: 10px;
-    }
-    .fa-html5 {
-        color: #e44d26;
-    }
-    .fa-css3 {
-        color: #42a5f5;
-    }
-    .fa-js {
-        color: #f1e05a;
-    }
-    .fa-java {
-        background: linear-gradient(-180deg, #e4292f 59%, #0d73ad 41%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        white-space: nowrap;
-    }
-    .fa-python {
-        background: linear-gradient(-215deg, #3674a7 50%, #f1e05a 50%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        white-space: nowrap;
-    }
-    .fa-swift {
-        color: #fb7039;
-    }
-    .fa-cuttlefish {
-        color: #26338f;
-    }
-    .fa-internet-explorer {
-        color: #a4ffff;
-    }
-    .fa-android {
-        color: #93bb3a;
-    }
-    .fa-apple {
-        color: black;
-    }
-    .projectBox {
-        transition: all 0.3s linear;
-    }
-    #newProject::after {
-        content: " ";
-        display: block;
-        clear: both;
-    }
-    #moreProject {
-        display: block;
-        width: 50%;
-        margin: 0px auto;
-        margin-top: 200px;
-        transition: all 0.5s;
-    }
-    #notice {
-        transition: all 1s;
-    }
-    #checkProjectType label {
-        display: inline-block;
-        margin-right: 40px;
-    }
-    .team-worker,
-    .new-worker {
-        position: relative;
-        border: 1px solid #ccc;
-        border-radius: 50%;
-        width: 50px;
-        height: 50px;
-        float: left;
-        background-color: white;
-    }
-    .team-worker:first-child {
-        left: 0px;
-        z-index: 0;
-    }
-    .team-worker img {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        cursor: pointer;
-    }
-    .new-worker {
-        z-index: 10000;
-        border-style: dashed;
-        text-align: center;
-        color: #ccc;
-        font-size: 35px;
-        padding-top: 4px;
-        padding-left: 2px;
-        cursor: pointer;
-    }
-
-    .tooltips {
-        border-radius: 15px;
-        width: 250px;
-        height: 100px;
-        padding: 10px;
-        background-color: #eeeeee;
-        z-index: 500;
-        position: relative;
-        top: -160px;
-        left: -10px;
-    }
-
-    .tooltips::after {
-        content: " ";
-        position: relative;
-        top: 90%;
-        left: -20%;
-        margin-left: -10px;
-        border-width: 10px;
-        border-style: solid;
-        border-color: #eee transparent transparent transparent;
-    }
-
-    .tooltipInfo {
-        display: block;
-        width: 150px;
-        height: 70px;
-        float: right;
-    }
-    .tooltipName {
-        font-size: 20px;
-        font-weight: bold;
-    }
-    .tooltipCompany {
-        font-size: 0.8em;
-    }
-    .tooltipButton {
-        font-size: 0.8em;
-        width: 50%;
-        float: left;
-        text-align: center;
-        padding-top: 5px;
-        padding-bottom: 5px;
-    }
-
-    .tooltipButton button {
-        margin: 0 auto;
-    }
-    #searchUserResult {
-        border: 1px solid black;
-        position: relative;
-        width: 250px;
-        height: 250px;
-        padding: 10px;
-    }
-    #searchUserResult table {
-        width: 230px;
-    }
-    .userData {
-        height: 50px;
-        /* border: 1px solid black; */
-        font-size: 20px;
-        color: #555;
-    }
-    .userData button {
-        color: #555;
-    }
-    .userData:hover {
-        background-color: #f0f0f0;
-    }
-    .userData img {
-        border: 1px solid #ccc;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        margin-left: 10px;
-        margin-right: 10px;
-    }
-    .userData input {
-        margin-left: 15px;
-    }
-    #searchUser {
-        width: 50%;
-        height: 0px;
-        /* display: none; */
-        transition: all 1s;
-        border: 0px;
-        padding: 0px;
-    }
-
-    .searchUserResult {
-        z-index: 700;
-        border: 1px solid #ccc;
-        width: 284px;
-        position: relative;
-        height: 252px;
-        overflow: hidden;
-    }
-    .searchUserResult span {
-        font-size: 15px;
-        margin-left: 5px;
-        margin-right: 5px;
-    }
-    #datePicker > div {
-        border: 1px solid #ddd;
-        z-index: 10001;
-    }
-    #datePicker div.tui-datepicker {
-        border: 1px solid #ddd;
-        z-index: 10001;
-    }
-</style>
-
 <div id="header"></div>
 <section id="content" class="container">
-    <div id="contentLeft"></div>
+    <div id="contentLeft">
+        <div id="profile">
+            <div id="imgArea">
+                <img src="../images/man_02.png" />
+            </div>
+            <div id="infoArea">
+                <div id="name">김동욱</div>
+                <div id="commentArea">
+                    <div id="commentInput">
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="profileComment"
+                        />
+                        <input
+                            type="button"
+                            class="btn btn-info btn-xs"
+                            value="저장"
+                            id="commentSave"
+                        />
+                        <input
+                            type="button"
+                            class="btn btn-default btn-xs"
+                            value="취소"
+                            id="commentCancel"
+                        />
+                    </div>
+                    <div id="comment">
+                        <span> 집가고싶다</span
+                        ><input
+                            type="button"
+                            class="btn btn-info btn-xs"
+                            value="edit"
+                            id="editComment"
+                        />
+                    </div>
+                </div>
+                <div class="info">
+                    <i class="fas fa-user"></i> getter@kakao.com
+                </div>
+                <div class="info">
+                    <i class="fas fa-mobile-alt"></i> 010-1234-5678
+                </div>
+                <div class="info">
+                    <i class="far fa-building"></i> 쌍용교육센터
+                </div>
+            </div>
+        </div>
+        <div id="timeLine">
+            <h3>
+                <i class="fas fa-user-clock"></i>
+                타임라인
+            </h3>
+            <div id="timeLineContent">
+                <table>
+                    <tr>
+                        <td class="timeLineList">
+                            <img src="../images/man_02.png" alt="profile" />
+                            <div class="timeLineAction">
+                                <strong>김동욱</strong>
+                                <span>1시간전</span>
+                                <div>
+                                    김동욱님이 조윤경님 팔로우를 취소
+                                    하였습니다.
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="timeLineList">
+                            <img src="../images/man_01.png" alt="profile" />
+                            <div class="timeLineAction">
+                                <strong>조윤경</strong>
+                                <span>2시간전</span>
+                                <div>
+                                    조윤경님이 김동욱님을 팔로우 하였습니다.
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="timeLineList">
+                            <img src="../images/man_03.png" alt="profile" />
+                            <div class="timeLineAction">
+                                <strong>강경원</strong>
+                                <span>4시간전</span>
+                                <div>
+                                    강경원님이 Orello프로젝트에 참여하였습니다.
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="timeLineList">
+                            <img src="../images/man_01.png" alt="profile" />
+                            <div class="timeLineAction">
+                                <strong>조윤경</strong>
+                                <span>5시간전</span>
+                                <div>
+                                    조윤경님이 양치를 하였습니다.
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="timeLineList">
+                            <img src="../images/man_04.png" alt="profile" />
+                            <div class="timeLineAction">
+                                <strong>강혜림</strong>
+                                <span>5시간전</span>
+                                <div>
+                                    강혜림님이 칼퇴를 하였습니다.
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="timeLineList">
+                            <img src="../images/man_05.png" alt="profile" />
+                            <div class="timeLineAction">
+                                <strong>이도윤</strong>
+                                <span>6시간전</span>
+                                <div>
+                                    이도윤님이 채팅프로그램을 완성하였습니다!
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="timeLineList">
+                            <img src="../images/man_03.png" alt="profile" />
+                            <div class="timeLineAction">
+                                <strong>강경원</strong>
+                                <span>10시간전</span>
+                                <div>
+                                    강경원님이 40분 지각을 하였습니다.
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <input
+                    type="button"
+                    class="btn btn-default"
+                    value="더보기"
+                    id="timeLineMore"
+                />
+            </div>
+        </div>
+    </div>
     <div id="contentRight">
         <div id="notice">
             <i class="glyphicon glyphicon-exclamation-sign"></i>
@@ -386,69 +247,67 @@
                 </span>
             </div>
             <div id="calendar" style="height: 600px;"></div>
+        </div>
+        <hr />
+        <div id="projectArea">
+            <h2>Project</h2>
             <hr />
-            <div id="projectArea">
-                <h2>Project</h2>
-                <hr />
-                <div class="projectBox">
-                    <div class="index"></div>
-                    <p class="detail">
-                        자세히 보기
-                        <i class="glyphicon glyphicon-play"></i>
-                    </p>
-                    <div class="projectTitle">
-                        <strong class="title">Orello</strong>
-                        <p>
-                            <i class="fab fa-internet-explorer"></i> 웹 프로젝트
-                        </p>
-                    </div>
-                    <div class="languagebox">
-                        <i class="fab fa-js" aria-hidden="true"></i>
-                        <label for="fab">JS</label>
-                        <i class="fab fa-css3" aria-hidden="true"></i>
-                        <label for="fab">CSS</label>
-                        <i class="fab fa-java" aria-hidden="true"></i>
-                        <label for="fab">Java</label>
-                    </div>
+            <div class="projectBox">
+                <div class="index"></div>
+                <p class="detail">
+                    자세히 보기
+                    <i class="glyphicon glyphicon-play"></i>
+                </p>
+                <div class="projectTitle">
+                    <strong class="title">Orello</strong>
+                    <p><i class="fab fa-internet-explorer"></i> 웹 프로젝트</p>
                 </div>
-                <div class="projectBox">
-                    <div class="index"></div>
-                    <p class="detail">
-                        자세히 보기
-                        <i class="glyphicon glyphicon-play"></i>
-                    </p>
-                    <div class="projectTitle">
-                        <strong class="title">Orello</strong>
-                        <p><i class="fab fa-android"></i>안드로이드 프로젝트</p>
-                    </div>
-                    <div class="languagebox">
-                        <i class="fab fa-html5" aria-hidden="true"></i>
-                        <label for="fab">HTML</label>
-                        <i class="fab fa-python" aria-hidden="true"></i>
-                        <label for="fab">python</label>
-                        <i class="fab fa-cuttlefish"></i>
-                        <label for="fab">C</label>
-                    </div>
-                </div>
-
-                <div
-                    class="projectBox"
-                    id="newProject"
-                    data-toggle="modal"
-                    data-target="createProject"
-                >
-                    <i class="glyphicon glyphicon-plus-sign"></i>
-                    <br />
-                    Create a new Project
+                <div class="languagebox">
+                    <i class="fab fa-js" aria-hidden="true"></i>
+                    <label for="fab">JS</label>
+                    <i class="fab fa-css3" aria-hidden="true"></i>
+                    <label for="fab">CSS</label>
+                    <i class="fab fa-java" aria-hidden="true"></i>
+                    <label for="fab">Java</label>
                 </div>
             </div>
-            <input
-                type="button"
-                value="더보기"
-                class="btn btn-default"
-                id="moreProject"
-            />
+            <div class="projectBox">
+                <div class="index"></div>
+                <p class="detail">
+                    자세히 보기
+                    <i class="glyphicon glyphicon-play"></i>
+                </p>
+                <div class="projectTitle">
+                    <strong class="title">Orello</strong>
+                    <p><i class="fab fa-android"></i>안드로이드 프로젝트</p>
+                </div>
+                <div class="languagebox">
+                    <i class="fab fa-html5" aria-hidden="true"></i>
+                    <label for="fab">HTML</label>
+                    <i class="fab fa-python" aria-hidden="true"></i>
+                    <label for="fab">python</label>
+                    <i class="fab fa-cuttlefish"></i>
+                    <label for="fab">C</label>
+                </div>
+            </div>
+
+            <div
+                class="projectBox"
+                id="newProject"
+                data-toggle="modal"
+                data-target="createProject"
+            >
+                <i class="glyphicon glyphicon-plus-sign"></i>
+                <br />
+                Create a new Project
+            </div>
         </div>
+        <input
+            type="button"
+            value="더보기"
+            class="btn btn-default"
+            id="moreProject"
+        />
     </div>
     <div
         class="modal fade"
@@ -646,403 +505,7 @@
         $("#footer").load("../include/footer.html");
     });
 </script>
-<script type="text/javascript" class="code-js">
-    var MONTHLY_CUSTOM_THEME = {
-        // month header 'dayname'
-        "month.dayname.height": "42px",
-        "month.dayname.borderLeft": "none",
-        "month.dayname.paddingLeft": "8px",
-        "month.dayname.paddingRight": "0",
-        "month.dayname.fontSize": "13px",
-        "month.dayname.backgroundColor": "inherit",
-        "month.dayname.fontWeight": "normal",
-        "month.dayname.textAlign": "left",
-        // month day grid cell 'day'
-        "month.holidayExceptThisMonth.color": "#f3acac",
-        "month.dayExceptThisMonth.color": "#bbb",
-        "month.weekend.backgroundColor": "#fafafa",
-        "month.day.fontSize": "16px",
-        // month schedule style
-        "month.schedule.borderRadius": "5px",
-        "month.schedule.height": "18px",
-        "month.schedule.marginTop": "2px",
-        "month.schedule.marginLeft": "10px",
-        "month.schedule.marginRight": "10px",
-        // month more view
-        "month.moreView.boxShadow": "none",
-        "month.moreView.paddingBottom": "0",
-        "month.moreView.border": "1px solid #9a935a",
-        "month.moreView.backgroundColor": "#f9f3c6",
-        "month.moreViewTitle.height": "28px",
-        "month.moreViewTitle.marginBottom": "0",
-        "month.moreViewTitle.backgroundColor": "#f4f4f4",
-        "month.moreViewTitle.borderBottom": "1px solid #ddd",
-        "month.moreViewTitle.padding": "0 10px",
-        "month.moreViewList.padding": "10px",
-    };
-    var cal = new tui.Calendar("#calendar", {
-        defaultView: "month",
-        theme: MONTHLY_CUSTOM_THEME, // set theme
-        useCreationPopup: true,
-        useDetailPopup: true,
-        calendars: [
-            {
-                id: "1",
-                name: "project1",
-                color: "#ffffff",
-                bgColor: "#61BD6D",
-                dragBgColor: "#61BD6D",
-                borderColor: "#61BD6D",
-            },
-            {
-                id: "2",
-                name: "project2",
-                color: "#ffffff",
-                bgColor: "#61BD6D",
-                dragBgColor: "#61BD6D",
-                borderColor: "#61BD6D",
-            },
-            {
-                id: "3",
-                name: "project3",
-                color: "#ffffff",
-                bgColor: "#61BD6D",
-                dragBgColor: "#61BD6D",
-                borderColor: "#61BD6D",
-            },
-        ],
-    });
-    cal.createSchedules([
-        {
-            id: "1",
-            calendarId: "1",
-            title: "자료 구조",
-            category: "time",
-            start: "2020-07-20T10:30:00",
-            end: "2020-07-25T12:30:00",
-        },
-        {
-            id: "2",
-            calendarId: "2",
-            title: "건강과 영양",
-            category: "time",
-            dueDateClass: "",
-            start: "2020-07-20T14:30:00",
-            end: "2020-07-20T16:30:00",
-            isReadOnly: true, // schedule is read-only
-        },
-    ]);
-
-    var templates = {
-        popupIsAllDay: function () {
-            return "All Day";
-        },
-        popupStateFree: function () {
-            return "Free";
-        },
-        popupStateBusy: function () {
-            return "Busy";
-        },
-        titlePlaceholder: function () {
-            return "Subject";
-        },
-        locationPlaceholder: function () {
-            return "Location";
-        },
-        startDatePlaceholder: function () {
-            return "Start date";
-        },
-        endDatePlaceholder: function () {
-            return "End date";
-        },
-        popupSave: function () {
-            return "Save";
-        },
-        popupUpdate: function () {
-            return "Update";
-        },
-        popupDetailDate: function (isAllDay, start, end) {
-            var isSameDate = moment(start).isSame(end);
-            var endFormat = (isSameDate ? "" : "YYYY.MM.DD ") + "hh:mm a";
-
-            if (isAllDay) {
-                return (
-                    moment(start).format("YYYY.MM.DD") +
-                    (isSameDate ? "" : " - " + moment(end).format("YYYY.MM.DD"))
-                );
-            }
-
-            return (
-                moment(start).format("YYYY.MM.DD hh:mm a") +
-                " - " +
-                moment(end).format(endFormat)
-            );
-        },
-        popupDetailLocation: function (schedule) {
-            return "Location : " + schedule.location;
-        },
-        popupDetailUser: function (schedule) {
-            return "User : " + (schedule.attendees || []).join(", ");
-        },
-        popupDetailState: function (schedule) {
-            return "State : " + schedule.state || "Busy";
-        },
-        popupDetailRepeat: function (schedule) {
-            return "Repeat : " + schedule.recurrenceRule;
-        },
-        popupDetailBody: function (schedule) {
-            return "Body : " + schedule.body;
-        },
-        popupEdit: function () {
-            return "Edit";
-        },
-        popupDelete: function () {
-            return "Delete";
-        },
-    };
-
-    var color = [
-        "#00A9FF",
-        "#9E5FFF",
-        "#03BD9E",
-        "#FF5583",
-        "#9D9D9D",
-        "#BBDC00",
-    ];
-
-    var projectBox = document.getElementsByClassName("projectBox");
-    for (var i = 0; i < projectBox.length - 1; i++) {
-        var temp = Math.floor(Math.random() * color.length);
-        projectBox[i].children[0].style.backgroundColor = color[temp];
-    }
-    var onmouseFlag = 0;
-    for (var i = 0; i < projectBox.length - 1; i++) {
-        let temp = projectBox[i];
-        projectBox[i].onmouseover = function () {
-            if (onmouseFlag == 0) {
-                var innerDiv = document.createElement("div");
-                temp.children[0].style.width = "250px";
-                temp.children[0].style.height = "130px";
-                var innerIcon = document.createElement("i");
-                innerIcon.className = "glyphicon glyphicon-zoom-in";
-                innerIcon.style.fontSize = "80px";
-                innerIcon.style.color = "white";
-                innerIcon.style.margin = "10px";
-                innerDiv.appendChild(innerIcon);
-                innerDiv.style.color = "white";
-                innerDiv.style.textAlign = "center";
-
-                var innerContent = document.createElement("p");
-                innerContent.innerText = "자세히 보러가기";
-                innerDiv.appendChild(innerContent);
-
-                temp.children[0].appendChild(innerDiv);
-                temp.children[0].style.cursor = "pointer";
-
-                onmouseFlag = 1;
-            }
-        };
-        projectBox[i].onmouseleave = function () {
-            if (onmouseFlag == 1) {
-                temp.children[0].style.width = "50px";
-                temp.children[0].style.height = "25px";
-                temp.children[0].removeChild(temp.children[0].children[0]);
-                temp.children[0].style.cursor = "none";
-                onmouseFlag = 0;
-            }
-        };
-        projectBox[i].onclick = function () {
-            alert("상세정보 들어가기");
-        };
-    }
-
-    var moreProject = document.getElementById("moreProject");
-    moreProject.onmouseover = function () {
-        moreProject.className = "btn btn-info";
-    };
-
-    moreProject.onmouseleave = function () {
-        moreProject.className = "btn btn-default";
-    };
-
-    moreProject.onclick = function () {
-        alert("프로젝트 추가 로드");
-    };
-    var notice = document.getElementById("notice");
-
-    var index = 0;
-    var noticeList = [
-        "오늘은 프로젝트 하느라 집을 못갑니다.",
-        "정보처리기사 공부를 안하고있습니다",
-        "이번에도 떨어지면 사람이 아닙니다.",
-        "오늘은 메인을 다 짜고싶습니다.",
-        "다 하고 집에 갈 수 있을까요?",
-    ];
-    notice.innerHTML = "<i class='glyphicon glyphicon-exclamation-sign'></i> ";
-    var innerSpan = document.createElement("span");
-    var innerNotice = document.createElement("span");
-    innerSpan.innerText = noticeList[index];
-    notice.appendChild(innerSpan);
-
-    window.onload = function () {
-        setInterval(function () {
-            setTimeout(function () {
-                notice.style.opacity = 0;
-                index++;
-                if (index >= noticeList.length) index = 0;
-            }, 3000);
-            notice.innerHTML =
-                "<i class='glyphicon glyphicon-exclamation-sign'></i> ";
-            var innerSpan = document.createElement("span");
-            innerSpan.innerText = noticeList[index];
-            notice.appendChild(innerSpan);
-            notice.style.opacity = 1;
-        }, 4000);
-    };
-    var newProject = document.getElementById("newProject");
-    newProject.onmouseover = function () {
-        newProject.children[0].style.fontSize = "8em";
-        newProject.children[0].style.marginBottom = "15px";
-    };
-    newProject.onmouseleave = function () {
-        newProject.children[0].style.fontSize = "80px";
-    };
-    newProject.onclick = function () {
-        $("#createProject").modal("show");
-    };
-    var tooltipFlag = 0;
-    var teamWorker = document.getElementsByClassName("team-worker");
-    for (var i = 0; i < teamWorker.length; i++) {
-        teamWorker[i].onclick = function () {
-            if (tooltipFlag == 0) {
-                var tooltips = document.createElement("div");
-                tooltips.className = "tooltips";
-                var img = document.createElement("img");
-                img.src = "../images/man_01.png";
-                img.style.width = "70px";
-                img.style.height = "70px";
-                tooltips.appendChild(img);
-
-                var tooltipInfo = document.createElement("div");
-                tooltipInfo.className = "tooltipInfo";
-
-                var tooltipName = document.createElement("div");
-                tooltipName.className = "tooltipName";
-                tooltipName.innerText = "김동욱";
-
-                var tooltipCompany = document.createElement("div");
-                tooltipCompany.className = "tooltipCompany";
-                tooltipCompany.innerText = "쌍용교육센터";
-
-                var tooltipButton = document.createElement("div");
-                tooltipButton.className = "tooltipButton";
-
-                var friend = document.createElement("button");
-                friend.className = "btn btn-default btn-sm";
-                friend.innerHTML =
-                    "<i class='fas fa-plus'></i> <b>친구추가</b>";
-                friend.id = "addFriend";
-                friend.onclick = function () {
-                    friend.removeChild(friend.children[1]);
-                    friend.innerHTML =
-                        "<i class='fas fa-user-friends'></i> <b>친구입니다.</b>";
-                    event.cancelBubble = true;
-                };
-
-                tooltipButton.appendChild(friend);
-
-                tooltipInfo.appendChild(tooltipName);
-                tooltipInfo.appendChild(tooltipCompany);
-                tooltipInfo.appendChild(tooltipButton);
-
-                tooltips.appendChild(tooltipInfo);
-
-                this.appendChild(tooltips);
-                tooltipFlag = 1;
-            } else if (tooltipFlag == 1) {
-                var addFriend = document.getElementById("addFriend");
-                if (
-                    event.srcElement != addFriend &&
-                    event.srcElement != addFriend.children[0] &&
-                    event.srcElement != addFriend.children[1] &&
-                    event.srcElement != addFriend.parentElement
-                ) {
-                    var temp = document.getElementsByClassName("tooltips");
-                    temp[0].parentElement.removeChild(temp[0]);
-                    tooltipFlag = 0;
-                }
-            }
-        };
-    }
-    var newWorker = document.getElementsByClassName("new-worker")[0];
-    newWorker.onclick = function () {
-        var searchUser = document.getElementById("searchUser");
-        searchUser.style.height = "40px";
-        searchUser.style.border = "1px solid #ccc";
-        searchUser.style.padding = "6px 12px";
-        searchUser.autocomplete = "off";
-        var searchArea = document.getElementById("searchArea");
-        searchUser.onkeyup = function () {
-            if (searchArea.children.length == 2) {
-                searchArea.removeChild(searchArea.children[1]);
-            }
-            var searchUserResult = document.createElement("div");
-            searchUserResult.className = "searchUserResult";
-            var tbl = document.createElement("table");
-            tbl.style.width = "284px";
-            for (var i = 0; i < Math.random() * 5; i++) {
-                var userData = document.createElement("tr");
-                userData.className = "userData";
-                var td = document.createElement("td");
-                var userImg = document.createElement("img");
-                userImg.src = "../images/dog03.jpg";
-                var userName = document.createElement("strong");
-                userName.innerText = "김동욱";
-                var userId = document.createElement("span");
-                userId.innerText = "kdw0725";
-                var addBtn = document.createElement("input");
-                addBtn.type = "button";
-                addBtn.value = "+ add";
-                addBtn.className = "btn btn-info";
-
-                td.appendChild(userImg);
-                td.appendChild(userName);
-                td.appendChild(userId);
-                td.appendChild(addBtn);
-
-                userData.appendChild(td);
-
-                tbl.appendChild(userData);
-            }
-
-            searchUserResult.appendChild(tbl);
-            searchUser.after(searchUserResult);
-        };
-    };
-</script>
-<!-- <link
-    rel="stylesheet"
-    href="https://uicdn.toast.com/tui.date-picker/latest/tui-date-picker.css"
-/> -->
-<!-- <script src="https://uicdn.toast.com/tui.date-picker/latest/tui-date-picker.js"></script> -->
-<script>
-    var today = new Date();
-    var picker = tui.DatePicker.createRangePicker({
-        startpicker: {
-            date: today,
-            input: "#startpicker-input",
-            container: "#startpicker-container",
-        },
-        endpicker: {
-            date: today,
-            input: "#endpicker-input",
-            container: "#endpicker-container",
-        },
-        // selectableRanges: [
-        //     [today, new Date(today.getFullYear() + 1, today.getMonth(), today.getDate())]
-        // ]
-    });
-</script>
+<script src="../js/index.js"></script>
 <script src="../calendar/js/myDefault.js"></script>
 
 <!-- <script src="../calendar/js/default.js"></script> -->

@@ -5,12 +5,12 @@
         <img src="../images/Logo-wide.jpg" alt="Logo" id="logoBig" />
     </div>
     <div id="contentLeft">
-        <strong>이메일</strong>
-        <strong>비밀번호</strong>
-        <strong>비밀번호 확인</strong>
+        <strong>이메일<span>&nbsp;*</span></strong>
+        <strong>비밀번호<span>&nbsp;*</span></strong>
+        <strong>비밀번호 확인<span>&nbsp;*</span></strong>
+        <strong>전화번호<span>&nbsp;*</span></strong>
         <strong>프로필 사진</strong>
         <strong>소속</strong>
-        <strong>전화번호</strong>
     </div>
     <div id="contentRight">
         <div id="inputArea">
@@ -35,6 +35,12 @@
                     id="pwCheck"
                     required
                 />
+                <input
+                    type="tel"
+                    class="form-control"
+                    placeholder="전화번호"
+                    required
+                />
                 <div id="fileBox">
                     <label for="ex_file" class="btn btn-default"
                         >파일 선택</label
@@ -57,12 +63,6 @@
                     type="text"
                     class="form-control"
                     placeholder="소속(회사)"
-                    required
-                />
-                <input
-                    type="tel"
-                    class="form-control"
-                    placeholder="전화번호"
                     required
                 />
 
@@ -125,6 +125,7 @@
                         class="form-control"
                         style="width: 40%; display: inline-block;"
                     />
+                    <strong> &nbsp;03:00</strong>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-info">
