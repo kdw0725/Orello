@@ -1,0 +1,865 @@
+<div id="header"></div>
+<style></style>
+<section id="content" class="container">
+    <style>
+        #contentLeft {
+            position: fixed;
+        }
+        #contentLeft * {
+            /* border: 1px solid gray; */
+        }
+        /* 메뉴 위 프로젝트 정보 */
+        #contentLeft > #projectInfo {
+            width: 250px;
+            height: 200px;
+            margin: 30px auto;
+            text-align: center;
+            position: relative;
+            top: 0px;
+            left: 0px;
+        }
+        #contentLeft #projectName {
+            margin-top: 70px;
+            font-size: 1.5em;
+        }
+        #contentLeft #projectPeriod {
+            margin-top: 10px;
+            font-style: italic;
+        }
+        #contentLeft #projectContent {
+            margin-top: 20px;
+            /* font-style: italic; */
+        }
+        #contentLeft #projectMember {
+            width: 100%;
+            height: 60px;
+            position: relative;
+            top: 0;
+            left: 0;
+            /* bottom: 30px; */
+            margin-top: 30px;
+        }
+        #projectMember .profilePic {
+            width: 50px;
+            height: 50px;
+            border: 3px solid white;
+            border-radius: 25px;
+            box-shadow: 3px 3px 2px #ccc;
+            display: inline-block;
+            background-color: #ccc;
+            background-repeat: no-repeat;
+            background-size: contain;
+            margin-left: -10px;
+        }
+        #projecMember .profilePic:first-child {
+            margin-left: 0px;
+        }
+
+        #projectMember .profilePic:hover {
+            transform: translate(0px, -15px);
+            transition: tranform 0.5s;
+        }
+        #AddMember {
+            text-align: left;
+            padding-top: 5px;
+            padding-left: 25px;
+        }
+        #AddMember a {
+            color: #333;
+            font-size: 0.9em;
+        }
+
+        /* 메뉴 */
+        #contentLeft > #menu {
+            width: 230px;
+            min-height: 400px;
+            margin: 70px auto;
+            /* border: 1px solid black; */
+        }
+        #contentLeft #menu ul,
+        #menu li {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            background-color: transparent;
+            cursor: pointer;
+            box-shadow: 0px 0px 0px white;
+        }
+        #contentLeft #menu .accordion > div,
+        #menu .panel > div {
+            margin: 0 auto;
+            padding-left: 10px;
+            padding-top: 9px;
+            border-bottom: 1px solid #999;
+            height: 40px;
+            padding-right: 10px;
+        }
+        #contentLeft #menu .panel > div {
+            margin-left: 30px;
+        }
+        #contentLeft #menu ul.active > div {
+            color: #5bc0de;
+            border-bottom: 1px solid #5bc0de;
+        }
+        #contentLeft #menu > ul.active > div > i {
+            color: #5bc0de;
+        }
+        #contentLeft #menu > ul.active li {
+            display: block;
+        }
+        #contentLeft #menu ul i {
+            margin-right: 10px;
+            color: #555;
+        }
+        #contentLeft #menu li.panel {
+            display: none;
+        }
+        #contentLeft #menu ul.parent > div::after {
+            content: "\f078";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            float: right;
+        }
+        #contentLeft #menu ul.active.parent > div::after {
+            content: "\f077";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            float: right;
+        }
+        #contentLeft #menu ul:hover > div {
+            color: #5bc0de;
+            border-bottom: 1px solid #5bc0de;
+        }
+        #contentLeft #menu ul:hover > div > i {
+            color: #5bc0de;
+        }
+        #contentLeft #menu li:hover > div {
+            color: #5bc0de;
+            border-bottom: 1px solid #5bc0de;
+        }
+        #contentLeft #menu li:hover > div > i {
+            color: #5bc0de;
+        }
+    </style>
+    <style>
+        #top {
+            width: 500px;
+            height: 200px;
+            /* border-bottom: 1px solid black; */
+            background-color: #eee;
+            margin-left: 190px;
+        }
+        #contentRight > div:first-child {
+            font-size: 30px;
+            font-weight: bold;
+            margin-left: 20px;
+            margin-bottom: 10px;
+        }
+
+        #profile {
+            /* border: 1px solid black; */
+            border-right: 1px solid white;
+            height: 200px;
+            width: 180px;
+            text-align: center;
+            float: left;
+            position: relative;
+            /*top: 0;
+            left: 0; */
+            /* margin-left: 380px; */
+        }
+        #profile > img {
+            width: 90px;
+            border-radius: 50%;
+            border: 1px solid white;
+            background-color: white;
+            box-shadow: 0 0 3px #444;
+        }
+        #profile > #edit_img {
+            border: 1px solid #bbb;
+            border-radius: 5px;
+            box-shadow: 2px 2px 2px #bbb;
+            width: 300px;
+            height: 120px;
+            background-color: rgb(245, 245, 245);
+            padding-top: 20px;
+            padding-left: 30px;
+            position: absolute;
+            top: 40px;
+            left: 110px;
+            display: none;
+            z-index: 1;
+        }
+
+        #profile > #edit_img > div {
+            width: 300px;
+            margin-top: 20px;
+            margin-left: 40px;
+        }
+
+        #profile div:first-child {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            font-size: 20px;
+            text-align: center;
+            padding-top: 3px;
+            border: 1px solid #ccc;
+            background-color: white;
+            position: relative;
+            top: 20px;
+            left: 110px;
+            box-shadow: 0 0 3px #666;
+        }
+        #profile div:nth-child(3) {
+            /* border-top: 1px solid white; */
+            margin-top: 10px;
+            padding-top: 5px;
+            font-size: 18px;
+            color: #444;
+        }
+        #profile div:nth-child(4) {
+            color: #333;
+            font-size: 12px;
+            text-decoration: underline;
+        }
+        #side_profile {
+            /* border: 1px solid black; */
+            width: 310px;
+            height: 200px;
+            float: left;
+            padding-left: 20px;
+            padding-top: 5px;
+        }
+        #side_profile > div > span {
+            font-weight: bold;
+            font-size: 14px;
+        }
+        #side_profile > div > input {
+            border: none;
+            width: 120px;
+            margin-left: 5px;
+            padding: 3px 5px;
+            /* background-color: #ccc; */
+        }
+        #side_profile > .edit {
+            display: none;
+        }
+        #side_profile > div {
+            padding-top: 20px;
+            font-size: 13px;
+            color: #666;
+        }
+        #side_profile > div > button {
+            outline: none;
+            height: 25px;
+            width: 35px;
+            padding: 0px;
+            margin-left: 5px;
+        }
+        #side_profile > div.edit > button.cancel {
+            width: 55px;
+        }
+        #side_profile > div.edit_before > input {
+            /* background-color: #eee; */
+        }
+        /* ------------------------ */
+        #page_content {
+            margin-top: 30px;
+        }
+        #friend {
+            margin-left: 20px;
+            margin-top: 20px;
+            width: 420px;
+            float: left;
+            border-right: 1px solid #ccc;
+        }
+        #friend > div:first-child {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        #friend .tbl {
+            width: 400px;
+            height: 300px;
+            /* border: 1px solid #ccc; */
+            border-radius: 5px;
+            border-collapse: collapse;
+        }
+        #friend .tbl th {
+            background-color: #5bc0de;
+            /* border: 1px solid black; */
+            padding-left: 20px;
+            color: white;
+            height: 30px;
+        }
+        #friend .tbl td {
+            height: 50px;
+            border-bottom: 1px solid #eee;
+            padding: 0px;
+        }
+        #friend .tbl tr:hover {
+            background-color: rgb(229, 245, 252);
+            cursor: pointer;
+        }
+        #friend .tbl td:nth-child(1) {
+            width: 50px;
+            text-align: center;
+        }
+        #friend .tbl td:nth-child(2) {
+            width: 270px;
+            padding-left: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+        }
+        #friend .tbl td:nth-child(2) > div {
+            font-weight: lighter;
+            font-size: 13px;
+            color: #666;
+            text-decoration: underline;
+        }
+        #friend .tbl td:nth-child(3) {
+            width: 80px;
+            text-align: center;
+        }
+        #friend .tbl td:nth-child(3) button {
+            height: 25px;
+            padding: 0px 5px;
+            outline: none;
+            padding-top: 3px;
+        }
+
+        #friend .tbl td img {
+            width: 40px;
+            border: 1px solid #ccc;
+            border-radius: 50%;
+            box-shadow: 0 0 3px #bbb;
+        }
+        /* ------------------------------ */
+        #project {
+            margin-left: 20px;
+            margin-top: 20px;
+            float: left;
+        }
+        #project > div:first-child {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        #project .tbl {
+            width: 400px;
+            height: 100px;
+            /* border: 1px solid #ccc; */
+            border-radius: 5px;
+            border-collapse: collapse;
+        }
+        #project .tbl th {
+            background-color: #5bc0de;
+            color: white;
+            height: 30px;
+            padding-left: 10px;
+        }
+        #project .tbl th:nth-child(2) {
+            padding-left: 30px;
+        }
+        #project .tbl tr:hover {
+            background-color: rgb(229, 245, 252);
+            cursor: pointer;
+        }
+
+        #project .tbl td {
+            height: 50px;
+            border-bottom: 1px solid #eee;
+            font-size: 13px;
+        }
+        #project .tbl td:nth-child(1) {
+            width: 140px;
+            padding-left: 10px;
+            font-weight: bold;
+            font-size: 15px;
+            color: #444;
+        }
+        #project .tbl td:nth-child(2) {
+            width: 220px;
+            padding-left: 30px;
+            color: #666;
+        }
+        #project .tbl td:nth-child(3) {
+            width: 40px;
+            padding-right: 10px;
+            /* text-align: center; */
+        }
+
+        #project .tbl td button {
+            height: 25px;
+            padding: 0px 5px;
+            outline: none;
+            padding-top: 3px;
+        }
+    </style>
+    <div id="contentLeft">
+        <div id="projectInfo">
+            <div id="projectName"></div>
+            <div id="projectPeriod"></div>
+            <div id="projectContent">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Numquam, nesciunt?
+            </div>
+            <div id="projectMember"></div>
+            <div id="addMember">
+                <a href="#"
+                    ><i class="glyphicon glyphicon-user"></i
+                    ><i class="glyphicon glyphicon-plus"></i>
+                    <span>Add Member</span></a
+                >
+            </div>
+        </div>
+        <div id="menu">
+            <ul class="accordion">
+                <div><i class="glyphicon glyphicon-home"></i>Project Home</div>
+            </ul>
+            <ul class="accordion parent">
+                <div><i class="glyphicon glyphicon-calendar"></i>Schedule</div>
+                <li class="panel">
+                    <div><i class="glyphicon glyphicon-minus"></i>Calendar</div>
+                </li>
+                <li class="panel">
+                    <div>
+                        <i class="glyphicon glyphicon-minus"></i>Time Line
+                    </div>
+                </li>
+            </ul>
+            <ul class="accordion">
+                <div><i class="glyphicon glyphicon-check"></i>Check List</div>
+            </ul>
+            <ul class="accordion parent">
+                <div><i class="glyphicon glyphicon-list-alt"></i>Board</div>
+                <li class="panel">
+                    <div><i class="glyphicon glyphicon-minus"></i>Notice</div>
+                </li>
+                <li class="panel">
+                    <div><i class="glyphicon glyphicon-minus"></i>Codes</div>
+                </li>
+                <li class="panel">
+                    <div><i class="glyphicon glyphicon-minus"></i>Free</div>
+                </li>
+            </ul>
+            <ul class="accordion">
+                <div><i class="glyphicon glyphicon-hdd"></i>Files</div>
+            </ul>
+            <ul class="accordion">
+                <div><i class="fas fa-code-branch"></i>Git</div>
+            </ul>
+            <ul class="accordion">
+                <div><i class="glyphicon glyphicon-comment"></i>Chat</div>
+            </ul>
+        </div>
+    </div>
+    <div id="contentRight">
+        <div>My Page</div>
+        <div id="top">
+            <div id="profile">
+                <div id="edit_icon">
+                    <li class="glyphicon glyphicon-cog"></li>
+                </div>
+                <div id="edit_img">
+                    <input type="file" />
+                    <div id="edit_btn">
+                        <button class="btn btn-info">save</button>
+                        <button class="btn btn-info">close</button>
+                    </div>
+                </div>
+
+                <img src="cookie_images/001.png" alt="" />
+                <div>
+                    gildong
+                </div>
+                <div>
+                    Lorem ipsum dolor sit amet.
+                </div>
+            </div>
+            <div id="side_profile">
+                <div class="edit_before">
+                    <span>name:</span>
+                    <input type="text" value="Hong-gil-dong" readonly />
+                    <button class="btn btn-info">
+                        <li class="glyphicon glyphicon-pencil"></li>
+                    </button>
+                </div>
+                <div class="edit">
+                    <span>name:</span>
+                    <input type="text" value="" />
+                    <button class="btn btn-info save">
+                        save
+                    </button>
+                    <button class="btn btn-info cancel">
+                        cancel
+                    </button>
+                </div>
+
+                <div class="edit_before">
+                    <span>email:</span>
+                    <input type="text" value="hong@gmail.com" readonly />
+                    <button class="btn btn-info">
+                        <li class="glyphicon glyphicon-pencil"></li>
+                    </button>
+                </div>
+                <div class="edit">
+                    <span>email:</span>
+                    <input type="text" value="" />
+                    <button class="btn btn-info save">
+                        save
+                    </button>
+                    <button class="btn btn-info cancel">
+                        cancel
+                    </button>
+                </div>
+
+                <div class="edit_before">
+                    <span>tel:</span
+                    ><input type="text" value="010-1234-5678" readonly />
+                    <button class="btn btn-info">
+                        <li class="glyphicon glyphicon-pencil"></li>
+                    </button>
+                </div>
+                <div class="edit">
+                    <span>tel:</span>
+                    <input type="text" value="" />
+                    <button class="btn btn-info save">
+                        save
+                    </button>
+                    <button class="btn btn-info cancel">
+                        cancel
+                    </button>
+                </div>
+                <div>
+                    <span>point:</span> 100p
+                    <button class="btn btn-info">
+                        <li class="glyphicon glyphicon-shopping-cart"></li>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="page_content">
+            <div id="friend">
+                <div>My Friend</div>
+                <table class="tbl">
+                    <tr>
+                        <th>friend</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="cookie_images/002.png" alt="" />
+                        </td>
+                        <td>
+                            dolor sit
+                            <div>Lorem ipsum dolor sit amet.</div>
+                        </td>
+                        <td>
+                            <button class="btn btn-info">
+                                unfollow
+                            </button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <img src="cookie_images/003.png" alt="" />
+                        </td>
+                        <td>
+                            amet consectetu
+                            <div>Lorem ipsum dolor sit amet.</div>
+                        </td>
+                        <td>
+                            <button class="btn btn-info">
+                                unfollow
+                            </button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <img src="cookie_images/004.png" alt="" />
+                        </td>
+                        <td>
+                            numquam adipisci.
+                            <div>Lorem ipsum dolor sit amet.</div>
+                        </td>
+                        <td>
+                            <button class="btn btn-info">
+                                unfollow
+                            </button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <img src="cookie_images/005.png" alt="" />
+                        </td>
+                        <td>
+                            autem obcaecati
+                            <div>Lorem ipsum dolor sit amet.</div>
+                        </td>
+                        <td>
+                            <button class="btn btn-info">
+                                unfollow
+                            </button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <img src="cookie_images/006.png" alt="" />
+                        </td>
+                        <td>
+                            Lorem.
+                            <div>Lorem ipsum dolor sit amet.</div>
+                        </td>
+                        <td>
+                            <button class="btn btn-info">
+                                unfollow
+                            </button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <img src="cookie_images/007.png" alt="" />
+                        </td>
+                        <td>
+                            consequatur nostrum
+                            <div>Lorem ipsum dolor sit amet.</div>
+                        </td>
+                        <td>
+                            <button class="btn btn-info">
+                                unfollow
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div id="project">
+                <div>My Project</div>
+                <table class="tbl">
+                    <tr>
+                        <th>project name</th>
+                        <th>period</th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td>dolor sit</td>
+                        <td>2020.07.11~2020.07.28</td>
+                        <td>
+                            <button
+                                class="btn btn-info"
+                                data-toggle="modal"
+                                data-target="#myModal"
+                            >
+                                detail
+                            </button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>amet consectetu</td>
+                        <td>
+                            2020.06.17~2020.06.30
+                        </td>
+                        <td>
+                            <button class="btn btn-info">
+                                detail
+                            </button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>numquam adipisci.</td>
+                        <td>2020.06.03~2020.06.25</td>
+                        <td>
+                            <button class="btn btn-info">
+                                detail
+                            </button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>autem obcaecati</td>
+                        <td>2020.06.17~2020.06.24</td>
+                        <td>
+                            <button class="btn btn-info">
+                                detail
+                            </button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Lorem.</td>
+                        <td>2020.05.21~2020.06.06</td>
+                        <td>
+                            <button class="btn btn-info">
+                                detail
+                            </button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>consequatur nostrum</td>
+                        <td>2020.05.17~2020.06.14</td>
+                        <td>
+                            <button class="btn btn-info">
+                                detail
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- modal -->
+        <div
+            class="modal fade"
+            id="myModal"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="myModalLabel"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button
+                            type="button"
+                            class="close"
+                            data-dismiss="modal"
+                            aria-label="Close"
+                        >
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            Modal title
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button
+                            type="button"
+                            class="btn btn-default"
+                            data-dismiss="modal"
+                        >
+                            Close
+                        </button>
+                        <button type="button" class="btn btn-primary">
+                            Save changes
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div id="footer"></div>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+<script>
+    $("#side_profile > div.edit_before > button").click(function () {
+        $(this).parent().css("display", "none");
+        $(this).parent().next().css("display", "block");
+        $(this).parent().next().children("input").focus();
+        $(this).parent().next().children("input").val($(this).prev().val());
+    });
+
+    $("#side_profile > div.edit > .save").click(function () {
+        // console.log($(this).parent().prev().children("input").val());
+        // console.log($(this).prev().val());
+
+        $(this).parent().prev().children("input").val($(this).prev().val());
+
+        $(this).parent().css("display", "none");
+        $(this).parent().prev().css("display", "block");
+    });
+    $("#side_profile > div.edit > .cancel").click(function () {
+        $(this).parent().css("display", "none");
+        $(this).parent().prev().css("display", "block");
+    });
+
+    var flag = true;
+
+    $("#friend td > button").click(function () {
+        // console.log($(this).text());
+        if (flag) {
+            $(this).parent().parent().css("background-color", "#ccc");
+            $(this).text("follow");
+            $(this).css("background-color", "#43d870");
+            flag = false;
+        } else {
+            $(this).parent().parent().css("background-color", "white");
+            $(this).text("unfollow");
+            $(this).css("background-color", "#5bc0de");
+            flag = true;
+        }
+    });
+
+    $("#project td > button").click(function () {
+        // alert();
+    });
+
+    //profile image edit
+    $("#profile > #edit_icon").click(function () {
+        $("#profile > #edit_img").css("display", "block");
+    });
+
+    $("#profile > #edit_img > div > button:last-child").click(function () {
+        $("#profile > #edit_img").css("display", "none");
+    });
+
+    //move payment page
+    $("#side_profile > div:last-child > button").click(function () {
+        location.href = "payment.html";
+    });
+</script>
+<script>
+    // 메뉴 상단에 프로젝트 정보 출력하기
+    $("#projectName").append("Project Name");
+    $("#projectPeriod").append("<span>2020.07.01 ~ 2020.07.10</span><br>");
+    for (var i = 0; i < 5; i++) {
+        $("#projectMember").append("<div class='profilePic'></div>");
+    }
+    var profilePic = document.getElementsByClassName("profilePic");
+    for (var i = 0; i < 5; i++) {
+        profilePic[i].setAttribute(
+            "style",
+            `background-image: url('cookie_images/00${i + 1}.png')`
+        );
+    }
+
+    //클릭한 메뉴만 표시되도록
+    $(".list-group > a").click(function () {
+        $(".list-group > a").removeClass("active");
+        $(this).addClass("active");
+    });
+
+    //아코디언 메뉴
+    var acc = document.getElementsByClassName("parent");
+    for (var i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+            var li = $(this).children("li");
+            li.slideToggle(1000);
+            this.classList.toggle("active");
+        });
+    }
+</script>
+<script>
+    $(document).ready(function () {
+        $("#header").load("../include/header.html");
+        $("#footer").load("../include/footer.html");
+    });
+</script>

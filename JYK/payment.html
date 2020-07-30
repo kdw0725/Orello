@@ -140,79 +140,6 @@
             color: #5bc0de;
         }
     </style>
-    <style>
-        #main_list {
-            width: 800px;
-            margin-top: 30px;
-            margin-left: 50px;
-            /* border-bottom: 1px solid #ddd; */
-        }
-        #main_title {
-            font-size: 30px;
-            font-weight: bold;
-            color: #444;
-        }
-        .class td {
-            height: 10px;
-        }
-        #tbl {
-            /* width: 700px; */
-            margin-top: 10px;
-            border: none;
-            /* height: 900px; */
-        }
-
-        #tbl tr th {
-            font-size: 15px;
-            text-align: right;
-            border: none;
-            border-bottom: 1px solid #eee;
-            border-top: 1px solid #ddd;
-            background-color: #5bc0de;
-            color: white;
-        }
-        #tbl td {
-            border: none;
-            border-bottom: 1px solid #eee;
-            padding: 5px;
-            text-align: right;
-            font-size: 13px;
-            padding-top: 8px;
-            color: #444;
-            /* padding-left: 10px; */
-        }
-        td > .glyphicon-folder-open {
-            color: #333;
-        }
-        td > .glyphicon-file {
-            color: #666;
-        }
-        #tbl tr:hover {
-            background-color: #d3f3ff;
-            cursor: pointer;
-        }
-
-        #tbl td:first-child {
-            font-size: 11px;
-            font-weight: bold;
-            width: 30px;
-        }
-        #tbl td:nth-child(2) {
-            width: 30px;
-        }
-
-        #tbl td:nth-child(3) {
-            width: 150px;
-        }
-
-        #tbl td:nth-child(4) {
-            width: 70px;
-        }
-        #main_list > button {
-            outline: none;
-            float: right;
-        }
-    </style>
     <div id="contentLeft">
         <div id="projectInfo">
             <div id="projectName"></div>
@@ -272,118 +199,14 @@
         </div>
     </div>
     <div id="contentRight">
-        <div id="main_list">
-            <div id="main_title">
-                <li class="glyphicon glyphicon-download-alt"></li>
-                File Download
-            </div>
-            <table id="tbl" class="table">
-                <tr>
-                    <th>
-                        <input type="checkbox" />
-                    </th>
-                    <th></th>
-                    <th>file name</th>
-                    <th>update date</th>
-                </tr>
-
-                <tr>
-                    <td>
-                        <input type="checkbox" />
-                    </td>
-                    <td>
-                        <li class="glyphicon glyphicon-folder-open"></li>
-                    </td>
-                    <td>Lorem</td>
-                    <td>2020-07-01 16:34:22</td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" />
-                    </td>
-                    <td>
-                        <li class="glyphicon glyphicon-folder-open"></li>
-                    </td>
-                    <td>Exercitationem</td>
-                    <td>2020-07-02 12:21:34</td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" />
-                    </td>
-                    <td>
-                        <li class="glyphicon glyphicon-file"></li>
-                    </td>
-                    <td>Id.txt</td>
-                    <td>2020-07-03 08:11:54</td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" />
-                    </td>
-                    <td>
-                        <li class="glyphicon glyphicon-file"></li>
-                    </td>
-                    <td>Sint.hwp</td>
-                    <td>2020-07-04 22:12:34</td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" />
-                    </td>
-                    <td>
-                        <li class="glyphicon glyphicon-file"></li>
-                    </td>
-                    <td>Officia.txt</td>
-                    <td>2020-07-05 19:54:54</td>
-                </tr>
-            </table>
-            <button class="btn btn-info">selected file download</button>
+        <div id="main">
+            <div></div>
         </div>
     </div>
-    <!-- right content -->
 </section>
 <div id="footer"></div>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<script>
-    $("#tbl td > input").change(function () {
-        if ($(this).is(":checked")) {
-            $(this).parent().parent().css("background-color", "#d3f3ff");
-        } else {
-            $(this).parent().parent().css("background-color", "white");
-        }
-    });
 
-    var flag = true;
-    $("#tbl tr").click(function () {
-        if (flag) {
-            $(this).css("background-color", "#d3f3ff");
-            $(this).children().children().prop("checked", true);
-            flag = false;
-        } else {
-            $(this).css("background-color", "white");
-            $(this).children().children().prop("checked", false);
-            flag = true;
-        }
-    });
-    $("th > input").change(function () {
-        if ($(this).is(":checked")) {
-            $("#tbl td > input").prop("checked", true);
-            $("#tbl td > input")
-                .parent()
-                .parent()
-                .css("background-color", "#d3f3ff");
-        } else {
-            $("#tbl td > input").prop("checked", false);
-            $("#tbl td > input")
-                .parent()
-                .parent()
-                .css("background-color", "white");
-        }
-    });
-
-    $("#main_list ");
-</script>
 <script>
     // 메뉴 상단에 프로젝트 정보 출력하기
     $("#projectName").append("Project Name");
