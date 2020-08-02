@@ -24,6 +24,10 @@
             id="signIn"
         />
         <hr />
+        <div id="findArea">
+            <a href="#" id="findId">아이디 찾기</a>
+            <a href="#" id="findPw">비밀번호 찾기</a>
+        </div>
         <div id="socialLogIn">
             <button
                 class="btn-social-login"
@@ -48,6 +52,141 @@
             </button>
         </div>
     </div>
+    <div
+        class="modal fade"
+        id="idFind"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="idFindMoal"
+        aria-hidden="true"
+    >
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3
+                        class="modal-title"
+                        id="idFindMoal"
+                        style="display: inline-block;"
+                    >
+                        아이디 찾기
+                    </h3>
+                    <button
+                        type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close"
+                    >
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>가입하실때 사용한 계정 정보를 입력해주시기 바랍니다.</p>
+                    회원이름 :
+                    <input
+                        type="text"
+                        class="form-control"
+                        style="
+                            width: 40%;
+                            display: inline-block;
+                            margin-bottom: 10px;
+                        "
+                    />
+                    <br />
+                    전화번호 :
+                    <input
+                        type="tel"
+                        class="form-control"
+                        style="width: 40%; display: inline-block;"
+                    />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info">
+                        ID 찾기
+                    </button>
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-dismiss="modal"
+                    >
+                        취소
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div
+        class="modal fade"
+        id="pwFind"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="pwFindModal"
+        aria-hidden="true"
+    >
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3
+                        class="modal-title"
+                        id="pwFindModal"
+                        style="display: inline-block;"
+                    >
+                        비밀번호 찾기
+                    </h3>
+                    <button
+                        type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close"
+                    >
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>가입하실때 사용한 계정 정보를 입력해주시기 바랍니다.</p>
+                    회원이름 :
+                    <input
+                        type="text"
+                        class="form-control"
+                        style="
+                            width: 40%;
+                            display: inline-block;
+                            margin-bottom: 10px;
+                        "
+                    />
+                    <br />
+                    ID&nbsp;(메일) :
+                    <input
+                        type="text"
+                        class="form-control"
+                        style="
+                            width: 40%;
+                            display: inline-block;
+                            margin-bottom: 10px;
+                        "
+                    />
+                    <br />
+                    전화번호 :
+                    <input
+                        type="tel"
+                        class="form-control"
+                        style="width: 40%; display: inline-block;"
+                    />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info">
+                        비밀번호 찾기
+                    </button>
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-dismiss="modal"
+                    >
+                        취소
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 <div id="footer"></div>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -57,6 +196,10 @@
         $("#header").load("../include/header.html");
         $("#footer").load("../include/footer.html");
     });
+    $("#findId").click(function () {
+        $("#idFind").modal("show");
+    });
+    $("#findPw").click(function () {
+        $("#pwFind").modal("show");
+    });
 </script>
-
-<!-- 아이디 비밀번호 찾기 -->

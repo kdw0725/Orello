@@ -1,3 +1,7 @@
+
+#content{
+    height: 850px;
+}
 #inputArea {
     width: 500px;
     padding: 20px;
@@ -21,6 +25,9 @@
     width: 100%;
     margin-bottom: 0px;
 }
+#signIn{
+    color: #999;
+}
 #socialLogIn {
     margin-top: 20px;
 }
@@ -38,4 +45,16 @@
 }
 .text-dark {
     color: #343a40 !important;
+}
+#findArea a{
+    padding: 0px 20px;
+    color: #999;
+}
+
+#findArea a:hover, #findArea a:link, #findArea a:visited{
+    text-decoration: none;
+}
+
+#findArea a:first-child{
+    border-right: 1px solid #eee;
 }

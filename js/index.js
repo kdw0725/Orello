@@ -180,10 +180,11 @@ for (var i = 0; i < projectBox.length - 1; i++) {
             var innerDiv = document.createElement("div");
             temp.children[0].style.width = "250px";
             temp.children[0].style.height = "130px";
+
             var innerIcon = document.createElement("i");
             innerIcon.className = "glyphicon glyphicon-zoom-in";
             innerIcon.style.fontSize = "80px";
-            innerIcon.style.color = "#666";
+            innerIcon.style.color = "#fff";
             innerIcon.style.margin = "10px";
             innerDiv.appendChild(innerIcon);
             innerDiv.style.color = "white";
@@ -191,7 +192,8 @@ for (var i = 0; i < projectBox.length - 1; i++) {
 
             var innerContent = document.createElement("p");
             innerContent.innerText = "자세히 보러가기";
-            innerContent.style.color = "#666";
+            innerContent.style.color = "#fff";
+            innerContent.style.fontWeight = "bold";
             innerDiv.appendChild(innerContent);
 
             temp.children[0].appendChild(innerDiv);
@@ -328,15 +330,17 @@ moreProject.onclick = function () {
                 var innerIcon = document.createElement("i");
                 innerIcon.className = "glyphicon glyphicon-zoom-in";
                 innerIcon.style.fontSize = "80px";
-                innerIcon.style.color = "#666";
+                innerIcon.style.color = "#fff";
                 innerIcon.style.margin = "10px";
                 innerDiv.appendChild(innerIcon);
-                innerDiv.style.color = "#666";
+                innerDiv.style.color = "#fff";
                 innerDiv.style.textAlign = "center";
 
                 var innerContent = document.createElement("p");
                 innerContent.innerText = "자세히 보러가기";
+                innerContent.style.fontWeight = "bold"
                 innerDiv.appendChild(innerContent);
+                
 
                 moreTemp.children[0].appendChild(innerDiv);
                 moreTemp.children[0].style.cursor = "pointer";
