@@ -1,12 +1,7 @@
 <div id="header"></div>
 <section id="content" class="container">
     <style>
-        #contentLeft {
-            position: fixed;
-        }
-        #contentLeft * {
-            /* border: 1px solid gray; */
-        }
+        
         /* 메뉴 위 프로젝트 정보 */
         #contentLeft > #projectInfo {
             width: 250px;
@@ -213,17 +208,21 @@
             height: 150px;
             padding-top: 20px;
         }
-    
-        #contentRight #title {
+        #contentRight #titleicon {
             /* border: 1px solid black; */
-            /* height: 80px; */
-            font-size: 35px;
-            font-weight: bold;
-            color: #333;
-            /* padding-top: 12px; */
-            /* margin-top: ; */
-            /* margin-bottom: 10px; */
+            background-color: #5bc0de;
+            width: 8px;
+            height: 35px;
+            float: left;
+            margin-top: 7px;
         }
+
+        #contentRight #title>h1 {
+            margin-top: 7px;
+            margin-left: 15px;
+
+        }
+
         #contentRight #profile:hover {
             cursor: pointer;
         }
@@ -268,7 +267,7 @@
             border-radius: 50%;
             width: 50px;
             margin-right: 5px;
-            margin-top: 5px;
+            /* margin-top: 5px; */
         }
         #contentRight #writer #profile div {
             /* border: 1px solid black; */
@@ -298,12 +297,65 @@
             border-bottom: 1px solid #ccc;
         }
         #contentRight #main #main_content #content_btn {
+            /* border: 1px solid black; */
+            width: 200px;
             margin-top: 200px;
-            margin-left: 600px;
+            margin-left: 550px;
+        }
+        
+        #contentRight #main #main_content #content_btn button {
+            width: 80px;
+        }
+
+        #contentRight #main #main_content #content_btn button> li {
+            /* border: 1px solid black; */
+            position: relative;
+            left: -4px;
+            top: 3.2px;
+        }
+        #contentRight #main #main_content #content_btn button> span {
+            /* border: 1px solid black; */
+            margin-right: 30px;
+            position: relative;
+            left: -4px;
+            top: 0px;
+        } 
+
+        #contentRight #comment_hidden {
+            border: 1px solid #ccc;
+            width: 100px;
+            height: 100px;
+            background-color: white;
+            position: absolute;
+            top: 833;
+            left: 142;
+            text-align: center;
+            /* display: none; */
+        }
+        #contentRight #comment_hidden span:first-child {
+            margin-top: 4px;
+        }
+        #contentRight #comment_hidden span {
+            display: block;
+            float: left;
+            width: 100px;
+            height: 30px;
+            /* padding-left: 10px; */
+            padding-right: 5px;
+            padding-top: 5px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        #contentRight #comment_hidden span:hover {
+            background-color: #5BC0DE;
+            color: white;
+        
         }
 
         #contentRight #btn_set {
             border-bottom: 1px solid #ccc;
+            /* border: 1px solid black; */
             width: 750px;
             height: 70px;
             text-align: center;
@@ -316,11 +368,7 @@
             outline: none;
         }
 
-        /* comment */
-        /* body {
-            margin-top: 20px;
-            background-color: #e9ebee;
-        } */
+     
 
         #contentRight .container {
             /* margin-right: 20px; */
@@ -530,8 +578,9 @@
             </div>
             <div id="main_title">
                 <div>border type</div>
+                <div id="titleicon"></div>
                 <div id="title">
-                    Title
+                    <h1>Title</h1>
                 </div>
                 <div id="writer">
                     <div id="profile">
@@ -570,36 +619,52 @@
                 illum.
 
                 <div id="content_btn">
-                    <button class="btn btn-default">delete</button>
-                    <button class="btn btn-default">modify</button>
+                    <button class="btn btn-default">
+                        <li class="glyphicon glyphicon-remove"></li>
+                        <span>delete</span>
+                    </button>
+                    <button class="btn btn-default">
+                        <li class="glyphicon glyphicon-asterisk"></li>
+                        <span>modify</span>
+                    </button>
 
 
                 </div>
             </div>
             <div id="btn_set">
-                <!-- <input type="button" value="prev" class="btn btn-info" />
-                <input
-                    type="button"
-                    value="back to list"
-                    class="btn btn-info"
-                />
-                <input type="button" value="next" class="btn btn-info" />
-             -->
-                <button class="btn btn-info">prev</button>
-                <button class="btn btn-info">back to list</button>
-                <button class="btn btn-info">next</button>
+                
+                <button class="btn btn-info">
+                    <li class="glyphicon glyphicon-chevron-left"></li>
+                    <span>prev</span>
+                </button>
+                <button class="btn btn-info">
+                    <li class="glyphicon glyphicon-list"></li>
+                    <span>back to list</span>
+                </button>
+                <button class="btn btn-info">
+                    <span>next</span>
+                    <li class="glyphicon glyphicon-chevron-right"></li>
+                </button>
             </div>
 
-            <link
+            <!-- <link
                 href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
                 rel="stylesheet"
-            />
+            /> -->
+
+
             <div class="container">
                 <div class="be-comment-block">
                     <h1 class="comments-title">Comments (3)</h1>
+                    <div id="comment_hidden">
+                        <span data-toggle="modal" data-target="#myModal">profile</span>
+                        <span>board list</span>
+                        <span>1:1 chat</span>
+                    </div>
+
                     <div class="be-comment">
                         <div class="be-img-comment">
-                            <a href="blog-detail-2.html">
+                            <a>
                                 <img
                                     src="cookie_images/002.png"
                                     alt=""
@@ -609,7 +674,7 @@
                         </div>
                         <div class="be-comment-content">
                             <span class="be-comment-name">
-                                <a href="blog-detail-2.html">Ravi Sah</a>
+                                <a id="comment_name">Ravi Sah</a>
                             </span>
                             <span class="be-comment-time">
                                 <i class="fa fa-clock-o"></i>
@@ -713,6 +778,17 @@
         } else {
             $("#hidden").css("display", "none");
             flag = true;
+        }
+    });
+
+    var flag2 = true;
+    $("#comment_name").click(function () {
+        if (flag2) {
+            $("#comment_hidden").css("display", "block");
+            flag2 = false;
+        } else {
+            $("#comment_hidden").css("display", "none");
+            flag2 = true;
         }
     });
     

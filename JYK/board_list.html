@@ -1,12 +1,7 @@
 <div id="header"></div>
 <section id="content" class="container">
     <style>
-        #contentLeft {
-            position: fixed;
-        }
-        #contentLeft * {
-            /* border: 1px solid gray; */
-        }
+      
         /* 메뉴 위 프로젝트 정보 */
         #contentLeft > #projectInfo {
             width: 250px;
@@ -147,6 +142,15 @@
             margin-left: 50px;
             border-bottom: 1px solid #ddd;
         }
+        #contentRight #titleicon {
+            /* border: 1px solid black; */
+            background-color: #5bc0de;
+            width: 8px;
+            height: 35px;
+            float: left;
+            margin-top: 3px;
+            margin-right: 10px;
+        }
         #contentRight #main_title {
             font-size: 30px;
             font-weight: bold;
@@ -154,7 +158,7 @@
         }
 
         #contentRight #tbl {
-            margin-top: 10px;
+            margin-top: 30px;
             border: none;
         }
         #contentRight #tbl tr {
@@ -336,8 +340,8 @@
     <div id="contentRight">
         <div id="main_list">
             <div id="main_title">
-                <li class="glyphicon glyphicon-th-list"></li>
-                Board List
+                <div id="titleicon"></div>
+                <h1>Board List</h1>
             </div>
             <table id="tbl" class="table">
                 <tr>
@@ -419,7 +423,7 @@
                     <td>10</td>
                 </tr>
             </table>
-            <hr style="border: 0.2px solid #bbb;" />
+            <!-- <hr style="border: 0.2px solid #bbb;" /> -->
 
             <button id="write" class="btn btn-info">
                 <li class="glyphicon glyphicon-pencil"></li>
